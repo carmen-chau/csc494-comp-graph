@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="min-h-screen flex justify-center items-center bg-white">
       <SampleGraph />
-      <div className="w-full text-center mt-8" style={{ color: "black" }}>
+      <div className="w-full text-center mt-8 text-2xl" style={{ color: "black" }}>
         <MathJaxContext>
           <div className="space-y-4">
             <p>Computation Graph Equations:</p>

@@ -80,7 +80,7 @@ const SampleGraph: React.FC = () => {
   const [isLocked, setIsLocked] = useState(false);
 
   return (
-    <div style={{ width: "100vw", height: "100vh", display: "flex", flexDirection: "column", alignItems: "center" }}>
+    <div style={{ width: "100vw", height: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
 
       {/* Cytoscape Graph */}
       <div style={{ 
