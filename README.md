@@ -6,10 +6,14 @@
 # Code structure 
 
 The structure of files in this projects mimics a class-based approach. Think of OOP from Java if you learned that. Basically I tried to make a class for each component of the graph.
+
 The /components folder defines these graph components as seperate files 
+
 The /pages folder define pages that are actually rendered. 
-        /SampleGraph.tsx defines the main computation graph displayed. 
-        /index is the home page where I call SampleGraph.tsx to display. I also render some MathJax expressions
+
+/SampleGraph.tsx defines the main computation graph displayed. 
+
+/index is the home page where I call SampleGraph.tsx to display. I also render some MathJax expressions
         
 The /public folder contains another folder called /initial_latex_icons. This folder contains raw latex text as pictures, I use these to insert into each node of the graph to render as a picture upload. This is a very brute-force approach since at this time right now I have yet to find a way to dynamially render this text, nor do I think it is a primary objective at this stage of this project. 
 
