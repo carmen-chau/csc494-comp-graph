@@ -9,6 +9,20 @@ import GraphEdge from "../components/GraphEdge";
 // Dynamically import CytoscapeComponent to avoid SSR issues in Next.js
 const CytoscapeComponent = dynamic(() => import("react-cytoscapejs"), { ssr: false });
 
+// JESS :D
+// for highlighting the graph, I'm thinking maybe you can do something like this:
+
+// have a variable to keep track of which step you're on
+// step = 1
+
+// everytime you press the button, step++ or step-- (and you block once you're at the first/last step)
+
+// have an array with the ids of each node for each step
+// const step1_node_ids = ["x1", "x2"]
+
+// everytime you update step, you check which node ids correspond to that step,
+// and then just update the imagePath to a highlighted version
+
 const nodes = [
   GraphNode({ id: "x1", position: { x: 100, y: 200}, imagePath: "/initial_latex_icons/x1_black.svg" }),
   GraphNode({ id: "x2", position: { x: 100 , y: 300}, imagePath: "initial_latex_icons/x2_black.svg" }),
