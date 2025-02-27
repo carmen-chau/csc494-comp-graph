@@ -1,7 +1,7 @@
 # Installation instructions (please use a terminal for this) 
 1. Download Node.js. This comes with the package <npm> which can help you download dependencies. You can see here to download a version of Node.js directly: https://nodejs.org/en. You could also consult https://docs.npmjs.com/downloading-and-installing-node-js-and-npm. 
-3. Once done, in the root directory of this repo, do either <npm install> or <yarn install> to download dependencies
-4. To test if app runs, in the root directory, run <npm run dev>. Upon success, you should be able to see a graph displayed on http://localhost:3000 
+3. Once done, in the root directory of this repo, do either "npm install" or "yarn install" to download dependencies
+4. To test if app runs, in the root directory, run "npm run dev". Upon success, you should be able to see a graph displayed on http://localhost:3000 
 
 # Code structure 
 
