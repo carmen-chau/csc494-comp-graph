@@ -19,7 +19,6 @@ export default function Home() {
             <MathJax>{"\\(y_2 = w_{21}^{(2)} h_1 + w_{22}^{(2)} h_2 + b_2^{(2)}\\)"}</MathJax>
             <MathJax>{"\\( \\mathcal{L} = \\frac{1}{2} \\left( (y_1 - t_1)^2 + (y_2 - t_2)^2 \\right) \\)"}</MathJax>
           </div>
-
         </MathJaxContext>
       </div>
     </div>

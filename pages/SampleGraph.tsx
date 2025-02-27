@@ -1,14 +1,6 @@
 // Dev resource reference: 
 // Latex to SVG: https://viereck.ch/latex-to-svg/
 
-import React, { useState } from "react";
-import dynamic from "next/dynamic";
-import GraphNode from "../components/GraphNode";
-import GraphEdge from "../components/GraphEdge";
-
-// Dynamically import CytoscapeComponent to avoid SSR issues in Next.js
-const CytoscapeComponent = dynamic(() => import("react-cytoscapejs"), { ssr: false });
-
 // JESS :D
 // for highlighting the graph, I'm thinking maybe you can do something like this:
 
@@ -23,6 +15,19 @@ const CytoscapeComponent = dynamic(() => import("react-cytoscapejs"), { ssr: fal
 // everytime you update step, you check which node ids correspond to that step,
 // and then just update the imagePath to a highlighted version
 
+
+// List of imports
+import React, { useState, useRef} from "react";
+import dynamic from "next/dynamic";
+import GraphNode from "../components/GraphNode";
+import GraphEdge from "../components/GraphEdge";
+import GraphStepButton from "../components/GraphStepButton";
+
+// Dynamically import CytoscapeComponent to avoid SSR issues in Next.js
+const CytoscapeComponent = dynamic(() => import("react-cytoscapejs"), { ssr: false });
+
+
+// List of graph nodes
 const nodes = [
   GraphNode({ id: "x1", position: { x: 100, y: 200}, imagePath: "/initial_latex_icons/x1_black.svg" }),
   GraphNode({ id: "x2", position: { x: 100 , y: 300}, imagePath: "initial_latex_icons/x2_black.svg" }),
@@ -56,6 +61,7 @@ const nodes = [
   GraphNode({ id: "L", position: { x: 900, y: 250}, imagePath: "/initial_latex_icons/l_black.svg" }),
 ];
 
+// List of graph edges
 const edges = [
   GraphEdge({ id: "x1-z1", source: "x1", target: "z1" }),
   GraphEdge({ id: "x2-z1", source: "x2", target: "z1" }),
@@ -90,8 +96,145 @@ const edges = [
 
 ];
 
+
+// Graph component
 const SampleGraph: React.FC = () => {
-  const [isLocked, setIsLocked] = useState(false);
+
+  const [isLocked, setIsLocked] = useState(false); // Store state (and unused state management method) for fixing graph location
+  const [isStep1Highlighted, setIsStep1Highlighted] = useState(false);
+  const cyRef = useRef<cytoscape.Core | null>(null); // Creating and storing a default Cytoscape instance. We will need to modify and update this as individual node styling change
+
+  const defaultGraphStyles = [
+    // Style object for nodes
+    {
+      selector: "node",
+      style: {
+        "background-image": "data(image)", // Use dynamic image path
+        "background-width": "80%",
+        "background-height": "80%",
+        "background-image-opacity": 1,
+        width: 60,
+        height: 60,
+        borderColor: "#000000",
+        borderWidth: 2,
+      },
+    },
+
+    // Style object for edges
+    {
+      selector: "edge",
+      style: {
+        width: 2,
+        lineColor: "#000000",
+        targetArrowShape: "triangle",
+        targetArrowColor: "#000000",
+        curveStyle: "straight",
+      },
+    },
+  ]
+
+  // [DEMO] Custom Styles for the z1 equation
+  const specificStyles = [
+    {
+      selector: "node#x1",
+      style: {
+        "underlay-color": "green",
+        "underlay-opacity": 0.5,
+        "underlay-padding": 10,
+      },
+    },
+    {
+      selector: "node#x2",
+      style: {
+        "underlay-color": "green",
+        "underlay-opacity": 0.5,
+        "underlay-padding": 10,
+      },
+    },
+    {
+      selector: "node#z1",
+      style: {
+        "underlay-color": "green",
+        "underlay-opacity": 0.5,
+        "underlay-padding": 10,
+      },
+    },
+    {
+      selector: "edge#x1-z1",
+      style: {
+        "underlay-color": "green",
+        "underlay-opacity": 0.5,
+        "underlay-padding": 10,
+      },
+    },
+    {
+      selector: "edge#x2-z1",
+      style: {
+        "underlay-color": "green",
+        "underlay-opacity": 0.5,
+        "underlay-padding": 10,
+      },
+    },
+  ]           
+
+  // Function to apply the parent styles
+  const applyStylesIndividually = (cyInstance: cytoscape.Core) => {
+    // Apply default styles to all nodes and edges
+    defaultGraphStyles.forEach((styleObj) => {
+      cyInstance.elements(styleObj.selector).forEach((element) => {
+        element.style(styleObj.style);
+      });
+    });
+  };
+
+
+  const initialCyRendering = (inputCyInstance: cytoscape.Core) => {
+    cyRef.current = inputCyInstance; // Store Cytoscape instance
+    
+    // Preserve existing behavior (ie: Fixing graph location, disabling user interaction)
+    cyRef.current.autolock(isLocked);
+    cyRef.current.panningEnabled(!isLocked);
+    cyRef.current.zoomingEnabled(!isLocked);
+    cyRef.current.boxSelectionEnabled(false);
+    cyRef.current.userPanningEnabled(false);
+    cyRef.current.userZoomingEnabled(false);
+    cyRef.current.fit();
+
+    // Apply default node and edge styling by calling applyStylesIndividually
+    applyStylesIndividually(inputCyInstance);
+  };
+
+  const handleStep1Click = () => {
+    if (!(cyRef.current)){
+      return; // preventing us from working with an undefined Cytoscape instance
+    }
+    cyRef.current.batch(() => {
+      if (!isStep1Highlighted) {
+        // Apply specific styles
+        specificStyles.forEach(({ selector, style }) => {
+          cyRef.current!.$(selector).style(style);
+        });
+        console.log("Highlight applied");
+      } else {
+        // Reset only the specific fields (instead of removing all styles)
+        specificStyles.forEach(({ selector }) => {
+          cyRef.current!.$(selector).style({
+            "underlay-color": "transparent", // Clears the color
+            "underlay-opacity": 0, // Makes it fully transparent
+            "underlay-padding": 0, // Resets padding
+          });
+        });
+  
+        console.log("Highlight removed");
+      }
+    });
+  
+    cyRef.current.style().update(); // Ensure styles are refreshed
+  
+    // Update the button toggle state
+    setIsStep1Highlighted(isStep1Highlighted ? false : true);
+  };
+
 
   return (
     <div style={{ width: "100vw", height: "100vh", display: "flex", flexDirection: "column", alignItems: "center", paddingLeft: "40px"}}>
@@ -111,56 +254,21 @@ const SampleGraph: React.FC = () => {
           elements={[...nodes, ...edges]} // Combine nodes and edges
           style={{ width: "100%", height: "100%" }}
           layout={{ name: "preset", fit: false}} // Keeps nodes in place
-          cy={(cy) => {
-            cy.autolock(isLocked); // Toggle lock based on state
-            cy.panningEnabled(!isLocked); // Disable panning when locked
-            cy.zoomingEnabled(!isLocked); // Disable zooming when locked
-            cy.boxSelectionEnabled(false); // Disable box selection of nodes
-            cy.userPanningEnabled(false); // Disable user-initiated panning
-            cy.userZoomingEnabled(false); // Disable user-initiated zooming
-            cy.fit(); // Ensures graph is fully visible
-          }}
-          stylesheet={[
-            {
-              selector: "node",
-              style: {
-                "background-image": "data(image)", // Use dynamic image path
-                "background-width": "80%",
-                "background-height": "80%",
-                "background-image-opacity": 1,
-                width: 60,
-                height: 60,
-                borderColor: "#000000",
-                borderWidth: 2,
-              },
-            },
-            {
-              selector: "edge",
-              style: {
-                width: 2,
-                lineColor: "#000000",
-                targetArrowShape: "triangle",
-                targetArrowColor: "#000000",
-                curveStyle: "straight",
-              },
-            },
-          ]}
+          cy={initialCyRendering}
         />
+        
+      
+      {/* Step 1 Button */}
+      <button 
+      className="mb-4 px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 transition"
+      onClick = {handleStep1Click}>
+        Step 1
+      </button>
       </div>
     </div>
   );
 };
 export default SampleGraph;
-
-
-
-
-
-
-
-
-
-
 
 /*
       <button onClick={() => setIsLocked(!isLocked)}
