@@ -22,6 +22,7 @@ import dynamic from "next/dynamic";
 import GraphNode from "../components/GraphNode";
 import GraphEdge from "../components/GraphEdge";
 import defaultGraphStyles from "../styles/GraphDefaultStyle";
+import {customNodeStyle} from "../styles/GraphCustomStyle";
 
 // Dynamically import CytoscapeComponent to avoid SSR issues in Next.js
 const CytoscapeComponent = dynamic(() => import("react-cytoscapejs"), { ssr: false });
@@ -104,114 +105,89 @@ const SampleGraph: React.FC = () => {
   const [isStep1Highlighted, setIsStep1Highlighted] = useState(false);
   const cyRef = useRef<cytoscape.Core | null>(null); // Creating and storing a default Cytoscape instance. We will need to modify and update this as individual node styling change
 
-  // const defaultGraphStyles = [
-  //   // Style object for nodes
-  //   {
-  //     selector: "node",
-  //     style: {
-  //       "background-image": "data(image)", // Use dynamic image path
-  //       "background-width": "80%",
-  //       "background-height": "80%",
-  //       "background-image-opacity": 1,
-  //       width: 60,
-  //       height: 60,
-  //       borderColor: "#000000",
-  //       borderWidth: 2,
-  //     },
-  //   },
+  const specificStyles = customNodeStyle(["x1"], "#58cf35");
+  console.log(specificStyles);
 
-  //   // Style object for edges
-  //   {
-  //     selector: "edge",
-  //     style: {
-  //       width: 2,
-  //       lineColor: "#000000",
-  //       targetArrowShape: "triangle",
-  //       targetArrowColor: "#000000",
-  //       curveStyle: "straight",
-  //     },
-  //   },
-  // ]
 
   // [DEMO] Custom Styles for the z1 equation
-  const specificStyles = [
-    {
-      selector: "node#x1",
-      style: {
-        "background-color": "#58cf35",
-      },
-    },
-    {
-      selector: "node#x2",
-      style: {
-        "background-color": "#58cf35",
-      },
-    },
-    {
-      selector: "node#b1_1",
-      style: {
-        "background-color": "#58cf35",
-      },
-    },
-    {
-      selector: "node#w11_1",
-      style: {
-        "background-color": "#58cf35",
-      },
-    },
-    {
-      selector: "node#w12_1",
-      style: {
-        "background-color": "#58cf35",
-      },
-    },
-    {
-      selector: "node#z1",
-      style: {
-        "background-color": "#58cf35",
-      },
-    },
-    {
-      selector: "edge#x1-z1",
-      style: {
-        "underlay-color": "#58cf35",
-        "underlay-opacity": 0.5,
-        "underlay-padding": 5,
-      },
-    },
-    {
-      selector: "edge#x2-z1",
-      style: {
-        "underlay-color": "#58cf35",
-        "underlay-opacity": 0.5,
-        "underlay-padding": 5,
-      },
-    },
-    {
-      selector: "edge#b1_1-z1",
-      style: {
-        "underlay-color": "#58cf35",
-        "underlay-opacity": 0.5,
-        "underlay-padding": 5,
-      },
-    },
-    {
-      selector: "edge#w11_1-z1",
-      style: {
-        "underlay-color": "#58cf35",
-        "underlay-opacity": 0.5,
-        "underlay-padding": 5,
-      },
-    },
-    {
-      selector: "edge#w12_1-z1",
-      style: {
-        "underlay-color": "#58cf35",
-        "underlay-opacity": 0.5,
-        "underlay-padding": 5,
-      },
-    },
-  ]           
+  // const specificStyles = [
+  //   {
+  //     selector: "node#x1",
+  //     style: {
+  //       "background-color": "#58cf35",
+  //     },
+  //   },
+  //   {
+  //     selector: "node#x2",
+  //     style: {
+  //       "background-color": "#58cf35",
+  //     },
+  //   },
+  //   {
+  //     selector: "node#b1_1",
+  //     style: {
+  //       "background-color": "#58cf35",
+  //     },
+  //   },
+  //   {
+  //     selector: "node#w11_1",
+  //     style: {
+  //       "background-color": "#58cf35",
+  //     },
+  //   },
+  //   {
+  //     selector: "node#w12_1",
+  //     style: {
+  //       "background-color": "#58cf35",
+  //     },
+  //   },
+  //   {
+  //     selector: "node#z1",
+  //     style: {
+  //       "background-color": "#58cf35",
+  //     },
+  //   },
+  //   {
+  //     selector: "edge#x1-z1",
+  //     style: {
+  //       "underlay-color": "#58cf35",
+  //       "underlay-opacity": 0.5,
+  //       "underlay-padding": 5,
+  //     },
+  //   },
+  //   {
+  //     selector: "edge#x2-z1",
+  //     style: {
+  //       "underlay-color": "#58cf35",
+  //       "underlay-opacity": 0.5,
+  //       "underlay-padding": 5,
+  //     },
+  //   },
+  //   {
+  //     selector: "edge#b1_1-z1",
+  //     style: {
+  //       "underlay-color": "#58cf35",
+  //       "underlay-opacity": 0.5,
+  //       "underlay-padding": 5,
+  //     },
+  //   },
+  //   {
+  //     selector: "edge#w11_1-z1",
+  //     style: {
+  //       "underlay-color": "#58cf35",
+  //       "underlay-opacity": 0.5,
+  //       "underlay-padding": 5,
+  //     },
+  //   },
+  //   {
+  //     selector: "edge#w12_1-z1",
+  //     style: {
+  //       "underlay-color": "#58cf35",
+  //       "underlay-opacity": 0.5,
+  //       "underlay-padding": 5,
+  //     },
+  //   },
+  // ]           
 
   // Function to apply the parent styles
   const applyStylesIndividually = (cyInstance: cytoscape.Core) => {

@@ -11,6 +11,7 @@ interface GraphNodeInterface {
 const defaultNodeStyle = {
   "background-width": "60%",
   "background-height": "60%",
+  "background-color": "grey",
   "background-image-opacity": 1,
   width: 60,
   height: 60,
