@@ -9,7 +9,7 @@
     2. For edges 
 */
 
-export function customNodeStyle (nodesIds: string[], nodeColour: string) {
+export function customNodeStyle (nodesIds: string[], nodeColour: string, edgeIds: string[], edgeColour: string) {
     const nodeStyleObjects = nodesIds.map((nodeId) => (
         {
             selector: `node#${nodeId}`,
@@ -20,8 +20,24 @@ export function customNodeStyle (nodesIds: string[], nodeColour: string) {
         }
 
     ));
-    return nodeStyleObjects;
-};
+
+    const edgeStyleObjects = edgeIds.map((edgeId) => (
+        {
+            selector: `edge#${edgeId}`,
+            style:{
+                "underlay-color": edgeColour,
+                "underlay-opacity": 0.7,
+                "underlay-padding": 5,
+
+            }
+        }
+
+    ));
+
+    const finalStyleList = nodeStyleObjects.concat(edgeStyleObjects);
+
+    return finalStyleList;
+}
 
 // export const customNodeStyle = (nodeIds: string[], nodeColor: string) => {
 //     return nodeIds.map((nodeId) => ({

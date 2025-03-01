@@ -105,7 +105,14 @@ const SampleGraph: React.FC = () => {
   const [isStep1Highlighted, setIsStep1Highlighted] = useState(false);
   const cyRef = useRef<cytoscape.Core | null>(null); // Creating and storing a default Cytoscape instance. We will need to modify and update this as individual node styling change
 
-  const specificStyles = customNodeStyle(["x1"], "#58cf35");
+  const specificStyles = customNodeStyle(
+    ["x1", "x2", "b1_1", "w11_1", "w12_1", "z1"], // List of node ids
+    "#58cf35", // Node colour
+    ["x1-z1", "x2-z1", "b1_1-z1", "w11_1-z1", "w12_1-z1"], // List of edge ids
+    "#58cf35" // Edge colour
+
+  
+  );
 
 
   // [DEMO] Custom Styles for the z1 equation
