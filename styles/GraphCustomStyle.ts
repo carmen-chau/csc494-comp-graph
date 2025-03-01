@@ -14,7 +14,7 @@ export function customNodeStyle (nodesIds: string[], nodeColour: string) {
         {
             selector: `node#${nodeId}`,
             style:{
-                "background-color": nodeColour
+                "background-color": nodeColour,
             }
 
         }

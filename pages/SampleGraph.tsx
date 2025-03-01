@@ -106,7 +106,6 @@ const SampleGraph: React.FC = () => {
   const cyRef = useRef<cytoscape.Core | null>(null); // Creating and storing a default Cytoscape instance. We will need to modify and update this as individual node styling change
 
   const specificStyles = customNodeStyle(["x1"], "#58cf35");
-  console.log(specificStyles);
 
 
   // [DEMO] Custom Styles for the z1 equation

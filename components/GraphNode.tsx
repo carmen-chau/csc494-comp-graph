@@ -1,6 +1,7 @@
 // Define an interface for the graph nodes
 interface GraphNodeInterface {
   id: string;
+  label?: string, // Not needed for now, passed in a dummy default string to prevent warnings
   imagePath: string; // Dynamic Image Path
   position: { x: number; y: number };
   classes?: string; // an argument for the node to take on more specific classes for styling
@@ -20,9 +21,9 @@ const defaultNodeStyle = {
   "events": "no", // Blocks interactions
 };
 
-const CustomNode = ({ id, imagePath, position, classes = "math-node", style = {}}: GraphNodeInterface) => {
+const CustomNode = ({ id, label = "", imagePath, position, style = {}}: GraphNodeInterface) => {
   return {
-    data: { id, image: imagePath },
+    data: {id, label},
     position,
     style: {
       "background-image": `url('${imagePath}')`,

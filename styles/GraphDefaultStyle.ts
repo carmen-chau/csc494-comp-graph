@@ -12,7 +12,6 @@ const defaultGraphStyles = [
     {
       selector: "node",
       style: {
-        "background-image": "data(image)", // Use dynamic image path
         "background-width": "80%",
         "background-height": "80%",
         "background-image-opacity": 1,
