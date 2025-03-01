@@ -12,7 +12,7 @@ const defaultGraphStyles = [
     {
       selector: "node",
       style: {
-        "background-image": "data(image)",
+        "background-image": "data(image)", // dynamically rendering image
         "background-width": "60%",
         "background-height": "60%",
         "background-color": "grey",
