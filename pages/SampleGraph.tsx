@@ -138,41 +138,77 @@ const SampleGraph: React.FC = () => {
     {
       selector: "node#x1",
       style: {
-        "underlay-color": "green",
-        "underlay-opacity": 0.5,
-        "underlay-padding": 10,
+        "background-color": "#58cf35",
       },
     },
     {
       selector: "node#x2",
       style: {
-        "underlay-color": "green",
-        "underlay-opacity": 0.5,
-        "underlay-padding": 10,
+        "background-color": "#58cf35",
+      },
+    },
+    {
+      selector: "node#b1_1",
+      style: {
+        "background-color": "#58cf35",
+      },
+    },
+    {
+      selector: "node#w11_1",
+      style: {
+        "background-color": "#58cf35",
+      },
+    },
+    {
+      selector: "node#w12_1",
+      style: {
+        "background-color": "#58cf35",
       },
     },
     {
       selector: "node#z1",
       style: {
-        "underlay-color": "green",
-        "underlay-opacity": 0.5,
-        "underlay-padding": 10,
+        "background-color": "#58cf35",
       },
     },
     {
       selector: "edge#x1-z1",
       style: {
-        "underlay-color": "green",
+        "underlay-color": "#58cf35",
         "underlay-opacity": 0.5,
-        "underlay-padding": 10,
+        "underlay-padding": 5,
       },
     },
     {
       selector: "edge#x2-z1",
       style: {
-        "underlay-color": "green",
+        "underlay-color": "#58cf35",
         "underlay-opacity": 0.5,
-        "underlay-padding": 10,
+        "underlay-padding": 5,
+      },
+    },
+    {
+      selector: "edge#b1_1-z1",
+      style: {
+        "underlay-color": "#58cf35",
+        "underlay-opacity": 0.5,
+        "underlay-padding": 5,
+      },
+    },
+    {
+      selector: "edge#w11_1-z1",
+      style: {
+        "underlay-color": "#58cf35",
+        "underlay-opacity": 0.5,
+        "underlay-padding": 5,
+      },
+    },
+    {
+      selector: "edge#w12_1-z1",
+      style: {
+        "underlay-color": "#58cf35",
+        "underlay-opacity": 0.5,
+        "underlay-padding": 5,
       },
     },
   ]           
@@ -219,8 +255,8 @@ const SampleGraph: React.FC = () => {
         // Reset only the specific fields (instead of removing all styles)
         specificStyles.forEach(({ selector }) => {
           cyRef.current!.$(selector).style({
-            "underlay-color": "transparent", // Clears the color
-            "underlay-opacity": 0, // Makes it fully transparent
+            "background-color": "grey", // Clears the colour filled in by ndes
+            "underlay-opacity": 0, // Clear arrow highlighting colour
             "underlay-padding": 0, // Resets padding
           });
         });
