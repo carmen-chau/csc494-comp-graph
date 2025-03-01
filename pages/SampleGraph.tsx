@@ -188,15 +188,15 @@ const SampleGraph: React.FC = () => {
   //   },
   // ]           
 
-  // Function to apply the parent styles
-  const applyStylesIndividually = (cyInstance: cytoscape.Core) => {
-    // Apply default styles to all nodes and edges
-    defaultGraphStyles.forEach((styleObj) => {
-      cyInstance.elements(styleObj.selector).forEach((element) => {
-        element.style(styleObj.style);
-      });
-    });
-  };
+  // // Function to apply the parent styles
+  // const applyStylesIndividually = (cyInstance: cytoscape.Core) => {
+  //   // Apply default styles to all nodes and edges
+  //   defaultGraphStyles.forEach((styleObj) => {
+  //     cyInstance.elements(styleObj.selector).forEach((element) => {
+  //       element.style(styleObj.style);
+  //     });
+  //   });
+  // };
 
 
   const initialCyRendering = (inputCyInstance: cytoscape.Core) => {
@@ -212,7 +212,7 @@ const SampleGraph: React.FC = () => {
     cyRef.current.fit();
 
     // Apply default node and edge styling by calling applyStylesIndividually
-    applyStylesIndividually(inputCyInstance);
+    // applyStylesIndividually(inputCyInstance);
   };
 
   const handleStep1Click = () => {
@@ -266,6 +266,7 @@ const SampleGraph: React.FC = () => {
           style={{ width: "100%", height: "100%" }}
           layout={{ name: "preset", fit: false}} // Keeps nodes in place
           cy={initialCyRendering}
+          stylesheet={defaultGraphStyles}
         />
         
       

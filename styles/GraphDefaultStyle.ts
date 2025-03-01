@@ -12,8 +12,10 @@ const defaultGraphStyles = [
     {
       selector: "node",
       style: {
-        "background-width": "80%",
-        "background-height": "80%",
+        "background-image": "data(image)",
+        "background-width": "60%",
+        "background-height": "60%",
+        "background-color": "grey",
         "background-image-opacity": 1,
         width: 60,
         height: 60,

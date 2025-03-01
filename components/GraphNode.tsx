@@ -8,28 +8,13 @@ interface GraphNodeInterface {
   style?: object; //Argument to allow node styling
 }
 
-// Defining an object to store default node style
-const defaultNodeStyle = {
-  "background-width": "60%",
-  "background-height": "60%",
-  "background-color": "grey",
-  "background-image-opacity": 1,
-  width: 60,
-  height: 60,
-  borderColor: "#000000",
-  borderWidth: 2,
-  "events": "no", // Blocks interactions
-};
-
-const CustomNode = ({ id, label = "", imagePath, position, style = {}}: GraphNodeInterface) => {
+const CustomNode = ({ id, imagePath, position, label = ""}: GraphNodeInterface) => {
   return {
-    data: {id, label},
-    position,
-    style: {
-      "background-image": `url('${imagePath}')`,
-      ...defaultNodeStyle,
-      ...style,
-    },
+    data: {id, label, image: imagePath}, // id and label are default needed by Cytoscape rendering instance. imagePath argument is for dynamic picture rendering
+    position, //position is needed for the Cytoscape instance to know where to place nodes
+    // style: {
+    //   "background-image": `url('${imagePath}')`,
+    // },
   };
 };
 
