@@ -21,7 +21,7 @@ import React, { useState, useRef} from "react";
 import dynamic from "next/dynamic";
 import GraphNode from "../components/GraphNode";
 import GraphEdge from "../components/GraphEdge";
-import GraphStepButton from "../components/GraphStepButton";
+import defaultGraphStyles from "../styles/GraphDefaultStyle";
 
 // Dynamically import CytoscapeComponent to avoid SSR issues in Next.js
 const CytoscapeComponent = dynamic(() => import("react-cytoscapejs"), { ssr: false });
@@ -104,34 +104,34 @@ const SampleGraph: React.FC = () => {
   const [isStep1Highlighted, setIsStep1Highlighted] = useState(false);
   const cyRef = useRef<cytoscape.Core | null>(null); // Creating and storing a default Cytoscape instance. We will need to modify and update this as individual node styling change
 
-  const defaultGraphStyles = [
-    // Style object for nodes
-    {
-      selector: "node",
-      style: {
-        "background-image": "data(image)", // Use dynamic image path
-        "background-width": "80%",
-        "background-height": "80%",
-        "background-image-opacity": 1,
-        width: 60,
-        height: 60,
-        borderColor: "#000000",
-        borderWidth: 2,
-      },
-    },
+  // const defaultGraphStyles = [
+  //   // Style object for nodes
+  //   {
+  //     selector: "node",
+  //     style: {
+  //       "background-image": "data(image)", // Use dynamic image path
+  //       "background-width": "80%",
+  //       "background-height": "80%",
+  //       "background-image-opacity": 1,
+  //       width: 60,
+  //       height: 60,
+  //       borderColor: "#000000",
+  //       borderWidth: 2,
+  //     },
+  //   },
 
-    // Style object for edges
-    {
-      selector: "edge",
-      style: {
-        width: 2,
-        lineColor: "#000000",
-        targetArrowShape: "triangle",
-        targetArrowColor: "#000000",
-        curveStyle: "straight",
-      },
-    },
-  ]
+  //   // Style object for edges
+  //   {
+  //     selector: "edge",
+  //     style: {
+  //       width: 2,
+  //       lineColor: "#000000",
+  //       targetArrowShape: "triangle",
+  //       targetArrowColor: "#000000",
+  //       curveStyle: "straight",
+  //     },
+  //   },
+  // ]
 
   // [DEMO] Custom Styles for the z1 equation
   const specificStyles = [
