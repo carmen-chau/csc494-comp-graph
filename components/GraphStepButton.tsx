@@ -16,6 +16,7 @@ interface GraphStepButtonProp {
   equationName: string; // Equation to highlight
   equationStyle: string; // Additional styling to add to the equation
   cyRef: React.RefObject<any>; // Cytoscape reference
+  children?: React.ReactNode;
 }
 
 const GraphStepButton: React.FC<GraphStepButtonProp> = ({
@@ -28,6 +29,7 @@ const GraphStepButton: React.FC<GraphStepButtonProp> = ({
   equationName,
   equationStyle,
   cyRef,
+  children,
 }) => {
   const handleClick = () => {
     if (!cyRef.current) {
@@ -80,10 +82,11 @@ const GraphStepButton: React.FC<GraphStepButtonProp> = ({
 
   return (
     <button
-      className={`mb-4 px-6 py-2 bg-[${highlightColour}] text-black font-semibold rounded-lg shadow-md hover:opacity-80 transition`}
+      // className={`mb-4 px-6 py-2 bg-transparent text-black font-semibold rounded-lg shadow-md hover:opacity-80 transition`} // Old "button" look
+      className={`mb-4 px-6 py-2 bg-transparent text-black font-semibold hover:opacity-80 transition`}
       onClick={handleClick}
     >
-      {label}
+      {children ?? label}
     </button>
   );
 };

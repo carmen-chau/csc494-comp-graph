@@ -99,11 +99,11 @@ const edges = [
 
 
 // Graph component
-const SampleGraph: React.FC = () => {
+const SampleGraph = ({ cyRef }: { cyRef: React.RefObject<any> }) => {
 
   const [isLocked, setIsLocked] = useState(false); // Store state (and unused state management method) for fixing graph location
   const [isStep1Highlighted, setIsStep1Highlighted] = useState(false);
-  const cyRef = useRef<cytoscape.Core | null>(null); // Creating and storing a default Cytoscape instance. We will need to modify and update this as individual node styling change
+  //const cyRef = useRef<cytoscape.Core | null>(null); // Creating and storing a default Cytoscape instance. We will need to modify and update this as individual node styling change
 
   const initialCyRendering = (inputCyInstance: cytoscape.Core) => {
     cyRef.current = inputCyInstance; // Store Cytoscape instance
@@ -139,7 +139,7 @@ const SampleGraph: React.FC = () => {
           cy={initialCyRendering}
           stylesheet={defaultGraphStyles} // Applying the default graph styling
         />
-        <div className="grid grid-cols-4 gap-x-4 gap-y-6 mt-4">
+        {/* <div className="grid grid-cols-4 gap-x-4 gap-y-6 mt-4">
           <GraphStepButton
             label="Step 1"
             nodeIds={["x1", "x2", "b1_1", "w11_1", "w12_1", "z1"]}
@@ -162,7 +162,7 @@ const SampleGraph: React.FC = () => {
             equationStyle="bg-[#ffdbbb] px-0.5 py-0.5 rounded-full inline-block"
             cyRef={cyRef}
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );
