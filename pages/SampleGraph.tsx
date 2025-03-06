@@ -22,7 +22,7 @@ import dynamic from "next/dynamic";
 import GraphNode from "../components/GraphNode";
 import GraphEdge from "../components/GraphEdge";
 import defaultGraphStyles from "../styles/GraphDefaultStyle";
-import {customNodeStyle} from "../styles/GraphCustomStyle";
+import GraphStepButton from "../components/GraphStepButton";
 
 // Dynamically import CytoscapeComponent to avoid SSR issues in Next.js
 const CytoscapeComponent = dynamic(() => import("react-cytoscapejs"), { ssr: false });
@@ -105,107 +105,6 @@ const SampleGraph: React.FC = () => {
   const [isStep1Highlighted, setIsStep1Highlighted] = useState(false);
   const cyRef = useRef<cytoscape.Core | null>(null); // Creating and storing a default Cytoscape instance. We will need to modify and update this as individual node styling change
 
-  const specificStyles = customNodeStyle(
-    ["x1", "x2", "b1_1", "w11_1", "w12_1", "z1"], // List of node ids
-    "#58cf35", // Node colour
-    ["x1-z1", "x2-z1", "b1_1-z1", "w11_1-z1", "w12_1-z1"], // List of edge ids
-    "#58cf35" // Edge colour
-
-  
-  );
-
-
-  // [DEMO] Custom Styles for the z1 equation
-  // const specificStyles = [
-  //   {
-  //     selector: "node#x1",
-  //     style: {
-  //       "background-color": "#58cf35",
-  //     },
-  //   },
-  //   {
-  //     selector: "node#x2",
-  //     style: {
-  //       "background-color": "#58cf35",
-  //     },
-  //   },
-  //   {
-  //     selector: "node#b1_1",
-  //     style: {
-  //       "background-color": "#58cf35",
-  //     },
-  //   },
-  //   {
-  //     selector: "node#w11_1",
-  //     style: {
-  //       "background-color": "#58cf35",
-  //     },
-  //   },
-  //   {
-  //     selector: "node#w12_1",
-  //     style: {
-  //       "background-color": "#58cf35",
-  //     },
-  //   },
-  //   {
-  //     selector: "node#z1",
-  //     style: {
-  //       "background-color": "#58cf35",
-  //     },
-  //   },
-  //   {
-  //     selector: "edge#x1-z1",
-  //     style: {
-  //       "underlay-color": "#58cf35",
-  //       "underlay-opacity": 0.5,
-  //       "underlay-padding": 5,
-  //     },
-  //   },
-  //   {
-  //     selector: "edge#x2-z1",
-  //     style: {
-  //       "underlay-color": "#58cf35",
-  //       "underlay-opacity": 0.5,
-  //       "underlay-padding": 5,
-  //     },
-  //   },
-  //   {
-  //     selector: "edge#b1_1-z1",
-  //     style: {
-  //       "underlay-color": "#58cf35",
-  //       "underlay-opacity": 0.5,
-  //       "underlay-padding": 5,
-  //     },
-  //   },
-  //   {
-  //     selector: "edge#w11_1-z1",
-  //     style: {
-  //       "underlay-color": "#58cf35",
-  //       "underlay-opacity": 0.5,
-  //       "underlay-padding": 5,
-  //     },
-  //   },
-  //   {
-  //     selector: "edge#w12_1-z1",
-  //     style: {
-  //       "underlay-color": "#58cf35",
-  //       "underlay-opacity": 0.5,
-  //       "underlay-padding": 5,
-  //     },
-  //   },
-  // ]           
-
-  // // Function to apply the parent styles
-  // const applyStylesIndividually = (cyInstance: cytoscape.Core) => {
-  //   // Apply default styles to all nodes and edges
-  //   defaultGraphStyles.forEach((styleObj) => {
-  //     cyInstance.elements(styleObj.selector).forEach((element) => {
-  //       element.style(styleObj.style);
-  //     });
-  //   });
-  // };
-
-
   const initialCyRendering = (inputCyInstance: cytoscape.Core) => {
     cyRef.current = inputCyInstance; // Store Cytoscape instance
     
@@ -217,42 +116,7 @@ const SampleGraph: React.FC = () => {
     cyRef.current.userPanningEnabled(false);
     cyRef.current.userZoomingEnabled(false);
     cyRef.current.fit();
-
-    // Apply default node and edge styling by calling applyStylesIndividually
-    // applyStylesIndividually(inputCyInstance);
   };
-
-  const handleStep1Click = () => {
-    if (!(cyRef.current)){
-      return; // preventing us from working with an undefined Cytoscape instance
-    }
-    cyRef.current.batch(() => {
-      if (!isStep1Highlighted) {
-        // Apply specific styles
-        specificStyles.forEach(({ selector, style }) => {
-          cyRef.current!.$(selector).style(style);
-        });
-        console.log("Highlight applied");
-      } else {
-        // Reset only the specific fields (instead of removing all styles)
-        specificStyles.forEach(({ selector }) => {
-          cyRef.current!.$(selector).style({
-            "background-color": "grey", // Clears the colour filled in by ndes
-            "underlay-opacity": 0, // Clear arrow highlighting colour
-            "underlay-padding": 0, // Resets padding
-          });
-        });
-  
-        console.log("Highlight removed");
-      }
-    });
-  
-    cyRef.current.style().update(); // Ensure styles are refreshed
-  
-    // Update the button toggle state
-    setIsStep1Highlighted(isStep1Highlighted ? false : true);
-  };
-
 
   return (
     <div style={{ width: "100vw", height: "100vh", display: "flex", flexDirection: "column", alignItems: "center", paddingLeft: "40px"}}>
@@ -273,16 +137,32 @@ const SampleGraph: React.FC = () => {
           style={{ width: "100%", height: "100%" }}
           layout={{ name: "preset", fit: false}} // Keeps nodes in place
           cy={initialCyRendering}
-          stylesheet={defaultGraphStyles}
+          stylesheet={defaultGraphStyles} // Applying the default graph styling
         />
-        
-      
-      {/* Step 1 Button */}
-      <button 
-      className="mb-4 px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 transition"
-      onClick = {handleStep1Click}>
-        Step 1
-      </button>
+        <div className="grid grid-cols-4 gap-x-4 gap-y-6 mt-4">
+          <GraphStepButton
+            label="Step 1"
+            nodeIds={["x1", "x2", "b1_1", "w11_1", "w12_1", "z1"]}
+            edgeIds={["x1-z1", "x2-z1", "b1_1-z1", "w11_1-z1", "w12_1-z1"]}
+            highlightColour="#58cf35"
+            isHighlighted={isStep1Highlighted}
+            setHighlighted={setIsStep1Highlighted}
+            equationName="z1"
+            equationStyle="bg-[#58cf35] px-0.5 py-0.5 rounded-full inline-block"
+            cyRef={cyRef}
+          />
+          <GraphStepButton
+            label="Step 2"
+            nodeIds={["x1", "x2", "b2_1", "w21_1", "w22_1", "z2"]}
+            edgeIds={["x1-z2", "x2-z2", "b2_1-z2", "w21_1-z2", "w22_1-z2"]}
+            highlightColour="#ffdbbb"
+            isHighlighted={isStep1Highlighted}
+            setHighlighted={setIsStep1Highlighted}
+            equationName="z2"
+            equationStyle="bg-[#ffdbbb] px-0.5 py-0.5 rounded-full inline-block"
+            cyRef={cyRef}
+          />
+        </div>
       </div>
     </div>
   );
