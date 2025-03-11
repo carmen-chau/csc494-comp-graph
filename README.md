@@ -25,3 +25,7 @@ The /public folder contains another folder called /initial_latex_icons. This fol
 What ideas (from a design POV or from a code implementation perspective) do you have for me with regards to tackling this. Any ideas are honestly welcomed. (*)
 
 3. Do you have any feedback on how to improve the structure of the home page (eg: Headers, formatting) 
+
+# Resources used 
+
+1. Latex to SVG: https://viereck.ch/latex-to-svg/
