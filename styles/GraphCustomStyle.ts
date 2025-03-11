@@ -38,12 +38,3 @@ export function customNodeStyle (nodesIds: string[], nodeColour: string, edgeIds
 
     return finalStyleList;
 }
-
-// export const customNodeStyle = (nodeIds: string[], nodeColor: string) => {
-//     return nodeIds.map((nodeId) => ({
-//       selector: `node#${nodeId}`, // Ensures proper Cytoscape.js node selection
-//       style: {
-//         "background-color": nodeColor, // Correct property spelling
-//       },
-//     }));
-//   };
