@@ -1,28 +1,16 @@
-// Dev resource reference: 
-// Latex to SVG: https://viereck.ch/latex-to-svg/
-
-import React, { useState } from "react";
+// List of imports
+import React, { useState, useRef} from "react";
 import dynamic from "next/dynamic";
 import GraphNode from "../components/GraphNode";
 import GraphEdge from "../components/GraphEdge";
+import defaultGraphStyles from "../styles/GraphDefaultStyle";
+import GraphStepButton from "../components/GraphStepButton";
 
 // Dynamically import CytoscapeComponent to avoid SSR issues in Next.js
 const CytoscapeComponent = dynamic(() => import("react-cytoscapejs"), { ssr: false });
 
-// JESS :D
-// for highlighting the graph, I'm thinking maybe you can do something like this:
 
-// have a variable to keep track of which step you're on
-// step = 1
-
-// everytime you press the button, step++ or step-- (and you block once you're at the first/last step)
-
-// have an array with the ids of each node for each step
-// const step1_node_ids = ["x1", "x2"]
-
-// everytime you update step, you check which node ids correspond to that step,
-// and then just update the imagePath to a highlighted version
-
+// List of graph nodes
 const nodes = [
   GraphNode({ id: "x1", position: { x: 100, y: 200}, imagePath: "/initial_latex_icons/x1_black.svg" }),
   GraphNode({ id: "x2", position: { x: 100 , y: 300}, imagePath: "initial_latex_icons/x2_black.svg" }),
@@ -56,6 +44,7 @@ const nodes = [
   GraphNode({ id: "L", position: { x: 900, y: 250}, imagePath: "/initial_latex_icons/l_black.svg" }),
 ];
 
+// List of graph edges
 const edges = [
   GraphEdge({ id: "x1-z1", source: "x1", target: "z1" }),
   GraphEdge({ id: "x2-z1", source: "x2", target: "z1" }),
@@ -90,8 +79,26 @@ const edges = [
 
 ];
 
-const SampleGraph: React.FC = () => {
-  const [isLocked, setIsLocked] = useState(false);
+
+// Graph component
+const SampleGraph = ({ cyRef }: { cyRef: React.RefObject<any> }) => {
+
+  const [isLocked, setIsLocked] = useState(false); // Store state (and unused state management method) for fixing graph location
+  const [isStep1Highlighted, setIsStep1Highlighted] = useState(false);
+  //const cyRef = useRef<cytoscape.Core | null>(null); // Creating and storing a default Cytoscape instance. We will need to modify and update this as individual node styling change
+
+  const initialCyRendering = (inputCyInstance: cytoscape.Core) => {
+    cyRef.current = inputCyInstance; // Store Cytoscape instance
+    
+    // Preserve existing behavior (ie: Fixing graph location, disabling user interaction)
+    cyRef.current.autolock(isLocked);
+    cyRef.current.panningEnabled(!isLocked);
+    cyRef.current.zoomingEnabled(!isLocked);
+    cyRef.current.boxSelectionEnabled(false);
+    cyRef.current.userPanningEnabled(false);
+    cyRef.current.userZoomingEnabled(false);
+    cyRef.current.fit();
+  };
 
   return (
     <div style={{ width: "100vw", height: "100vh", display: "flex", flexDirection: "column", alignItems: "center", paddingLeft: "40px"}}>
@@ -111,71 +118,35 @@ const SampleGraph: React.FC = () => {
           elements={[...nodes, ...edges]} // Combine nodes and edges
           style={{ width: "100%", height: "100%" }}
           layout={{ name: "preset", fit: false}} // Keeps nodes in place
-          cy={(cy) => {
-            cy.autolock(isLocked); // Toggle lock based on state
-            cy.panningEnabled(!isLocked); // Disable panning when locked
-            cy.zoomingEnabled(!isLocked); // Disable zooming when locked
-            cy.boxSelectionEnabled(false); // Disable box selection of nodes
-            cy.userPanningEnabled(false); // Disable user-initiated panning
-            cy.userZoomingEnabled(false); // Disable user-initiated zooming
-            cy.fit(); // Ensures graph is fully visible
-          }}
-          stylesheet={[
-            {
-              selector: "node",
-              style: {
-                "background-image": "data(image)", // Use dynamic image path
-                "background-width": "80%",
-                "background-height": "80%",
-                "background-image-opacity": 1,
-                width: 60,
-                height: 60,
-                borderColor: "#000000",
-                borderWidth: 2,
-              },
-            },
-            {
-              selector: "edge",
-              style: {
-                width: 2,
-                lineColor: "#000000",
-                targetArrowShape: "triangle",
-                targetArrowColor: "#000000",
-                curveStyle: "straight",
-              },
-            },
-          ]}
+          cy={initialCyRendering}
+          stylesheet={defaultGraphStyles} // Applying the default graph styling
         />
+        {/* <div className="grid grid-cols-4 gap-x-4 gap-y-6 mt-4">
+          <GraphStepButton
+            label="Step 1"
+            nodeIds={["x1", "x2", "b1_1", "w11_1", "w12_1", "z1"]}
+            edgeIds={["x1-z1", "x2-z1", "b1_1-z1", "w11_1-z1", "w12_1-z1"]}
+            highlightColour="#58cf35"
+            isHighlighted={isStep1Highlighted}
+            setHighlighted={setIsStep1Highlighted}
+            equationName="z1"
+            equationStyle="bg-[#58cf35] px-0.5 py-0.5 rounded-full inline-block"
+            cyRef={cyRef}
+          />
+          <GraphStepButton
+            label="Step 2"
+            nodeIds={["x1", "x2", "b2_1", "w21_1", "w22_1", "z2"]}
+            edgeIds={["x1-z2", "x2-z2", "b2_1-z2", "w21_1-z2", "w22_1-z2"]}
+            highlightColour="#ffdbbb"
+            isHighlighted={isStep1Highlighted}
+            setHighlighted={setIsStep1Highlighted}
+            equationName="z2"
+            equationStyle="bg-[#ffdbbb] px-0.5 py-0.5 rounded-full inline-block"
+            cyRef={cyRef}
+          />
+        </div> */}
       </div>
     </div>
   );
 };
 export default SampleGraph;
-
-
-
-
-
-
-
-
-
-
-
-/*
-      <button onClick={() => setIsLocked(!isLocked)}
-      //style={{
-        // marginBottom: "10px",
-        // padding: "8px 12px",
-        // fontSize: "16px",
-        // cursor: "pointer",
-        // backgroundColor: "lightcyan", // Background color (fill)
-        // color: "black", // Text color
-        // border: "2px solid black", // Optional: Add a border
-        // borderRadius: "5px", // Optional: Rounded corners
-        // fontWeight: "bold", // Optional: Make text bold
-        // }}
-        // >
-      // {isLocked ? "Unlock Graph" : "Lock Graph"}
-      // </button>
-*/
