@@ -1,21 +1,3 @@
-// Dev resource reference: 
-// Latex to SVG: https://viereck.ch/latex-to-svg/
-
-// JESS :D
-// for highlighting the graph, I'm thinking maybe you can do something like this:
-
-// have a variable to keep track of which step you're on
-// step = 1
-
-// everytime you press the button, step++ or step-- (and you block once you're at the first/last step)
-
-// have an array with the ids of each node for each step
-// const step1_node_ids = ["x1", "x2"]
-
-// everytime you update step, you check which node ids correspond to that step,
-// and then just update the imagePath to a highlighted version
-
-
 // List of imports
 import React, { useState, useRef} from "react";
 import dynamic from "next/dynamic";
@@ -168,21 +150,3 @@ const SampleGraph = ({ cyRef }: { cyRef: React.RefObject<any> }) => {
   );
 };
 export default SampleGraph;
-
-/*
-      <button onClick={() => setIsLocked(!isLocked)}
-      //style={{
-        // marginBottom: "10px",
-        // padding: "8px 12px",
-        // fontSize: "16px",
-        // cursor: "pointer",
-        // backgroundColor: "lightcyan", // Background color (fill)
-        // color: "black", // Text color
-        // border: "2px solid black", // Optional: Add a border
-        // borderRadius: "5px", // Optional: Rounded corners
-        // fontWeight: "bold", // Optional: Make text bold
-        // }}
-        // >
-      // {isLocked ? "Unlock Graph" : "Lock Graph"}
-      // </button>
-*/
