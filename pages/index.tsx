@@ -7,7 +7,7 @@ import GraphStepButton from "../components/GraphStepButton";
 
 export default function Home() {
   const cyRef = useRef<any>(null); // ✅ Define Cytoscape ref in index.tsx
-  const [isStep1Highlighted, setIsStep1Highlighted] = useState(false);
+  const [isGraphHighlighted, setGraphHighlight] = useState(false);
   //Making the background white temporairly 
   return (
     <div className="min-h-screen flex justify-center items-center bg-white">
@@ -28,8 +28,8 @@ export default function Home() {
               nodeIds={["x1", "x2", "b1_1", "w11_1", "w12_1", "z1"]}
               edgeIds={["x1-z1", "x2-z1", "b1_1-z1", "w11_1-z1", "w12_1-z1"]}
               highlightColour="#58cf35"
-              isHighlighted={isStep1Highlighted}
-              setHighlighted={setIsStep1Highlighted}
+              isHighlighted={isGraphHighlighted}
+              setHighlighted={setGraphHighlight}
               equationName="z1"
               equationStyle="bg-[#58cf35] px-0.5 py-0.5 rounded-full inline-block"
               cyRef={cyRef}>
@@ -40,8 +40,8 @@ export default function Home() {
             nodeIds={["x1", "x2", "b2_1", "w21_1", "w22_1", "z2"]}
             edgeIds={["x1-z2", "x2-z2", "b2_1-z2", "w21_1-z2", "w22_1-z2"]}
             highlightColour="#ffdbbb"
-            isHighlighted={isStep1Highlighted}
-            setHighlighted={setIsStep1Highlighted}
+            isHighlighted={isGraphHighlighted}
+            setHighlighted={setGraphHighlight}
             equationName="z2"
             equationStyle="bg-[#ffdbbb] px-0.5 py-0.5 rounded-full inline-block"
             cyRef={cyRef}>
