@@ -8,6 +8,7 @@ import GraphStepButton from "../components/GraphStepButton";
 export default function Home() {
   const cyRef = useRef<any>(null); // ✅ Define Cytoscape ref in index.tsx
   const [isGraphHighlighted, setGraphHighlight] = useState(false);
+
   //Making the background white temporairly 
   return (
     <div className="min-h-screen flex justify-center items-center bg-white">

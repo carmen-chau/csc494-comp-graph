@@ -4,7 +4,7 @@
 
 // Imports
 import React from "react";
-import {customNodeStyle} from "../styles/GraphCustomStyle";
+import { customNodeStyle } from "../styles/GraphCustomStyle";
 
 interface GraphStepButtonProp {
   label: string; // Text for the button
@@ -18,6 +18,11 @@ interface GraphStepButtonProp {
   cyRef: React.RefObject<any>; // Cytoscape reference
   children?: React.ReactNode;
 }
+
+//TEMPORARY VARIABLES, RESOLVE LATER
+const allNodeIds = ["x1", "x2", "b1_1", "w11_1", "w12_1", "z1", "b2_1", "w21_1", "w22_1", "z2"]
+const allEdgeIds = ["x1-z1", "x2-z1", "b1_1-z1", "w11_1-z1", "w12_1-z1",
+  "x1-z2", "x2-z2", "b2_1-z2", "w21_1-z2", "w22_1-z2"]
 
 const GraphStepButton: React.FC<GraphStepButtonProp> = ({
   label,
@@ -37,6 +42,24 @@ const GraphStepButton: React.FC<GraphStepButtonProp> = ({
     }
 
     cyRef.current.batch(() => {
+
+      // Before we check state of button, we always reset the graph back to default styling first
+
+      // Reset node styles each time a button is pressed
+      const resetStyles = customNodeStyle(allNodeIds, "grey", allEdgeIds, "grey");
+      resetStyles.forEach(({ selector }) => {
+        cyRef.current!.$(selector).style({
+          "background-color": "grey",
+          "underlay-opacity": 0,
+          "underlay-padding": 0,
+        });
+      });
+
+      // Remove styling from all math equations
+      document.querySelectorAll("[data-equation]").forEach((equation) => {
+        equation.className = ""; 
+      });
+
       if (!isHighlighted) {
         // Apply styles to the graph
         const specificStyles = customNodeStyle(nodeIds, highlightColour, edgeIds, highlightColour);
@@ -53,29 +76,8 @@ const GraphStepButton: React.FC<GraphStepButtonProp> = ({
         }
 
         console.log(`${label} Highlight applied`);
-      } else {
-        // Reset styles in the graph
-        const specificStyles = customNodeStyle(nodeIds, "grey", edgeIds, "grey");
-        specificStyles.forEach(({ selector }) => {
-          cyRef.current!.$(selector).style({
-            "background-color": "grey",
-            "underlay-opacity": 0,
-            "underlay-padding": 0,
-          });
-        });
-
-        // Remove styling from the equation
-        const equationToTarget = document.querySelector(`[data-equation="${equationName}"]`);
-        if (equationToTarget) {
-          equationStyle.split(" ").forEach((individualStyleClass) => {
-            equationToTarget.classList.remove(individualStyleClass);
-          })
-        }
-
-        console.log(`${label} Highlight removed`);
       }
     });
-
     cyRef.current.style().update();
     setHighlighted(!isHighlighted);
   };
