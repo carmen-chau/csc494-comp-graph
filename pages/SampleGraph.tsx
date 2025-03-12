@@ -84,7 +84,6 @@ const edges = [
 const SampleGraph = ({ cyRef }: { cyRef: React.RefObject<any> }) => {
 
   const [isLocked, setIsLocked] = useState(false); // Store state (and unused state management method) for fixing graph location
-  const [isStep1Highlighted, setIsStep1Highlighted] = useState(false);
   //const cyRef = useRef<cytoscape.Core | null>(null); // Creating and storing a default Cytoscape instance. We will need to modify and update this as individual node styling change
 
   const initialCyRendering = (inputCyInstance: cytoscape.Core) => {

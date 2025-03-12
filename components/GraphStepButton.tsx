@@ -11,8 +11,10 @@ interface GraphStepButtonProp {
   nodeIds: string[]; // String ids of nodes to highlight in the graph
   edgeIds: string[]; // String ids of edges to highlight in the graph
   highlightColour: string; // Highlight color for BOTH the graph nodes and edges. TODO: MAKE THIS AS 2 SEPERATE ATTRIBUTES IF NEED BE
-  isHighlighted: boolean; // Button state variable to track highlight status
-  setHighlighted: React.Dispatch<React.SetStateAction<boolean>>; // Button state setter function
+  isGraphHighlighted: boolean; // Button state variable to track highlight status
+  setGraphHighlighted: React.Dispatch<React.SetStateAction<boolean>>; // Button state setter function
+  activeButton: string;
+  setActiveButton: React.Dispatch<React.SetStateAction<string>>;
   equationName: string; // Equation to highlight
   equationStyle: string; // Additional styling to add to the equation
   cyRef: React.RefObject<any>; // Cytoscape reference
@@ -29,13 +31,16 @@ const GraphStepButton: React.FC<GraphStepButtonProp> = ({
   nodeIds,
   edgeIds,
   highlightColour,
-  isHighlighted,
-  setHighlighted,
+  isGraphHighlighted,
+  setGraphHighlighted,
+  activeButton,
+  setActiveButton,
   equationName,
   equationStyle,
   cyRef,
   children,
 }) => {
+
   const handleClick = () => {
     if (!cyRef.current) {
       return; // Prevent working with an undefined Cytoscape instance
@@ -43,25 +48,28 @@ const GraphStepButton: React.FC<GraphStepButtonProp> = ({
 
     cyRef.current.batch(() => {
 
-      // Before we check state of button, we always reset the graph back to default styling first
-
-      // Reset node styles each time a button is pressed
-      const resetStyles = customNodeStyle(allNodeIds, "grey", allEdgeIds, "grey");
-      resetStyles.forEach(({ selector }) => {
-        cyRef.current!.$(selector).style({
-          "background-color": "grey",
-          "underlay-opacity": 0,
-          "underlay-padding": 0,
+      if (activeButton !== "" || isGraphHighlighted) {
+        // Step 1: Reset all styling before applying new button styling
+        const resetStyles = customNodeStyle(allNodeIds, "grey", allEdgeIds, "grey");
+        resetStyles.forEach(({ selector }) => {
+          cyRef.current!.$(selector).style({
+            "background-color": "grey",
+            "underlay-opacity": 0,
+            "underlay-padding": 0,
+          });
         });
-      });
 
-      // Remove styling from all math equations
-      document.querySelectorAll("[data-equation]").forEach((equation) => {
-        equation.className = ""; 
-      });
+        // Remove styling from all math equations
+        document.querySelectorAll("[data-equation]").forEach((equation) => {
+          equation.className = ""; // Reset all styles
+        });
 
-      if (!isHighlighted) {
-        // Apply styles to the graph
+        setGraphHighlighted(false); // Reset graph state
+        setActiveButton("");
+      }
+
+      if (!(isGraphHighlighted) || activeButton !== equationName) {
+        // Step 2: Apply new button styling
         const specificStyles = customNodeStyle(nodeIds, highlightColour, edgeIds, highlightColour);
         specificStyles.forEach(({ selector, style }) => {
           cyRef.current!.$(selector).style(style);
@@ -76,10 +84,14 @@ const GraphStepButton: React.FC<GraphStepButtonProp> = ({
         }
 
         console.log(`${label} Highlight applied`);
+
+        setGraphHighlighted(true); // Mark graph as highlighted
+        setActiveButton(equationName);
       }
     });
+
     cyRef.current.style().update();
-    setHighlighted(!isHighlighted);
+
   };
 
   return (

@@ -7,7 +7,9 @@ import GraphStepButton from "../components/GraphStepButton";
 
 export default function Home() {
   const cyRef = useRef<any>(null); // ✅ Define Cytoscape ref in index.tsx
+  // Global state to check whether graph is highlighted, somewhere
   const [isGraphHighlighted, setGraphHighlight] = useState(false);
+  const [activeButton, setActiveButton] = useState("");
 
   //Making the background white temporairly 
   return (
@@ -29,8 +31,10 @@ export default function Home() {
               nodeIds={["x1", "x2", "b1_1", "w11_1", "w12_1", "z1"]}
               edgeIds={["x1-z1", "x2-z1", "b1_1-z1", "w11_1-z1", "w12_1-z1"]}
               highlightColour="#58cf35"
-              isHighlighted={isGraphHighlighted}
-              setHighlighted={setGraphHighlight}
+              isGraphHighlighted={isGraphHighlighted}
+              setGraphHighlighted={setGraphHighlight}
+              activeButton={activeButton}
+              setActiveButton = {setActiveButton}
               equationName="z1"
               equationStyle="bg-[#58cf35] px-0.5 py-0.5 rounded-full inline-block"
               cyRef={cyRef}>
@@ -41,8 +45,10 @@ export default function Home() {
             nodeIds={["x1", "x2", "b2_1", "w21_1", "w22_1", "z2"]}
             edgeIds={["x1-z2", "x2-z2", "b2_1-z2", "w21_1-z2", "w22_1-z2"]}
             highlightColour="#ffdbbb"
-            isHighlighted={isGraphHighlighted}
-            setHighlighted={setGraphHighlight}
+            isGraphHighlighted={isGraphHighlighted}
+            setGraphHighlighted={setGraphHighlight}
+            activeButton={activeButton}
+            setActiveButton = {setActiveButton}
             equationName="z2"
             equationStyle="bg-[#ffdbbb] px-0.5 py-0.5 rounded-full inline-block"
             cyRef={cyRef}>
