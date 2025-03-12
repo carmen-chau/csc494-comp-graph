@@ -1,6 +1,7 @@
 // pages/index.tsx
 import { useRef, useState } from "react";
-import SampleGraph from '../components/SampleGraph';
+import {nodes, edges} from "../data/CompGraph1Data"
+import SampleGraph from '../components/CompGraph';
 import { MathJaxContext } from 'better-react-mathjax';
 import MathEquation from "../components/MathEquation";
 import GraphStepButton from "../components/GraphStepButton";
@@ -14,7 +15,7 @@ export default function Home() {
   //Making the background white temporairly 
   return (
     <div className="min-h-screen flex justify-center items-center bg-white">
-      <SampleGraph cyRef={cyRef} />
+      <SampleGraph cyRef={cyRef} nodes = {nodes} edges = {edges}/>
       <div className="w-full text-center mt-8 text-2xl" style={{ color: "black" }}>
         <MathJaxContext>
           <div className="space-y-4">
