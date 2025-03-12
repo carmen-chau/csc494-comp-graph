@@ -5,6 +5,8 @@
 // Imports
 import React from "react";
 import { customNodeStyle } from "../styles/GraphCustomStyle";
+import {getNodeIds, getEdgeIds} from "../utils/GraphHelpers";
+import {nodeDataList, edgeDataList} from "../data/CompGraph1Data";
 
 interface GraphStepButtonProp {
   label: string; // Text for the button
@@ -22,9 +24,15 @@ interface GraphStepButtonProp {
 }
 
 //TEMPORARY VARIABLES, RESOLVE LATER
-const allNodeIds = ["x1", "x2", "b1_1", "w11_1", "w12_1", "z1", "b2_1", "w21_1", "w22_1", "z2"]
-const allEdgeIds = ["x1-z1", "x2-z1", "b1_1-z1", "w11_1-z1", "w12_1-z1",
-  "x1-z2", "x2-z2", "b2_1-z2", "w21_1-z2", "w22_1-z2"]
+// const allNodeIds = ["x1", "x2", "b1_1", "w11_1", "w12_1", "z1", "b2_1", "w21_1", "w22_1", "z2"]
+// const allEdgeIds = ["x1-z1", "x2-z1", "b1_1-z1", "w11_1-z1", "w12_1-z1",
+//   "x1-z2", "x2-z2", "b2_1-z2", "w21_1-z2", "w22_1-z2"]
+
+const allNodeIds = getNodeIds(nodeDataList);
+const allEdgeIds = getEdgeIds(edgeDataList);
+// console.log(allNodeIds);
+// const hey = getEdgeIds(edges);
+
 
 const GraphStepButton: React.FC<GraphStepButtonProp> = ({
   label,

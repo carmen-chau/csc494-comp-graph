@@ -5,9 +5,11 @@
 */
 
 export function getNodeIds(listOfNodes: any){
-    const nodeIdList = listOfNodes.map((node: any) => node.ids)
+    const nodeIdList = listOfNodes.map((node: any) => node.id)
+    return nodeIdList;
 }
 
 export function getEdgeIds(listOfEdges: any){
-    const edgeIdList = listOfEdges.map((edge: any) => edge.ids)
+    const edgeIdList = listOfEdges.map((edge: any) => edge.id)
+    return edgeIdList;
 }
