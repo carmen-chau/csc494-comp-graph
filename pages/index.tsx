@@ -1,6 +1,6 @@
 // pages/index.tsx
 import { useRef, useState } from "react";
-import SampleGraph from './SampleGraph';
+import SampleGraph from '../components/SampleGraph';
 import { MathJaxContext } from 'better-react-mathjax';
 import MathEquation from "../components/MathEquation";
 import GraphStepButton from "../components/GraphStepButton";

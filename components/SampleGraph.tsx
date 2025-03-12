@@ -1,10 +1,10 @@
 // List of imports
 import React, { useState, useRef} from "react";
 import dynamic from "next/dynamic";
-import GraphNode from "../components/GraphNode";
-import GraphEdge from "../components/GraphEdge";
+import GraphNode from "./GraphNode";
+import GraphEdge from "./GraphEdge";
 import defaultGraphStyles from "../styles/GraphDefaultStyle";
-import GraphStepButton from "../components/GraphStepButton";
+import GraphStepButton from "./GraphStepButton";
 
 // Dynamically import CytoscapeComponent to avoid SSR issues in Next.js
 const CytoscapeComponent = dynamic(() => import("react-cytoscapejs"), { ssr: false });
