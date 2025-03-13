@@ -8,8 +8,8 @@ import { customNodeStyle } from "../styles/GraphCustomStyle";
 import {getNodeIds, getEdgeIds} from "../utils/GraphHelpers";
 import {nodeDataList, edgeDataList} from "../data/CompGraph1Data";
 
-interface GraphStepButtonProp {
-  label: string; // Text for the button
+interface GraphHighlightButtonProp {
+  label: string; // String to denote which equation this button corresponds to
   nodeIds: string[]; // String ids of nodes to highlight in the graph
   edgeIds: string[]; // String ids of edges to highlight in the graph
   highlightColour: string; // Highlight color for BOTH the graph nodes and edges. TODO: MAKE THIS AS 2 SEPERATE ATTRIBUTES IF NEED BE
@@ -32,7 +32,7 @@ const allNodeIds = getNodeIds(nodeDataList);
 const allEdgeIds = getEdgeIds(edgeDataList);
 
 
-const GraphStepButton: React.FC<GraphStepButtonProp> = ({
+export const GraphHighlightButton: React.FC<GraphHighlightButtonProp> = ({
   label,
   nodeIds,
   edgeIds,
@@ -109,5 +109,3 @@ const GraphStepButton: React.FC<GraphStepButtonProp> = ({
     </button>
   );
 };
-
-export default GraphStepButton;

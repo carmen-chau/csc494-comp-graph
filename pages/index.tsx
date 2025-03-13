@@ -1,12 +1,13 @@
 /*
   Home page
 */
+
 import { useRef, useState } from "react";
-import { nodeObjList, edgeObjList } from "../data/CompGraph1Data"
-import SampleGraph from '../components/CompGraph';
 import { MathJaxContext } from 'better-react-mathjax';
 import MathEquation from "../components/MathEquation";
-import GraphStepButton from "../components/GraphHighlightButton";
+import SampleGraph from '../components/CompGraph';
+import {GraphHighlightButton} from "../components/GraphHighlightButton";
+import { nodeObjList, edgeObjList } from "../data/CompGraph1Data"
 
 export default function Home() {
   const cyRef = useRef<any>(null); // Defining a null instance of cyRef. Think of it as a blank slate prior to the graph even being created
@@ -23,7 +24,7 @@ export default function Home() {
         
             {/* Equation 1: z1 */}
             <MathEquation equationName="z1" content={"\\(z_1 = w_{11}^{(1)} x_1 + w_{12}^{(1)} x_2 + b_1^{(1)}\\)"} className=''></MathEquation>
-            <GraphStepButton
+            <GraphHighlightButton
               label="Equation z1"
               nodeIds={["x1", "x2", "b1_1", "w11_1", "w12_1", "z1"]}
               edgeIds={["x1-z1", "x2-z1", "b1_1-z1", "w11_1-z1", "w12_1-z1"]}
@@ -35,11 +36,11 @@ export default function Home() {
               equationName="z1"
               equationStyle="bg-[#58cf35] px-0.5 py-0.5 rounded-full inline-block"
               cyRef={cyRef}>
-            </GraphStepButton>
+            </GraphHighlightButton>
             
             {/* Equation 2: z2 */}
             <MathEquation equationName="z2" content={"\\(z_2 = w_{21}^{(1)} x_1 + w_{22}^{(1)} x_2 + b_2^{(1)}\\)"} className=''></MathEquation>
-            <GraphStepButton
+            <GraphHighlightButton
               label="Equation z2"
               nodeIds={["x1", "x2", "b2_1", "w21_1", "w22_1", "z2"]}
               edgeIds={["x1-z2", "x2-z2", "b2_1-z2", "w21_1-z2", "w22_1-z2"]}
@@ -51,11 +52,11 @@ export default function Home() {
               equationName="z2"
               equationStyle="bg-[#ffdbbb] px-0.5 py-0.5 rounded-full inline-block"
               cyRef={cyRef}>
-            </GraphStepButton>
+            </GraphHighlightButton>
 
             {/* Equation 3: h1 */}
             <MathEquation equationName= "h1" content = {"\\(h_1 = \\sigma(z_1)\\)"}className=''></MathEquation>
-            <GraphStepButton
+            <GraphHighlightButton
               label="Equation h1"
               nodeIds={["z1", "h1"]}
               edgeIds={["z1-h1"]}
@@ -67,11 +68,11 @@ export default function Home() {
               equationName="h1"
               equationStyle="bg-[#89CFF0] px-0.5 py-0.5 rounded-full inline-block"
               cyRef={cyRef}>
-            </GraphStepButton>
+            </GraphHighlightButton>
 
             {/* Equation 4: h2 */}
             <MathEquation equationName= "h2" content = {"\\(h_2 = \\sigma(z_2)\\)"}className=''></MathEquation>
-            <GraphStepButton
+            <GraphHighlightButton
               label="Equation h2"
               nodeIds={["z2", "h2"]}
               edgeIds={["z2-h2"]}
@@ -83,7 +84,7 @@ export default function Home() {
               equationName="h2"
               equationStyle="bg-[#Ef97b0] px-0.5 py-0.5 rounded-full inline-block"
               cyRef={cyRef}>
-            </GraphStepButton>
+            </GraphHighlightButton>
 
           </div>
         </MathJaxContext>
