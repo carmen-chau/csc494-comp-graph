@@ -13,14 +13,14 @@ interface GraphHighlightButtonProp {
   nodeIds: string[]; // String ids of nodes to highlight in the graph
   edgeIds: string[]; // String ids of edges to highlight in the graph
   highlightColour: string; // Highlight color for BOTH the graph nodes and edges. TODO: MAKE THIS AS 2 SEPERATE ATTRIBUTES IF NEED BE
-  isGraphHighlighted: boolean; // Button state variable to track highlight status
-  setGraphHighlighted: React.Dispatch<React.SetStateAction<boolean>>; // Button state setter function
-  activeButton: string;
-  setActiveButton: React.Dispatch<React.SetStateAction<string>>;
+  isGraphHighlighted: boolean; // State variable to track highlight status of the entire graph
+  setGraphHighlighted: React.Dispatch<React.SetStateAction<boolean>>; // Setter function for isGraphHighlighted
+  activeButton: string; // State variable to track which button is currently "selected"
+  setActiveButton: React.Dispatch<React.SetStateAction<string>>; // Setter function for activeButton
   equationName: string; // Equation to highlight
   equationStyle: string; // Additional styling to add to the equation
-  cyRef: React.RefObject<any>; // Cytoscape reference
-  //children?: React.ReactNode;
+  cyRef: React.RefObject<any>; // Cytoscape obj reference we need to manipulate
+  //children?: React.ReactNode; // Needed IF we want to wrap the button with the text. Not used right now
 }
 
 //TEMPORARY HARDCODED VARIABLES, RESOLVE LATER
@@ -28,6 +28,8 @@ interface GraphHighlightButtonProp {
 // const allEdgeIds = ["x1-z1", "x2-z1", "b1_1-z1", "w11_1-z1", "w12_1-z1",
 //   "x1-z2", "x2-z2", "b2_1-z2", "w21_1-z2", "w22_1-z2"]
 
+// TODO: Need to make this generalizable
+// Getting a list of all node and edge ids
 const allNodeIds = getNodeIds(nodeDataList);
 const allEdgeIds = getEdgeIds(edgeDataList);
 
@@ -71,7 +73,7 @@ export const GraphHighlightButton: React.FC<GraphHighlightButtonProp> = ({
         });
 
         setGraphHighlighted(false); // Reset graph state
-        setActiveButton("");
+        setActiveButton(""); // No active button, so reset variable   activeButton
       }
 
       if (!(isGraphHighlighted) || activeButton !== label) {
@@ -89,14 +91,14 @@ export const GraphHighlightButton: React.FC<GraphHighlightButtonProp> = ({
           });
         }
 
-        console.log(`${label} Highlight applied`);
+        // console.log(`${label} Highlight applied`);
 
         setGraphHighlighted(true); // Mark graph as highlighted
-        setActiveButton(label);
+        setActiveButton(label); // Set the button to be active
       }
     });
 
-    cyRef.current.style().update();
+    cyRef.current.style().update(); // Updating style changes propagated to cyref instance
 
   };
 
