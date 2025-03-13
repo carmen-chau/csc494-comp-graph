@@ -20,6 +20,9 @@ export default function Home() {
         <MathJaxContext>
         <div className="grid grid-cols-[auto,auto] gap-x-1 space-y-4 pr-4">
         <p className="col-span-2">Computation Graph Equations:</p>
+
+            {/* Equation 1: z1 */}
+            
             <MathEquation equationName="z1" content={"\\(z_1 = w_{11}^{(1)} x_1 + w_{12}^{(1)} x_2 + b_1^{(1)}\\)"} className=''></MathEquation>
             <GraphStepButton
               label="Step 1"
@@ -34,6 +37,8 @@ export default function Home() {
               equationStyle="bg-[#58cf35] px-0.5 py-0.5 rounded-full inline-block"
               cyRef={cyRef}>
             </GraphStepButton>
+            
+            {/* Equation 2: z2 */}
             <MathEquation equationName="z2" content={"\\(z_2 = w_{21}^{(1)} x_1 + w_{22}^{(1)} x_2 + b_2^{(1)}\\)"} className=''></MathEquation>
             <GraphStepButton
               label="Step 2"
@@ -48,6 +53,7 @@ export default function Home() {
               equationStyle="bg-[#ffdbbb] px-0.5 py-0.5 rounded-full inline-block"
               cyRef={cyRef}>
             </GraphStepButton>
+
           </div>
         </MathJaxContext>
       </div>
