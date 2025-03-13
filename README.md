@@ -13,12 +13,11 @@ The `/components` folder contains files that define core graph components (eg: E
 
 The `/pages` folder define pages that are actually rendered on.
 
-`/pages/SampleGraph.tsx` defines the main computation graph displayed. 
-
-`pages/index` is the home page where I call SampleGraph.tsx to display. I also render some MathJax expressions
+`pages/index` is the home page that is displayed. It includes the computation graph instance as well as the equations. 
         
 The `/public` folder contains static files that can be rendered. Right now, it contains another folder called `/initial_latex_icons`. This folder contains raw latex text as pictures, I use these to insert into each node of the graph to render as a picture upload. This is a very brute-force approach since at this time right now I have yet to find a way to dynamially render this text, nor do I think it is a primary objective at this stage of this project. 
 
 # Resources used 
 
 1. Latex to SVG: https://viereck.ch/latex-to-svg/
+2. Colour picker: https://htmlcolorcodes.com/color-picker/
