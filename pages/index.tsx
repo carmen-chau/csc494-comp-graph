@@ -54,6 +54,22 @@ export default function Home() {
               cyRef={cyRef}>
             </GraphStepButton>
 
+            {/* Equation 3: h1 */}
+            <MathEquation equationName= "h1" content = {"\\(h_1 = \\sigma(z_1)\\)"}className=''></MathEquation>
+            <GraphStepButton
+              label="Step 3"
+              nodeIds={["z1", "h1"]}
+              edgeIds={["z1-h1"]}
+              highlightColour="#89CFF0"
+              isGraphHighlighted={isGraphHighlighted}
+              setGraphHighlighted={setGraphHighlight}
+              activeButton={activeButton}
+              setActiveButton={setActiveButton}
+              equationName="h1"
+              equationStyle="bg-[#89CFF0] px-0.5 py-0.5 rounded-full inline-block"
+              cyRef={cyRef}>
+            </GraphStepButton>
+
           </div>
         </MathJaxContext>
       </div>
