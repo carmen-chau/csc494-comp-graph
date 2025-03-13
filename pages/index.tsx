@@ -24,7 +24,7 @@ export default function Home() {
             {/* Equation 1: z1 */}
             <MathEquation equationName="z1" content={"\\(z_1 = w_{11}^{(1)} x_1 + w_{12}^{(1)} x_2 + b_1^{(1)}\\)"} className=''></MathEquation>
             <GraphStepButton
-              label="Step 1"
+              label="Equation z1"
               nodeIds={["x1", "x2", "b1_1", "w11_1", "w12_1", "z1"]}
               edgeIds={["x1-z1", "x2-z1", "b1_1-z1", "w11_1-z1", "w12_1-z1"]}
               highlightColour="#58cf35"
@@ -40,7 +40,7 @@ export default function Home() {
             {/* Equation 2: z2 */}
             <MathEquation equationName="z2" content={"\\(z_2 = w_{21}^{(1)} x_1 + w_{22}^{(1)} x_2 + b_2^{(1)}\\)"} className=''></MathEquation>
             <GraphStepButton
-              label="Step 2"
+              label="Equation z2"
               nodeIds={["x1", "x2", "b2_1", "w21_1", "w22_1", "z2"]}
               edgeIds={["x1-z2", "x2-z2", "b2_1-z2", "w21_1-z2", "w22_1-z2"]}
               highlightColour="#ffdbbb"
@@ -56,7 +56,7 @@ export default function Home() {
             {/* Equation 3: h1 */}
             <MathEquation equationName= "h1" content = {"\\(h_1 = \\sigma(z_1)\\)"}className=''></MathEquation>
             <GraphStepButton
-              label="Step 3"
+              label="Equation h1"
               nodeIds={["z1", "h1"]}
               edgeIds={["z1-h1"]}
               highlightColour="#89CFF0"
@@ -72,7 +72,7 @@ export default function Home() {
             {/* Equation 4: h2 */}
             <MathEquation equationName= "h2" content = {"\\(h_2 = \\sigma(z_2)\\)"}className=''></MathEquation>
             <GraphStepButton
-              label="Step 3"
+              label="Equation h2"
               nodeIds={["z2", "h2"]}
               edgeIds={["z2-h2"]}
               highlightColour="#Ef97b0"

@@ -74,7 +74,7 @@ const GraphStepButton: React.FC<GraphStepButtonProp> = ({
         setActiveButton("");
       }
 
-      if (!(isGraphHighlighted) || activeButton !== equationName) {
+      if (!(isGraphHighlighted) || activeButton !== label) {
         // Step 2: Apply new button styling
         const specificStyles = customNodeStyle(nodeIds, highlightColour, edgeIds, highlightColour);
         specificStyles.forEach(({ selector, style }) => {
@@ -92,7 +92,7 @@ const GraphStepButton: React.FC<GraphStepButtonProp> = ({
         console.log(`${label} Highlight applied`);
 
         setGraphHighlighted(true); // Mark graph as highlighted
-        setActiveButton(equationName);
+        setActiveButton(label);
       }
     });
 
@@ -105,7 +105,7 @@ const GraphStepButton: React.FC<GraphStepButtonProp> = ({
       className={`mb-4 px-6 py-2 bg-blue text-black rounded-lg shadow-md hover:opacity-80 transition`} // Old "button" look
       onClick={handleClick}
     >
-      {activeButton !== equationName ? "Select" : "Unselect"}
+      {activeButton !== label ? "Select" : "Unselect"}
     </button>
   );
 };
