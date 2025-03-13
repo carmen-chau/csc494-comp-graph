@@ -104,7 +104,7 @@ export const GraphHighlightButton: React.FC<GraphHighlightButtonProp> = ({
 
   return (
     <button
-      className={`mb-4 px-6 py-2 bg-blue text-black rounded-lg shadow-md hover:opacity-80 transition`} // Old "button" look
+      className={`w-40 mb-4 px-6 py-2 bg-blue text-black rounded-lg shadow-md hover:opacity-80 transition`} // Old "button" look
       onClick={handleClick}
     >
       {activeButton !== label ? "Select" : "Unselect"}
