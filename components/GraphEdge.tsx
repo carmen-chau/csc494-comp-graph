@@ -1,3 +1,7 @@
+/*
+  Interface and class for a Graph Edge
+*/
+
 interface GraphEdgeInterface {
   id: string;
   source: string;

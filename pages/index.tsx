@@ -1,28 +1,27 @@
-// pages/index.tsx
+/*
+  Home page
+*/
 import { useRef, useState } from "react";
 import { nodeObjList, edgeObjList } from "../data/CompGraph1Data"
 import SampleGraph from '../components/CompGraph';
 import { MathJaxContext } from 'better-react-mathjax';
 import MathEquation from "../components/MathEquation";
-import GraphStepButton from "../components/GraphStepButton";
+import GraphStepButton from "../components/GraphHighlightButton";
 
 export default function Home() {
-  const cyRef = useRef<any>(null); // ✅ Define Cytoscape ref in index.tsx
-  // Global state to check whether graph is highlighted, somewhere
-  const [isGraphHighlighted, setGraphHighlight] = useState(false);
-  const [activeButton, setActiveButton] = useState("");
+  const cyRef = useRef<any>(null); // Defining a null instance of cyRef. Think of it as a blank slate prior to the graph even being created
+  const [isGraphHighlighted, setGraphHighlight] = useState(false);  // Global state to check whether graph is highlighted, somewhere
+  const [activeButton, setActiveButton] = useState("");  // Global state to check whether there is a highlight button on the graph that is currently selected or not. 
 
-  //Making the background white temporairly 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-white">
-      <SampleGraph cyRef={cyRef} nodes={nodeObjList} edges={edgeObjList} />
+    <div className="min-h-screen flex justify-center items-center bg-white">  {/* Making the background white temporarily */}
+      <SampleGraph cyRef={cyRef} nodes={nodeObjList} edges={edgeObjList} />  {/* Making a Comp Graph Object */}
       <div className="w-full text-center mt-8 text-2xl" style={{ color: "black" }}>
         <MathJaxContext>
         <div className="grid grid-cols-[auto,auto] gap-x-1 space-y-4 pr-4">
         <p className="col-span-2">Computation Graph Equations:</p>
-
+        
             {/* Equation 1: z1 */}
-            
             <MathEquation equationName="z1" content={"\\(z_1 = w_{11}^{(1)} x_1 + w_{12}^{(1)} x_2 + b_1^{(1)}\\)"} className=''></MathEquation>
             <GraphStepButton
               label="Step 1"
@@ -93,6 +92,7 @@ export default function Home() {
   );
 }
 
+// Equations that still need to be added back...eventually
 {/* <MathEquation equationName = "z1" content = {"\\(z_1 = w_{11}^{(1)} x_1 + w_{12}^{(1)} x_2 + b_1^{(1)}\\)"} className=''></MathEquation>
             <MathEquation equationName= "z2" content = {"\\(z_2 = w_{21}^{(1)} x_1 + w_{22}^{(1)} x_2 + b_2^{(1)}\\)"}className=''></MathEquation>
             <MathEquation equationName= "h1" content = {"\\(h_1 = \\sigma(z_1)\\)"}className=''></MathEquation>
