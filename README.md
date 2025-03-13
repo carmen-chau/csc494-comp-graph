@@ -22,3 +22,4 @@ The `/public` folder contains static files that can be rendered. Right now, it c
 # Resources used 
 
 1. Latex to SVG: https://viereck.ch/latex-to-svg/
+2. Colour picker: https://htmlcolorcodes.com/color-picker/
