@@ -1,3 +1,7 @@
+/*
+  A general computation graph instance file
+*/
+
 // List of imports
 import React, { useState, useRef} from "react";
 import dynamic from "next/dynamic";
@@ -10,7 +14,6 @@ const CytoscapeComponent = dynamic(() => import("react-cytoscapejs"), { ssr: fal
 const SampleGraph = ({ cyRef, nodes, edges}: { cyRef: React.RefObject<any>, nodes: any, edges: any}) => {
 
   const [isLocked, setIsLocked] = useState(false); // Store state (and unused state management method) for fixing graph location
-  //const cyRef = useRef<cytoscape.Core | null>(null); // Creating and storing a default Cytoscape instance. We will need to modify and update this as individual node styling change
 
   const initialCyRendering = (inputCyInstance: cytoscape.Core) => {
     cyRef.current = inputCyInstance; // Store Cytoscape instance

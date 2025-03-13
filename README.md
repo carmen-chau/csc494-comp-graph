@@ -23,5 +23,6 @@ The `/utils` folder contains files that include helper functions for retrieving 
 
 # Resources used 
 
-1. Latex to SVG: https://viereck.ch/latex-to-svg/
-2. Colour picker: https://htmlcolorcodes.com/color-picker/
+1. https://js.cytoscape.org/
+2. Latex to SVG: https://viereck.ch/latex-to-svg/
+3. Colour picker: https://htmlcolorcodes.com/color-picker/
