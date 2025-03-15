@@ -118,6 +118,22 @@ export default function Home() {
               cyRef={cyRef}>
             </GraphHighlightButton>
 
+            {/* Equation 7: L */}
+            <MathEquation equationName= "L" content = {"\\( \\mathcal{L} = \\frac{1}{2} \\left( (y_1 - t_1)^2 + (y_2 - t_2)^2 \\right) \\)"}className=''></MathEquation> 
+            <GraphHighlightButton
+              label="Equation L"
+              nodeIds={["t1", "t2", "L"]}
+              edgeIds={["t1-L", "t2-L"]}
+              highlightColour="#E7ff7f"
+              isGraphHighlighted={isGraphHighlighted}
+              setGraphHighlighted={setGraphHighlight}
+              activeButton={activeButton}
+              setActiveButton={setActiveButton}
+              equationName="L"
+              equationStyle="bg-[#E7ff7f] px-0.5 py-0.5 h-fit rounded-full"
+              cyRef={cyRef}>
+            </GraphHighlightButton>
+
           </div>
         </MathJaxContext>
       </div>
