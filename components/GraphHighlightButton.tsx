@@ -104,7 +104,7 @@ export const GraphHighlightButton: React.FC<GraphHighlightButtonProp> = ({
 
   return (
     <button
-      className={`w-40 px-6 py-2 bg-gray-200 border border-black text-black rounded-lg shadow-md hover:opacity-80 transition`} // Old "button" look
+      className={`w-40 px-6 py-2 bg-gray-200 border border-black text-black font-serif rounded-lg shadow-md hover:opacity-80 transition`} // Old "button" look
       // style={{ backgroundColor: highlightColour }} // Enable if you want the buttons to take on the same colour as the highlights
       onClick={handleClick}
     >
