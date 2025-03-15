@@ -87,7 +87,7 @@ export default function Home() {
             </GraphHighlightButton>
 
             {/* Equation 5: y1 */}
-            <MathEquation equationName= "y1" content = {"\\(y_1 = w_{11}^{(2)} h_1 + w_{12}^{(2)} h_2 + b_1^{(2)}\\)"}className=''></MathEquation>
+            <MathEquation equationName="y1" content={"\\(y_1 = w_{11}^{(2)} h_1 + w_{12}^{(2)} h_2 + b_1^{(2)}\\)"} className=''></MathEquation>
             <GraphHighlightButton
               label="Equation y1"
               nodeIds={["y1", "h1", "h2", "w11_2", "w12_2", "b1_2"]}
@@ -99,6 +99,22 @@ export default function Home() {
               setActiveButton={setActiveButton}
               equationName="y1"
               equationStyle="bg-[#C3aaf9] px-0.5 py-0.5 h-fit rounded-full"
+              cyRef={cyRef}>
+            </GraphHighlightButton>
+
+            {/* Equation 6: y2 */}
+            <MathEquation equationName= "y2" content = {"\\(y_2 = w_{21}^{(2)} h_1 + w_{22}^{(2)} h_2 + b_2^{(2)}\\)"}className=''></MathEquation>
+            <GraphHighlightButton
+              label="Equation y2"
+              nodeIds={["y2", "h1", "h2", "w21_2", "w22_2", "b2_2"]}
+              edgeIds={["h1-y2", "h2-y2", "b2_2-y2", "w21_2-y2", "w12_2-y2"]}
+              highlightColour="#Ff7f7f"
+              isGraphHighlighted={isGraphHighlighted}
+              setGraphHighlighted={setGraphHighlight}
+              activeButton={activeButton}
+              setActiveButton={setActiveButton}
+              equationName="y2"
+              equationStyle="bg-[#Ff7f7f] px-0.5 py-0.5 h-fit rounded-full"
               cyRef={cyRef}>
             </GraphHighlightButton>
 
