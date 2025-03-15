@@ -6,7 +6,7 @@ import { useRef, useState } from "react";
 import { MathJaxContext } from 'better-react-mathjax';
 import MathEquation from "../components/MathEquation";
 import SampleGraph from '../components/CompGraph';
-import {GraphHighlightButton} from "../components/GraphHighlightButton";
+import { GraphHighlightButton } from "../components/GraphHighlightButton";
 import { nodeObjList, edgeObjList } from "../data/CompGraph1Data"
 
 export default function Home() {
@@ -19,9 +19,9 @@ export default function Home() {
       <SampleGraph cyRef={cyRef} nodes={nodeObjList} edges={edgeObjList} />  {/* Making a Comp Graph Object */}
       <div className="w-full text-center mt-8 text-2xl" style={{ color: "black" }}>
         <MathJaxContext>
-        <div className="grid grid-cols-[auto,auto] gap-x-1 space-y-4 pr-4">
-        <p className="col-span-2">Computation Graph Equations:</p>
-        
+          <div className="grid grid-cols-[auto,auto] gap-x-1 space-y-4 pr-4">
+            <p className="col-span-2">Computation Graph Equations:</p>
+
             {/* Equation 1: z1 */}
             <MathEquation equationName="z1" content={"\\(z_1 = w_{11}^{(1)} x_1 + w_{12}^{(1)} x_2 + b_1^{(1)}\\)"} className=''></MathEquation>
             <GraphHighlightButton
@@ -37,7 +37,7 @@ export default function Home() {
               equationStyle="bg-[#58cf35] px-0.5 py-0.5 h-fit rounded-full"
               cyRef={cyRef}>
             </GraphHighlightButton>
-            
+
             {/* Equation 2: z2 */}
             <MathEquation equationName="z2" content={"\\(z_2 = w_{21}^{(1)} x_1 + w_{22}^{(1)} x_2 + b_2^{(1)}\\)"} className=''></MathEquation>
             <GraphHighlightButton
@@ -55,7 +55,7 @@ export default function Home() {
             </GraphHighlightButton>
 
             {/* Equation 3: h1 */}
-            <MathEquation equationName= "h1" content = {"\\(h_1 = \\sigma(z_1)\\)"}className=''></MathEquation>
+            <MathEquation equationName="h1" content={"\\(h_1 = \\sigma(z_1)\\)"} className=''></MathEquation>
             <GraphHighlightButton
               label="Equation h1"
               nodeIds={["z1", "h1"]}
@@ -71,7 +71,7 @@ export default function Home() {
             </GraphHighlightButton>
 
             {/* Equation 4: h2 */}
-            <MathEquation equationName= "h2" content = {"\\(h_2 = \\sigma(z_2)\\)"}className=''></MathEquation>
+            <MathEquation equationName="h2" content={"\\(h_2 = \\sigma(z_2)\\)"} className=''></MathEquation>
             <GraphHighlightButton
               label="Equation h2"
               nodeIds={["z2", "h2"]}
@@ -83,6 +83,22 @@ export default function Home() {
               setActiveButton={setActiveButton}
               equationName="h2"
               equationStyle="bg-[#Ef97b0] px-0.5 py-0.5 h-fit rounded-full"
+              cyRef={cyRef}>
+            </GraphHighlightButton>
+
+            {/* Equation 5: y1 */}
+            <MathEquation equationName= "y1" content = {"\\(y_1 = w_{11}^{(2)} h_1 + w_{12}^{(2)} h_2 + b_1^{(2)}\\)"}className=''></MathEquation>
+            <GraphHighlightButton
+              label="Equation y1"
+              nodeIds={["y1", "h1", "h2", "w11_2", "w12_2", "b1_2"]}
+              edgeIds={["h1-y1", "h2-y1", "b1_2-y1", "w11_2-y1", "w12_2-y1"]}
+              highlightColour="#C3aaf9"
+              isGraphHighlighted={isGraphHighlighted}
+              setGraphHighlighted={setGraphHighlight}
+              activeButton={activeButton}
+              setActiveButton={setActiveButton}
+              equationName="y1"
+              equationStyle="bg-[#C3aaf9] px-0.5 py-0.5 h-fit rounded-full"
               cyRef={cyRef}>
             </GraphHighlightButton>
 
