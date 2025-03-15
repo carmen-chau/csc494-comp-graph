@@ -34,7 +34,7 @@ export default function Home() {
               activeButton={activeButton}
               setActiveButton={setActiveButton}
               equationName="z1"
-              equationStyle="bg-[#58cf35] px-0.5 py-0.5 rounded-full inline-block"
+              equationStyle="bg-[#58cf35] px-0.5 py-0.5 h-fit rounded-full"
               cyRef={cyRef}>
             </GraphHighlightButton>
             
@@ -50,7 +50,7 @@ export default function Home() {
               activeButton={activeButton}
               setActiveButton={setActiveButton}
               equationName="z2"
-              equationStyle="bg-[#ffdbbb] px-0.5 py-0.5 rounded-full inline-block"
+              equationStyle="bg-[#ffdbbb] px-0.5 py-0.5 h-fit rounded-full"
               cyRef={cyRef}>
             </GraphHighlightButton>
 
@@ -66,7 +66,7 @@ export default function Home() {
               activeButton={activeButton}
               setActiveButton={setActiveButton}
               equationName="h1"
-              equationStyle="bg-[#89CFF0] px-0.5 py-0.5 rounded-full inline-block"
+              equationStyle="bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full"
               cyRef={cyRef}>
             </GraphHighlightButton>
 
@@ -82,7 +82,7 @@ export default function Home() {
               activeButton={activeButton}
               setActiveButton={setActiveButton}
               equationName="h2"
-              equationStyle="bg-[#Ef97b0] px-0.5 py-0.5 rounded-full inline-block"
+              equationStyle="bg-[#Ef97b0] px-0.5 py-0.5 h-fit rounded-full"
               cyRef={cyRef}>
             </GraphHighlightButton>
 
