@@ -7,17 +7,19 @@ import { MathJaxContext } from 'better-react-mathjax';
 import MathEquation from "../components/MathEquation";
 import SampleGraph from '../components/CompGraph';
 import { GraphHighlightButton } from "../components/GraphHighlightButton";
+import {GraphNodeChangeButton} from "../components/GraphNodeChangeButton";
 import { nodeObjList, edgeObjList } from "../data/CompGraph1Data"
 
 export default function Home() {
   const cyRef = useRef<any>(null); // Defining a null instance of cyRef. Think of it as a blank slate prior to the graph even being created
   const [isGraphHighlighted, setGraphHighlight] = useState(false);  // Global state to check whether graph is highlighted, somewhere
   const [activeButton, setActiveButton] = useState("");  // Global state to check whether there is a highlight button on the graph that is currently selected or not. 
+  const [inputValuex1, setInputValuex1] = useState(""); // Global default state to indicate the setting of value for node x1
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-white">  {/* Making the background white temporarily */}
       <SampleGraph cyRef={cyRef} nodes={nodeObjList} edges={edgeObjList} />  {/* Making a Comp Graph Object */}
-      <div className="w-full text-center mt-8 text-2xl" style={{ color: "black" }}>
+      <div className="w-full text-center mt-2 text-2xl" style={{ color: "black" }}>
         <MathJaxContext>
           <div className="grid grid-cols-[auto,auto] gap-x-1 space-y-4 pr-4">
             <p className="font-serif col-span-2">Computation Graph Equations:</p>
@@ -103,7 +105,7 @@ export default function Home() {
             </GraphHighlightButton>
 
             {/* Equation 6: y2 */}
-            <MathEquation equationName= "y2" content = {"\\(y_2 = w_{21}^{(2)} h_1 + w_{22}^{(2)} h_2 + b_2^{(2)}\\)"}className=''></MathEquation>
+            <MathEquation equationName="y2" content={"\\(y_2 = w_{21}^{(2)} h_1 + w_{22}^{(2)} h_2 + b_2^{(2)}\\)"} className=''></MathEquation>
             <GraphHighlightButton
               label="Equation y2"
               nodeIds={["y2", "h1", "h2", "w21_2", "w22_2", "b2_2"]}
@@ -119,7 +121,7 @@ export default function Home() {
             </GraphHighlightButton>
 
             {/* Equation 7: L */}
-            <MathEquation equationName= "L" content = {"\\( \\mathcal{L} = \\frac{1}{2} \\left( (y_1 - t_1)^2 + (y_2 - t_2)^2 \\right) \\)"}className=''></MathEquation> 
+            <MathEquation equationName="L" content={"\\( \\mathcal{L} = \\frac{1}{2} \\left( (y_1 - t_1)^2 + (y_2 - t_2)^2 \\right) \\)"} className=''></MathEquation>
             <GraphHighlightButton
               label="Equation L"
               nodeIds={["t1", "t2", "L"]}
@@ -134,9 +136,36 @@ export default function Home() {
               cyRef={cyRef}>
             </GraphHighlightButton>
 
+            {/*Experimental placement of input*/}
+            {/*TODO: Add input validation (since right now the type is: Text*/}
+            <div className="flex items-center space-x-10">
+            <MathEquation equationName="x1-input" content={"Input for: \\( x_1 \\):"} className=''></MathEquation>
+            <input 
+            type="text" 
+            className="border p-1 pl-2 pr-4 rounded-lg w-24"
+            value = {inputValuex1} 
+            onChange={(e) => setInputValuex1(e.target.value)}/>
+            {/* <button>Submit</button> */}
+            <GraphNodeChangeButton nodeId = "x1" newValue = {inputValuex1} cyRef={cyRef} ></GraphNodeChangeButton>
+            </div>
           </div>
         </MathJaxContext>
       </div>
     </div>
   );
 }
+
+
+// SAMPLE PLACEMENT
+// <span className="text-gray-700">Enter a value:</span>
+// <input
+//   type="number"
+//   placeholder="Value:"
+//   className="border p-2 rounded-lg"
+// />
+// <button
+//   type="submit"
+//   className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+// >
+//   Submit
+// </button>

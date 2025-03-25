@@ -11,9 +11,9 @@ interface GraphNodeInterface {
   style?: object; //Argument to allow node styling
 }
 
-const CustomNode = ({ id, imagePath, position, label = ""}: GraphNodeInterface) => {
+const CustomNode = ({ id, imagePath = "", position, label = ""}: GraphNodeInterface) => {
   return {
-    data: {id, label, image: imagePath}, // id and label are default needed by Cytoscape rendering instance. imagePath argument is for dynamic picture rendering
+    data: imagePath != "" ? {id, label, image: imagePath} : {id, label}, // id and label are default needed by Cytoscape rendering instance. imagePath argument is for dynamic picture rendering
     position, //position is needed for the Cytoscape instance to know where to place nodes
     locked: true, // locking the nodes in position
     // style: {
