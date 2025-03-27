@@ -6,12 +6,13 @@ interface GraphEdgeInterface {
   id: string;
   source: string;
   target: string;
-  // classes?: string; // Optional class for styling
+  label?: string;
+  classes?: string; // Optional class for styling
 }
 
-const GraphEdge = ({ id, source, target}: GraphEdgeInterface) => {
+const GraphEdge = ({ id, source, target, label, classes}: GraphEdgeInterface) => {
   return {
-    data: { id, source, target },
+    data: { id, source, target, label},
     // classes, // Assign a class for styling if needed
   };
 };

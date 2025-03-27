@@ -6,7 +6,7 @@
 import React from "react";
 import { customNodeStyle } from "../styles/GraphCustomStyle";
 import {getNodeIds, getEdgeIds} from "../utils/GraphHelpers";
-import {nodeDataList, edgeDataList} from "../data/CompGraph1Data";
+import {nodeDataList as forwardNodeDataList, edgeDataList as forwardEdgeDataList} from "../data/ForwardpropGraphData";
 
 interface GraphHighlightButtonProp {
   label: string; // String to denote which equation this button corresponds to
@@ -20,6 +20,7 @@ interface GraphHighlightButtonProp {
   equationName: string; // Equation to highlight
   equationStyle: string; // Additional styling to add to the equation
   cyRef: React.RefObject<any>; // Cytoscape obj reference we need to manipulate
+  cyRefType: string; // Denotes what type of computuation graph we are rendering
   //children?: React.ReactNode; // Needed IF we want to wrap the button with the text. Not used right now
 }
 
@@ -27,11 +28,6 @@ interface GraphHighlightButtonProp {
 // const allNodeIds = ["x1", "x2", "b1_1", "w11_1", "w12_1", "z1", "b2_1", "w21_1", "w22_1", "z2"]
 // const allEdgeIds = ["x1-z1", "x2-z1", "b1_1-z1", "w11_1-z1", "w12_1-z1",
 //   "x1-z2", "x2-z2", "b2_1-z2", "w21_1-z2", "w22_1-z2"]
-
-// TODO: Need to make this generalizable
-// Getting a list of all node and edge ids
-const allNodeIds = getNodeIds(nodeDataList);
-const allEdgeIds = getEdgeIds(edgeDataList);
 
 
 export const GraphHighlightButton: React.FC<GraphHighlightButtonProp> = ({
@@ -46,12 +42,21 @@ export const GraphHighlightButton: React.FC<GraphHighlightButtonProp> = ({
   equationName,
   equationStyle,
   cyRef,
+  cyRefType
   //children,
 }) => {
 
   const handleClick = () => {
     if (!cyRef.current) {
       return; // Prevent working with an undefined Cytoscape instance
+    }
+
+    let allNodeIds = [];
+    let allEdgeIds = [];
+
+    if (cyRefType === "forward-prop"){
+      allNodeIds = getNodeIds(forwardNodeDataList);
+      allEdgeIds = getEdgeIds(forwardEdgeDataList);
     }
 
     cyRef.current.batch(() => {
