@@ -9,7 +9,6 @@ import SampleGraph from '../components/CompGraph';
 import { GraphHighlightButton } from "../components/GraphHighlightButton";
 import { nodeObjList as forwardPropNodeList, edgeObjList as forwardPropEdgeList } from "../data/ForwardpropGraphData"
 import { nodeObjList as backwardPropNodeList , edgeObjList as backwardPropEdgeList } from "../data/BackpropGraphData"
-import {getNodeIds, getEdgeIds} from "../utils/GraphHelpers";
 
 export default function Home() {
 
@@ -17,10 +16,6 @@ export default function Home() {
   const cyRef = useRef<any>(null); // Defining a null instance of cyRef. Think of it as a blank slate prior to the graph even being created
   const [isForwardGraphHighlighted, setForwardGraphHighlight] = useState(false);  // Global state to check whether graph is highlighted, somewhere
   const [forwardActiveButton, setForwardActiveButton] = useState("");  // Global state to check whether there is a highlight button on the graph that is currently selected or not. 
-
-  // Getting all the node and edge ids for the forward pass graph
-  const allNodeIds = getNodeIds(forwardPropNodeList);
-  const allEdgeIds = getEdgeIds(forwardPropEdgeList);
 
   // Graph instance + variables for backprop
   const cyRef2 = useRef<any>(null);
@@ -154,6 +149,51 @@ export default function Home() {
                 equationStyle="bg-[#E7ff7f] px-0.5 py-0.5 h-fit rounded-full"
                 cyRef={cyRef}
                 cyRefType = "forward-prop">
+              </GraphHighlightButton>
+            </div>
+          </MathJaxContext>
+        </div>
+      </div>
+      <p className="pl-4 mb-8">Backward propagation demonstration:</p>
+      <div className="flex">  {/* Making the background white temporarily. Old string: "min-h-screen flex justify-center items-center bg-white" */}
+        <SampleGraph cyRef={cyRef2} nodes={backwardPropNodeList} edges={backwardPropEdgeList} />  {/* Making a Comp Graph Object */}
+        <div className="w-full text-center mt-8 text-2xl" style={{ color: "black" }}>
+          <MathJaxContext>
+            <div className="grid grid-cols-[auto,auto] gap-x-1 space-y-4 pr-4">
+              <p className="font-serif col-span-2">Backward pass equations:</p>
+
+              {/* Equation 1: z1 */}
+              <MathEquation equationName="L_bar" content={"\\(\\overline{\\mathcal{L}}= 1\\)"} className=''></MathEquation>
+              <GraphHighlightButton
+                label="Equation L_bar"
+                nodeIds={["L"]}
+                edgeIds={[]}
+                highlightColour="#58cf35"
+                isGraphHighlighted={isBackwardGraphHighlighted}
+                setGraphHighlighted={setBackwardGraphHighlight}
+                activeButton={backwardActiveButton}
+                setActiveButton={setBackwardActiveButton}
+                equationName="L_Bar"
+                equationStyle="bg-[#58cf35] px-0.5 py-0.5 h-fit rounded-full"
+                cyRef={cyRef2}
+                cyRefType = "backward-prop">
+              </GraphHighlightButton>
+
+              {/* Equation 2: z2 */}
+              <MathEquation equationName="y1_bar" content={"\\(\\overline{y}_1 = \\overline{\\mathcal{L}} \\cdot \\frac{\\partial \\mathcal{L}}{\\partial y_1} = \\overline{\\mathcal{L}} (y_1 - t_1)\\)"} className=''></MathEquation>
+              <GraphHighlightButton
+                label="Equation y1_bar"
+                nodeIds={["y1", "L"]}
+                edgeIds={["y1-L"]}
+                highlightColour="#ffdbbb"
+                isGraphHighlighted={isBackwardGraphHighlighted}
+                setGraphHighlighted={setBackwardGraphHighlight}
+                activeButton={backwardActiveButton}
+                setActiveButton={setBackwardActiveButton}
+                equationName="y1_bar"
+                equationStyle="bg-[#ffdbbb] px-0.5 py-0.5 h-fit rounded-full"
+                cyRef={cyRef2}
+                cyRefType = "backward-prop">
               </GraphHighlightButton>
             </div>
           </MathJaxContext>

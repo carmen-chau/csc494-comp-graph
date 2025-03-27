@@ -7,6 +7,7 @@ import React from "react";
 import { customNodeStyle } from "../styles/GraphCustomStyle";
 import {getNodeIds, getEdgeIds} from "../utils/GraphHelpers";
 import {nodeDataList as forwardNodeDataList, edgeDataList as forwardEdgeDataList} from "../data/ForwardpropGraphData";
+import {nodeDataList as backwardNodeDataList, edgeDataList as backwardEdgeDataList} from "../data/ForwardpropGraphData";
 
 interface GraphHighlightButtonProp {
   label: string; // String to denote which equation this button corresponds to
@@ -57,6 +58,10 @@ export const GraphHighlightButton: React.FC<GraphHighlightButtonProp> = ({
     if (cyRefType === "forward-prop"){
       allNodeIds = getNodeIds(forwardNodeDataList);
       allEdgeIds = getEdgeIds(forwardEdgeDataList);
+    }
+    else if (cyRefType === "backward-prop"){
+      allNodeIds = getNodeIds(backwardNodeDataList);
+      allEdgeIds = getEdgeIds(backwardEdgeDataList);
     }
 
     cyRef.current.batch(() => {
