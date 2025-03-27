@@ -153,15 +153,33 @@ export default function Home() {
         </div>
       </div>
       <p className="flex pl-4 mt-4 mb-8">Backpropagation demonstration:</p>       {/* Margin top works here? */}
-      <div className="flex">  {/* Making the background white temporarily. Old string: "min-h-screen flex justify-center items-center bg-white" */}
+      <div className="flex">
         <SampleGraph cyRef={cyRef2} nodes={nodeObjList2} edges={edgeObjList2} />  {/* Making a Comp Graph Object */}
         <div className="w-full text-center mt-8 text-2xl" style={{ color: "black" }}>
+        <MathJaxContext>
+            <div className="grid grid-cols gap-x-4 space-y-4 pr-4 pl-7">
+              <p className="pl-4 font-serif col-span-2">Backward pass equations:</p>
+
+              {/* Equation 1: z1 */}
+              <MathEquation equationName="z1" content={"\\(z_1 = w_{11}^{(1)} x_1 + w_{12}^{(1)} x_2 + b_1^{(1)}\\)"} className=''></MathEquation>
+              <GraphHighlightButton
+                label="Equation z1"
+                nodeIds={["x1", "x2", "b1_1", "w11_1", "w12_1", "z1"]}
+                edgeIds={["x1-z1", "x2-z1", "b1_1-z1", "w11_1-z1", "w12_1-z1"]}
+                highlightColour="#58cf35"
+                isGraphHighlighted={isGraphHighlighted}
+                setGraphHighlighted={setGraphHighlight}
+                activeButton={activeButton}
+                setActiveButton={setActiveButton}
+                equationName="z1"
+                equationStyle="bg-[#58cf35] px-0.5 py-0.5 h-fit rounded-full"
+                cyRef={cyRef}>
+              </GraphHighlightButton>
+
+            </div>
+          </MathJaxContext>
         </div>
       </div>
-      {/* <div className="flex pr-10"> 
-      <SampleGraph cyRef={cyRef} nodes={nodeObjList} edges={edgeObjList} />
-      </div> */}
-      {/* <SampleGraph cyRef={cyRef} nodes={nodeObjList} edges={edgeObjList} />  */}
     </div>
   );
 }
