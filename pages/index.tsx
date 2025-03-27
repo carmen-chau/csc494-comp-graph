@@ -10,10 +10,13 @@ import { GraphHighlightButton } from "../components/GraphHighlightButton";
 import { nodeObjList, edgeObjList } from "../data/CompGraph1Data"
 
 export default function Home() {
+  
+  // Graph instance + variables for forward pass 
   const cyRef = useRef<any>(null); // Defining a null instance of cyRef. Think of it as a blank slate prior to the graph even being created
   const [isGraphHighlighted, setGraphHighlight] = useState(false);  // Global state to check whether graph is highlighted, somewhere
   const [activeButton, setActiveButton] = useState("");  // Global state to check whether there is a highlight button on the graph that is currently selected or not. 
   
+  // Graph instance + variables for backprop
   const cyRef2 = useRef<any>(null);
   const nodeObjList2 = nodeObjList.map(nodeObj => ({
     ...nodeObj,
