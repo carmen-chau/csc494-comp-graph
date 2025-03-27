@@ -24,7 +24,7 @@ const defaultGraphStyles = [
       },
     },
 
-    // Style object for edges
+    // Style object for edges (forward pass, straight ones)
     {
       selector: "edge",
       style: {
@@ -35,6 +35,22 @@ const defaultGraphStyles = [
         curveStyle: "straight",
       },
     },
+
+    // Style object for edges (backward pass, a bit curved)
+    {
+      selector: 'edge.backward',
+      style: {
+        'line-style': 'dashed',
+        'line-color': '#0077ff',
+        'target-arrow-color': '#0077ff',
+        'target-arrow-shape': 'triangle',
+        'curve-style': 'bezier',
+        'control-point-step-size': 40,
+        'label': 'data(label)',
+        'font-size': 10,
+      }
+    }
+    
 ]
 
 export default defaultGraphStyles;

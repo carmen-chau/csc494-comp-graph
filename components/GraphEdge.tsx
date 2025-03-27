@@ -7,13 +7,13 @@ interface GraphEdgeInterface {
   source: string;
   target: string;
   label?: string;
-  classes?: string; // Optional class for styling
+  classes?: string; // Class for styling
 }
 
 const GraphEdge = ({ id, source, target, label, classes}: GraphEdgeInterface) => {
   return {
     data: { id, source, target, label},
-    // classes, // Assign a class for styling if needed
+    classes, // Assign a class for styling (used to apply a different styling class for forward edges vs backward edges)
   };
 };
 

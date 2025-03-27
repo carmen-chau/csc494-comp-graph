@@ -8,6 +8,8 @@ import GraphEdge from "../components/GraphEdge"
 
 // List of graph nodes
 export const nodeObjList = [
+
+    // These were all copied from the forward pass graph
     GraphNode({ id: "x1", position: { x: 100, y: 200 }, imagePath: "/initial_latex_icons/x1_black.svg" }),
     GraphNode({ id: "x2", position: { x: 100, y: 300 }, imagePath: "initial_latex_icons/x2_black.svg" }),
 
@@ -42,6 +44,8 @@ export const nodeObjList = [
 
 // Define GraphNode data as objects (no JSX)
 export const nodeDataList = [
+
+    // These were all copied from the forward pass graph
     { id: "x1", position: { x: 100, y: 200 }, imagePath: "/initial_latex_icons/x1_black.svg" },
     { id: "x2", position: { x: 100, y: 300 }, imagePath: "/initial_latex_icons/x2_black.svg" },
     { id: "z1", position: { x: 300, y: 200 }, imagePath: "/initial_latex_icons/z1_black.svg" },
@@ -70,6 +74,8 @@ export const nodeDataList = [
 
 // List of graph edges
 export const edgeObjList = [
+
+    // These were all copied from the forward pass graph
     GraphEdge({ id: "x1-z1", source: "x1", target: "z1" }),
     GraphEdge({ id: "x2-z1", source: "x2", target: "z1" }),
     GraphEdge({ id: "b1_1-z1", source: "b1_1", target: "z1" }),
@@ -101,10 +107,20 @@ export const edgeObjList = [
     GraphEdge({ id: "t1-L", source: "t1", target: "L" }),
     GraphEdge({ id: "t2-L", source: "t2", target: "L" }),
 
+    //NEW!!! (For backpropagation)
+    GraphEdge({
+        id: 'L-y1-backprop',
+        source: 'L',
+        target: 'y1',
+        label: '∂L/∂y₁',
+        classes: 'backward',
+      })
+
 ];
 
 // Define GraphEdge data as objects (no JSX)
 export const edgeDataList = [
+
     { id: "x1-z1", source: "x1", target: "z1" },
     { id: "x2-z1", source: "x2", target: "z1" },
     { id: "b1_1-z1", source: "b1_1", target: "z1" },
@@ -131,5 +147,14 @@ export const edgeDataList = [
     { id: "y2-L", source: "y2", target: "L" },
     { id: "t1-L", source: "t1", target: "L" },
     { id: "t2-L", source: "t2", target: "L" },
+
+    //NEW!!! (For backpropagation)
+    {
+        id: 'L-y1-backprop',
+        source: 'L',
+        target: 'y1',
+        label: '∂L/∂y₁',
+        classes: 'backward',
+      }
   ];
   
