@@ -13,6 +13,15 @@ export default function Home() {
   const cyRef = useRef<any>(null); // Defining a null instance of cyRef. Think of it as a blank slate prior to the graph even being created
   const [isGraphHighlighted, setGraphHighlight] = useState(false);  // Global state to check whether graph is highlighted, somewhere
   const [activeButton, setActiveButton] = useState("");  // Global state to check whether there is a highlight button on the graph that is currently selected or not. 
+  
+  const cyRef2 = useRef<any>(null);
+  const nodeObjList2 = nodeObjList.map(nodeObj => ({
+    ...nodeObj,
+    position: {...nodeObj.position}
+  }));
+  const edgeObjList2 = edgeObjList.map(edgeObj => ({
+    ...edgeObj,
+  }));
 
   return (
     <div>
@@ -142,7 +151,7 @@ export default function Home() {
       </div>
       <p className="flex pl-4 mt-4 mb-8">Backpropagation demonstration:</p>       {/* Margin top works here? */}
       <div className="flex">  {/* Making the background white temporarily. Old string: "min-h-screen flex justify-center items-center bg-white" */}
-        <SampleGraph cyRef={cyRef} nodes={nodeObjList} edges={edgeObjList} />  {/* Making a Comp Graph Object */}
+        <SampleGraph cyRef={cyRef2} nodes={nodeObjList2} edges={edgeObjList2} />  {/* Making a Comp Graph Object */}
         <div className="w-full text-center mt-8 text-2xl" style={{ color: "black" }}>
         </div>
       </div>
