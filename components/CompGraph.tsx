@@ -29,7 +29,12 @@ const SampleGraph = ({ cyRef, nodes, edges}: { cyRef: React.RefObject<any>, node
   };
 
   return (
-    <div style={{ width: "100vw", height: "100vh", display: "flex", flexDirection: "column", alignItems: "center", paddingLeft: "40px"}}>
+    <div style={{ width: "100vw", 
+    // height: "90vh", 
+    display: "flex", 
+    flexDirection: "column", 
+    alignItems: "center", 
+    paddingLeft: "40px"}}>
 
       {/* Cytoscape Graph */}
       <div style={{ 
