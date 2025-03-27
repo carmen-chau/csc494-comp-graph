@@ -22,7 +22,7 @@ export default function Home() {
         <div className="w-full text-center mt-8 text-2xl" style={{ color: "black" }}>
           <MathJaxContext>
             <div className="grid grid-cols-[auto,auto] gap-x-1 space-y-4 pr-4">
-              <p className="font-serif col-span-2">Computation Graph Equations:</p>
+              <p className="font-serif col-span-2">Forward pass equations:</p>
 
               {/* Equation 1: z1 */}
               <MathEquation equationName="z1" content={"\\(z_1 = w_{11}^{(1)} x_1 + w_{12}^{(1)} x_2 + b_1^{(1)}\\)"} className=''></MathEquation>
