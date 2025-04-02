@@ -6,8 +6,8 @@ interface GraphEdgeInterface {
   id: string;
   source: string;
   target: string;
-  label?: string;
-  visible?: boolean; //Denotes whether the edge should be currently visible upon rendering the graph or not
+  label?: string; // Optional parameter denoting the label added on top of the edge. Set to "" by default
+  visible?: boolean; //Denotes whether the edge should be currently visible upon rendering the graph or not. Set to true by default
   classes?: string; // Class for styling
 }
 
