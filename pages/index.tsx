@@ -175,6 +175,7 @@ export default function Home() {
                 setActiveButton={setBackwardActiveButton}
                 equationName="L_bar"
                 equationStyle="bg-[#58cf35] px-0.5 py-0.5 h-fit rounded-full"
+                backPropEquationName="L_backprop"
                 cyRef={cyRef2}
                 cyRefType = "backward-prop">
                </GraphHighlightButton>
@@ -192,6 +193,7 @@ export default function Home() {
                 setActiveButton={setBackwardActiveButton}
                 equationName="y1_bar"
                 equationStyle="bg-[#ffdbbb] px-0.5 py-0.5 h-fit rounded-full"
+                backPropEquationName="L-y1-backprop"
                 cyRef={cyRef2}
                 cyRefType = "backward-prop">
               </GraphHighlightButton>
