@@ -88,14 +88,18 @@ export const GraphHighlightButton: React.FC<GraphHighlightButtonProp> = ({
           equation.className = ""; // Reset all styles
         });
 
-        // NEW! If we are working with a backprop graph, we enable the specific backprop arrow
+        // NEW! If we are working with a backprop graph, we must reset all possible backprop arrows to have attribute visible: false
         if (cyRefType === "backward-prop") {
-          let backedgeObject = getEdgeObject(backwardEdgeObjList, backPropEquationName);
-          backedgeObject.data.visible = false;
-          console.log(backedgeObject);
-          let backedgeData = getEdgeDataInstance(backwardEdgeDataList, backPropEquationName);
-          backedgeData.visible = false;
-          console.log(backedgeData);
+          backwardEdgeObjList.map((edgeObj) => {
+            if (edgeObj.classes === "backward") {
+              edgeObj.data.visible = false;
+            }
+          });
+          backwardEdgeDataList.map((edgeData) => {
+            if (edgeData.classes === "backward"){
+              edgeData.visible = false;
+            }
+          });
         }
 
         setGraphHighlighted(false); // Reset graph state
@@ -120,10 +124,14 @@ export const GraphHighlightButton: React.FC<GraphHighlightButtonProp> = ({
         // NEW! If we are working with a backprop graph, we enable the specific backprop arrow
         if (cyRefType === "backward-prop") {
           let backedgeObject = getEdgeObject(backwardEdgeObjList, backPropEquationName);
-          backedgeObject.data.visible = true;
+          if (backedgeObject !== undefined){
+            backedgeObject.data.visible = true;
+          }
           console.log(backedgeObject);
           let backedgeData = getEdgeDataInstance(backwardEdgeDataList, backPropEquationName);
-          backedgeData.visible = true;
+          if (backedgeData !== undefined){
+            backedgeData.visible = true;
+          }
           console.log(backedgeData);
         }
 

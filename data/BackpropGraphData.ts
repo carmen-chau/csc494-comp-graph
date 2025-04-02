@@ -156,6 +156,7 @@ export const edgeDataList = [
         source: 'L',
         target: 'y1',
         label: '∂L/∂y₁',
+        classes: 'backward',
         visible: false
       }
   ];
