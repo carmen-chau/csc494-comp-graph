@@ -73,6 +73,7 @@ export const nodeDataList = [
 
 
 // List of graph edges
+// TODO: Should I make the default (ie: non backprop) GraphEdge instances and data consistent in terms of attributes compared with its backprop counterparts?
 export const edgeObjList = [
 
     // These were all copied from the forward pass graph
