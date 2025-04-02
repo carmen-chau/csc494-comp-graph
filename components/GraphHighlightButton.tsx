@@ -103,7 +103,7 @@ export const GraphHighlightButton: React.FC<GraphHighlightButtonProp> = ({
         }
 
         setGraphHighlighted(false); // Reset graph state
-        setActiveButton(""); // No active button, so reset variable   activeButton
+        setActiveButton(""); // No active button, so reset variable activeButton
       }
 
       if (!(isGraphHighlighted) || activeButton !== label) {
