@@ -154,7 +154,7 @@ export default function Home() {
           </MathJaxContext>
         </div>
       </div>
-      <p className="pl-4 mb-8">Backward propagation demonstration:</p>
+      <p className="pl-4 mt-10 mb-8">Backward propagation demonstration:</p>
       <div className="flex">  {/* Making the background white temporarily. Old string: "min-h-screen flex justify-center items-center bg-white" */}
         <SampleGraph cyRef={cyRef2} nodes={backwardPropNodeList} edges={backwardPropEdgeList} />  {/* Making a Comp Graph Object */}
         <div className="w-full text-center mt-8 text-2xl" style={{ color: "black" }}>
@@ -162,7 +162,7 @@ export default function Home() {
             <div className="grid grid-cols-[auto,auto] gap-x-1 space-y-4 pr-4">
               <p className="font-serif col-span-2">Backward pass equations:</p>
 
-              {/* Equation 1: z1 */}
+              {/* Equation 1: L_bar */}
               <MathEquation equationName="L_bar" content={"\\(\\overline{\\mathcal{L}}= 1\\)"} className=''></MathEquation>
               <GraphHighlightButton
                 label="Equation L_bar"
@@ -173,13 +173,13 @@ export default function Home() {
                 setGraphHighlighted={setBackwardGraphHighlight}
                 activeButton={backwardActiveButton}
                 setActiveButton={setBackwardActiveButton}
-                equationName="L_Bar"
+                equationName="L_bar"
                 equationStyle="bg-[#58cf35] px-0.5 py-0.5 h-fit rounded-full"
                 cyRef={cyRef2}
                 cyRefType = "backward-prop">
-              </GraphHighlightButton>
+               </GraphHighlightButton>
 
-              {/* Equation 2: z2 */}
+              {/* Equation 2: y1_bar */}
               <MathEquation equationName="y1_bar" content={"\\(\\overline{y}_1 = \\overline{\\mathcal{L}} \\cdot \\frac{\\partial \\mathcal{L}}{\\partial y_1} = \\overline{\\mathcal{L}} (y_1 - t_1)\\)"} className=''></MathEquation>
               <GraphHighlightButton
                 label="Equation y1_bar"
