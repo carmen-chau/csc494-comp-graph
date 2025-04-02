@@ -113,6 +113,7 @@ export const edgeObjList = [
         source: 'L',
         target: 'y1',
         label: '∂L/∂y₁',
+        visible: false,
         classes: 'backward',
       })
 
@@ -148,13 +149,13 @@ export const edgeDataList = [
     { id: "t1-L", source: "t1", target: "L" },
     { id: "t2-L", source: "t2", target: "L" },
 
-    //NEW!!! (For backpropagation)
+    // NEW!!! (For backpropagation)
     {
         id: 'L-y1-backprop',
         source: 'L',
         target: 'y1',
         label: '∂L/∂y₁',
-        classes: 'backward',
+        visible: false
       }
   ];
   
