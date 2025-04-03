@@ -29,6 +29,15 @@ The webpage uses a computation graph instances taken from the CSC311 Week 6 slid
 <img width="552" alt="Screenshot 2025-04-03 at 1 07 41 AM" src="https://github.com/user-attachments/assets/fa01649c-abb6-45fd-a7c0-976ce9db3f7c" />
 
 ### Visualization components 
+The webpage has 2 main computation graph instances (1 each for forward pass and backpropagation respectively). For each, the computation graph is located on the left, and the corresponding mathematical equations are on the right. 
+
+Students can click on any of the ```Select``` buttons beside the equation to see how the computation graph is highlighted and annotated. 
+
+For forward pass, when any ```Select``` button is pressed, the nodes and edges that make up that specific equation would be highlighted. This is to demonstrate...
+
+<img width="1508" alt="Screenshot 2025-04-03 at 1 15 53 AM" src="https://github.com/user-attachments/assets/28645950-d247-4f5b-b586-90881cd0f60b" />
+
+
 
 ## Technical specifications 
 
