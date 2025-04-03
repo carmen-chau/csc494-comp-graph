@@ -4,7 +4,7 @@
 This project is an interactive web visualization designed to help users understand how computation graphs can be used to model a neural network and visualize the computation of outputs and gradients.
 
 ### Target audience and pre-requisite knowledge
-This project is aimed to be used by prospective CSC311 students. It assumes that students have a basic understanding of what components make up a neural network at a high level and how this translates into a computation graph. Furthermore, students should be comfortable with calculations relating to derivatives and the multivariate chain rule (from 2nd-year calculus). 
+This project is aimed to be used by prospective CSC311 students and is intended to be complementary to the material taught in Lecture 6 (Neural Networks). It assumes that students have a basic understanding of what components make up a neural network at a high level and how this translates into a computation graph. Furthermore, students should be comfortable with calculations relating to derivatives and the multivariate chain rule (from 2nd-year calculus). 
 
 It is recommended that students have some basic prior understanding of what forward pass and backpropagation are, but it is not required. 
 
@@ -53,6 +53,41 @@ For backpropagation, in addition to the highlighting done in the forward pass pr
 - **Computation graph creation:** Cytoscape.js, react-cytoscapejs wrapper (wrapper was used to allow React.js components to integrate smoothly with computation graph instances) 
 - **Math equations rendering:** better-react-mathjax (Mathjax library but modified to be more modular according to React rules)
 - **Styling:** TailwindCSS
+
+### Code structure
+WIP. Here is the old writing for reference:
+
+The `/components` folder contains files that define core graph components. Currently it contains files for a generalized graph, edge, node, graph highlight button and equation
+
+The `/data` folder contains node and edge instances for specific computational graph examples
+
+The `/pages` folder define pages that are actually rendered on. Specifically, `pages/index` is the home page that is displayed. It includes the computation graph instance as well as the equations. All other files are boilerplate for now
+        
+The `/public` folder contains static files that can be rendered. Right now, it contains another folder called `/initial_latex_icons`. This folder contains raw latex text as pictures, I use these to insert into each node of the graph to render as a picture upload. This is a very brute-force approach since at this time right now I have yet to find a way to dynamially render this text, nor do I think it is a primary objective at this stage of this project. 
+
+The `/style` folder contains 2 files: `/style/GraphDefaultStyle.ts` and `/style/GraphCustomStyle.ts`, each containing objects with styling attributes for a default graph and extensions for a highlighted graph, respectively. 
+
+The `/utils` folder contains files that include helper functions for retrieving or manipulating data from a graph instance 
+
+### Miscellaneous
+- Please consult the code comments made in each individual file should you need more fine level details about implementation.
+
+## Design decision
+> Why did you pick this specific computation graph example?
+
+I picked this specific example from lecture (rather than making my own) because utilizing a familar example from lecture for visualization would mean students can spend less overhead time familiarizing themselves with the graph and equation setup. This hopefully allows students to spend more time understanding how forward pass and backpropagation are visualizations, which is the main goal of this project. 
+
+> Why did you write out each bias and weight term seperately instead of writing them in the vectorized form
+
+Although writing the bias and weight terms in vectorized form could have made the equations more compact, I wanted to make the visualization of computation structure more explicit. Specifically, since this visualization is suppose to be complementary to Lecture 6, most students would be still trying to get familar with how computation graphs are structured. 
+
+So, I believe having students being able to see how each individual bias and weight terms are being used in forward pass would help them piece together how each individual term contributes to the neural network prediction (the output). 
+
+Similarly, by illustrating how these individual terms are being used to calculate loss gradients, the visualization can help students understand how derivatives and chain rule apply to individual terms during backpropagation. This can help them realize that at the end of backpropagation, we would need to update each individual weight and bias terms seperately. 
+
+> For the backpropagation graph, why did you include the backpropagation arrow?
+
+The backpropgation arrow was included in hopes to help students differentate between the forward pass phase (solid arrows) vs backpropagation phase (dotted arrows). Also, these backpropagation arrows are a physical visualization of the error signals (loss gradients), which is essentially the amount of loss relative to the term we are looking at, that is flowing backwards in the graph. 
 
 ## Resources used
 1. [Cytoscape.js documentation](https://js.cytoscape.org/)
