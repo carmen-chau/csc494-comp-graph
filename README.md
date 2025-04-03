@@ -48,6 +48,12 @@ For backpropagation, in addition to the highlighting done in the forward pass pr
 
 ## Technical specifications 
 
+### Tech stack
+- **Primary frontend frameworks:** React, TypeScript. 
+- **Computation graph creation:** Cytoscape.js, react-cytoscapejs wrapper (wrapper was used to allow React.js components to integrate smoothly with computation graph instances) 
+- **Math equations rendering:** better-react-mathjax (Mathjax library but modified to be more modular according to React rules)
+- **Styling:** TailwindCSS
+
 ## Resources used
 1. [Cytoscape.js documentation](https://js.cytoscape.org/)
 2. [Latex to SVG generator](https://viereck.ch/latex-to-svg/)
