@@ -33,11 +33,18 @@ The webpage has 2 main computation graph instances (1 each for forward pass and 
 
 Students can click on any of the ```Select``` buttons beside the equation to see how the computation graph is highlighted and annotated. 
 
-For forward pass, when any ```Select``` button is pressed, the nodes and edges that make up that specific equation would be highlighted. This is to demonstrate...
+For forward pass, when any ```Select``` button is pressed, the nodes and edges that make up that specific equation would be highlighted. 
 
 <img width="1508" alt="Screenshot 2025-04-03 at 1 15 53 AM" src="https://github.com/user-attachments/assets/28645950-d247-4f5b-b586-90881cd0f60b" />
 
+For backpropagation, in addition to the highlighting done in the forward pass process, there would be additional backward arrows denoting the direction of the loss gradients 
 
+<img width="1511" alt="Screenshot 2025-04-03 at 1 24 30 AM" src="https://github.com/user-attachments/assets/e3bce8e2-0a59-4f83-9e8e-8eea5cd1db51" />
+
+### Usage notes and limitations
+
+- Although the computation graph instance for both forward pass and backpropagation look the same, behind the hood, they are treated as different objects. 
+- Currently, for a particular computation graph instance, you can only have at most 1 ```Select``` button toggled at a time. Button toggling in the forward pass graph should not affect the backpropagation graph
 
 ## Technical specifications 
 
