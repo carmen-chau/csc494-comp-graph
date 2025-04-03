@@ -24,17 +24,44 @@ const defaultGraphStyles = [
       },
     },
 
-    // Style object for edges
+    // Style object for edges (forward pass, straight ones)
     {
       selector: "edge",
       style: {
-        width: 2,
-        lineColor: "#000000",
-        targetArrowShape: "triangle",
-        targetArrowColor: "#000000",
-        curveStyle: "straight",
+        'width': 2,
+        'line-color': '#000000',
+        'target-arrow-shape': 'triangle',
+        'target-arrow-color': '#000000',
+        'curve-style': 'straight',
       },
-    },
+    },    
+
+    // Style object for edges (backward pass, a bit curved)
+    {
+      selector: 'edge.backward',
+      style: {
+        'curve-style': 'unbundled-bezier',
+        'control-point-distances': [50],
+        'control-point-weights': [0.30],
+    
+        'line-style': 'dashed',
+        'line-color': '#0077ff',
+        'target-arrow-shape': 'triangle',
+        'target-arrow-color': '#0077ff',
+    
+        'label': 'data(label)',
+        'font-size': 12,
+        'text-background-color': '#fff',
+        // 'text-background-opacity': 1,
+        // // 'text-background-shape': 'roundrectangle',
+        // 'text-background-padding': 3,
+        'text-rotation': 'autorotate',
+        'text-margin-y': -20,
+        // 'edge-text-offset': 100,
+      }
+    }
+    
+    
 ]
 
 export default defaultGraphStyles;

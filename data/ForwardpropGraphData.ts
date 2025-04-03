@@ -95,7 +95,7 @@ export const edgeObjList = [
     GraphEdge({ id: "w21_2-y2", source: "w21_2", target: "y2" }),
     GraphEdge({ id: "b2_2-y2", source: "b2_2", target: "y2" }),
 
-    GraphEdge({ id: "y1_L", source: "y1", target: "L" }),
+    GraphEdge({ id: "y1-L", source: "y1", target: "L" }),
     GraphEdge({ id: "y2-L", source: "y2", target: "L" }),
 
     GraphEdge({ id: "t1-L", source: "t1", target: "L" }),
@@ -127,7 +127,7 @@ export const edgeDataList = [
     { id: "w22_2-y2", source: "w22_2", target: "y2" },
     { id: "w21_2-y2", source: "w21_2", target: "y2" },
     { id: "b2_2-y2", source: "b2_2", target: "y2" },
-    { id: "y1_L", source: "y1", target: "L" },
+    { id: "y1-L", source: "y1", target: "L" },
     { id: "y2-L", source: "y2", target: "L" },
     { id: "t1-L", source: "t1", target: "L" },
     { id: "t2-L", source: "t2", target: "L" },

@@ -48,7 +48,7 @@ const SampleGraph = ({ cyRef, nodes, edges}: { cyRef: React.RefObject<any>, node
         
         }}>
         <CytoscapeComponent
-          elements={[...nodes, ...edges]} // Combine nodes and edges
+          elements={[...nodes, ...edges.filter((edge: any) => edge.data.visible === true)]} // Combine nodes and edges. Note: For edges, used the filter() function to only show edges where the visible attribute is set to true
           style={{ width: "100%", height: "100%" }}
           layout={{ name: "preset", fit: false}} // Keeps nodes in place
           cy={initialCyRendering}

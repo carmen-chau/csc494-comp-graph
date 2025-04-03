@@ -7,30 +7,26 @@ import { MathJaxContext } from 'better-react-mathjax';
 import MathEquation from "../components/MathEquation";
 import SampleGraph from '../components/CompGraph';
 import { GraphHighlightButton } from "../components/GraphHighlightButton";
-import { nodeObjList, edgeObjList } from "../data/CompGraph1Data"
+import { nodeObjList as forwardPropNodeList, edgeObjList as forwardPropEdgeList } from "../data/ForwardpropGraphData"
+import { nodeObjList as backwardPropNodeList , edgeObjList as backwardPropEdgeList } from "../data/BackpropGraphData"
 
 export default function Home() {
-  
+
   // Graph instance + variables for forward pass 
   const cyRef = useRef<any>(null); // Defining a null instance of cyRef. Think of it as a blank slate prior to the graph even being created
-  const [isGraphHighlighted, setGraphHighlight] = useState(false);  // Global state to check whether graph is highlighted, somewhere
-  const [activeButton, setActiveButton] = useState("");  // Global state to check whether there is a highlight button on the graph that is currently selected or not. 
-  
+  const [isForwardGraphHighlighted, setForwardGraphHighlight] = useState(false);  // Global state to check whether graph is highlighted, somewhere
+  const [forwardActiveButton, setForwardActiveButton] = useState("");  // Global state to check whether there is a highlight button on the graph that is currently selected or not. 
+
   // Graph instance + variables for backprop
   const cyRef2 = useRef<any>(null);
-  const nodeObjList2 = nodeObjList.map(nodeObj => ({
-    ...nodeObj,
-    position: {...nodeObj.position}
-  }));
-  const edgeObjList2 = edgeObjList.map(edgeObj => ({
-    ...edgeObj,
-  }));
+  const [isBackwardGraphHighlighted, setBackwardGraphHighlight] = useState(false);  // Global state to check whether graph is highlighted, somewhere
+  const [backwardActiveButton, setBackwardActiveButton] = useState("");  // Global state to check whether there is a highlight button on the graph that is currently selected or not. 
 
   return (
     <div>
       <p className="pl-4 mb-8">Forward propagation demonstration:</p>
       <div className="flex">  {/* Making the background white temporarily. Old string: "min-h-screen flex justify-center items-center bg-white" */}
-        <SampleGraph cyRef={cyRef} nodes={nodeObjList} edges={edgeObjList} />  {/* Making a Comp Graph Object */}
+        <SampleGraph cyRef={cyRef} nodes={forwardPropNodeList} edges={forwardPropEdgeList} />  {/* Making a Comp Graph Object */}
         <div className="w-full text-center mt-8 text-2xl" style={{ color: "black" }}>
           <MathJaxContext>
             <div className="grid grid-cols-[auto,auto] gap-x-1 space-y-4 pr-4">
@@ -43,13 +39,14 @@ export default function Home() {
                 nodeIds={["x1", "x2", "b1_1", "w11_1", "w12_1", "z1"]}
                 edgeIds={["x1-z1", "x2-z1", "b1_1-z1", "w11_1-z1", "w12_1-z1"]}
                 highlightColour="#58cf35"
-                isGraphHighlighted={isGraphHighlighted}
-                setGraphHighlighted={setGraphHighlight}
-                activeButton={activeButton}
-                setActiveButton={setActiveButton}
+                isGraphHighlighted={isForwardGraphHighlighted}
+                setGraphHighlighted={setForwardGraphHighlight}
+                activeButton={forwardActiveButton}
+                setActiveButton={setForwardActiveButton}
                 equationName="z1"
                 equationStyle="bg-[#58cf35] px-0.5 py-0.5 h-fit rounded-full"
-                cyRef={cyRef}>
+                cyRef={cyRef}
+                cyRefType = "forward-prop">
               </GraphHighlightButton>
 
               {/* Equation 2: z2 */}
@@ -59,13 +56,14 @@ export default function Home() {
                 nodeIds={["x1", "x2", "b2_1", "w21_1", "w22_1", "z2"]}
                 edgeIds={["x1-z2", "x2-z2", "b2_1-z2", "w21_1-z2", "w22_1-z2"]}
                 highlightColour="#ffdbbb"
-                isGraphHighlighted={isGraphHighlighted}
-                setGraphHighlighted={setGraphHighlight}
-                activeButton={activeButton}
-                setActiveButton={setActiveButton}
+                isGraphHighlighted={isForwardGraphHighlighted}
+                setGraphHighlighted={setForwardGraphHighlight}
+                activeButton={forwardActiveButton}
+                setActiveButton={setForwardActiveButton}
                 equationName="z2"
                 equationStyle="bg-[#ffdbbb] px-0.5 py-0.5 h-fit rounded-full"
-                cyRef={cyRef}>
+                cyRef={cyRef}
+                cyRefType = "forward-prop">
               </GraphHighlightButton>
 
               {/* Equation 3: h1 */}
@@ -75,13 +73,14 @@ export default function Home() {
                 nodeIds={["z1", "h1"]}
                 edgeIds={["z1-h1"]}
                 highlightColour="#89CFF0"
-                isGraphHighlighted={isGraphHighlighted}
-                setGraphHighlighted={setGraphHighlight}
-                activeButton={activeButton}
-                setActiveButton={setActiveButton}
+                isGraphHighlighted={isForwardGraphHighlighted}
+                setGraphHighlighted={setForwardGraphHighlight}
+                activeButton={forwardActiveButton}
+                setActiveButton={setForwardActiveButton}
                 equationName="h1"
                 equationStyle="bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full"
-                cyRef={cyRef}>
+                cyRef={cyRef}
+                cyRefType = "forward-prop">
               </GraphHighlightButton>
 
               {/* Equation 4: h2 */}
@@ -91,13 +90,14 @@ export default function Home() {
                 nodeIds={["z2", "h2"]}
                 edgeIds={["z2-h2"]}
                 highlightColour="#Ef97b0"
-                isGraphHighlighted={isGraphHighlighted}
-                setGraphHighlighted={setGraphHighlight}
-                activeButton={activeButton}
-                setActiveButton={setActiveButton}
+                isGraphHighlighted={isForwardGraphHighlighted}
+                setGraphHighlighted={setForwardGraphHighlight}
+                activeButton={forwardActiveButton}
+                setActiveButton={setForwardActiveButton}
                 equationName="h2"
                 equationStyle="bg-[#Ef97b0] px-0.5 py-0.5 h-fit rounded-full"
-                cyRef={cyRef}>
+                cyRef={cyRef}
+                cyRefType = "forward-prop">
               </GraphHighlightButton>
 
               {/* Equation 5: y1 */}
@@ -107,13 +107,14 @@ export default function Home() {
                 nodeIds={["y1", "h1", "h2", "w11_2", "w12_2", "b1_2"]}
                 edgeIds={["h1-y1", "h2-y1", "b1_2-y1", "w11_2-y1", "w12_2-y1"]}
                 highlightColour="#C3aaf9"
-                isGraphHighlighted={isGraphHighlighted}
-                setGraphHighlighted={setGraphHighlight}
-                activeButton={activeButton}
-                setActiveButton={setActiveButton}
+                isGraphHighlighted={isForwardGraphHighlighted}
+                setGraphHighlighted={setForwardGraphHighlight}
+                activeButton={forwardActiveButton}
+                setActiveButton={setForwardActiveButton}
                 equationName="y1"
                 equationStyle="bg-[#C3aaf9] px-0.5 py-0.5 h-fit rounded-full"
-                cyRef={cyRef}>
+                cyRef={cyRef}
+                cyRefType = "forward-prop">
               </GraphHighlightButton>
 
               {/* Equation 6: y2 */}
@@ -123,13 +124,14 @@ export default function Home() {
                 nodeIds={["y2", "h1", "h2", "w21_2", "w22_2", "b2_2"]}
                 edgeIds={["h1-y2", "h2-y2", "b2_2-y2", "w21_2-y2", "w12_2-y2"]}
                 highlightColour="#Ff7f7f"
-                isGraphHighlighted={isGraphHighlighted}
-                setGraphHighlighted={setGraphHighlight}
-                activeButton={activeButton}
-                setActiveButton={setActiveButton}
+                isGraphHighlighted={isForwardGraphHighlighted}
+                setGraphHighlighted={setForwardGraphHighlight}
+                activeButton={forwardActiveButton}
+                setActiveButton={setForwardActiveButton}
                 equationName="y2"
                 equationStyle="bg-[#Ff7f7f] px-0.5 py-0.5 h-fit rounded-full"
-                cyRef={cyRef}>
+                cyRef={cyRef}
+                cyRefType = "forward-prop">
               </GraphHighlightButton>
 
               {/* Equation 7: L */}
@@ -139,29 +141,66 @@ export default function Home() {
                 nodeIds={["t1", "t2", "L"]}
                 edgeIds={["t1-L", "t2-L"]}
                 highlightColour="#E7ff7f"
-                isGraphHighlighted={isGraphHighlighted}
-                setGraphHighlighted={setGraphHighlight}
-                activeButton={activeButton}
-                setActiveButton={setActiveButton}
+                isGraphHighlighted={isForwardGraphHighlighted}
+                setGraphHighlighted={setForwardGraphHighlight}
+                activeButton={forwardActiveButton}
+                setActiveButton={setForwardActiveButton}
                 equationName="L"
                 equationStyle="bg-[#E7ff7f] px-0.5 py-0.5 h-fit rounded-full"
-                cyRef={cyRef}>
+                cyRef={cyRef}
+                cyRefType = "forward-prop">
               </GraphHighlightButton>
-
             </div>
           </MathJaxContext>
         </div>
       </div>
-      <p className="flex pl-4 mt-4 mb-8">Backpropagation demonstration:</p>       {/* Margin top works here? */}
+      <p className="pl-4 mt-10 mb-8">Backward propagation demonstration:</p>
       <div className="flex">  {/* Making the background white temporarily. Old string: "min-h-screen flex justify-center items-center bg-white" */}
-        <SampleGraph cyRef={cyRef2} nodes={nodeObjList2} edges={edgeObjList2} />  {/* Making a Comp Graph Object */}
+        <SampleGraph cyRef={cyRef2} nodes={backwardPropNodeList} edges={backwardPropEdgeList} />  {/* Making a Comp Graph Object */}
         <div className="w-full text-center mt-8 text-2xl" style={{ color: "black" }}>
+          <MathJaxContext>
+            <div className="grid grid-cols-[auto,auto] gap-x-1 space-y-4 pr-4">
+              <p className="font-serif col-span-2">Backward pass equations:</p>
+
+              {/* Equation 1: L_bar */}
+              <MathEquation equationName="L_bar" content={"\\(\\overline{\\mathcal{L}}= 1\\)"} className=''></MathEquation>
+              <GraphHighlightButton
+                label="Equation L_bar"
+                nodeIds={["L"]}
+                edgeIds={[]}
+                highlightColour="#58cf35"
+                isGraphHighlighted={isBackwardGraphHighlighted}
+                setGraphHighlighted={setBackwardGraphHighlight}
+                activeButton={backwardActiveButton}
+                setActiveButton={setBackwardActiveButton}
+                equationName="L_bar"
+                equationStyle="bg-[#58cf35] px-0.5 py-0.5 h-fit rounded-full"
+                backPropEquationName="L_backprop"
+                cyRef={cyRef2}
+                cyRefType = "backward-prop">
+               </GraphHighlightButton>
+
+              {/* Equation 2: y1_bar */}
+              <MathEquation equationName="y1_bar" content={"\\(\\overline{y}_1 = \\overline{\\mathcal{L}} \\cdot \\frac{\\partial \\mathcal{L}}{\\partial y_1} = \\overline{\\mathcal{L}} (y_1 - t_1)\\)"} className=''></MathEquation>
+              <GraphHighlightButton
+                label="Equation y1_bar"
+                nodeIds={["y1", "L"]}
+                edgeIds={["y1-L"]}
+                highlightColour="#ffdbbb"
+                isGraphHighlighted={isBackwardGraphHighlighted}
+                setGraphHighlighted={setBackwardGraphHighlight}
+                activeButton={backwardActiveButton}
+                setActiveButton={setBackwardActiveButton}
+                equationName="y1_bar"
+                equationStyle="bg-[#ffdbbb] px-0.5 py-0.5 h-fit rounded-full"
+                backPropEquationName="L-y1-backprop"
+                cyRef={cyRef2}
+                cyRefType = "backward-prop">
+              </GraphHighlightButton>
+            </div>
+          </MathJaxContext>
         </div>
       </div>
-      {/* <div className="flex pr-10"> 
-      <SampleGraph cyRef={cyRef} nodes={nodeObjList} edges={edgeObjList} />
-      </div> */}
-      {/* <SampleGraph cyRef={cyRef} nodes={nodeObjList} edges={edgeObjList} />  */}
     </div>
   );
 }

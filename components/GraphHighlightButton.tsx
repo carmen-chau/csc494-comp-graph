@@ -5,21 +5,28 @@
 // Imports
 import React from "react";
 import { customNodeStyle } from "../styles/GraphCustomStyle";
-import {getNodeIds, getEdgeIds} from "../utils/GraphHelpers";
-import {nodeDataList, edgeDataList} from "../data/CompGraph1Data";
+import { getNodeIds, getEdgeIds, getEdgeObject, getEdgeDataInstance } from "../utils/GraphHelpers";
+import { nodeObjList as forwardNodeObjList, edgeObjList as forwardEdgeObjList, nodeDataList as forwardNodeDataList, edgeDataList as forwardEdgeDataList } from "../data/ForwardpropGraphData";
+import { nodeObjList as backwardNodeObjList, edgeObjList as backwardEdgeObjList, nodeDataList as backwardNodeDataList, edgeDataList as backwardEdgeDataList } from "../data/BackpropGraphData";
 
 interface GraphHighlightButtonProp {
+
   label: string; // String to denote which equation this button corresponds to
   nodeIds: string[]; // String ids of nodes to highlight in the graph
   edgeIds: string[]; // String ids of edges to highlight in the graph
+
   highlightColour: string; // Highlight color for BOTH the graph nodes and edges. TODO: MAKE THIS AS 2 SEPERATE ATTRIBUTES IF NEED BE
   isGraphHighlighted: boolean; // State variable to track highlight status of the entire graph
   setGraphHighlighted: React.Dispatch<React.SetStateAction<boolean>>; // Setter function for isGraphHighlighted
   activeButton: string; // State variable to track which button is currently "selected"
   setActiveButton: React.Dispatch<React.SetStateAction<string>>; // Setter function for activeButton
+
   equationName: string; // Equation to highlight
   equationStyle: string; // Additional styling to add to the equation
+  backPropEquationName?: string; // If provided, give the name of the backprop equation to render the backward edge
+
   cyRef: React.RefObject<any>; // Cytoscape obj reference we need to manipulate
+  cyRefType: string; // Denotes what type of computuation graph we are rendering
   //children?: React.ReactNode; // Needed IF we want to wrap the button with the text. Not used right now
 }
 
@@ -27,11 +34,6 @@ interface GraphHighlightButtonProp {
 // const allNodeIds = ["x1", "x2", "b1_1", "w11_1", "w12_1", "z1", "b2_1", "w21_1", "w22_1", "z2"]
 // const allEdgeIds = ["x1-z1", "x2-z1", "b1_1-z1", "w11_1-z1", "w12_1-z1",
 //   "x1-z2", "x2-z2", "b2_1-z2", "w21_1-z2", "w22_1-z2"]
-
-// TODO: Need to make this generalizable
-// Getting a list of all node and edge ids
-const allNodeIds = getNodeIds(nodeDataList);
-const allEdgeIds = getEdgeIds(edgeDataList);
 
 
 export const GraphHighlightButton: React.FC<GraphHighlightButtonProp> = ({
@@ -45,13 +47,27 @@ export const GraphHighlightButton: React.FC<GraphHighlightButtonProp> = ({
   setActiveButton,
   equationName,
   equationStyle,
+  backPropEquationName = "",
   cyRef,
+  cyRefType
   //children,
 }) => {
 
   const handleClick = () => {
     if (!cyRef.current) {
       return; // Prevent working with an undefined Cytoscape instance
+    }
+
+    let allNodeIds = [];
+    let allEdgeIds = [];
+
+    if (cyRefType === "forward-prop") {
+      allNodeIds = getNodeIds(forwardNodeDataList);
+      allEdgeIds = getEdgeIds(forwardEdgeDataList);
+    }
+    else if (cyRefType === "backward-prop") {
+      allNodeIds = getNodeIds(backwardNodeDataList);
+      allEdgeIds = getEdgeIds(backwardEdgeDataList);
     }
 
     cyRef.current.batch(() => {
@@ -72,8 +88,22 @@ export const GraphHighlightButton: React.FC<GraphHighlightButtonProp> = ({
           equation.className = ""; // Reset all styles
         });
 
+        // NEW! If we are working with a backprop graph, we must reset all possible backprop arrows to have attribute visible: false
+        if (cyRefType === "backward-prop") {
+          backwardEdgeObjList.map((edgeObj) => {
+            if (edgeObj.classes === "backward") {
+              edgeObj.data.visible = false;
+            }
+          });
+          backwardEdgeDataList.map((edgeData) => {
+            if (edgeData.classes === "backward"){
+              edgeData.visible = false;
+            }
+          });
+        }
+
         setGraphHighlighted(false); // Reset graph state
-        setActiveButton(""); // No active button, so reset variable   activeButton
+        setActiveButton(""); // No active button, so reset variable activeButton
       }
 
       if (!(isGraphHighlighted) || activeButton !== label) {
@@ -89,6 +119,20 @@ export const GraphHighlightButton: React.FC<GraphHighlightButtonProp> = ({
           equationStyle.split(" ").forEach((individualStyleClass) => {
             equationToTarget.classList.add(individualStyleClass);
           });
+        }
+
+        // NEW! If we are working with a backprop graph, we enable the specific backprop arrow
+        if (cyRefType === "backward-prop") {
+          let backedgeObject = getEdgeObject(backwardEdgeObjList, backPropEquationName);
+          if (backedgeObject !== undefined){
+            backedgeObject.data.visible = true;
+          }
+          console.log(backedgeObject);
+          let backedgeData = getEdgeDataInstance(backwardEdgeDataList, backPropEquationName);
+          if (backedgeData !== undefined){
+            backedgeData.visible = true;
+          }
+          console.log(backedgeData);
         }
 
         // console.log(`${label} Highlight applied`);
