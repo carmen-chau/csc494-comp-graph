@@ -9,6 +9,8 @@ This project is aimed to be used by prospective CSC311 students. It assumes that
 It is recommended that students have some prior understanding of what forward pass and backpropagation do, but it is not required. 
 
 ## Learning objectives
+1. Students should understand what the components of a computation graph are. They should be able to explain the process of constructing a graph from input to output (visually and mathematically).
+2. Students should understand what the multivariate chain rule is. They should be able to understand and visualize how this rule is applied to a computational graph to get the loss gradients in a step-by-step manner. 
 
 
 ## Installation instructions 
@@ -18,12 +20,3 @@ It is recommended that students have some prior understanding of what forward pa
 2. Once done, using your terminal, in the root directory of this repo, do either `npm install` or `yarn install` to download dependencies
 
 3. To test if app runs, in the root directory, run `npm run dev`. Upon success, you should be able to see a graph displayed when you enter the path http://localhost:3000 on any browser window. 
-
-
-
-
-
- Using this tool, users can explore how:
-
-- Forward pass, a process where the computation graph is evaluated systematically, calculates the neural network predictions
-- Backpropagation, a process where loss gradients are propagated backward through the computation graph, calculates how weights and biases should be adjusted to reduce model error. 
