@@ -59,7 +59,7 @@ WIP. Here is the old writing for reference:
 
 The `/components` folder contains files that define core graph components. Currently it contains files for a generalized graph, edge, node, graph highlight button and equation
 
-The `/data` folder contains node and edge instances for specific computational graph examples
+The `/data` folder contains Typescript files containing the data for the hardcoded computation graph instances. There are 2 files, 1 for forward pass and 1 for backpropagation.
 
 The `/pages` folder define pages that are actually rendered on. Specifically, `pages/index` is the home page that is displayed. It includes the computation graph instance as well as the equations. All other files are boilerplate for now
         
