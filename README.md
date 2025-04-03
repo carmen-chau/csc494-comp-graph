@@ -55,7 +55,6 @@ For backpropagation, in addition to the highlighting done in the forward pass pr
 - **Styling:** TailwindCSS
 
 ### Code structure
-WIP. Here is the old writing for reference:
 
 The `/components` folder contains files that define core graph components. Currently it contains files for a generalized graph, edge, node, graph highlight button and equation
 
@@ -70,7 +69,7 @@ The `/style` folder contains 2 files: `/style/GraphDefaultStyle.ts` and `/style/
 The `/utils` folder contains files that include helper functions for retrieving or manipulating data from a graph instance 
 
 ### Miscellaneous
-- Please consult the code comments made in each individual file should you need more fine level details about implementation.
+- Please consult the code comments made in each file should you need more fine level details about implementation.
 
 ## Design decision
 > Why did you pick this specific computation graph example?
