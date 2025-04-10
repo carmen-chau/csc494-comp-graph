@@ -70,6 +70,18 @@ export default function Home() {
 
       nodeClickFunction(dataContent);
     }
+    else{
+      const dataContent = {
+        label: "reset",
+        isGraphHighlighted: isBackwardGraphHighlighted,
+        setGraphHighlighted: setBackwardGraphHighlight,
+        activeButton: backwardActiveButton,
+        setActiveButton: setBackwardActiveButton,
+        cyRef: cyRef2,
+        cyRefType: "backward-prop"
+      }
+      nodeClickFunction(dataContent);
+    }
 
 
   }

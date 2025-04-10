@@ -12,21 +12,22 @@ import { nodeObjList as forwardNodeObjList, edgeObjList as forwardEdgeObjList, n
 import { nodeObjList as backwardNodeObjList, edgeObjList as backwardEdgeObjList, nodeDataList as backwardNodeDataList, edgeDataList as backwardEdgeDataList } from "../data/BackpropGraphData";
 
 export function nodeClickFunction(context: any) {
+    
     const {
         label,
-        nodeIds,
-        edgeIds,
-        highlightColour,
-        isGraphHighlighted,
+        nodeIds = [],
+        edgeIds = [],
+        highlightColour = "#000",
+        isGraphHighlighted = false,
         setGraphHighlighted,
-        activeButton,
+        activeButton = "",
         setActiveButton,
-        equationName,
-        equationStyle,
+        equationName = "",
+        equationStyle = "",
         backPropEquationName = "",
         cyRef,
-        cyRefType
-    } = context;
+        cyRefType = ""
+      } = context ?? {}; // ← fallback for the whole context being undefined      
 
     if (!cyRef.current) {
         return; // Prevent working with an undefined Cytoscape instance
@@ -46,7 +47,7 @@ export function nodeClickFunction(context: any) {
 
     cyRef.current.batch(() => {
 
-        if (activeButton !== "" || isGraphHighlighted) {
+        if (activeButton !== "" || isGraphHighlighted || label === "reset") {
             // Step 1: Reset all styling before applying new button styling
             const resetStyles = customNodeStyle(allNodeIds, "grey", allEdgeIds, "grey");
             resetStyles.forEach(({ selector }) => {
