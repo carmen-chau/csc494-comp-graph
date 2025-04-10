@@ -11,7 +11,7 @@ import defaultGraphStyles from "../styles/GraphDefaultStyle";
 const CytoscapeComponent = dynamic(() => import("react-cytoscapejs"), { ssr: false });
 
 // Graph component
-const SampleGraph = ({ cyRef, nodes, edges}: { cyRef: React.RefObject<any>, nodes: any, edges: any}) => {
+const SampleGraph = ({ cyRef, nodes, edges, nodeClickFunction}: { cyRef: React.RefObject<any>, nodes: any, edges: any, nodeClickFunction?:any}) => {
 
   const [isLocked, setIsLocked] = useState(false); // Store state (and unused state management method) for fixing graph location
 
@@ -26,6 +26,17 @@ const SampleGraph = ({ cyRef, nodes, edges}: { cyRef: React.RefObject<any>, node
     cyRef.current.userPanningEnabled(false);
     cyRef.current.userZoomingEnabled(false);
     cyRef.current.fit();
+    if (nodeClickFunction){
+      cyRef.current.on("tap", "node", nodeClickFunction);
+    }
+
+    // console.log(nodeClickFunction); // For testing purposes
+
+    // Hard coded node click reference
+    // cyRef.current.on('tap', 'node', (event) => {
+    //   const node = event.target;
+    //   console.log("Clicked node ID:", node.id());
+    // });
   };
 
   return (

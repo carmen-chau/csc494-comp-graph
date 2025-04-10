@@ -9,6 +9,7 @@ import SampleGraph from '../components/CompGraph';
 import { GraphHighlightButton } from "../components/GraphHighlightButton";
 import { nodeObjList as forwardPropNodeList, edgeObjList as forwardPropEdgeList } from "../data/ForwardpropGraphData"
 import { nodeObjList as backwardPropNodeList , edgeObjList as backwardPropEdgeList } from "../data/BackpropGraphData"
+import { nodeClickFunction } from "../utils/HighlightFunction";
 
 export default function Home() {
 
@@ -22,11 +23,62 @@ export default function Home() {
   const [isBackwardGraphHighlighted, setBackwardGraphHighlight] = useState(false);  // Global state to check whether graph is highlighted, somewhere
   const [backwardActiveButton, setBackwardActiveButton] = useState("");  // Global state to check whether there is a highlight button on the graph that is currently selected or not. 
 
+  // Defining a temporary node click function (for testing purposes)
+  // function nodeClickFunction(event){
+  //     const node = event.target;
+  //     console.log("Clicked node ID:", node.id());
+  // }
+
+  function clickNodeForHighlight(event: any){
+    const node = event.target;
+
+    if (node.id() == "L") {
+      const dataContent = {
+        label: "Equation L_bar",
+        nodeIds: ["L"],
+        edgeIds: [],
+        highlightColour: "#58cf35",
+        isGraphHighlighted: isBackwardGraphHighlighted,
+        setGraphHighlighted: setBackwardGraphHighlight,
+        activeButton: backwardActiveButton,
+        setActiveButton: setBackwardActiveButton,
+        equationName: "L_bar",
+        equationStyle: "bg-[#58cf35] px-0.5 py-0.5 h-fit rounded-full",
+        backPropEquationName: "L_backprop",
+        cyRef: cyRef2,
+        cyRefType: "backward-prop"
+      };
+      nodeClickFunction(dataContent);
+    }
+
+    else if (node.id() == "y1"){
+      const dataContent = {
+        label: "Equation y1_bar",
+        nodeIds: ["y1", "L"],
+        edgeIds: ["y1-L"],
+        highlightColour: "#ffdbbb",
+        isGraphHighlighted: isBackwardGraphHighlighted,
+        setGraphHighlighted: setBackwardGraphHighlight,
+        activeButton: backwardActiveButton,
+        setActiveButton: setBackwardActiveButton,
+        equationName: "y1_bar",
+        equationStyle: "bg-[#ffdbbb] px-0.5 py-0.5 h-fit rounded-full",
+        backPropEquationName: "L-y1-backprop",
+        cyRef: cyRef2,
+        cyRefType: "backward-prop"
+      }
+
+      nodeClickFunction(dataContent);
+    }
+
+
+  }
+
   return (
     <div>
       <p className="pl-4 mb-8">Forward propagation demonstration:</p>
       <div className="flex">  {/* Making the background white temporarily. Old string: "min-h-screen flex justify-center items-center bg-white" */}
-        <SampleGraph cyRef={cyRef} nodes={forwardPropNodeList} edges={forwardPropEdgeList} />  {/* Making a Comp Graph Object */}
+        <SampleGraph cyRef={cyRef} nodes={forwardPropNodeList} edges={forwardPropEdgeList}/>  {/* Making a Comp Graph Object */}
         <div className="w-full text-center mt-8 text-2xl" style={{ color: "black" }}>
           <MathJaxContext>
             <div className="grid grid-cols-[auto,auto] gap-x-1 space-y-4 pr-4">
@@ -156,7 +208,13 @@ export default function Home() {
       </div>
       <p className="pl-4 mt-10 mb-8">Backward propagation demonstration:</p>
       <div className="flex">  {/* Making the background white temporarily. Old string: "min-h-screen flex justify-center items-center bg-white" */}
-        <SampleGraph cyRef={cyRef2} nodes={backwardPropNodeList} edges={backwardPropEdgeList} />  {/* Making a Comp Graph Object */}
+        <SampleGraph
+          cyRef={cyRef2}
+          nodes={backwardPropNodeList}
+          edges={backwardPropEdgeList}
+          nodeClickFunction={clickNodeForHighlight}
+        />
+
         <div className="w-full text-center mt-8 text-2xl" style={{ color: "black" }}>
           <MathJaxContext>
             <div className="grid grid-cols-[auto,auto] gap-x-1 space-y-4 pr-4">
