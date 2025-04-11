@@ -36,9 +36,10 @@ const defaultGraphStyles = [
       },
     },    
 
-    // Style object for the y1 backward edge (backward pass, a bit curved)
+    // General styling for all backward edges. If more specific styling needs to be applied for a specific edge...
+    // more specific edges would be defined
     {
-      selector: 'edge.y1_backward',
+      selector: 'edge.backward',
       style: {
         'curve-style': 'unbundled-bezier',
         'control-point-distances': [30],
@@ -60,30 +61,6 @@ const defaultGraphStyles = [
         // 'edge-text-offset': 100,
       }
     },
-
-    {
-      selector: 'edge.y2_backward',
-      style: {
-        'curve-style': 'unbundled-bezier',
-        'control-point-distances': [30],
-        'control-point-weights': [0.50],
-    
-        'line-style': 'dashed',
-        'line-color': '#0077ff',
-        'target-arrow-shape': 'triangle',
-        'target-arrow-color': '#0077ff',
-    
-        'label': 'data(label)',
-        'font-size': 18,
-        'text-background-color': '#fff',
-        // 'text-background-opacity': 1,
-        // // 'text-background-shape': 'roundrectangle',
-        // 'text-background-padding': 3,
-        'text-rotation': 'autorotate',
-        'text-margin-y': -10,
-        // 'edge-text-offset': 100,
-      }
-    }
     
     
 ]
