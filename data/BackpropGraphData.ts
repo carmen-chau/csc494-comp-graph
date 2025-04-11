@@ -133,7 +133,7 @@ export const edgeObjList = [
         target: 'w12_2',
         label: '∂L/∂y₂',
         visible: false,
-        classes: 'backward',
+        classes: 'backward y1-w12_2-backprop',
     })
 
 ];
@@ -193,7 +193,7 @@ export const edgeDataList = [
         target: 'w12_2',
         label: '∂L/∂y₂',
         visible: false,
-        classes: 'backward',
+        classes: 'backward y1-w12_2-backprop',
     }
     
   ];
