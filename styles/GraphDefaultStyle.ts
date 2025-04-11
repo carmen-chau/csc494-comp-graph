@@ -38,6 +38,7 @@ const defaultGraphStyles = [
 
     // General styling for all backward edges. If more specific styling needs to be applied for a specific edge...
     // more specific edges would be defined
+    // Additional note: Currently, the only text rotations supported are "none" or "autorotate". Ie: No support regarding rotating text for a specific angle
     {
       selector: 'edge.backward',
       style: {
@@ -79,12 +80,8 @@ const defaultGraphStyles = [
         'label': 'data(label)',
         'font-size': 15,
         'text-background-color': '#fff',
-        // 'text-background-opacity': 1,
-        // // 'text-background-shape': 'roundrectangle',
-        // 'text-background-padding': 3,
         'text-rotation': 'autorotate',
         'text-margin-y': -15,
-        // 'edge-text-offset': 100,
       }
     },
     
