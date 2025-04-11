@@ -45,7 +45,8 @@ const SampleGraph = ({ cyRef, nodes, edges, nodeClickFunction}: { cyRef: React.R
     display: "flex", 
     flexDirection: "column", 
     alignItems: "center", 
-    paddingLeft: "40px"}}>
+    paddingLeft: "40px"
+    }}>
 
       {/* Cytoscape Graph */}
       <div style={{ 
