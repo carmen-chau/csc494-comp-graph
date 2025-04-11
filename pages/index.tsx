@@ -37,14 +37,14 @@ export default function Home() {
         label: "Equation L_bar",
         nodeIds: ["L"],
         edgeIds: [],
-        highlightColour: "#58cf35",
+        highlightColour: "#E7ff7f",
         isGraphHighlighted: isBackwardGraphHighlighted,
         setGraphHighlighted: setBackwardGraphHighlight,
         activeButton: backwardActiveButton,
         setActiveButton: setBackwardActiveButton,
         equationName: "L_bar",
-        equationStyle: "bg-[#58cf35] px-0.5 py-0.5 rounded-full",
-        backPropEquationName: "L_backprop",
+        equationStyle: "bg-[#E7ff7f] px-0.5 py-0.5 rounded-full",
+        backPropEquationNames: ["L_backprop"],
         cyRef: cyRef2,
         cyRefType: "backward-prop"
       };
@@ -56,14 +56,14 @@ export default function Home() {
         label: "Equation y1_bar",
         nodeIds: ["y1", "L"],
         edgeIds: [],
-        highlightColour: "#ffdbbb",
+        highlightColour: "#Ff7f7f",
         isGraphHighlighted: isBackwardGraphHighlighted,
         setGraphHighlighted: setBackwardGraphHighlight,
         activeButton: backwardActiveButton,
         setActiveButton: setBackwardActiveButton,
         equationName: "y1_bar",
-        equationStyle: "bg-[#ffdbbb] px-0.5 py-0.5 h-fit rounded-full",
-        backPropEquationName: "L-y1-backprop",
+        equationStyle: "bg-[#Ff7f7f] px-0.5 py-0.5 h-fit rounded-full",
+        backPropEquationNames: ["L-y1-backprop"],
         cyRef: cyRef2,
         cyRefType: "backward-prop"
       }
@@ -76,14 +76,14 @@ export default function Home() {
         label: "Equation y2_bar",
         nodeIds: ["y2", "L"],
         edgeIds: [],
-        highlightColour: "#ffdbbb",
+        highlightColour: "#C3aaf9",
         isGraphHighlighted: isBackwardGraphHighlighted,
         setGraphHighlighted: setBackwardGraphHighlight,
         activeButton: backwardActiveButton,
         setActiveButton: setBackwardActiveButton,
         equationName: "y2_bar",
-        equationStyle: "bg-[#ffdbbb] px-0.5 py-0.5 h-fit rounded-full",
-        backPropEquationName: "L-y2-backprop",
+        equationStyle: "bg-[#C3aaf9] px-0.5 py-0.5 h-fit rounded-full",
+        backPropEquationNames: ["L-y2-backprop"],
         cyRef: cyRef2,
         cyRefType: "backward-prop"
       }
@@ -259,8 +259,11 @@ export default function Home() {
               {/* Equation 2: y1_bar */}
               <MathEquation equationName="y1_bar" content={"\\(\\overline{y}_1 = \\overline{\\mathcal{L}} \\cdot \\frac{\\partial \\mathcal{L}}{\\partial y_1} = \\overline{\\mathcal{L}} (y_1 - t_1)\\)"} className=''></MathEquation>
 
-              {/* Equation 2: y2_bar */}
+              {/* Equation 3: y2_bar */}
               <MathEquation equationName="y2_bar" content={"\\(\\overline{y}_2 = \\overline{\\mathcal{L}} \\cdot \\frac{\\partial \\mathcal{L}}{\\partial y_2} = \\overline{\\mathcal{L}} (y_2 - t_2)\\)"} className=''></MathEquation>
+
+              {/* Equation 4: w12_2_bar */}
+              <MathEquation equationName="y2_bar" content={"\\( \\overline{w}^{(2)}_{12} = \\overline{y}_1 \\cdot \\frac{\\partial y_1}{\\partial w^{(2)}_{12}} = \\overline{y}_1 h_2 \\)"} className=''></MathEquation>
 
             </div>
           </MathJaxContext>

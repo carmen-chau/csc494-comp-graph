@@ -28,7 +28,7 @@ export function nodeClickFunction(context: any) {
         setActiveButton,
         equationName = "",
         equationStyle = "",
-        backPropEquationName = "",
+        backPropEquationNames = [],
         cyRef,
         cyRefType = ""
       } = context ?? {}; // ← fallback for the whole context being undefined      
@@ -101,20 +101,18 @@ export function nodeClickFunction(context: any) {
             }
 
             // NEW! If we are working with a backprop graph, we enable the specific backprop arrow
-            if (cyRefType === "backward-prop") {
-                let backedgeObject = getEdgeObject(backwardEdgeObjList, backPropEquationName);
-                if (backedgeObject !== undefined) {
-                    backedgeObject.data.visible = true;
-                }
-                console.log(backedgeObject);
-                let backedgeData = getEdgeDataInstance(backwardEdgeDataList, backPropEquationName);
-                if (backedgeData !== undefined) {
-                    backedgeData.visible = true;
-                }
-                console.log(backedgeData);
+            if (cyRefType === "backward-prop"){
+                backPropEquationNames.forEach((equationName: string)=> {
+                    let backedgeObject = getEdgeObject(backwardEdgeObjList, equationName);
+                    if (backedgeObject !== undefined) {
+                        backedgeObject.data.visible = true;
+                    }
+                    let backedgeData = getEdgeDataInstance(backwardEdgeDataList, equationName);
+                    if (backedgeData !== undefined) {
+                        backedgeData.visible = true;
+                    }
+                })
             }
-
-            // console.log(`${label} Highlight applied`);
 
             setGraphHighlighted(true); // Mark graph as highlighted
             setActiveButton(label); // Set the button to be active
