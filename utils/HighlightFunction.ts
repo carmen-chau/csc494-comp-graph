@@ -1,7 +1,11 @@
 /*
-  Highlight function containing the same equation / node highlight toggle logic as GraphHighlightButton, minus the button component creation.
+  Custom node + equation highlight function for the backpropagation graph
+  
+  Same basic underlying logic as GraphHighlightButton, except the following changes:
 
-  This file exists because for the backpropagation graph, we wanted to make ndoes clickable instead.
+    -  Does not include button component creation.
+
+  This file exists because for the backpropagation graph, we wanted to make nodes clickable instead.
 */
 
 // Imports

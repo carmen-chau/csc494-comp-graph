@@ -43,7 +43,7 @@ export default function Home() {
         activeButton: backwardActiveButton,
         setActiveButton: setBackwardActiveButton,
         equationName: "L_bar",
-        equationStyle: "bg-[#58cf35] px-0.5 py-0.5 h-fit rounded-full",
+        equationStyle: "bg-[#58cf35] px-0.5 py-0.5 rounded-full",
         backPropEquationName: "L_backprop",
         cyRef: cyRef2,
         cyRefType: "backward-prop"
@@ -55,7 +55,7 @@ export default function Home() {
       const dataContent = {
         label: "Equation y1_bar",
         nodeIds: ["y1", "L"],
-        edgeIds: ["y1-L"],
+        edgeIds: [],
         highlightColour: "#ffdbbb",
         isGraphHighlighted: isBackwardGraphHighlighted,
         setGraphHighlighted: setBackwardGraphHighlight,
@@ -229,44 +229,15 @@ export default function Home() {
 
         <div className="w-full text-center mt-8 text-2xl" style={{ color: "black" }}>
           <MathJaxContext>
-            <div className="grid grid-cols-[auto,auto] gap-x-1 space-y-4 pr-4">
-              <p className="font-serif col-span-2">Backward pass equations:</p>
+            <div className="grid grid-cols-[auto] gap-x-1 space-y-4 pr-4">
+              <p className="font-serif col-span-1">Backward pass equations:</p>
 
               {/* Equation 1: L_bar */}
               <MathEquation equationName="L_bar" content={"\\(\\overline{\\mathcal{L}}= 1\\)"} className=''></MathEquation>
-              <GraphHighlightButton
-                label="Equation L_bar"
-                nodeIds={["L"]}
-                edgeIds={[]}
-                highlightColour="#58cf35"
-                isGraphHighlighted={isBackwardGraphHighlighted}
-                setGraphHighlighted={setBackwardGraphHighlight}
-                activeButton={backwardActiveButton}
-                setActiveButton={setBackwardActiveButton}
-                equationName="L_bar"
-                equationStyle="bg-[#58cf35] px-0.5 py-0.5 h-fit rounded-full"
-                backPropEquationName="L_backprop"
-                cyRef={cyRef2}
-                cyRefType = "backward-prop">
-               </GraphHighlightButton>
-
+          
               {/* Equation 2: y1_bar */}
               <MathEquation equationName="y1_bar" content={"\\(\\overline{y}_1 = \\overline{\\mathcal{L}} \\cdot \\frac{\\partial \\mathcal{L}}{\\partial y_1} = \\overline{\\mathcal{L}} (y_1 - t_1)\\)"} className=''></MathEquation>
-              <GraphHighlightButton
-                label="Equation y1_bar"
-                nodeIds={["y1", "L"]}
-                edgeIds={["y1-L"]}
-                highlightColour="#ffdbbb"
-                isGraphHighlighted={isBackwardGraphHighlighted}
-                setGraphHighlighted={setBackwardGraphHighlight}
-                activeButton={backwardActiveButton}
-                setActiveButton={setBackwardActiveButton}
-                equationName="y1_bar"
-                equationStyle="bg-[#ffdbbb] px-0.5 py-0.5 h-fit rounded-full"
-                backPropEquationName="L-y1-backprop"
-                cyRef={cyRef2}
-                cyRefType = "backward-prop">
-              </GraphHighlightButton>
+
             </div>
           </MathJaxContext>
         </div>
