@@ -64,7 +64,6 @@ const defaultGraphStyles = [
     },
 
     // Specific styling class for y1-w12_2-backprop
-
     {
       selector: 'edge.y1-w12_2-backprop',
       style: {
@@ -79,6 +78,27 @@ const defaultGraphStyles = [
     
         'label': 'data(label)',
         'font-size': 15,
+        'text-background-color': '#fff',
+        'text-rotation': 'autorotate',
+        'text-margin-y': -15,
+      }
+    },
+
+     // Specific styling class for y1-w11_2-backprop
+     {
+      selector: 'edge.y1-w11_2-backprop',
+      style: {
+        'curve-style': 'unbundled-bezier',
+        'control-point-distances': [15],
+        'control-point-weights': [0.20],
+    
+        'line-style': 'dashed',
+        'line-color': '#0077ff',
+        'target-arrow-shape': 'triangle',
+        'target-arrow-color': '#0077ff',
+    
+        'label': 'data(label)',
+        'font-size': 14,
         'text-background-color': '#fff',
         'text-rotation': 'autorotate',
         'text-margin-y': -15,
