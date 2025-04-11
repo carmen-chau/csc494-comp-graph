@@ -51,7 +51,7 @@ const defaultGraphStyles = [
         'target-arrow-color': '#0077ff',
     
         'label': 'data(label)',
-        'font-size': 18,
+        'font-size': 15,
         'text-background-color': '#fff',
         // 'text-background-opacity': 1,
         // // 'text-background-shape': 'roundrectangle',
@@ -64,29 +64,29 @@ const defaultGraphStyles = [
 
     // Specific styling class for y1-w12_2-backprop
 
-    // {
-    //   selector: 'edge.backward',
-    //   style: {
-    //     'curve-style': 'unbundled-bezier',
-    //     'control-point-distances': [30],
-    //     'control-point-weights': [0.50],
+    {
+      selector: 'edge.y1-w12_2-backprop',
+      style: {
+        'curve-style': 'unbundled-bezier',
+        'control-point-distances': [30],
+        'control-point-weights': [0.20],
     
-    //     'line-style': 'dashed',
-    //     'line-color': '#0077ff',
-    //     'target-arrow-shape': 'triangle',
-    //     'target-arrow-color': '#0077ff',
+        'line-style': 'dashed',
+        'line-color': '#0077ff',
+        'target-arrow-shape': 'triangle',
+        'target-arrow-color': '#0077ff',
     
-    //     'label': 'data(label)',
-    //     'font-size': 18,
-    //     'text-background-color': '#fff',
-    //     // 'text-background-opacity': 1,
-    //     // // 'text-background-shape': 'roundrectangle',
-    //     // 'text-background-padding': 3,
-    //     'text-rotation': 'autorotate',
-    //     'text-margin-y': -10,
-    //     // 'edge-text-offset': 100,
-    //   }
-    // },
+        'label': 'data(label)',
+        'font-size': 15,
+        'text-background-color': '#fff',
+        // 'text-background-opacity': 1,
+        // // 'text-background-shape': 'roundrectangle',
+        // 'text-background-padding': 3,
+        'text-rotation': 'autorotate',
+        'text-margin-y': -15,
+        // 'edge-text-offset': 100,
+      }
+    },
     
     
 ]
