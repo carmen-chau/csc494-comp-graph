@@ -109,6 +109,7 @@ export const edgeObjList = [
     GraphEdge({ id: "t2-L", source: "t2", target: "L" }),
 
     //NEW!!! (For backpropagation)
+    // Note: All graph labels are native strings using unicode symbols (due to issues with supporting native MathJax rendering)
     GraphEdge({
         id: 'L-y1-backprop',
         source: 'L',
@@ -131,7 +132,7 @@ export const edgeObjList = [
         id: 'y1-w12_2-backprop',
         source: 'y1',
         target: 'w12_2',
-        label: '∂L/∂y₂',
+        label: '∂y₁/∂w₁₂⁽²⁾',
         visible: false,
         classes: 'backward y1-w12_2-backprop',
     })
@@ -169,6 +170,7 @@ export const edgeDataList = [
     { id: "t2-L", source: "t2", target: "L" },
 
     // NEW!!! (For backpropagation)
+    // Note: All graph labels are native strings using unicode symbols (due to issues with supporting native MathJax rendering)
     {
         id: 'L-y1-backprop',
         source: 'L',
@@ -191,7 +193,7 @@ export const edgeDataList = [
         id: 'y1-w12_2-backprop',
         source: 'y1',
         target: 'w12_2',
-        label: '∂L/∂y₂',
+        label: '∂y₁/∂w₁₂⁽²⁾',
         visible: false,
         classes: 'backward y1-w12_2-backprop',
     }
