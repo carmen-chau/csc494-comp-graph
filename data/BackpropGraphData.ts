@@ -115,8 +115,17 @@ export const edgeObjList = [
         target: 'y1',
         label: '∂L/∂y₁',
         visible: false,
-        classes: 'backward',
-      })
+        classes: 'y1_backward',
+    }),
+
+    GraphEdge({
+        id: 'L-y2-backprop',
+        source: 'L',
+        target: 'y2',
+        label: '∂L/∂y₂',
+        visible: false,
+        classes: 'y2_backward',
+    })
 
 ];
 
@@ -156,8 +165,17 @@ export const edgeDataList = [
         source: 'L',
         target: 'y1',
         label: '∂L/∂y₁',
-        classes: 'backward',
+        classes: 'y1_backward',
         visible: false
-      }
+    },
+
+    {
+        id: 'L-y2-backprop',
+        source: 'L',
+        target: 'y2',
+        label: '∂L/∂y₂',
+        classes: 'y2_backward',
+        visible: false,
+    }
   ];
   

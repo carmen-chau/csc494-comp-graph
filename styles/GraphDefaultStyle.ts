@@ -36,13 +36,13 @@ const defaultGraphStyles = [
       },
     },    
 
-    // Style object for edges (backward pass, a bit curved)
+    // Style object for the y1 backward edge (backward pass, a bit curved)
     {
-      selector: 'edge.backward',
+      selector: 'edge.y1_backward',
       style: {
         'curve-style': 'unbundled-bezier',
-        'control-point-distances': [50],
-        'control-point-weights': [0.30],
+        'control-point-distances': [30],
+        'control-point-weights': [0.50],
     
         'line-style': 'dashed',
         'line-color': '#0077ff',
@@ -50,13 +50,37 @@ const defaultGraphStyles = [
         'target-arrow-color': '#0077ff',
     
         'label': 'data(label)',
-        'font-size': 12,
+        'font-size': 18,
         'text-background-color': '#fff',
         // 'text-background-opacity': 1,
         // // 'text-background-shape': 'roundrectangle',
         // 'text-background-padding': 3,
         'text-rotation': 'autorotate',
-        'text-margin-y': -20,
+        'text-margin-y': -10,
+        // 'edge-text-offset': 100,
+      }
+    },
+
+    {
+      selector: 'edge.y2_backward',
+      style: {
+        'curve-style': 'unbundled-bezier',
+        'control-point-distances': [30],
+        'control-point-weights': [0.50],
+    
+        'line-style': 'dashed',
+        'line-color': '#0077ff',
+        'target-arrow-shape': 'triangle',
+        'target-arrow-color': '#0077ff',
+    
+        'label': 'data(label)',
+        'font-size': 18,
+        'text-background-color': '#fff',
+        // 'text-background-opacity': 1,
+        // // 'text-background-shape': 'roundrectangle',
+        // 'text-background-padding': 3,
+        'text-rotation': 'autorotate',
+        'text-margin-y': -10,
         // 'edge-text-offset': 100,
       }
     }

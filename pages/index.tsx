@@ -70,6 +70,27 @@ export default function Home() {
 
       nodeClickFunction(dataContent);
     }
+
+    else if (node.id() == "y2"){
+      const dataContent = {
+        label: "Equation y2_bar",
+        nodeIds: ["y2", "L"],
+        edgeIds: [],
+        highlightColour: "#ffdbbb",
+        isGraphHighlighted: isBackwardGraphHighlighted,
+        setGraphHighlighted: setBackwardGraphHighlight,
+        activeButton: backwardActiveButton,
+        setActiveButton: setBackwardActiveButton,
+        equationName: "y2_bar",
+        equationStyle: "bg-[#ffdbbb] px-0.5 py-0.5 h-fit rounded-full",
+        backPropEquationName: "L-y2-backprop",
+        cyRef: cyRef2,
+        cyRefType: "backward-prop"
+      }
+
+      nodeClickFunction(dataContent);
+    }
+
     else{
       const dataContent = {
         label: "reset",
@@ -237,6 +258,9 @@ export default function Home() {
           
               {/* Equation 2: y1_bar */}
               <MathEquation equationName="y1_bar" content={"\\(\\overline{y}_1 = \\overline{\\mathcal{L}} \\cdot \\frac{\\partial \\mathcal{L}}{\\partial y_1} = \\overline{\\mathcal{L}} (y_1 - t_1)\\)"} className=''></MathEquation>
+
+              {/* Equation 2: y2_bar */}
+              <MathEquation equationName="y2_bar" content={"\\(\\overline{y}_2 = \\overline{\\mathcal{L}} \\cdot \\frac{\\partial \\mathcal{L}}{\\partial y_2} = \\overline{\\mathcal{L}} (y_2 - t_2)\\)"} className=''></MathEquation>
 
             </div>
           </MathJaxContext>

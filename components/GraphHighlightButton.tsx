@@ -1,4 +1,8 @@
 /*
+  TODO: NEED TO UPDATE THIS FILE BASED ON NEW CHANGES MADE TO HighlightFunction.ts
+*/
+
+/*
   Re-usable button component to toggle the steps for the computational graph construction
 */
 

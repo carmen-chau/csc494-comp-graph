@@ -70,12 +70,12 @@ export function nodeClickFunction(context: any) {
             // NEW! If we are working with a backprop graph, we must reset all possible backprop arrows to have attribute visible: false
             if (cyRefType === "backward-prop") {
                 backwardEdgeObjList.map((edgeObj) => {
-                    if (edgeObj.classes === "backward") {
+                    if (edgeObj.classes?.includes("backward")) {
                         edgeObj.data.visible = false;
                     }
                 });
                 backwardEdgeDataList.map((edgeData) => {
-                    if (edgeData.classes === "backward") {
+                    if (edgeData.classes?.includes("backward")) {
                         edgeData.visible = false;
                     }
                 });
