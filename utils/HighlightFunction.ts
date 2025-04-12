@@ -4,9 +4,13 @@
   Same basic underlying logic as GraphHighlightButton, except the following changes:
 
     -  Does not include button component creation.
+
     - Omits equation highlighting. This logic was moved to index.tsx because the "unhighlighting" logic wouldn't work when the equation is not displayed in the DOM.
         - Thus, note that the attribute <equationStyle>, which was present in GraphHighlightButton, is no longer here.
+
     - Includes an exported state variable called setActiveEquation that represents the backprop error signal equation corresponding to the highlighted nodes and statements
+
+    - The equationName attribute becomes: equationNames (a list of strings). This is helpful in case we want to display multiple equations for a certain backpropagation path
 
   This file exists because for the backpropagation graph, we wanted to make nodes clickable instead.
 */
@@ -28,7 +32,7 @@ export function nodeClickFunction(context: any) {
         setGraphHighlighted,
         activeButton = "",
         setActiveButton,
-        equationName = "",
+        equationNames = [],
         setActiveEquation,
         // equationStyle = "",
         backPropEquationNames = [],
@@ -121,7 +125,8 @@ export function nodeClickFunction(context: any) {
             }
 
             setGraphHighlighted(true); // Mark graph as highlighted
-            setActiveEquation(equationName); // Set equation name
+            setActiveEquation(equationNames);
+            // setActiveEquation(equationNames[equationNames.length - 1]); // Set equation name using the last equation in the list
             setActiveButton(label); // Set the button to be active
         }
     });

@@ -24,7 +24,7 @@ export default function Home() {
   const [backwardActiveButton, setBackwardActiveButton] = useState("");  // Global state to check whether there is a highlight button on the graph that is currently selected or not. 
 
   // Defining state variable to store and set active equation name
-  const [backpropActiveEquation, setBackpropActiveEquation] = useState("")
+  const [backpropActiveEquations, setBackpropActiveEquations] = useState<string[]>([]);
 
   //Defining state variables to store and set style string for backprop equation.
   const [backpropEquationStyle, setBackpropEquationStyle] = useState("");
@@ -32,17 +32,18 @@ export default function Home() {
   //NEW: Only for the backprop graph. Define a useEffect hook to dynamically highlight equation when it is active AND when a valid styling string is passed
   useEffect(() => {
     const allEquations = document.querySelectorAll("[data-equation]");
+    const finalEquationToHighlight = backpropActiveEquations[backpropActiveEquations.length - 1];
     allEquations.forEach((equation) => (equation.className = "")); // Clear existing highlights
   
-    if (backpropActiveEquation && backpropEquationStyle) {
-      const selectedEquation = document.querySelector(`[data-equation="${backpropActiveEquation}"]`);
+    if (finalEquationToHighlight && backpropEquationStyle) {
+      const selectedEquation = document.querySelector(`[data-equation="${finalEquationToHighlight}"]`);
       if (selectedEquation) {
         backpropEquationStyle.split(" ").forEach((cls) => {
           selectedEquation.classList.add(cls);
         });
       }
     }
-  }, [backpropActiveEquation, backpropEquationStyle]); // useEffect hook would run only when these variables change in value
+  }, [backpropActiveEquations, backpropEquationStyle]); // useEffect hook would run only when these variables change in value
 
   function clickNodeForHighlight(event: any){
     const node = event.target;
@@ -57,8 +58,8 @@ export default function Home() {
         setGraphHighlighted: setBackwardGraphHighlight,
         activeButton: backwardActiveButton,
         setActiveButton: setBackwardActiveButton,
-        equationName: "L_bar",
-        setActiveEquation: setBackpropActiveEquation,
+        equationNames: ["L_bar"],
+        setActiveEquation: setBackpropActiveEquations,
         // equationStyle: "bg-[#E7ff7f] px-0.5 py-0.5 rounded-full",
         backPropEquationNames: ["L_backprop"],
         cyRef: cyRef2,
@@ -78,8 +79,8 @@ export default function Home() {
         setGraphHighlighted: setBackwardGraphHighlight,
         activeButton: backwardActiveButton,
         setActiveButton: setBackwardActiveButton,
-        equationName: "y1_bar",
-        setActiveEquation: setBackpropActiveEquation,
+        equationNames: ["L_bar", "y1_bar"],
+        setActiveEquation: setBackpropActiveEquations,
         // equationStyle: "bg-[#Ff7f7f] px-0.5 py-0.5 h-fit rounded-full",
         backPropEquationNames: ["L-y1-backprop"],
         cyRef: cyRef2,
@@ -100,8 +101,8 @@ export default function Home() {
         setGraphHighlighted: setBackwardGraphHighlight,
         activeButton: backwardActiveButton,
         setActiveButton: setBackwardActiveButton,
-        equationName: "y2_bar",
-        setActiveEquation: setBackpropActiveEquation,
+        equationNames: ["L_bar", "y2_bar"],
+        setActiveEquation: setBackpropActiveEquations,
         // equationStyle: "bg-[#C3aaf9] px-0.5 py-0.5 h-fit rounded-full",
         backPropEquationNames: ["L-y2-backprop"],
         cyRef: cyRef2,
@@ -121,8 +122,8 @@ export default function Home() {
         setGraphHighlighted: setBackwardGraphHighlight,
         activeButton: backwardActiveButton,
         setActiveButton: setBackwardActiveButton,
-        equationName: "w12_2_bar",
-        setActiveEquation: setBackpropActiveEquation,
+        equationNames: ["L_bar", "y1_bar", "w12_2_bar"],
+        setActiveEquation: setBackpropActiveEquations,
         // equationStyle: "bg-[#Ef97b0] px-0.5 py-0.5 h-fit rounded-full",
         backPropEquationNames: ["y1-w12_2-backprop", "L-y1-backprop"],
         cyRef: cyRef2,
@@ -142,8 +143,8 @@ export default function Home() {
         setGraphHighlighted: setBackwardGraphHighlight,
         activeButton: backwardActiveButton,
         setActiveButton: setBackwardActiveButton,
-        equationName: "w11_2_bar",
-        setActiveEquation: setBackpropActiveEquation,
+        equationNames: ["L_bar", "y1_bar", "w11_2_bar"],
+        setActiveEquation: setBackpropActiveEquations,
         // equationStyle: "bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full",
         backPropEquationNames: ["y1-w11_2-backprop", "L-y1-backprop"],
         cyRef: cyRef2,
@@ -160,7 +161,7 @@ export default function Home() {
         setGraphHighlighted: setBackwardGraphHighlight,
         activeButton: backwardActiveButton,
         setActiveButton: setBackwardActiveButton,
-        setActiveEquation: setBackpropActiveEquation,
+        setActiveEquation: setBackpropActiveEquations,
         cyRef: cyRef2,
         cyRefType: "backward-prop"
       }
@@ -317,27 +318,27 @@ export default function Home() {
               <p className="font-serif col-span-1">Backward pass equations:</p>
 
               {/* Equation 1: L_bar */}
-              {backpropActiveEquation === "L_bar" && (
+              {backpropActiveEquations.includes("L_bar") && (
                 <MathEquation equationName="L_bar" content={"\\(\\overline{\\mathcal{L}}= 1\\)"} className='' />
               )}
           
               {/* Equation 2: y1_bar */}
-              {backpropActiveEquation === "y1_bar" && (
+              {backpropActiveEquations.includes("y1_bar")  && (
                 <MathEquation equationName="y1_bar" content={"\\(\\overline{y}_1 = \\overline{\\mathcal{L}} \\cdot \\frac{\\partial \\mathcal{L}}{\\partial y_1} = \\overline{\\mathcal{L}} (y_1 - t_1)\\)"} className=''></MathEquation>
               )}
 
               {/* Equation 3: y2_bar */}
-              {backpropActiveEquation === "y2_bar" && (
+              {backpropActiveEquations.includes("y2_bar") && (
                 <MathEquation equationName="y2_bar" content={"\\(\\overline{y}_2 = \\overline{\\mathcal{L}} \\cdot \\frac{\\partial \\mathcal{L}}{\\partial y_2} = \\overline{\\mathcal{L}} (y_2 - t_2)\\)"} className=''></MathEquation>
               )}
 
               {/* Equation 4: w12_2_bar */}
-              {backpropActiveEquation === "w12_2_bar" && (
+              {backpropActiveEquations.includes("w12_2_bar") && (
                 <MathEquation equationName="w12_2_bar" content={"\\( \\overline{w}^{(2)}_{12} = \\overline{y}_1 \\cdot \\frac{\\partial y_1}{\\partial w^{(2)}_{12}} = \\overline{y}_1 h_2 \\)"} className=''></MathEquation>
               )}
 
               {/* Equation 4: w11_2_bar */}
-              {backpropActiveEquation === "w11_2_bar" && (
+              {backpropActiveEquations.includes("w11_2_bar") && (
                 <MathEquation equationName="w11_2_bar" content={"\\( \\overline{w}^{(2)}_{11} = \\overline{y}_1 \\cdot \\frac{\\partial y_1}{\\partial w^{(2)}_{11}} = \\overline{y}_1 h_1 \\)"} className=''></MathEquation>
               )}
 
