@@ -4,6 +4,7 @@
   Same basic underlying logic as GraphHighlightButton, except the following changes:
 
     -  Does not include button component creation.
+    - Omits equation highlighting. This logic was moved to index.tsx because the "unhighlighting" logic wouldn't work when the equation is not displayed in the DOM.
     - Includes an exported state variable called setActiveEquation that represents the backprop error signal equation corresponding to the highlighted nodes and statements
 
   This file exists because for the backpropagation graph, we wanted to make nodes clickable instead.
@@ -54,6 +55,8 @@ export function nodeClickFunction(context: any) {
 
         if (activeButton !== "" || isGraphHighlighted || label === "reset") {
             // Step 1: Reset all styling before applying new button styling
+            // Note: The code resetting should work even if the equation(s) gets hidden after. This is because we are...
+            // ...resetting the active equation AFTER this, meaning that the equation is still visible on the DOM.
             const resetStyles = customNodeStyle(allNodeIds, "grey", allEdgeIds, "grey");
             resetStyles.forEach(({ selector }) => {
                 cyRef.current!.$(selector).style({
@@ -94,13 +97,13 @@ export function nodeClickFunction(context: any) {
                 cyRef.current!.$(selector).style(style);
             });
 
-            // Apply styling to the specific equation
-            const equationToTarget = document.querySelector(`[data-equation="${equationName}"]`);
-            if (equationToTarget) {
-                equationStyle.split(" ").forEach((individualStyleClass: any) => {
-                    equationToTarget.classList.add(individualStyleClass);
-                });
-            }
+            // // Apply styling to the specific equation
+            // const equationToTarget = document.querySelector(`[data-equation="${equationName}"]`);
+            // if (equationToTarget) {
+            //     equationStyle.split(" ").forEach((individualStyleClass: any) => {
+            //         equationToTarget.classList.add(individualStyleClass);
+            //     });
+            // }
 
             // NEW! If we are working with a backprop graph, we enable the specific backprop arrow
             if (cyRefType === "backward-prop"){

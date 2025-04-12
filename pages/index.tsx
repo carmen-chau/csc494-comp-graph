@@ -2,7 +2,7 @@
   Home page
 */
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect} from "react";
 import { MathJaxContext } from 'better-react-mathjax';
 import MathEquation from "../components/MathEquation";
 import SampleGraph from '../components/CompGraph';
@@ -23,14 +23,26 @@ export default function Home() {
   const [isBackwardGraphHighlighted, setBackwardGraphHighlight] = useState(false);  // Global state to check whether graph is highlighted, somewhere
   const [backwardActiveButton, setBackwardActiveButton] = useState("");  // Global state to check whether there is a highlight button on the graph that is currently selected or not. 
 
-  // Defining state variable to store active equation name
+  // Defining state variable to store and set active equation name
   const [backpropActiveEquation, setBackpropActiveEquation] = useState("")
+
+  //Defining state variables to store and set style string for backprop equation.
+  const [backpropEquationStyle, setBackpropEquationStyle] = useState("");
+
+  //NEW: Only for the backprop graph. Define a useEffect hook to dynamically highlight equation when it is active AND when a valid styling string is passed
+  useEffect(() => {
+    const allEquations = document.querySelectorAll("[data-equation]");
+    allEquations.forEach((equation) => (equation.className = "")); // Clear existing highlights
   
-  // Defining a temporary node click function (for testing purposes)
-  // function nodeClickFunction(event){
-  //     const node = event.target;
-  //     console.log("Clicked node ID:", node.id());
-  // }
+    if (backpropActiveEquation && backpropEquationStyle) {
+      const selectedEquation = document.querySelector(`[data-equation="${backpropActiveEquation}"]`);
+      if (selectedEquation) {
+        backpropEquationStyle.split(" ").forEach((cls) => {
+          selectedEquation.classList.add(cls);
+        });
+      }
+    }
+  }, [backpropActiveEquation, backpropEquationStyle]); // useEffect hook would run only when these variables change in value
 
   function clickNodeForHighlight(event: any){
     const node = event.target;
@@ -53,6 +65,7 @@ export default function Home() {
         cyRefType: "backward-prop"
       };
       nodeClickFunction(dataContent);
+      setBackpropEquationStyle("bg-[#E7ff7f] px-0.5 py-0.5 rounded-full");
     }
 
     else if (node.id() == "y1"){
@@ -74,6 +87,7 @@ export default function Home() {
       }
 
       nodeClickFunction(dataContent);
+      setBackpropEquationStyle("bg-[#Ff7f7f] px-0.5 py-0.5 h-fit rounded-full");
     }
 
     else if (node.id() == "y2"){
@@ -93,8 +107,8 @@ export default function Home() {
         cyRef: cyRef2,
         cyRefType: "backward-prop"
       }
-
       nodeClickFunction(dataContent);
+      setBackpropEquationStyle("bg-[#C3aaf9] px-0.5 py-0.5 h-fit rounded-full");
     }
 
     else if (node.id() == "w12_2"){
@@ -114,8 +128,8 @@ export default function Home() {
         cyRef: cyRef2,
         cyRefType: "backward-prop"
       }
-
       nodeClickFunction(dataContent);
+      setBackpropEquationStyle("bg-[#Ef97b0] px-0.5 py-0.5 h-fit rounded-full");
     }
 
     else if (node.id() == "w11_2"){
@@ -135,8 +149,8 @@ export default function Home() {
         cyRef: cyRef2,
         cyRefType: "backward-prop"
       }
-
       nodeClickFunction(dataContent);
+      setBackpropEquationStyle("bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full");
     }
 
     else{
