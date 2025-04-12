@@ -59,7 +59,7 @@ export default function Home() {
         setActiveButton: setBackwardActiveButton,
         equationName: "L_bar",
         setActiveEquation: setBackpropActiveEquation,
-        equationStyle: "bg-[#E7ff7f] px-0.5 py-0.5 rounded-full",
+        // equationStyle: "bg-[#E7ff7f] px-0.5 py-0.5 rounded-full",
         backPropEquationNames: ["L_backprop"],
         cyRef: cyRef2,
         cyRefType: "backward-prop"
@@ -80,7 +80,7 @@ export default function Home() {
         setActiveButton: setBackwardActiveButton,
         equationName: "y1_bar",
         setActiveEquation: setBackpropActiveEquation,
-        equationStyle: "bg-[#Ff7f7f] px-0.5 py-0.5 h-fit rounded-full",
+        // equationStyle: "bg-[#Ff7f7f] px-0.5 py-0.5 h-fit rounded-full",
         backPropEquationNames: ["L-y1-backprop"],
         cyRef: cyRef2,
         cyRefType: "backward-prop"
@@ -102,7 +102,7 @@ export default function Home() {
         setActiveButton: setBackwardActiveButton,
         equationName: "y2_bar",
         setActiveEquation: setBackpropActiveEquation,
-        equationStyle: "bg-[#C3aaf9] px-0.5 py-0.5 h-fit rounded-full",
+        // equationStyle: "bg-[#C3aaf9] px-0.5 py-0.5 h-fit rounded-full",
         backPropEquationNames: ["L-y2-backprop"],
         cyRef: cyRef2,
         cyRefType: "backward-prop"
@@ -123,7 +123,7 @@ export default function Home() {
         setActiveButton: setBackwardActiveButton,
         equationName: "w12_2_bar",
         setActiveEquation: setBackpropActiveEquation,
-        equationStyle: "bg-[#Ef97b0] px-0.5 py-0.5 h-fit rounded-full",
+        // equationStyle: "bg-[#Ef97b0] px-0.5 py-0.5 h-fit rounded-full",
         backPropEquationNames: ["y1-w12_2-backprop", "L-y1-backprop"],
         cyRef: cyRef2,
         cyRefType: "backward-prop"
@@ -144,7 +144,7 @@ export default function Home() {
         setActiveButton: setBackwardActiveButton,
         equationName: "w11_2_bar",
         setActiveEquation: setBackpropActiveEquation,
-        equationStyle: "bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full",
+        // equationStyle: "bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full",
         backPropEquationNames: ["y1-w11_2-backprop", "L-y1-backprop"],
         cyRef: cyRef2,
         cyRefType: "backward-prop"

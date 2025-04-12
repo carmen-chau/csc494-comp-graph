@@ -5,6 +5,7 @@
 
     -  Does not include button component creation.
     - Omits equation highlighting. This logic was moved to index.tsx because the "unhighlighting" logic wouldn't work when the equation is not displayed in the DOM.
+        - Thus, note that the attribute <equationStyle>, which was present in GraphHighlightButton, is no longer here.
     - Includes an exported state variable called setActiveEquation that represents the backprop error signal equation corresponding to the highlighted nodes and statements
 
   This file exists because for the backpropagation graph, we wanted to make nodes clickable instead.
@@ -29,7 +30,7 @@ export function nodeClickFunction(context: any) {
         setActiveButton,
         equationName = "",
         setActiveEquation,
-        equationStyle = "",
+        // equationStyle = "",
         backPropEquationNames = [],
         cyRef,
         cyRefType = ""
