@@ -23,6 +23,9 @@ export default function Home() {
   const [isBackwardGraphHighlighted, setBackwardGraphHighlight] = useState(false);  // Global state to check whether graph is highlighted, somewhere
   const [backwardActiveButton, setBackwardActiveButton] = useState("");  // Global state to check whether there is a highlight button on the graph that is currently selected or not. 
 
+  // Defining state variable to store active equation name
+  const [backpropActiveEquation, setBackpropActiveEquation] = useState("")
+  
   // Defining a temporary node click function (for testing purposes)
   // function nodeClickFunction(event){
   //     const node = event.target;
@@ -43,6 +46,7 @@ export default function Home() {
         activeButton: backwardActiveButton,
         setActiveButton: setBackwardActiveButton,
         equationName: "L_bar",
+        setActiveEquation: setBackpropActiveEquation,
         equationStyle: "bg-[#E7ff7f] px-0.5 py-0.5 rounded-full",
         backPropEquationNames: ["L_backprop"],
         cyRef: cyRef2,
@@ -62,6 +66,7 @@ export default function Home() {
         activeButton: backwardActiveButton,
         setActiveButton: setBackwardActiveButton,
         equationName: "y1_bar",
+        setActiveEquation: setBackpropActiveEquation,
         equationStyle: "bg-[#Ff7f7f] px-0.5 py-0.5 h-fit rounded-full",
         backPropEquationNames: ["L-y1-backprop"],
         cyRef: cyRef2,
@@ -82,6 +87,7 @@ export default function Home() {
         activeButton: backwardActiveButton,
         setActiveButton: setBackwardActiveButton,
         equationName: "y2_bar",
+        setActiveEquation: setBackpropActiveEquation,
         equationStyle: "bg-[#C3aaf9] px-0.5 py-0.5 h-fit rounded-full",
         backPropEquationNames: ["L-y2-backprop"],
         cyRef: cyRef2,
@@ -102,6 +108,7 @@ export default function Home() {
         activeButton: backwardActiveButton,
         setActiveButton: setBackwardActiveButton,
         equationName: "w12_2_bar",
+        setActiveEquation: setBackpropActiveEquation,
         equationStyle: "bg-[#Ef97b0] px-0.5 py-0.5 h-fit rounded-full",
         backPropEquationNames: ["y1-w12_2-backprop", "L-y1-backprop"],
         cyRef: cyRef2,
@@ -122,6 +129,7 @@ export default function Home() {
         activeButton: backwardActiveButton,
         setActiveButton: setBackwardActiveButton,
         equationName: "w11_2_bar",
+        setActiveEquation: setBackpropActiveEquation,
         equationStyle: "bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full",
         backPropEquationNames: ["y1-w11_2-backprop", "L-y1-backprop"],
         cyRef: cyRef2,
@@ -138,6 +146,7 @@ export default function Home() {
         setGraphHighlighted: setBackwardGraphHighlight,
         activeButton: backwardActiveButton,
         setActiveButton: setBackwardActiveButton,
+        setActiveEquation: setBackpropActiveEquation,
         cyRef: cyRef2,
         cyRefType: "backward-prop"
       }
@@ -294,19 +303,29 @@ export default function Home() {
               <p className="font-serif col-span-1">Backward pass equations:</p>
 
               {/* Equation 1: L_bar */}
-              <MathEquation equationName="L_bar" content={"\\(\\overline{\\mathcal{L}}= 1\\)"} className=''></MathEquation>
+              {backpropActiveEquation === "L_bar" && (
+                <MathEquation equationName="L_bar" content={"\\(\\overline{\\mathcal{L}}= 1\\)"} className='' />
+              )}
           
               {/* Equation 2: y1_bar */}
-              <MathEquation equationName="y1_bar" content={"\\(\\overline{y}_1 = \\overline{\\mathcal{L}} \\cdot \\frac{\\partial \\mathcal{L}}{\\partial y_1} = \\overline{\\mathcal{L}} (y_1 - t_1)\\)"} className=''></MathEquation>
+              {backpropActiveEquation === "y1_bar" && (
+                <MathEquation equationName="y1_bar" content={"\\(\\overline{y}_1 = \\overline{\\mathcal{L}} \\cdot \\frac{\\partial \\mathcal{L}}{\\partial y_1} = \\overline{\\mathcal{L}} (y_1 - t_1)\\)"} className=''></MathEquation>
+              )}
 
               {/* Equation 3: y2_bar */}
-              <MathEquation equationName="y2_bar" content={"\\(\\overline{y}_2 = \\overline{\\mathcal{L}} \\cdot \\frac{\\partial \\mathcal{L}}{\\partial y_2} = \\overline{\\mathcal{L}} (y_2 - t_2)\\)"} className=''></MathEquation>
+              {backpropActiveEquation === "y2_bar" && (
+                <MathEquation equationName="y2_bar" content={"\\(\\overline{y}_2 = \\overline{\\mathcal{L}} \\cdot \\frac{\\partial \\mathcal{L}}{\\partial y_2} = \\overline{\\mathcal{L}} (y_2 - t_2)\\)"} className=''></MathEquation>
+              )}
 
               {/* Equation 4: w12_2_bar */}
-              <MathEquation equationName="w12_2_bar" content={"\\( \\overline{w}^{(2)}_{12} = \\overline{y}_1 \\cdot \\frac{\\partial y_1}{\\partial w^{(2)}_{12}} = \\overline{y}_1 h_2 \\)"} className=''></MathEquation>
+              {backpropActiveEquation === "w12_2_bar" && (
+                <MathEquation equationName="w12_2_bar" content={"\\( \\overline{w}^{(2)}_{12} = \\overline{y}_1 \\cdot \\frac{\\partial y_1}{\\partial w^{(2)}_{12}} = \\overline{y}_1 h_2 \\)"} className=''></MathEquation>
+              )}
 
               {/* Equation 4: w11_2_bar */}
-              <MathEquation equationName="w11_2_bar" content={"\\( \\overline{w}^{(2)}_{11} = \\overline{y}_1 \\cdot \\frac{\\partial y_1}{\\partial w^{(2)}_{11}} = \\overline{y}_1 h_1 \\)"} className=''></MathEquation>
+              {backpropActiveEquation === "w11_2_bar" && (
+                <MathEquation equationName="w11_2_bar" content={"\\( \\overline{w}^{(2)}_{11} = \\overline{y}_1 \\cdot \\frac{\\partial y_1}{\\partial w^{(2)}_{11}} = \\overline{y}_1 h_1 \\)"} className=''></MathEquation>
+              )}
 
             </div>
           </MathJaxContext>
@@ -315,3 +334,33 @@ export default function Home() {
     </div>
   );
 }
+
+/*
+  Note: Old code where each equation was rendered regardless of whether node is pressed or not. Similar format to forward propagation.
+
+
+        //   <div className="w-full text-center mt-8 text-2xl" style={{ color: "black" }}>
+        //   <MathJaxContext>
+        //     <div className="grid grid-cols-[auto] gap-x-1 space-y-4 pr-4">
+        //       <p className="font-serif col-span-1">Backward pass equations:</p>
+
+        //       {/* Equation 1: L_bar *///}
+        //       <MathEquation equationName="L_bar" content={"\\(\\overline{\\mathcal{L}}= 1\\)"} className=''></MathEquation>
+          
+        //       {/* Equation 2: y1_bar */}
+        //       <MathEquation equationName="y1_bar" content={"\\(\\overline{y}_1 = \\overline{\\mathcal{L}} \\cdot \\frac{\\partial \\mathcal{L}}{\\partial y_1} = \\overline{\\mathcal{L}} (y_1 - t_1)\\)"} className=''></MathEquation>
+
+        //       {/* Equation 3: y2_bar */}
+        //       <MathEquation equationName="y2_bar" content={"\\(\\overline{y}_2 = \\overline{\\mathcal{L}} \\cdot \\frac{\\partial \\mathcal{L}}{\\partial y_2} = \\overline{\\mathcal{L}} (y_2 - t_2)\\)"} className=''></MathEquation>
+
+        //       {/* Equation 4: w12_2_bar */}
+        //       <MathEquation equationName="w12_2_bar" content={"\\( \\overline{w}^{(2)}_{12} = \\overline{y}_1 \\cdot \\frac{\\partial y_1}{\\partial w^{(2)}_{12}} = \\overline{y}_1 h_2 \\)"} className=''></MathEquation>
+
+        //       {/* Equation 4: w11_2_bar */}
+        //       <MathEquation equationName="w11_2_bar" content={"\\( \\overline{w}^{(2)}_{11} = \\overline{y}_1 \\cdot \\frac{\\partial y_1}{\\partial w^{(2)}_{11}} = \\overline{y}_1 h_1 \\)"} className=''></MathEquation>
+
+        //     </div>
+        //   </MathJaxContext>
+        // </div>
+
+//*/

@@ -4,12 +4,12 @@
   Same basic underlying logic as GraphHighlightButton, except the following changes:
 
     -  Does not include button component creation.
+    - Includes an exported state variable called setActiveEquation that represents the backprop error signal equation corresponding to the highlighted nodes and statements
 
   This file exists because for the backpropagation graph, we wanted to make nodes clickable instead.
 */
 
 // Imports
-import React from "react";
 import { customNodeStyle } from "../styles/GraphCustomStyle";
 import { getNodeIds, getEdgeIds, getEdgeObject, getEdgeDataInstance } from "./GraphHelpers";
 import { nodeObjList as forwardNodeObjList, edgeObjList as forwardEdgeObjList, nodeDataList as forwardNodeDataList, edgeDataList as forwardEdgeDataList } from "../data/ForwardpropGraphData";
@@ -27,6 +27,7 @@ export function nodeClickFunction(context: any) {
         activeButton = "",
         setActiveButton,
         equationName = "",
+        setActiveEquation,
         equationStyle = "",
         backPropEquationNames = [],
         cyRef,
@@ -82,6 +83,7 @@ export function nodeClickFunction(context: any) {
             }
 
             setGraphHighlighted(false); // Reset graph state
+            setActiveEquation(""); // Reset active equation
             setActiveButton(""); // No active button, so reset variable activeButton
         }
 
@@ -115,6 +117,7 @@ export function nodeClickFunction(context: any) {
             }
 
             setGraphHighlighted(true); // Mark graph as highlighted
+            setActiveEquation(equationName); // Set equation name
             setActiveButton(label); // Set the button to be active
         }
     });
