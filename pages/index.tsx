@@ -111,6 +111,26 @@ export default function Home() {
       nodeClickFunction(dataContent);
     }
 
+    else if (node.id() == "w11_2"){
+      const dataContent = {
+        label: "Equation w11_2_bar",
+        nodeIds: ["w11_2", "y1", "L"],
+        edgeIds: [],
+        highlightColour: "#89CFF0",
+        isGraphHighlighted: isBackwardGraphHighlighted,
+        setGraphHighlighted: setBackwardGraphHighlight,
+        activeButton: backwardActiveButton,
+        setActiveButton: setBackwardActiveButton,
+        equationName: "w11_2_bar",
+        equationStyle: "bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full",
+        backPropEquationNames: ["y1-w11_2-backprop", "L-y1-backprop"],
+        cyRef: cyRef2,
+        cyRefType: "backward-prop"
+      }
+
+      nodeClickFunction(dataContent);
+    }
+
     else{
       const dataContent = {
         label: "reset",
@@ -284,6 +304,9 @@ export default function Home() {
 
               {/* Equation 4: w12_2_bar */}
               <MathEquation equationName="w12_2_bar" content={"\\( \\overline{w}^{(2)}_{12} = \\overline{y}_1 \\cdot \\frac{\\partial y_1}{\\partial w^{(2)}_{12}} = \\overline{y}_1 h_2 \\)"} className=''></MathEquation>
+
+              {/* Equation 4: w11_2_bar */}
+              <MathEquation equationName="w11_2_bar" content={"\\( \\overline{w}^{(2)}_{11} = \\overline{y}_1 \\cdot \\frac{\\partial y_1}{\\partial w^{(2)}_{11}} = \\overline{y}_1 h_1 \\)"} className=''></MathEquation>
 
             </div>
           </MathJaxContext>
