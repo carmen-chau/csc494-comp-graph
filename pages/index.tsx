@@ -500,7 +500,10 @@ export default function Home() {
       <div className="mx-4 mb-6 p-4 border-l-4 border-blue-500 bg-blue-50 rounded shadow-sm">
         <p className="text-gray-800 text-lg font-bold">Diagram Instructions:</p>
         <p className="text-gray-700">
-        The diagram below illustrates how these gradients are computed and propagated backward through the network. Click on any node in the computation graph to visualize its error signal. The intermediate error signals and equations would appear in section <b>Backpropagation Equations</b>.
+        The diagram below illustrates how these gradients are computed and propagated backward through the network. 
+        Click on any node in the computation graph to visualize its error signal. 
+        The intermediate error signals and equations would appear in section <b>Backpropagation Equations</b>.
+        The final error signal equation for the node being clicked would be highlighted.
         </p>
       </div>
       <div className="flex">  {/* Making the background white temporarily. Old string: "min-h-screen flex justify-center items-center bg-white" */}
