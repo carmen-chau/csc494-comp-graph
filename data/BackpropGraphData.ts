@@ -109,14 +109,69 @@ export const edgeObjList = [
     GraphEdge({ id: "t2-L", source: "t2", target: "L" }),
 
     //NEW!!! (For backpropagation)
+    // Note: All graph labels are native strings using unicode symbols (due to issues with supporting native MathJax rendering)
     GraphEdge({
         id: 'L-y1-backprop',
         source: 'L',
         target: 'y1',
         label: '∂L/∂y₁',
         visible: false,
-        classes: 'backward',
-      })
+        classes: 'backward y1_backward',
+    }),
+
+    GraphEdge({
+        id: 'L-y2-backprop',
+        source: 'L',
+        target: 'y2',
+        label: '∂L/∂y₂',
+        visible: false,
+        classes: 'backward y2_backward',
+    }),
+
+    GraphEdge({
+        id: 'y1-w12_2-backprop',
+        source: 'y1',
+        target: 'w12_2',
+        label: '∂y₁/∂w₁₂⁽²⁾',
+        visible: false,
+        classes: 'backward y1-w12_2-backprop',
+    }),
+
+    GraphEdge({
+        id: 'y1-w11_2-backprop',
+        source: 'y1',
+        target: 'w11_2',
+        label: '∂y₁/∂w₁₁⁽²⁾',
+        visible: false,
+        classes: 'backward y1-w11_2-backprop',
+    }),
+
+    GraphEdge({
+        id: 'y1-b1_2-backprop',
+        source: 'y1',
+        target: 'b1_2',
+        label: '∂y₁/∂b₁⁽²⁾',
+        visible: false,
+        classes: 'backward y1-b1_2-backprop',
+    }),
+
+    GraphEdge({
+        id: 'y1-h1-backprop',
+        source: 'y1',
+        target: 'h1',
+        label: '∂y₁/∂h₁',
+        visible: false,
+        classes: 'backward y1-h1-backprop',
+    }),
+
+    GraphEdge({
+        id: 'y2-h1-backprop',
+        source: 'y2',
+        target: 'h1',
+        label: '∂y₂/∂h₁',
+        visible: false,
+        classes: 'backward y2-h1-backprop',
+    })
 
 ];
 
@@ -151,13 +206,69 @@ export const edgeDataList = [
     { id: "t2-L", source: "t2", target: "L" },
 
     // NEW!!! (For backpropagation)
+    // Note: All graph labels are native strings using unicode symbols (due to issues with supporting native MathJax rendering)
     {
         id: 'L-y1-backprop',
         source: 'L',
         target: 'y1',
         label: '∂L/∂y₁',
-        classes: 'backward',
+        classes: 'backward y1_backward',
         visible: false
-      }
-  ];
-  
+    },
+
+    {
+        id: 'L-y2-backprop',
+        source: 'L',
+        target: 'y2',
+        label: '∂L/∂y₂',
+        classes: 'backward y2_backward',
+        visible: false,
+    },
+
+    {
+        id: 'y1-w12_2-backprop',
+        source: 'y1',
+        target: 'w12_2',
+        label: '∂y₁/∂w₁₂⁽²⁾',
+        visible: false,
+        classes: 'backward y1-w12_2-backprop',
+    },
+
+    {
+        id: 'y1-w11_2-backprop',
+        source: 'y1',
+        target: 'w11_2',
+        label: '∂y₁/∂w₁₁⁽²⁾',
+        visible: false,
+        classes: 'backward y1-w11_2-backprop',
+    },
+
+    {
+        id: 'y1-b1_2-backprop',
+        source: 'y1',
+        target: 'b1_2',
+        label: '∂y₁/∂b₁⁽²⁾',
+        visible: false,
+        classes: 'backward y1-b1_2-backprop',
+    },
+
+    {
+        id: 'y1-h1-backprop',
+        source: 'y1',
+        target: 'h1',
+        label: '∂y₁/∂h₁',
+        visible: false,
+        classes: 'backward y1-h1-backprop',
+    },
+
+    {
+        id: 'y2-h1-backprop',
+        source: 'y2',
+        target: 'h1',
+        label: '∂y₂/∂h₁',
+        visible: false,
+        classes: 'backward y2-h1-backprop',
+    }
+
+];
+
