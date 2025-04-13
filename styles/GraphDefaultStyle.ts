@@ -97,6 +97,19 @@ const defaultGraphStyles = [
     }
   },
 
+  // Specific styling class for h1-y2-backprop
+  // Note: Only specifying styles from the parent class edge.backprop which we want to override
+  {
+    selector: 'edge.y2-h1-backprop',
+    style: {
+      'control-point-distances': [15],
+      'control-point-weights': [0.40],
+      'font-size': 14,
+      'text-margin-y': -20,
+      'text-margin-x': -20
+    }
+  },
+
 
 
 ]
