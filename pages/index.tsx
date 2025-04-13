@@ -21,7 +21,7 @@ export default function Home() {
   // Graph instance + variables for backprop
   const cyRef2 = useRef<any>(null);
   const [isBackwardGraphHighlighted, setBackwardGraphHighlight] = useState(false);  // Global state to check whether graph is highlighted, somewhere
-  const [backwardActiveButton, setBackwardActiveButton] = useState("");  // Global state to check whether there is a highlight button on the graph that is currently selected or not. 
+  const [backwardActiveNode, setBackwardActiveNode] = useState("");  // Global state to check whether there is a node on the graph that is currently selected to highlight backprop
 
   // Defining state variable to store and set active equation name
   const [backpropActiveEquations, setBackpropActiveEquations] = useState<string[]>([]);
@@ -56,9 +56,10 @@ export default function Home() {
         highlightColour: "#E7ff7f",
         isGraphHighlighted: isBackwardGraphHighlighted,
         setGraphHighlighted: setBackwardGraphHighlight,
-        activeButton: backwardActiveButton,
-        setActiveButton: setBackwardActiveButton,
+        activeNode: backwardActiveNode,
+        setActiveNode: setBackwardActiveNode,
         equationNames: ["L_bar"],
+        activeEquations: backpropActiveEquations,
         setActiveEquation: setBackpropActiveEquations,
         // equationStyle: "bg-[#E7ff7f] px-0.5 py-0.5 rounded-full",
         backPropEquationNames: ["L_backprop"],
@@ -69,6 +70,29 @@ export default function Home() {
       setBackpropEquationStyle("bg-[#E7ff7f] px-0.5 py-0.5 rounded-full");
     }
 
+    else if (node.id() == "t1"){
+
+      const dataContent = {
+        label: "Equation t1",
+        nodeIds: ["t1"],
+        edgeIds: [],
+        highlightColour: "#E7ff7f",
+        isGraphHighlighted: isBackwardGraphHighlighted,
+        setGraphHighlighted: setBackwardGraphHighlight,
+        activeNode: backwardActiveNode,
+        setActiveNode: setBackwardActiveNode,
+        equationNames: ["t1"],
+        activeEquations: backpropActiveEquations,
+        setActiveEquation: setBackpropActiveEquations,
+        // equationStyle: "bg-[#E7ff7f] px-0.5 py-0.5 rounded-full",
+        backPropEquationNames: [],
+        cyRef: cyRef2,
+        cyRefType: "backward-prop"
+      };
+      nodeClickFunction(dataContent);
+      setBackpropEquationStyle("bg-[#0000] px-0.5 py-0.5 rounded-full");
+    }
+
     else if (node.id() == "y1"){
       const dataContent = {
         label: "Equation y1_bar",
@@ -77,9 +101,10 @@ export default function Home() {
         highlightColour: "#Ff7f7f",
         isGraphHighlighted: isBackwardGraphHighlighted,
         setGraphHighlighted: setBackwardGraphHighlight,
-        activeButton: backwardActiveButton,
-        setActiveButton: setBackwardActiveButton,
+        activeNode: backwardActiveNode,
+        setActiveNode: setBackwardActiveNode,
         equationNames: ["L_bar", "y1_bar"],
+        activeEquations: backpropActiveEquations,
         setActiveEquation: setBackpropActiveEquations,
         // equationStyle: "bg-[#Ff7f7f] px-0.5 py-0.5 h-fit rounded-full",
         backPropEquationNames: ["L-y1-backprop"],
@@ -99,9 +124,10 @@ export default function Home() {
         highlightColour: "#C3aaf9",
         isGraphHighlighted: isBackwardGraphHighlighted,
         setGraphHighlighted: setBackwardGraphHighlight,
-        activeButton: backwardActiveButton,
-        setActiveButton: setBackwardActiveButton,
+        activeNode: backwardActiveNode,
+        setActiveNode: setBackwardActiveNode,
         equationNames: ["L_bar", "y2_bar"],
+        activeEquations: backpropActiveEquations,
         setActiveEquation: setBackpropActiveEquations,
         // equationStyle: "bg-[#C3aaf9] px-0.5 py-0.5 h-fit rounded-full",
         backPropEquationNames: ["L-y2-backprop"],
@@ -120,9 +146,10 @@ export default function Home() {
         highlightColour: "#Ef97b0",
         isGraphHighlighted: isBackwardGraphHighlighted,
         setGraphHighlighted: setBackwardGraphHighlight,
-        activeButton: backwardActiveButton,
-        setActiveButton: setBackwardActiveButton,
+        activeNode: backwardActiveNode,
+        setActiveNode: setBackwardActiveNode,
         equationNames: ["L_bar", "y1_bar", "w12_2_bar"],
+        activeEquations: backpropActiveEquations,
         setActiveEquation: setBackpropActiveEquations,
         // equationStyle: "bg-[#Ef97b0] px-0.5 py-0.5 h-fit rounded-full",
         backPropEquationNames: ["y1-w12_2-backprop", "L-y1-backprop"],
@@ -141,9 +168,10 @@ export default function Home() {
         highlightColour: "#89CFF0",
         isGraphHighlighted: isBackwardGraphHighlighted,
         setGraphHighlighted: setBackwardGraphHighlight,
-        activeButton: backwardActiveButton,
-        setActiveButton: setBackwardActiveButton,
+        activeNode: backwardActiveNode,
+        setActiveNode: setBackwardActiveNode,
         equationNames: ["L_bar", "y1_bar", "w11_2_bar"],
+        activeEquations: backpropActiveEquations,
         setActiveEquation: setBackpropActiveEquations,
         // equationStyle: "bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full",
         backPropEquationNames: ["y1-w11_2-backprop", "L-y1-backprop"],
@@ -162,9 +190,10 @@ export default function Home() {
         highlightColour: "#ffdbbb",
         isGraphHighlighted: isBackwardGraphHighlighted,
         setGraphHighlighted: setBackwardGraphHighlight,
-        activeButton: backwardActiveButton,
-        setActiveButton: setBackwardActiveButton,
+        activeNode: backwardActiveNode,
+        setActiveNode: setBackwardActiveNode,
         equationNames: ["L_bar", "y1_bar", "b1_2_bar"],
+        activeEquations: backpropActiveEquations,
         setActiveEquation: setBackpropActiveEquations,
         // equationStyle: "bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full",
         backPropEquationNames: ["y1-b1_2-backprop", "L-y1-backprop"],
@@ -183,9 +212,10 @@ export default function Home() {
         highlightColour: "#58cf35",
         isGraphHighlighted: isBackwardGraphHighlighted,
         setGraphHighlighted: setBackwardGraphHighlight,
-        activeButton: backwardActiveButton,
-        setActiveButton: setBackwardActiveButton,
+        activeNode: backwardActiveNode,
+        setActiveNode: setBackwardActiveNode,
         equationNames: ["L_bar", "y1_bar", "y2_bar", "h1_bar"],
+        activeEquations: backpropActiveEquations,
         setActiveEquation: setBackpropActiveEquations,
         // equationStyle: "bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full",
         backPropEquationNames: ["L-y1-backprop", "L-y2-backprop", "y1-h1-backprop", "y2-h1-backprop"],
@@ -195,14 +225,14 @@ export default function Home() {
       nodeClickFunction(dataContent);
       setBackpropEquationStyle("bg-[#58cf35] px-0.5 py-0.5 h-fit rounded-full");
     }
-
     else{
       const dataContent = {
         label: "reset",
         isGraphHighlighted: isBackwardGraphHighlighted,
         setGraphHighlighted: setBackwardGraphHighlight,
-        activeButton: backwardActiveButton,
-        setActiveButton: setBackwardActiveButton,
+        activeNode: backwardActiveNode,
+        setActiveNode: setBackwardActiveNode,
+        activeEquations: backpropActiveEquations,
         setActiveEquation: setBackpropActiveEquations,
         cyRef: cyRef2,
         cyRefType: "backward-prop"
@@ -363,9 +393,18 @@ export default function Home() {
               {backpropActiveEquations.includes("L_bar") && (
                 <MathEquation equationName="L_bar" content={"\\(\\overline{\\mathcal{L}}= 1\\)"} className='' />
               )}
-          
+
+              {/* Equation ???: t1 */}
+              {backpropActiveEquations.includes("t1") && (
+                <MathEquation
+                  equationName="t1"
+                  content={"\\(t_1\\) is a ground truth label, not a computed value from the network. Since it’s not derived from any parameters or layers, there’s no gradient to propagate back — so it doesn’t need a backprop equation."}
+                  className=""
+                />
+              )}
+
               {/* Equation 2: y1_bar */}
-              {backpropActiveEquations.includes("y1_bar")  && (
+              {backpropActiveEquations.includes("y1_bar") && (
                 <MathEquation equationName="y1_bar" content={"\\(\\overline{y}_1 = \\overline{\\mathcal{L}} \\cdot \\frac{\\partial \\mathcal{L}}{\\partial y_1} = \\overline{\\mathcal{L}} (y_1 - t_1)\\)"} className=''></MathEquation>
               )}
 

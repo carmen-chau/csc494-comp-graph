@@ -24,21 +24,22 @@ import { nodeObjList as backwardNodeObjList, edgeObjList as backwardEdgeObjList,
 export function nodeClickFunction(context: any) {
     
     const {
-        label,
+        label = "",
         nodeIds = [],
         edgeIds = [],
         highlightColour = "#000",
         isGraphHighlighted = false,
         setGraphHighlighted,
-        activeButton = "",
-        setActiveButton,
+        activeNode = "",
+        setActiveNode,
         equationNames = [],
+        activeEquations,
         setActiveEquation,
         // equationStyle = "",
         backPropEquationNames = [],
         cyRef,
         cyRefType = ""
-      } = context ?? {}; // ← fallback for the whole context being undefined      
+      } = context ?? {}
 
     if (!cyRef.current) {
         return; // Prevent working with an undefined Cytoscape instance
@@ -58,7 +59,7 @@ export function nodeClickFunction(context: any) {
 
     cyRef.current.batch(() => {
 
-        if (activeButton !== "" || isGraphHighlighted || label === "reset") {
+        if (activeNode !== "" || isGraphHighlighted || label === "reset") {
             // Step 1: Reset all styling before applying new button styling
             // Note: The code resetting should work even if the equation(s) gets hidden after. This is because we are...
             // ...resetting the active equation AFTER this, meaning that the equation is still visible on the DOM.
@@ -92,10 +93,10 @@ export function nodeClickFunction(context: any) {
 
             setGraphHighlighted(false); // Reset graph state
             setActiveEquation(""); // Reset active equation
-            setActiveButton(""); // No active button, so reset variable activeButton
+            setActiveNode(""); // No active button, so reset variable activeButton
         }
 
-        if (!(isGraphHighlighted) || activeButton !== label) {
+        if (!(isGraphHighlighted) || activeNode !== label) {
             // Step 2: Apply new button styling
             const specificStyles = customNodeStyle(nodeIds, highlightColour, edgeIds, highlightColour);
             specificStyles.forEach(({ selector, style }) => {
@@ -127,7 +128,7 @@ export function nodeClickFunction(context: any) {
             setGraphHighlighted(true); // Mark graph as highlighted
             setActiveEquation(equationNames);
             // setActiveEquation(equationNames[equationNames.length - 1]); // Set equation name using the last equation in the list
-            setActiveButton(label); // Set the button to be active
+            setActiveNode(label); // Set the button to be active
         }
     });
 
