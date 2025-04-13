@@ -531,7 +531,7 @@ export default function Home() {
                 <p className="font-serif col-span-1 mt-20 font-bold">Explanation:</p>
                 <MathEquation
                   equationName="t1"
-                  content={"\\(t_1\\) represents the expected value for \\(y_1\\). It is a constant, not something that is computed by the network. Thus, there is no error loss signal for \\(t_1\\)."}
+                  content={"\\(t_1\\) represents the expected value for \\(y_1\\). It is a constant, not something that is computed by the network. Thus, there is no error signal for \\(t_1\\)."}
                   className=""
                 />
                 </>
@@ -544,7 +544,7 @@ export default function Home() {
                   <p className="font-serif col-span-1 mt-20 font-bold">Explanation:</p>
                   <MathEquation
                     equationName="t1"
-                    content={"\\(t_2\\) represents the expected value for \\(y_2\\). It is a constant, not something that is computed by the network. Thus, there is no error loss signal for \\(t_2\\)."}
+                    content={"\\(t_2\\) represents the expected value for \\(y_2\\). It is a constant, not something that is computed by the network. Thus, there is no error signal for \\(t_2\\)."}
                     className=""
                   />
                 </>
