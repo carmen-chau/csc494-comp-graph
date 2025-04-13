@@ -330,7 +330,8 @@ export default function Home() {
       <div className="mx-4 mb-6 p-4 border-l-4 border-blue-500 bg-blue-50 rounded shadow-sm">
         <p className="text-gray-800 text-lg font-bold">Diagram Instructions:</p>
         <p className="text-gray-700">
-        Use the "Select" buttons beside each equation in section "Forward Pass Equations" to highlight which nodes and edges are involved in computing that expression.
+        Now, let's explore how the computation graph is built step by step in forward pass. 
+        Use the <b>"Select"</b> buttons beside each equation in section <b>"Forward Pass Equations" </b>to highlight the specific nodes and edges that are involved in computing that expression.
         </p>
       </div>
 
