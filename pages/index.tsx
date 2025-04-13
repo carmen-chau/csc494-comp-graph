@@ -277,7 +277,16 @@ export default function Home() {
         <p className="text-gray-700 mt-1">
           <MathJaxContext>
             <MathJax>
-              {"Forward propagation is the process of computing \\( y_1 \\), \\( y_2 \\), and the loss \\( \\mathcal{L} \\) by passing inputs \\( x_1 \\), \\( x_2 \\) through the network using weights and activation functions."}
+              {"Forward propagation is the process in which we pass inputs (eg: \\( x_1 \\), \\( x_2 \\)) through a neural network to computing prediction values (eg: \\( y_1 \\), \\( y_2 \\)). We can these compare these prediction values with the true values (eg: \\( t_1 \\), \\( t_2 \\)) to compute the loss \\( \\mathcal{L} \\). "}
+            </MathJax>
+          </MathJaxContext>
+        </p>
+        <p className="text-gray-700 mt-1">
+          <MathJaxContext>
+            <MathJax>
+              {"To generate these predictions, the network computes intermediate terms using linear and non-linear functions. You can explore the "}
+              <strong>Terminology</strong>
+              {" section to learn more about each intermediate term and their role in the neural network model."}
             </MathJax>
           </MathJaxContext>
         </p>
