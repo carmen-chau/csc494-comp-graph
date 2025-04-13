@@ -275,7 +275,7 @@ export default function Home() {
         <div className="w-full text-center mt-8 text-2xl" style={{ color: "black" }}>
           <MathJaxContext>
             <div className="grid grid-cols-[auto,auto] gap-x-1 space-y-4 pr-4">
-              <p className="font-serif col-span-2">Forward pass equations:</p>
+              <p className="font-serif col-span-2 font-bold">Forward pass equations:</p>
 
               {/* Equation 1: z1 */}
               <MathEquation equationName="z1" content={"\\(z_1 = w_{11}^{(1)} x_1 + w_{12}^{(1)} x_2 + b_1^{(1)}\\)"} className=''></MathEquation>
@@ -411,7 +411,7 @@ export default function Home() {
         <div className="w-full text-center mt-8 text-2xl" style={{ color: "black" }}>
           <MathJaxContext>
             <div className="grid grid-cols-[auto] gap-x-1 space-y-4 pr-4">
-              <p className="font-serif col-span-1">Backward pass equations:</p>
+              <p className="font-serif col-span-1 font-bold">Backward pass equations:</p>
 
               {/* Equation 1: L_bar */}
               {backpropActiveEquations.includes("L_bar") && (
@@ -422,7 +422,7 @@ export default function Home() {
               {backpropActiveEquations.includes("t1") && (
                 <>
                 <MathJax>{"None"}</MathJax>
-                <p className="font-serif col-span-1 mt-20">Explanation:</p>
+                <p className="font-serif col-span-1 mt-20 font-bold">Explanation:</p>
                 <MathEquation
                   equationName="t1"
                   content={"\\(t_1\\) represents the expected value for \\(y_1\\). It is a constant, not something that is computed by the network. Thus, there is no error loss signal for \\(t_1\\)."}
@@ -435,7 +435,7 @@ export default function Home() {
               {backpropActiveEquations.includes("t2") && (
                 <>
                   <MathJax>{"None"}</MathJax>
-                  <p className="font-serif col-span-1 mt-20">Explanation:</p>
+                  <p className="font-serif col-span-1 mt-20 font-bold">Explanation:</p>
                   <MathEquation
                     equationName="t1"
                     content={"\\(t_2\\) represents the expected value for \\(y_2\\). It is a constant, not something that is computed by the network. Thus, there is no error loss signal for \\(t_2\\)."}
