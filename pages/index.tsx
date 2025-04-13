@@ -2,13 +2,14 @@
   Home page
 */
 
-import { useRef, useState, useEffect} from "react";
+import { useRef, useState, useEffect } from "react";
+import { MathJax} from 'better-react-mathjax';
 import { MathJaxContext } from 'better-react-mathjax';
 import MathEquation from "../components/MathEquation";
 import SampleGraph from '../components/CompGraph';
 import { GraphHighlightButton } from "../components/GraphHighlightButton";
 import { nodeObjList as forwardPropNodeList, edgeObjList as forwardPropEdgeList } from "../data/ForwardpropGraphData"
-import { nodeObjList as backwardPropNodeList , edgeObjList as backwardPropEdgeList } from "../data/BackpropGraphData"
+import { nodeObjList as backwardPropNodeList, edgeObjList as backwardPropEdgeList } from "../data/BackpropGraphData"
 import { nodeClickFunction } from "../utils/HighlightFunction";
 
 export default function Home() {
@@ -34,7 +35,7 @@ export default function Home() {
     const allEquations = document.querySelectorAll("[data-equation]");
     const finalEquationToHighlight = backpropActiveEquations[backpropActiveEquations.length - 1];
     allEquations.forEach((equation) => (equation.className = "")); // Clear existing highlights
-  
+
     if (finalEquationToHighlight && backpropEquationStyle) {
       const selectedEquation = document.querySelector(`[data-equation="${finalEquationToHighlight}"]`);
       if (selectedEquation) {
@@ -45,7 +46,7 @@ export default function Home() {
     }
   }, [backpropActiveEquations, backpropEquationStyle]); // useEffect hook would run only when these variables change in value
 
-  function clickNodeForHighlight(event: any){
+  function clickNodeForHighlight(event: any) {
     const node = event.target;
 
     if (node.id() == "L") {
@@ -70,7 +71,7 @@ export default function Home() {
       setBackpropEquationStyle("bg-[#E7ff7f] px-0.5 py-0.5 rounded-full");
     }
 
-    else if (node.id() == "t1"){
+    else if (node.id() == "t1") {
 
       const dataContent = {
         label: "Equation t1",
@@ -93,7 +94,30 @@ export default function Home() {
       setBackpropEquationStyle("bg-[#0000] px-0.5 py-0.5 rounded-full");
     }
 
-    else if (node.id() == "y1"){
+    else if (node.id() == "t2") {
+
+      const dataContent = {
+        label: "Equation t2",
+        nodeIds: ["t2"],
+        edgeIds: [],
+        highlightColour: "#E7ff7f",
+        isGraphHighlighted: isBackwardGraphHighlighted,
+        setGraphHighlighted: setBackwardGraphHighlight,
+        activeNode: backwardActiveNode,
+        setActiveNode: setBackwardActiveNode,
+        equationNames: ["t2"],
+        activeEquations: backpropActiveEquations,
+        setActiveEquation: setBackpropActiveEquations,
+        // equationStyle: "bg-[#E7ff7f] px-0.5 py-0.5 rounded-full",
+        backPropEquationNames: [],
+        cyRef: cyRef2,
+        cyRefType: "backward-prop"
+      };
+      nodeClickFunction(dataContent);
+      setBackpropEquationStyle("bg-[#0000] px-0.5 py-0.5 rounded-full");
+    }
+
+    else if (node.id() == "y1") {
       const dataContent = {
         label: "Equation y1_bar",
         nodeIds: ["y1", "L"],
@@ -116,7 +140,7 @@ export default function Home() {
       setBackpropEquationStyle("bg-[#Ff7f7f] px-0.5 py-0.5 h-fit rounded-full");
     }
 
-    else if (node.id() == "y2"){
+    else if (node.id() == "y2") {
       const dataContent = {
         label: "Equation y2_bar",
         nodeIds: ["y2", "L"],
@@ -138,7 +162,7 @@ export default function Home() {
       setBackpropEquationStyle("bg-[#C3aaf9] px-0.5 py-0.5 h-fit rounded-full");
     }
 
-    else if (node.id() == "w12_2"){
+    else if (node.id() == "w12_2") {
       const dataContent = {
         label: "Equation w12_2_bar",
         nodeIds: ["w12_2", "y1", "L"],
@@ -160,7 +184,7 @@ export default function Home() {
       setBackpropEquationStyle("bg-[#Ef97b0] px-0.5 py-0.5 h-fit rounded-full");
     }
 
-    else if (node.id() == "w11_2"){
+    else if (node.id() == "w11_2") {
       const dataContent = {
         label: "Equation w11_2_bar",
         nodeIds: ["w11_2", "y1", "L"],
@@ -182,7 +206,7 @@ export default function Home() {
       setBackpropEquationStyle("bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full");
     }
 
-    else if (node.id() == "b1_2"){
+    else if (node.id() == "b1_2") {
       const dataContent = {
         label: "Equation b1_2_bar",
         nodeIds: ["b1_2", "y1", "L"],
@@ -204,7 +228,7 @@ export default function Home() {
       setBackpropEquationStyle("bg-[#ffdbbb] px-0.5 py-0.5 h-fit rounded-full");
     }
 
-    else if (node.id() == "h1"){
+    else if (node.id() == "h1") {
       const dataContent = {
         label: "Equation h1_bar",
         nodeIds: ["h1", "y1", "y2", "L"],
@@ -225,7 +249,7 @@ export default function Home() {
       nodeClickFunction(dataContent);
       setBackpropEquationStyle("bg-[#58cf35] px-0.5 py-0.5 h-fit rounded-full");
     }
-    else{
+    else {
       const dataContent = {
         label: "reset",
         isGraphHighlighted: isBackwardGraphHighlighted,
@@ -247,7 +271,7 @@ export default function Home() {
     <div>
       <p className="pl-4 mb-8">Forward propagation demonstration:</p>
       <div className="flex">  {/* Making the background white temporarily. Old string: "min-h-screen flex justify-center items-center bg-white" */}
-        <SampleGraph cyRef={cyRef} nodes={forwardPropNodeList} edges={forwardPropEdgeList}/>  {/* Making a Comp Graph Object */}
+        <SampleGraph cyRef={cyRef} nodes={forwardPropNodeList} edges={forwardPropEdgeList} />  {/* Making a Comp Graph Object */}
         <div className="w-full text-center mt-8 text-2xl" style={{ color: "black" }}>
           <MathJaxContext>
             <div className="grid grid-cols-[auto,auto] gap-x-1 space-y-4 pr-4">
@@ -267,7 +291,7 @@ export default function Home() {
                 equationName="z1"
                 equationStyle="bg-[#58cf35] px-0.5 py-0.5 h-fit rounded-full"
                 cyRef={cyRef}
-                cyRefType = "forward-prop">
+                cyRefType="forward-prop">
               </GraphHighlightButton>
 
               {/* Equation 2: z2 */}
@@ -284,7 +308,7 @@ export default function Home() {
                 equationName="z2"
                 equationStyle="bg-[#ffdbbb] px-0.5 py-0.5 h-fit rounded-full"
                 cyRef={cyRef}
-                cyRefType = "forward-prop">
+                cyRefType="forward-prop">
               </GraphHighlightButton>
 
               {/* Equation 3: h1 */}
@@ -301,7 +325,7 @@ export default function Home() {
                 equationName="h1"
                 equationStyle="bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full"
                 cyRef={cyRef}
-                cyRefType = "forward-prop">
+                cyRefType="forward-prop">
               </GraphHighlightButton>
 
               {/* Equation 4: h2 */}
@@ -318,7 +342,7 @@ export default function Home() {
                 equationName="h2"
                 equationStyle="bg-[#Ef97b0] px-0.5 py-0.5 h-fit rounded-full"
                 cyRef={cyRef}
-                cyRefType = "forward-prop">
+                cyRefType="forward-prop">
               </GraphHighlightButton>
 
               {/* Equation 5: y1 */}
@@ -335,7 +359,7 @@ export default function Home() {
                 equationName="y1"
                 equationStyle="bg-[#C3aaf9] px-0.5 py-0.5 h-fit rounded-full"
                 cyRef={cyRef}
-                cyRefType = "forward-prop">
+                cyRefType="forward-prop">
               </GraphHighlightButton>
 
               {/* Equation 6: y2 */}
@@ -352,7 +376,7 @@ export default function Home() {
                 equationName="y2"
                 equationStyle="bg-[#Ff7f7f] px-0.5 py-0.5 h-fit rounded-full"
                 cyRef={cyRef}
-                cyRefType = "forward-prop">
+                cyRefType="forward-prop">
               </GraphHighlightButton>
 
               {/* Equation 7: L */}
@@ -394,48 +418,65 @@ export default function Home() {
                 <MathEquation equationName="L_bar" content={"\\(\\overline{\\mathcal{L}}= 1\\)"} className='' />
               )}
 
-              {/* Equation ???: t1 */}
+              {/* Equation 2: t1 */}
               {backpropActiveEquations.includes("t1") && (
+                <>
+                <MathJax>{"None"}</MathJax>
+                <p className="font-serif col-span-1 mt-20">Explanation:</p>
                 <MathEquation
                   equationName="t1"
-                  content={"\\(t_1\\) is a ground truth label, not a computed value from the network. Since it’s not derived from any parameters or layers, there’s no gradient to propagate back — so it doesn’t need a backprop equation."}
+                  content={"\\(t_1\\) represents the expected value for \\(y_1\\). It is a constant, not something that is computed by the network. Thus, there is no error loss signal for \\(t_1\\)."}
                   className=""
                 />
+                </>
               )}
 
-              {/* Equation 2: y1_bar */}
+              {/* Equation 3: t2 */}
+              {backpropActiveEquations.includes("t2") && (
+                <>
+                  <MathJax>{"None"}</MathJax>
+                  <p className="font-serif col-span-1 mt-20">Explanation:</p>
+                  <MathEquation
+                    equationName="t1"
+                    content={"\\(t_2\\) represents the expected value for \\(y_2\\). It is a constant, not something that is computed by the network. Thus, there is no error loss signal for \\(t_2\\)."}
+                    className=""
+                  />
+                </>
+              )}
+
+              {/* Equation 4: y1_bar */}
               {backpropActiveEquations.includes("y1_bar") && (
                 <MathEquation equationName="y1_bar" content={"\\(\\overline{y}_1 = \\overline{\\mathcal{L}} \\cdot \\frac{\\partial \\mathcal{L}}{\\partial y_1} = \\overline{\\mathcal{L}} (y_1 - t_1)\\)"} className=''></MathEquation>
               )}
 
-              {/* Equation 3: y2_bar */}
+              {/* Equation 5: y2_bar */}
               {backpropActiveEquations.includes("y2_bar") && (
                 <MathEquation equationName="y2_bar" content={"\\(\\overline{y}_2 = \\overline{\\mathcal{L}} \\cdot \\frac{\\partial \\mathcal{L}}{\\partial y_2} = \\overline{\\mathcal{L}} (y_2 - t_2)\\)"} className=''></MathEquation>
               )}
 
-              {/* Equation 4: w12_2_bar */}
+              {/* Equation 6: w12_2_bar */}
               {backpropActiveEquations.includes("w12_2_bar") && (
                 <MathEquation equationName="w12_2_bar" content={"\\( \\overline{w}^{(2)}_{12} = \\overline{y}_1 \\cdot \\frac{\\partial y_1}{\\partial w^{(2)}_{12}} = \\overline{y}_1 h_2 \\)"} className=''></MathEquation>
               )}
 
-              {/* Equation 5: w11_2_bar */}
+              {/* Equation 7: w11_2_bar */}
               {backpropActiveEquations.includes("w11_2_bar") && (
                 <MathEquation equationName="w11_2_bar" content={"\\( \\overline{w}^{(2)}_{11} = \\overline{y}_1 \\cdot \\frac{\\partial y_1}{\\partial w^{(2)}_{11}} = \\overline{y}_1 h_1 \\)"} className=''></MathEquation>
               )}
 
-              {/* Equation 6: b1_2_bar */}
+              {/* Equation 8: b1_2_bar */}
               {backpropActiveEquations.includes("b1_2_bar") && (
                 <MathEquation equationName="b1_2_bar" content={"\\( \\overline{b}^{(2)}_1 = \\overline{y}_1 \\cdot \\frac{\\partial y_1}{\\partial b^{(2)}_1} = \\overline{y}_1 \\)"} className=''></MathEquation>
               )}
-              {/* Equation 7: h1_bar */}
-              {backpropActiveEquations.includes("h1_bar") && (
-                 <MathEquation
-                 equationName="h1_bar"
-                 content={"\\(\\sum_{i=1}^{2} \\overline{y}_i \\cdot \\frac{\\partial y_i}{\\partial h_1} = \\sum_{i=1}^{2} \\overline{y}_i w_{i1}^{(2)} = \\overline{y}_1 w_{11}^{(2)} + \\overline{y}_2 w_{21}^{(2)}\\)"}
-                 className=''
-               />
-              )}
             </div>
+            {/* Equation 9: h1_bar */}
+            {backpropActiveEquations.includes("h1_bar") && (
+              <MathEquation
+                equationName="h1_bar"
+                content={"\\(\\sum_{i=1}^{2} \\overline{y}_i \\cdot \\frac{\\partial y_i}{\\partial h_1} = \\sum_{i=1}^{2} \\overline{y}_i w_{i1}^{(2)} = \\overline{y}_1 w_{11}^{(2)} + \\overline{y}_2 w_{21}^{(2)}\\)"}
+                className='mt-20'
+              />
+            )}
           </MathJaxContext>
         </div>
       </div>
