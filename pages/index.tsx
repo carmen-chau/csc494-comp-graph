@@ -5,6 +5,7 @@
 import { useRef, useState, useEffect } from "react";
 import { MathJax} from 'better-react-mathjax';
 import { MathJaxContext } from 'better-react-mathjax';
+import {CollapsibleSection} from "../components/CollapsibleSection";
 import MathEquation from "../components/MathEquation";
 import SampleGraph from '../components/CompGraph';
 import { GraphHighlightButton } from "../components/GraphHighlightButton";
@@ -269,13 +270,76 @@ export default function Home() {
 
   return (
     <div>
-      <p className="pl-4 mt-10 mb-8 text-2xl font-bold underline text-gray-800">Forward propagation demonstration:</p>
+      <p className="pl-4 mt-10 mb-8 text-2xl font-bold underline text-gray-800">Forward pass:</p>
+      <div className="mx-4 mb-6 p-4 border-l-4 border-blue-500 bg-blue-50 rounded shadow-sm">
+        <p className="text-gray-800 text-lg font-bold">Definition</p>
+        <p className="text-gray-700 mt-1">
+          <MathJaxContext>
+            <MathJax>
+              {"Forward propagation is the process in which we pass inputs (eg: \\( x_1 \\), \\( x_2 \\)) through a neural network to computing prediction values (eg: \\( y_1 \\), \\( y_2 \\)). We can these compare these prediction values with the true values (eg: \\( t_1 \\), \\( t_2 \\)) to compute the loss \\( \\mathcal{L} \\). "}
+            </MathJax>
+          </MathJaxContext>
+        </p>
+        <p className="text-gray-700 mt-1">
+          <MathJaxContext>
+            <MathJax>
+              {"To generate these predictions, the network computes intermediate terms using linear and non-linear functions. You can explore the "}
+              <strong>Terminology</strong>
+              {" section to learn more about each intermediate term and their role in the neural network model."}
+            </MathJax>
+          </MathJaxContext>
+        </p>
+        <div>
+          <CollapsibleSection title="Terminology">
+            <MathJaxContext>
+              <MathJax>
+                <ul className="list-disc list-inside text-base text-left space-y-2">
+
+                  {/* Inputs */}
+                  <p className="font-bold mt-2">Inputs</p>
+                  <li className = "pl-4">{"\\( x_1, x_2 \\): Input features to the network."}</li>
+
+                  {/* First Layer: Input → Pre-Activation */}
+                  <p className="font-bold mt-4">First Layer (Input → Hidden)</p>
+                  <li className = "pl-4">{"\\( w_{11}^{(1)}, w_{12}^{(1)} \\): Weights denoting how much \\( x_1 \\) and \\( x_2 \\) respectively contribute to the pre-activation \\( z_1 \\)."}</li>
+                  <li className = "pl-4">{"\\( b_1^{(1)} \\): Bias term added to \\( z_1 \\)."}</li>
+                  <li className = "pl-4">{"\\( w_{21}^{(1)}, w_{22}^{(1)} \\): Weights denoting how much \\( x_1 \\) and \\( x_2 \\) respectively contribute to the pre-activation \\( z_2 \\)."}</li>
+                  <li className = "pl-4">{"\\( b_2^{(1)} \\): Bias term added to \\( z_2 \\)."}</li>
+                  <li className = "pl-4">{"\\( z_1, z_2 \\): Input terms to the activation function."}</li>
+                  <li className = "pl-4">{"\\( h_1 = \\sigma(z_1), \\; h_2 = \\sigma(z_2) \\): Activation functions."}</li>
+
+                  {/* Second Layer: Pre-Activation → Output */}
+                  <p className="font-bold mt-4">Second Layer (Hidden → Output)</p>
+                  <li className = "pl-4">{"\\( w_{11}^{(2)}, w_{12}^{(2)} \\): Weights denoting how much \\( h_1 \\) and \\( h_2 \\) respectively contribute to the predicted value \\( y_1 \\)."}</li>
+                  <li className = "pl-4">{"\\( b_1^{(2)} \\): Bias term added to \\( y_1 \\)."}</li>
+                  <li className = "pl-4">{"\\( w_{21}^{(2)}, w_{22}^{(2)} \\): Weights denoting how much \\( h_1 \\) and \\( h_2 \\) respectively contribute to the predicted value \\( y_2 \\)."}</li>
+                  <li className = "pl-4">{"\\( y_1, y_2 \\): Final outputs (predictions) of the network."}</li>
+
+                  {/* Loss computation */}
+                  <p className="font-bold mt-4">Loss computation</p>
+                  <li className = "pl-4">{"\\( t_1, t_2 \\): Target values for network output \\( y_1, y_2 \\) respectively"}</li>
+                  <li className = "pl-4">{"\\( \\mathcal{L} \\): Loss function. Its output is the squared error between each prediction \\( y_1, y_2 \\) and target \\( t_1, t_2 \\)."}</li>
+                </ul>
+              </MathJax>
+            </MathJaxContext>
+          </CollapsibleSection>
+        </div>
+      </div>
+
+      <div className="mx-4 mb-6 p-4 border-l-4 border-blue-500 bg-blue-50 rounded shadow-sm">
+        <p className="text-gray-800 text-lg font-bold">Diagram Instructions:</p>
+        <p className="text-gray-700">
+        Now, let's explore how the computation graph is built step by step in forward pass. 
+        Use the <b>"Select"</b> buttons beside each equation in section <b>"Forward Pass Equations" </b>to highlight the specific nodes and edges that are involved in computing that expression.
+        </p>
+      </div>
+
       <div className="flex">  {/* Making the background white temporarily. Old string: "min-h-screen flex justify-center items-center bg-white" */}
         <SampleGraph cyRef={cyRef} nodes={forwardPropNodeList} edges={forwardPropEdgeList} />  {/* Making a Comp Graph Object */}
         <div className="w-full text-center mt-8 text-2xl" style={{ color: "black" }}>
           <MathJaxContext>
             <div className="grid grid-cols-[auto,auto] gap-x-1 space-y-4 pr-4">
-              <p className="font-serif col-span-2 font-bold">Forward pass equations:</p>
+              <p className="font-serif col-span-2 font-bold">Forward pass Equations:</p>
 
               {/* Equation 1: z1 */}
               <MathEquation equationName="z1" content={"\\(z_1 = w_{11}^{(1)} x_1 + w_{12}^{(1)} x_2 + b_1^{(1)}\\)"} className=''></MathEquation>
@@ -399,7 +463,49 @@ export default function Home() {
           </MathJaxContext>
         </div>
       </div>
-      <p className="pl-4 mt-10 mb-8 text-2xl font-bold underline text-gray-800">Backward propagation demonstration:</p>
+      <p className="pl-4 mt-10 mb-8 text-2xl font-bold underline text-gray-800">Backpropagation:</p>
+      <div className="mx-4 mb-6 p-4 border-l-4 border-blue-500 bg-blue-50 rounded shadow-sm">
+        <p className="text-gray-800 text-lg font-bold">Definition</p>
+        <p className="text-gray-700 mt-1">
+          <MathJaxContext>
+            <MathJax>
+              {"Backpropagation is the process in which we compute the gradient of the loss function with respect to the model parameters (ie: Its weight and bias terms). "}
+              {"By calculating how sensitive the loss is to the parameters, we can use these results to iteratively update the parameters to minimize model loss. "}
+            </MathJax>
+          </MathJaxContext>
+        </p>
+        <p className="text-gray-700 mt-1">
+          <MathJaxContext>
+            <MathJax>
+              {"During backpropagation, we working backwards through the computation graph, using error signals at each node to compute intermediate gradient calculation. You can explore the "}
+              <strong>{"Terminology"}</strong>
+              {" section to learn more about the notation used here."}
+            </MathJax>
+          </MathJaxContext>
+        </p>
+        <CollapsibleSection title="Terminology">
+            <MathJaxContext>
+              <MathJax>
+                <div className="list-disc list-inside text-base text-left space-y-2">
+
+                  {/* Error signal */}
+                  <p className="font-bold mt-2">Error signal</p>
+                  <p className = "pl-4">{"Let the term \\( \\bar{y} \\) denote the derivative \\( \\frac{\\partial \\mathcal{L}}{\\partial y} \\), which represents how much a node \\( y \\) influences the final loss \\( \\mathcal{L} \\)."}</p>
+                  <p className = "pl-4">{"Error signals are just values our program is computing (rather than a mathematical operation)."}</p>
+                </div>
+              </MathJax>
+            </MathJaxContext>
+          </CollapsibleSection>
+      </div>
+      <div className="mx-4 mb-6 p-4 border-l-4 border-blue-500 bg-blue-50 rounded shadow-sm">
+        <p className="text-gray-800 text-lg font-bold">Diagram Instructions:</p>
+        <p className="text-gray-700">
+        The diagram below illustrates how these gradients are computed and propagated backward through the network. 
+        Click on any node in the computation graph to visualize its error signal. 
+        The intermediate error signals and equations would appear in section <b>Backpropagation Equations</b>.
+        The final error signal equation for the node being clicked would be highlighted.
+        </p>
+      </div>
       <div className="flex">  {/* Making the background white temporarily. Old string: "min-h-screen flex justify-center items-center bg-white" */}
         <SampleGraph
           cyRef={cyRef2}
@@ -411,7 +517,7 @@ export default function Home() {
         <div className="w-full text-center mt-8 text-2xl" style={{ color: "black" }}>
           <MathJaxContext>
             <div className="grid grid-cols-[auto] gap-x-1 space-y-4 pr-4">
-              <p className="font-serif col-span-1 font-bold">Backward pass equations:</p>
+              <p className="font-serif col-span-1 font-bold">Backpropagation equations:</p>
 
               {/* Equation 1: L_bar */}
               {backpropActiveEquations.includes("L_bar") && (
@@ -425,7 +531,7 @@ export default function Home() {
                 <p className="font-serif col-span-1 mt-20 font-bold">Explanation:</p>
                 <MathEquation
                   equationName="t1"
-                  content={"\\(t_1\\) represents the expected value for \\(y_1\\). It is a constant, not something that is computed by the network. Thus, there is no error loss signal for \\(t_1\\)."}
+                  content={"\\(t_1\\) represents the expected value for \\(y_1\\). It is a constant, not something that is computed by the network. Thus, there is no error signal for \\(t_1\\)."}
                   className=""
                 />
                 </>
@@ -438,7 +544,7 @@ export default function Home() {
                   <p className="font-serif col-span-1 mt-20 font-bold">Explanation:</p>
                   <MathEquation
                     equationName="t1"
-                    content={"\\(t_2\\) represents the expected value for \\(y_2\\). It is a constant, not something that is computed by the network. Thus, there is no error loss signal for \\(t_2\\)."}
+                    content={"\\(t_2\\) represents the expected value for \\(y_2\\). It is a constant, not something that is computed by the network. Thus, there is no error signal for \\(t_2\\)."}
                     className=""
                   />
                 </>
@@ -473,7 +579,7 @@ export default function Home() {
             {backpropActiveEquations.includes("h1_bar") && (
               <MathEquation
                 equationName="h1_bar"
-                content={"\\(\\sum_{i=1}^{2} \\overline{y}_i \\cdot \\frac{\\partial y_i}{\\partial h_1} = \\sum_{i=1}^{2} \\overline{y}_i w_{i1}^{(2)} = \\overline{y}_1 w_{11}^{(2)} + \\overline{y}_2 w_{21}^{(2)}\\)"}
+                content={"\\(\\overline{h}_1 = \\sum_{i=1}^{2} \\overline{y}_i \\cdot \\frac{\\partial y_i}{\\partial h_1} = \\sum_{i=1}^{2} \\overline{y}_i w_{i1}^{(2)} = \\overline{y}_1 w_{11}^{(2)} + \\overline{y}_2 w_{21}^{(2)}\\)"}
                 className='mt-20'
               />
             )}
