@@ -269,7 +269,11 @@ export default function Home() {
 
   return (
     <div>
-      <p className="pl-4 mb-8">Forward propagation demonstration:</p>
+      {/* <p className="pl-4 mb-8">Forward propagation demonstration:</p> */}
+      <p className="pl-4 mb-2 font-bold text-xl flex items-center">
+        Forward propagation demonstration:
+      </p>
+
       <div className="flex">  {/* Making the background white temporarily. Old string: "min-h-screen flex justify-center items-center bg-white" */}
         <SampleGraph cyRef={cyRef} nodes={forwardPropNodeList} edges={forwardPropEdgeList} />  {/* Making a Comp Graph Object */}
         <div className="w-full text-center mt-8 text-2xl" style={{ color: "black" }}>
@@ -399,7 +403,9 @@ export default function Home() {
           </MathJaxContext>
         </div>
       </div>
-      <p className="pl-4 mt-10 mb-8">Backward propagation demonstration:</p>
+      <p className="pl-4 mt-10 mb-8 font-bold text-xl flex items-center">
+        Backward propagation demonstration:
+      </p>
       <div className="flex">  {/* Making the background white temporarily. Old string: "min-h-screen flex justify-center items-center bg-white" */}
         <SampleGraph
           cyRef={cyRef2}
