@@ -5,6 +5,7 @@
 import { useRef, useState, useEffect } from "react";
 import { MathJax} from 'better-react-mathjax';
 import { MathJaxContext } from 'better-react-mathjax';
+import {CollapsibleSection} from "../components/CollapsibleSection";
 import MathEquation from "../components/MathEquation";
 import SampleGraph from '../components/CompGraph';
 import { GraphHighlightButton } from "../components/GraphHighlightButton";
@@ -269,13 +270,67 @@ export default function Home() {
 
   return (
     <div>
-      <p className="pl-4 mt-10 mb-8 text-2xl font-bold underline text-gray-800">Forward propagation demonstration:</p>
+      <p className="pl-4 mt-10 mb-8 text-2xl font-bold underline text-gray-800">Forward pass:</p>
+
+      <div className="mx-4 mb-6 p-4 border-l-4 border-blue-500 bg-blue-50 rounded shadow-sm">
+        <p className="text-gray-800 text-lg font-bold">Definition</p>
+        <p className="text-gray-700 mt-1">
+          <MathJaxContext>
+            <MathJax>
+              {"Forward propagation is the process of computing \\( y_1 \\), \\( y_2 \\), and the loss \\( \\mathcal{L} \\) by passing inputs \\( x_1 \\), \\( x_2 \\) through the network using weights and activation functions."}
+            </MathJax>
+          </MathJaxContext>
+        </p>
+        <div>
+          <CollapsibleSection title="Terminology">
+            <MathJaxContext>
+              <MathJax>
+                <ul className="list-disc list-inside text-base text-left space-y-2">
+
+                  {/* Inputs */}
+                  <p className="font-bold mt-2">Inputs</p>
+                  <li>{"\\( x_1, x_2 \\): Input features to the network."}</li>
+
+                  {/* First Layer: Input → Pre-Activation */}
+                  <p className="font-bold mt-4">First Layer (Input → Hidden)</p>
+                  <li>{"\\( w_{11}^{(1)}, w_{12}^{(1)} \\): Weights denoting how much \\( x_1 \\) and \\( x_2 \\) respectively contribute to the pre-activation \\( z_1 \\)."}</li>
+                  <li>{"\\( b_1^{(1)} \\): Bias term added to \\( z_1 \\)."}</li>
+                  <li>{"\\( w_{21}^{(1)}, w_{22}^{(1)} \\): Weights denoting how much \\( x_1 \\) and \\( x_2 \\) respectively contribute to the pre-activation \\( z_2 \\)."}</li>
+                  <li>{"\\( b_2^{(1)} \\): Bias term added to \\( z_2 \\)."}</li>
+                  <li>{"\\( z_1, z_2 \\): Input terms to the activation function."}</li>
+                  <li>{"\\( h_1 = \\sigma(z_1), \\; h_2 = \\sigma(z_2) \\): Activation functions."}</li>
+
+                  {/* Second Layer: Pre-Activation → Output */}
+                  <p className="font-bold mt-4">Second Layer (Hidden → Output)</p>
+                  <li>{"\\( w_{11}^{(2)}, w_{12}^{(2)} \\): Weights denoting how much \\( h_1 \\) and \\( h_2 \\) respectively contribute to the predicted value \\( y_1 \\)."}</li>
+                  <li>{"\\( b_1^{(2)} \\): Bias term added to \\( y_1 \\)."}</li>
+                  <li>{"\\( w_{21}^{(2)}, w_{22}^{(2)} \\): Weights denoting how much \\( h_1 \\) and \\( h_2 \\) respectively contribute to the predicted value \\( y_2 \\)."}</li>
+                  <li>{"\\( y_1, y_2 \\): Final outputs (predictions) of the network."}</li>
+
+                  {/* Loss computation */}
+                  <p className="font-bold mt-4">Loss computation</p>
+                  <li>{"\\( t_1, t_2 \\): Target values for network output \\( y_1, y_2 \\) respectively"}</li>
+                  <li>{"\\( \\mathcal{L} \\): Loss function. Its output is the squared error between each prediction \\( y_1, y_2 \\) and target \\( t_1, t_2 \\)."}</li>
+                </ul>
+              </MathJax>
+            </MathJaxContext>
+          </CollapsibleSection>
+        </div>
+      </div>
+
+      <div className="mx-4 mb-6 p-4 border-l-4 border-blue-500 bg-blue-50 rounded shadow-sm">
+        <p className="text-gray-800 text-lg font-bold">Diagram Instructions:</p>
+        <p className="text-gray-700">
+        Use the "Select" buttons beside each equation in section "Forward Pass Equations" to highlight which nodes and edges are involved in computing that expression.
+        </p>
+      </div>
+
       <div className="flex">  {/* Making the background white temporarily. Old string: "min-h-screen flex justify-center items-center bg-white" */}
         <SampleGraph cyRef={cyRef} nodes={forwardPropNodeList} edges={forwardPropEdgeList} />  {/* Making a Comp Graph Object */}
         <div className="w-full text-center mt-8 text-2xl" style={{ color: "black" }}>
           <MathJaxContext>
             <div className="grid grid-cols-[auto,auto] gap-x-1 space-y-4 pr-4">
-              <p className="font-serif col-span-2 font-bold">Forward pass equations:</p>
+              <p className="font-serif col-span-2 font-bold">Forward pass Equations:</p>
 
               {/* Equation 1: z1 */}
               <MathEquation equationName="z1" content={"\\(z_1 = w_{11}^{(1)} x_1 + w_{12}^{(1)} x_2 + b_1^{(1)}\\)"} className=''></MathEquation>
@@ -399,7 +454,7 @@ export default function Home() {
           </MathJaxContext>
         </div>
       </div>
-      <p className="pl-4 mt-10 mb-8 text-2xl font-bold underline text-gray-800">Backward propagation demonstration:</p>
+      <p className="pl-4 mt-10 mb-8 text-2xl font-bold underline text-gray-800">Backpropagation:</p>
       <div className="flex">  {/* Making the background white temporarily. Old string: "min-h-screen flex justify-center items-center bg-white" */}
         <SampleGraph
           cyRef={cyRef2}
@@ -411,7 +466,7 @@ export default function Home() {
         <div className="w-full text-center mt-8 text-2xl" style={{ color: "black" }}>
           <MathJaxContext>
             <div className="grid grid-cols-[auto] gap-x-1 space-y-4 pr-4">
-              <p className="font-serif col-span-1 font-bold">Backward pass equations:</p>
+              <p className="font-serif col-span-1 font-bold">Backpropagation equations:</p>
 
               {/* Equation 1: L_bar */}
               {backpropActiveEquations.includes("L_bar") && (
@@ -473,7 +528,7 @@ export default function Home() {
             {backpropActiveEquations.includes("h1_bar") && (
               <MathEquation
                 equationName="h1_bar"
-                content={"\\(\\sum_{i=1}^{2} \\overline{y}_i \\cdot \\frac{\\partial y_i}{\\partial h_1} = \\sum_{i=1}^{2} \\overline{y}_i w_{i1}^{(2)} = \\overline{y}_1 w_{11}^{(2)} + \\overline{y}_2 w_{21}^{(2)}\\)"}
+                content={"\\(\\overline{h}_1 = \\sum_{i=1}^{2} \\overline{y}_i \\cdot \\frac{\\partial y_i}{\\partial h_1} = \\sum_{i=1}^{2} \\overline{y}_i w_{i1}^{(2)} = \\overline{y}_1 w_{11}^{(2)} + \\overline{y}_2 w_{21}^{(2)}\\)"}
                 className='mt-20'
               />
             )}
