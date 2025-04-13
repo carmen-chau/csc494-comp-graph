@@ -271,7 +271,6 @@ export default function Home() {
   return (
     <div>
       <p className="pl-4 mt-10 mb-8 text-2xl font-bold underline text-gray-800">Forward pass:</p>
-
       <div className="mx-4 mb-6 p-4 border-l-4 border-blue-500 bg-blue-50 rounded shadow-sm">
         <p className="text-gray-800 text-lg font-bold">Definition</p>
         <p className="text-gray-700 mt-1">
@@ -298,28 +297,28 @@ export default function Home() {
 
                   {/* Inputs */}
                   <p className="font-bold mt-2">Inputs</p>
-                  <li>{"\\( x_1, x_2 \\): Input features to the network."}</li>
+                  <li className = "pl-4">{"\\( x_1, x_2 \\): Input features to the network."}</li>
 
                   {/* First Layer: Input → Pre-Activation */}
                   <p className="font-bold mt-4">First Layer (Input → Hidden)</p>
-                  <li>{"\\( w_{11}^{(1)}, w_{12}^{(1)} \\): Weights denoting how much \\( x_1 \\) and \\( x_2 \\) respectively contribute to the pre-activation \\( z_1 \\)."}</li>
-                  <li>{"\\( b_1^{(1)} \\): Bias term added to \\( z_1 \\)."}</li>
-                  <li>{"\\( w_{21}^{(1)}, w_{22}^{(1)} \\): Weights denoting how much \\( x_1 \\) and \\( x_2 \\) respectively contribute to the pre-activation \\( z_2 \\)."}</li>
-                  <li>{"\\( b_2^{(1)} \\): Bias term added to \\( z_2 \\)."}</li>
-                  <li>{"\\( z_1, z_2 \\): Input terms to the activation function."}</li>
-                  <li>{"\\( h_1 = \\sigma(z_1), \\; h_2 = \\sigma(z_2) \\): Activation functions."}</li>
+                  <li className = "pl-4">{"\\( w_{11}^{(1)}, w_{12}^{(1)} \\): Weights denoting how much \\( x_1 \\) and \\( x_2 \\) respectively contribute to the pre-activation \\( z_1 \\)."}</li>
+                  <li className = "pl-4">{"\\( b_1^{(1)} \\): Bias term added to \\( z_1 \\)."}</li>
+                  <li className = "pl-4">{"\\( w_{21}^{(1)}, w_{22}^{(1)} \\): Weights denoting how much \\( x_1 \\) and \\( x_2 \\) respectively contribute to the pre-activation \\( z_2 \\)."}</li>
+                  <li className = "pl-4">{"\\( b_2^{(1)} \\): Bias term added to \\( z_2 \\)."}</li>
+                  <li className = "pl-4">{"\\( z_1, z_2 \\): Input terms to the activation function."}</li>
+                  <li className = "pl-4">{"\\( h_1 = \\sigma(z_1), \\; h_2 = \\sigma(z_2) \\): Activation functions."}</li>
 
                   {/* Second Layer: Pre-Activation → Output */}
                   <p className="font-bold mt-4">Second Layer (Hidden → Output)</p>
-                  <li>{"\\( w_{11}^{(2)}, w_{12}^{(2)} \\): Weights denoting how much \\( h_1 \\) and \\( h_2 \\) respectively contribute to the predicted value \\( y_1 \\)."}</li>
-                  <li>{"\\( b_1^{(2)} \\): Bias term added to \\( y_1 \\)."}</li>
-                  <li>{"\\( w_{21}^{(2)}, w_{22}^{(2)} \\): Weights denoting how much \\( h_1 \\) and \\( h_2 \\) respectively contribute to the predicted value \\( y_2 \\)."}</li>
-                  <li>{"\\( y_1, y_2 \\): Final outputs (predictions) of the network."}</li>
+                  <li className = "pl-4">{"\\( w_{11}^{(2)}, w_{12}^{(2)} \\): Weights denoting how much \\( h_1 \\) and \\( h_2 \\) respectively contribute to the predicted value \\( y_1 \\)."}</li>
+                  <li className = "pl-4">{"\\( b_1^{(2)} \\): Bias term added to \\( y_1 \\)."}</li>
+                  <li className = "pl-4">{"\\( w_{21}^{(2)}, w_{22}^{(2)} \\): Weights denoting how much \\( h_1 \\) and \\( h_2 \\) respectively contribute to the predicted value \\( y_2 \\)."}</li>
+                  <li className = "pl-4">{"\\( y_1, y_2 \\): Final outputs (predictions) of the network."}</li>
 
                   {/* Loss computation */}
                   <p className="font-bold mt-4">Loss computation</p>
-                  <li>{"\\( t_1, t_2 \\): Target values for network output \\( y_1, y_2 \\) respectively"}</li>
-                  <li>{"\\( \\mathcal{L} \\): Loss function. Its output is the squared error between each prediction \\( y_1, y_2 \\) and target \\( t_1, t_2 \\)."}</li>
+                  <li className = "pl-4">{"\\( t_1, t_2 \\): Target values for network output \\( y_1, y_2 \\) respectively"}</li>
+                  <li className = "pl-4">{"\\( \\mathcal{L} \\): Loss function. Its output is the squared error between each prediction \\( y_1, y_2 \\) and target \\( t_1, t_2 \\)."}</li>
                 </ul>
               </MathJax>
             </MathJaxContext>
@@ -465,6 +464,45 @@ export default function Home() {
         </div>
       </div>
       <p className="pl-4 mt-10 mb-8 text-2xl font-bold underline text-gray-800">Backpropagation:</p>
+      <div className="mx-4 mb-6 p-4 border-l-4 border-blue-500 bg-blue-50 rounded shadow-sm">
+        <p className="text-gray-800 text-lg font-bold">Definition</p>
+        <p className="text-gray-700 mt-1">
+          <MathJaxContext>
+            <MathJax>
+              {"Backpropagation is the process in which we compute the gradient of the loss function with respect to the model parameters (ie: Its weight and bias terms). "}
+              {"By calculating how sensitive the loss is to the parameters, we can use these results to iteratively update the parameters to minimize model loss. "}
+            </MathJax>
+          </MathJaxContext>
+        </p>
+        <p className="text-gray-700 mt-1">
+          <MathJaxContext>
+            <MathJax>
+              {"During backpropagation, we working backwards through the computation graph, using error signals at each node to compute intermediate gradient calculation. You can explore the "}
+              <strong>{"Terminology"}</strong>
+              {" section to learn more about the notation used here."}
+            </MathJax>
+          </MathJaxContext>
+        </p>
+        <CollapsibleSection title="Terminology">
+            <MathJaxContext>
+              <MathJax>
+                <div className="list-disc list-inside text-base text-left space-y-2">
+
+                  {/* Error signal */}
+                  <p className="font-bold mt-2">Error signal</p>
+                  <p className = "pl-4">{"Let the term \\( \\bar{y} \\) denote the derivative \\( \\frac{\\partial \\mathcal{L}}{\\partial y} \\), which represents how much a node \\( y \\) influences the final loss \\( \\mathcal{L} \\)."}</p>
+                  <p className = "pl-4">{"Error signals are just values our program is computing (rather than a mathematical operation)."}</p>
+                </div>
+              </MathJax>
+            </MathJaxContext>
+          </CollapsibleSection>
+      </div>
+      <div className="mx-4 mb-6 p-4 border-l-4 border-blue-500 bg-blue-50 rounded shadow-sm">
+        <p className="text-gray-800 text-lg font-bold">Diagram Instructions:</p>
+        <p className="text-gray-700">
+        The diagram below illustrates how these gradients are computed and propagated backward through the network. Click on any node in the computation graph to visualize its error signal. The intermediate error signals and equations would appear in section <b>Backpropagation Equations</b>.
+        </p>
+      </div>
       <div className="flex">  {/* Making the background white temporarily. Old string: "min-h-screen flex justify-center items-center bg-white" */}
         <SampleGraph
           cyRef={cyRef2}
