@@ -474,16 +474,23 @@ export default function Home() {
           <MathJaxContext>
             <MathJax>
               {"Backpropagation is the process in which we compute the gradient of the loss function with respect to the model parameters (ie: Its weight and bias terms). "}
-              {"By calculating how sensitive the loss is to the parameters, we can use these results to iteratively update the parameters to minimize model loss. "}
             </MathJax>
           </MathJaxContext>
         </p>
         <p className="text-gray-700 mt-1">
           <MathJaxContext>
             <MathJax>
-              {"During backpropagation, we work backwards through the computation graph, using error signals at each node to compute intermediate gradient calculation. You can explore the "}
+              {"Unlike forward pass, which flows from input to output, backpropagation starts at the model’s output (i.e., the loss value) and works backward through the network, calculating how sensitive the loss is to each parameter."}
+            </MathJax>
+          </MathJaxContext>
+        </p>
+        <p className="text-gray-700 mt-1">
+          <MathJaxContext>
+            <MathJax>
+              {"We can use these results to iteratively update the parameters to minimize model loss. "}
+              {"You can explore the "}
               <strong>{"Terminology"}</strong>
-              {" section to learn more about the notation used here."}
+              {" section to learn more about the notation used in this process."}
             </MathJax>
           </MathJaxContext>
         </p>
@@ -502,12 +509,21 @@ export default function Home() {
         </CollapsibleSection>
       </div>
       <div className="mx-4 mb-6 p-4 border-l-4 border-blue-500 bg-blue-50 rounded shadow-sm">
-        <p className="text-gray-800 text-lg font-bold">How to use diagram:</p>
+      <p className="text-gray-800 text-lg font-bold">Diagram components</p>
+        <p className="text-gray-700">The computation graph <b>nodes</b> represent all the input and computed quantities.</p>
+        <p className="text-gray-700">The computation graph <b>edges</b> represent which nodes are computed directly from which other nodes. This relationship is also known as a <b>direct dependency.</b></p>
+        <p className="text-gray-700">The <b>dotted blue arrows</b> that would appear when a node is pressed represents the gradient flow. The <b>error signals</b> of each node denotes the underlying numerical value computed from these flows</p>
+        <p className="text-gray-800 text-lg font-bold mt-5">How to use diagram:</p>
         <p className="text-gray-700">
-          The diagram below illustrates how these gradients are computed and propagated backward through the network.
-          Click on any node in the computation graph to visualize its error signal.
-          The intermediate error signals and equations would appear in section <b>Backpropagation Equations</b>.
-          The final error signal equation for the node being clicked would be highlighted.
+          The diagram below illustrates how gradients are computed and propagated backward through the network to compute error signals for nodes.
+        </p>
+        <p className="text-gray-700">
+        Click on any node in the computation graph to visualize its error signal.
+        The intermediate error signals and equations would appear in section <b>Backpropagation Equations</b>.
+        The final error signal equation for the node being clicked would be highlighted.
+        </p>
+        <p className="text-gray-700">
+         Where applicable, there would also be an <b>Explanation</b> text box that appears to give more context about the error signal result.
         </p>
       </div>
       <div className="flex">  {/* Making the background white temporarily. Old string: "min-h-screen flex justify-center items-center bg-white" */}
