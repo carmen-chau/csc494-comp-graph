@@ -520,7 +520,7 @@ export default function Home() {
 
         <div className="w-full text-center mt-8 text-2xl" style={{ color: "black" }}>
           <MathJaxContext>
-            <div className="grid grid-cols-[auto] gap-x-1 space-y-4 pr-4">
+            <div className="grid grid-cols-[auto] gap-x-1 space-y-6 pr-4">
               <p className="font-serif col-span-1 font-bold">Backpropagation Equations:</p>
 
               {/* Equation 1: L_bar */}
@@ -578,15 +578,23 @@ export default function Home() {
               {backpropActiveEquations.includes("b1_2_bar") && (
                 <MathEquation equationName="b1_2_bar" content={"\\( \\overline{b}^{(2)}_1 = \\overline{y}_1 \\cdot \\frac{\\partial y_1}{\\partial b^{(2)}_1} = \\overline{y}_1 \\)"} className=''></MathEquation>
               )}
+              {/* Equation 9: h1_bar */}
+              {backpropActiveEquations.includes("h1_bar") && (
+                <>
+                  <MathEquation
+                    equationName="h1_bar"
+                    content={"\\(\\overline{h}_1 = \\sum_{i=1}^{2} \\overline{y}_i \\cdot \\frac{\\partial y_i}{\\partial h_1} = \\sum_{i=1}^{2} \\overline{y}_i w_{i1}^{(2)} = \\overline{y}_1 w_{11}^{(2)} + \\overline{y}_2 w_{21}^{(2)}\\)"}
+                    className=''
+                  />
+                  <p className="font-serif col-span-1 mt-20 font-bold">Explanation:</p>
+                  <MathEquation
+                    equationName="t1"
+                    content={"\\(t_1\\) represents the expected value for \\(y_1\\). It is a constant, not something that is computed by the network. Thus, there is no error signal for \\(t_1\\)."}
+                    className=""
+                  />
+                </>
+              )}
             </div>
-            {/* Equation 9: h1_bar */}
-            {backpropActiveEquations.includes("h1_bar") && (
-              <MathEquation
-                equationName="h1_bar"
-                content={"\\(\\overline{h}_1 = \\sum_{i=1}^{2} \\overline{y}_i \\cdot \\frac{\\partial y_i}{\\partial h_1} = \\sum_{i=1}^{2} \\overline{y}_i w_{i1}^{(2)} = \\overline{y}_1 w_{11}^{(2)} + \\overline{y}_2 w_{21}^{(2)}\\)"}
-                className='mt-20'
-              />
-            )}
           </MathJaxContext>
         </div>
       </div>
