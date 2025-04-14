@@ -81,7 +81,8 @@ const defaultGraphStyles = [
       'control-point-distances': [15],
       'control-point-weights': [0.20],
       'font-size': 14,
-      'text-margin-y': -15,
+      'text-margin-y': -20,
+      'text-margin-x': -10
     }
   },
 
@@ -93,7 +94,8 @@ const defaultGraphStyles = [
       'control-point-distances': [15],
       'control-point-weights': [0.40],
       'font-size': 14,
-      'text-margin-y': -10,
+      'text-margin-y': -15,
+      'text-margin-x': -10
     }
   },
 
@@ -105,8 +107,8 @@ const defaultGraphStyles = [
       'control-point-distances': [15],
       'control-point-weights': [0.40],
       'font-size': 14,
-      'text-margin-y': -20,
-      'text-margin-x': -20
+      'text-margin-y': -25,
+      'text-margin-x': -30
     }
   },
 
