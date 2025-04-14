@@ -3,9 +3,9 @@
 */
 
 import { useRef, useState, useEffect } from "react";
-import { MathJax} from 'better-react-mathjax';
+import { MathJax } from 'better-react-mathjax';
 import { MathJaxContext } from 'better-react-mathjax';
-import {CollapsibleSection} from "../components/CollapsibleSection";
+import { CollapsibleSection } from "../components/CollapsibleSection";
 import MathEquation from "../components/MathEquation";
 import SampleGraph from '../components/CompGraph';
 import { GraphHighlightButton } from "../components/GraphHighlightButton";
@@ -297,28 +297,28 @@ export default function Home() {
 
                   {/* Inputs */}
                   <p className="font-bold mt-2">Inputs</p>
-                  <li className = "pl-4">{"\\( x_1, x_2 \\): Input features to the network."}</li>
+                  <li className="pl-4">{"\\( x_1, x_2 \\): Input features to the network."}</li>
 
                   {/* First Layer: Input → Pre-Activation */}
                   <p className="font-bold mt-4">First Layer (Input → Hidden)</p>
-                  <li className = "pl-4">{"\\( w_{11}^{(1)}, w_{12}^{(1)} \\): Weights denoting how much \\( x_1 \\) and \\( x_2 \\) respectively contribute to the pre-activation \\( z_1 \\)."}</li>
-                  <li className = "pl-4">{"\\( b_1^{(1)} \\): Bias term added to \\( z_1 \\)."}</li>
-                  <li className = "pl-4">{"\\( w_{21}^{(1)}, w_{22}^{(1)} \\): Weights denoting how much \\( x_1 \\) and \\( x_2 \\) respectively contribute to the pre-activation \\( z_2 \\)."}</li>
-                  <li className = "pl-4">{"\\( b_2^{(1)} \\): Bias term added to \\( z_2 \\)."}</li>
-                  <li className = "pl-4">{"\\( z_1, z_2 \\): Input terms to the activation function."}</li>
-                  <li className = "pl-4">{"\\( h_1 = \\sigma(z_1), \\; h_2 = \\sigma(z_2) \\): Activation functions."}</li>
+                  <li className="pl-4">{"\\( w_{11}^{(1)}, w_{12}^{(1)} \\): Weights denoting how much \\( x_1 \\) and \\( x_2 \\) respectively contribute to the pre-activation \\( z_1 \\)."}</li>
+                  <li className="pl-4">{"\\( b_1^{(1)} \\): Bias term added to \\( z_1 \\)."}</li>
+                  <li className="pl-4">{"\\( w_{21}^{(1)}, w_{22}^{(1)} \\): Weights denoting how much \\( x_1 \\) and \\( x_2 \\) respectively contribute to the pre-activation \\( z_2 \\)."}</li>
+                  <li className="pl-4">{"\\( b_2^{(1)} \\): Bias term added to \\( z_2 \\)."}</li>
+                  <li className="pl-4">{"\\( z_1, z_2 \\): Input terms to the activation function."}</li>
+                  <li className="pl-4">{"\\( h_1 = \\sigma(z_1), \\; h_2 = \\sigma(z_2) \\): Activation functions."}</li>
 
                   {/* Second Layer: Pre-Activation → Output */}
                   <p className="font-bold mt-4">Second Layer (Hidden → Output)</p>
-                  <li className = "pl-4">{"\\( w_{11}^{(2)}, w_{12}^{(2)} \\): Weights denoting how much \\( h_1 \\) and \\( h_2 \\) respectively contribute to the predicted value \\( y_1 \\)."}</li>
-                  <li className = "pl-4">{"\\( b_1^{(2)} \\): Bias term added to \\( y_1 \\)."}</li>
-                  <li className = "pl-4">{"\\( w_{21}^{(2)}, w_{22}^{(2)} \\): Weights denoting how much \\( h_1 \\) and \\( h_2 \\) respectively contribute to the predicted value \\( y_2 \\)."}</li>
-                  <li className = "pl-4">{"\\( y_1, y_2 \\): Final outputs (predictions) of the network."}</li>
+                  <li className="pl-4">{"\\( w_{11}^{(2)}, w_{12}^{(2)} \\): Weights denoting how much \\( h_1 \\) and \\( h_2 \\) respectively contribute to the predicted value \\( y_1 \\)."}</li>
+                  <li className="pl-4">{"\\( b_1^{(2)} \\): Bias term added to \\( y_1 \\)."}</li>
+                  <li className="pl-4">{"\\( w_{21}^{(2)}, w_{22}^{(2)} \\): Weights denoting how much \\( h_1 \\) and \\( h_2 \\) respectively contribute to the predicted value \\( y_2 \\)."}</li>
+                  <li className="pl-4">{"\\( y_1, y_2 \\): Final outputs (predictions) of the network."}</li>
 
                   {/* Loss computation */}
                   <p className="font-bold mt-4">Loss computation</p>
-                  <li className = "pl-4">{"\\( t_1, t_2 \\): Target values for network output \\( y_1, y_2 \\) respectively"}</li>
-                  <li className = "pl-4">{"\\( \\mathcal{L} \\): Loss function. Its output is the squared error between each prediction \\( y_1, y_2 \\) and target \\( t_1, t_2 \\)."}</li>
+                  <li className="pl-4">{"\\( t_1, t_2 \\): Target values for network output \\( y_1, y_2 \\) respectively"}</li>
+                  <li className="pl-4">{"\\( \\mathcal{L} \\): Loss function. Its output is the squared error between each prediction \\( y_1, y_2 \\) and target \\( t_1, t_2 \\)."}</li>
                 </ul>
               </MathJax>
             </MathJaxContext>
@@ -333,8 +333,8 @@ export default function Home() {
 
         <p className="text-gray-800 text-lg font-bold mt-5">How to use diagram:</p>
         <p className="text-gray-700">
-        Now, let's explore how the computation graph is built step by step in forward pass. 
-        Use the <b>"Select"</b> buttons beside each equation in section <b>"Forward Pass Equations" </b>to highlight the specific nodes and edges that are involved in computing that expression.
+          Now, let's explore how the computation graph is built step by step in forward pass.
+          Use the <b>"Select"</b> buttons beside each equation in section <b>"Forward Pass Equations" </b>to highlight the specific nodes and edges that are involved in computing that expression.
         </p>
       </div>
 
@@ -488,26 +488,26 @@ export default function Home() {
           </MathJaxContext>
         </p>
         <CollapsibleSection title="Terminology">
-            <MathJaxContext>
-              <MathJax>
-                <div className="list-disc list-inside text-base text-left space-y-2">
+          <MathJaxContext>
+            <MathJax>
+              <div className="list-disc list-inside text-base text-left space-y-2">
 
-                  {/* Error signal */}
-                  <p className="font-bold mt-2">Error signal</p>
-                  <p className = "pl-4">{"Let the term \\( \\bar{y} \\) denote the derivative \\( \\frac{\\partial \\mathcal{L}}{\\partial y} \\), which represents how much a node \\( y \\) influences the final loss \\( \\mathcal{L} \\)."}</p>
-                  <p className = "pl-4">{"Error signals are just values our program is computing (rather than a mathematical operation)."}</p>
-                </div>
-              </MathJax>
-            </MathJaxContext>
-          </CollapsibleSection>
+                {/* Error signal */}
+                <p className="font-bold mt-2">Error signal</p>
+                <p className="pl-4">{"Let the term \\( \\bar{y} \\) denote the derivative \\( \\frac{\\partial \\mathcal{L}}{\\partial y} \\), which represents how much a node \\( y \\) influences the final loss \\( \\mathcal{L} \\)."}</p>
+                <p className="pl-4">{"Error signals are just values our program is computing (rather than a mathematical operation)."}</p>
+              </div>
+            </MathJax>
+          </MathJaxContext>
+        </CollapsibleSection>
       </div>
       <div className="mx-4 mb-6 p-4 border-l-4 border-blue-500 bg-blue-50 rounded shadow-sm">
         <p className="text-gray-800 text-lg font-bold">How to use diagram:</p>
         <p className="text-gray-700">
-        The diagram below illustrates how these gradients are computed and propagated backward through the network. 
-        Click on any node in the computation graph to visualize its error signal. 
-        The intermediate error signals and equations would appear in section <b>Backpropagation Equations</b>.
-        The final error signal equation for the node being clicked would be highlighted.
+          The diagram below illustrates how these gradients are computed and propagated backward through the network.
+          Click on any node in the computation graph to visualize its error signal.
+          The intermediate error signals and equations would appear in section <b>Backpropagation Equations</b>.
+          The final error signal equation for the node being clicked would be highlighted.
         </p>
       </div>
       <div className="flex">  {/* Making the background white temporarily. Old string: "min-h-screen flex justify-center items-center bg-white" */}
@@ -533,12 +533,12 @@ export default function Home() {
                 <>
                   <MathJax>{"None"}</MathJax>
                   <div className="mt-6 mb-4 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded-md shadow-sm">
-                    <p className="font-semibold text-yellow-800">Explanation:</p>
-                    <MathEquation
-                      equationName="t1"
-                      content={"\\(t_1\\) represents the expected value for \\(y_1\\). It is a constant, not something that is computed by the network. Thus, there is no error signal for \\(t_1\\)."}
-                      className=""
-                    />
+                    <MathJaxContext>
+                      <MathJax>
+                        <p className="font-semibold text-yellow-800">Explanation:</p>
+                        <p className='text-lg'>{"\\(t_1\\) represents the expected value for \\(y_1\\). It is a constant, not something that is computed by the network. Thus, there is no error signal for \\(t_1\\)."}</p>
+                      </MathJax>
+                    </MathJaxContext>
                   </div>
                 </>
               )}
@@ -548,12 +548,12 @@ export default function Home() {
                 <>
                   <MathJax>{"None"}</MathJax>
                   <div className="mt-6 mb-4 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded-md shadow-sm">
-                  <p className="font-semibold text-yellow-800">Explanation:</p>
-                  <MathEquation
-                    equationName="t1"
-                    content={"\\(t_2\\) represents the expected value for \\(y_2\\). It is a constant, not something that is computed by the network. Thus, there is no error signal for \\(t_2\\)."}
-                    className=""
-                  />
+                    <MathJaxContext>
+                      <MathJax>
+                        <p className="font-semibold text-yellow-800">Explanation:</p>
+                        <p className="text-lg">{"\\(t_2\\) represents the expected value for \\(y_2\\). It is a constant, not something that is computed by the network. Thus, there is no error signal for \\(t_2\\)."}</p>
+                      </MathJax>
+                    </MathJaxContext>
                   </div>
                 </>
               )}
@@ -592,19 +592,19 @@ export default function Home() {
                   />
                   {/* Learning Alert Box */}
                   <div className="mt-6 mb-4 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded-md shadow-sm">
-                    <p className="font-semibold text-yellow-800">Explanation:</p>
+                    <p className="font-bold text-yellow-800">Explanation:</p>
                     <MathJaxContext>
-                    <MathJax>
-                    <p className="mt-2 text-gray-800">
-                      We need to use the <b>multivariate chain rule</b> here because <MathJax inline>{"\\(h_1\\)"}</MathJax> affects the loss value through multiple <MathJax inline>{"\\(y_k\\)"}</MathJax> terms.
-                    </p>
-                    <p className="mt-1 text-gray-800">
-                      In the diagram, this is shown by <MathJax inline>{"\\( h_1 \\)"}</MathJax> having two distinct paths: One through <MathJax inline>{"\\( y_1 \\)"}</MathJax> and another through <MathJax inline>{"\\( y_2 \\)"}</MathJax>
-                    </p>
-                    <p className="mt-2 text-gray-800">
-                      The multivariate chain rule allows us to account for all paths through which <MathJax inline>{"\\(h_1\\)"}</MathJax> flows into the loss.
-                    </p>
-                    </MathJax>
+                      <MathJax>
+                        <p className="mt-2 text-lg text-gray-800">
+                          We need to use the <b>multivariate chain rule</b> here because <MathJax inline>{"\\(h_1\\)"}</MathJax> affects the loss value through multiple <MathJax inline>{"\\(y_k\\)"}</MathJax> terms.
+                        </p>
+                        <p className="mt-1 text-lg text-gray-800">
+                          In the diagram, this is shown by <MathJax inline>{"\\( h_1 \\)"}</MathJax> having two distinct paths: One through <MathJax inline>{"\\( y_1 \\)"}</MathJax> and another through <MathJax inline>{"\\( y_2 \\)"}</MathJax>.
+                        </p>
+                        <p className="mt-2 text-lg text-gray-800">
+                          The multivariate chain rule allows us to account for all paths through which <MathJax inline>{"\\(h_1\\)"}</MathJax> flows into the loss.
+                        </p>
+                      </MathJax>
                     </MathJaxContext>
                   </div>
                 </>
