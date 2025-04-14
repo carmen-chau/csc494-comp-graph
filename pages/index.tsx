@@ -276,7 +276,7 @@ export default function Home() {
         <p className="text-gray-700 mt-1">
           <MathJaxContext>
             <MathJax>
-              <p>{"Forward pass is the process in which we pass inputs (eg: \\( x_1 \\), \\( x_2 \\)) through a neural network to computing prediction values (eg: \\( y_1 \\), \\( y_2 \\)). We can these compare these prediction values with the true values (eg: \\( t_1 \\), \\( t_2 \\)) to compute the loss \\( \\mathcal{L} \\). "}</p>
+              {"Forward pass is the process in which we pass inputs (eg: \\( x_1 \\), \\( x_2 \\)) through a neural network to computing prediction values (eg: \\( y_1 \\), \\( y_2 \\)). We can these compare these prediction values with the true values (eg: \\( t_1 \\), \\( t_2 \\)) to compute the loss \\( \\mathcal{L} \\). "}
             </MathJax>
           </MathJaxContext>
         </p>
