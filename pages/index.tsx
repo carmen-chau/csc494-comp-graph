@@ -512,10 +512,10 @@ export default function Home() {
       <p className="text-gray-800 text-lg font-bold">Diagram components</p>
         <p className="text-gray-700">The computation graph <b>nodes</b> represent all the input and computed quantities.</p>
         <p className="text-gray-700">The computation graph <b>edges</b> represent which nodes are computed directly from which other nodes. This relationship is also known as a <b>direct dependency.</b></p>
-        <p className="text-gray-700">The <b>dotted blue arrows</b> that would appear when a node is pressed represents the gradient flow. The <b>error signals</b> of each node denotes the underlying numerical value computed from these flows</p>
+        <p className="text-gray-700">The <b>dotted blue arrows</b> that would appear when a node is pressed represents the gradient flow. The <b>error signals</b> of each node denotes the underlying numerical value computed from these flows.</p>
         <p className="text-gray-800 text-lg font-bold mt-5">How to use diagram:</p>
         <p className="text-gray-700">
-          The diagram below illustrates how gradients are computed and propagated backward through the network to compute error signals for nodes.
+          The diagram below illustrates how gradients are computed and propagated backward through the network to compute error signals.
         </p>
         <p className="text-gray-700">
         Click on any node in the computation graph to visualize its error signal.
@@ -523,7 +523,7 @@ export default function Home() {
         The final error signal equation for the node being clicked would be highlighted.
         </p>
         <p className="text-gray-700">
-         Where applicable, there would also be an <b>Explanation</b> text box that appears to give more context about the error signal result.
+         When applicable, there would also be an <b>Explanation</b> text box that would appears to give more context about the error signal result.
         </p>
       </div>
       <div className="flex">  {/* Making the background white temporarily. Old string: "min-h-screen flex justify-center items-center bg-white" */}
