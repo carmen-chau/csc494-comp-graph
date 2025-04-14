@@ -531,13 +531,15 @@ export default function Home() {
               {/* Equation 2: t1 */}
               {backpropActiveEquations.includes("t1") && (
                 <>
-                <MathJax>{"None"}</MathJax>
-                <p className="font-serif col-span-1 mt-20 font-bold">Explanation:</p>
-                <MathEquation
-                  equationName="t1"
-                  content={"\\(t_1\\) represents the expected value for \\(y_1\\). It is a constant, not something that is computed by the network. Thus, there is no error signal for \\(t_1\\)."}
-                  className=""
-                />
+                  <MathJax>{"None"}</MathJax>
+                  <div className="mt-6 mb-4 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded-md shadow-sm">
+                    <p className="font-semibold text-yellow-800">Explanation:</p>
+                    <MathEquation
+                      equationName="t1"
+                      content={"\\(t_1\\) represents the expected value for \\(y_1\\). It is a constant, not something that is computed by the network. Thus, there is no error signal for \\(t_1\\)."}
+                      className=""
+                    />
+                  </div>
                 </>
               )}
 
@@ -545,12 +547,14 @@ export default function Home() {
               {backpropActiveEquations.includes("t2") && (
                 <>
                   <MathJax>{"None"}</MathJax>
-                  <p className="font-serif col-span-1 mt-20 font-bold">Explanation:</p>
+                  <div className="mt-6 mb-4 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded-md shadow-sm">
+                  <p className="font-semibold text-yellow-800">Explanation:</p>
                   <MathEquation
                     equationName="t1"
                     content={"\\(t_2\\) represents the expected value for \\(y_2\\). It is a constant, not something that is computed by the network. Thus, there is no error signal for \\(t_2\\)."}
                     className=""
                   />
+                  </div>
                 </>
               )}
 
@@ -586,12 +590,20 @@ export default function Home() {
                     content={"\\(\\overline{h}_1 = \\sum_{i=1}^{2} \\overline{y}_i \\cdot \\frac{\\partial y_i}{\\partial h_1} = \\sum_{i=1}^{2} \\overline{y}_i w_{i1}^{(2)} = \\overline{y}_1 w_{11}^{(2)} + \\overline{y}_2 w_{21}^{(2)}\\)"}
                     className=''
                   />
-                  <p className="font-serif col-span-1 mt-20 font-bold">Explanation:</p>
-                  <MathEquation
-                    equationName="t1"
-                    content={"\\(t_1\\) represents the expected value for \\(y_1\\). It is a constant, not something that is computed by the network. Thus, there is no error signal for \\(t_1\\)."}
-                    className=""
-                  />
+                  {/* Learning Alert Box */}
+                  <div className="mt-6 mb-4 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded-md shadow-sm">
+                    <p className="font-semibold text-yellow-800">Explanation:</p>
+                    <MathJaxContext>
+                    <MathJax>
+                    <p className="mt-1 text-gray-800">
+                      We need to use the <strong>multivariate chain rule</strong> here because the <MathJax inline>{"\\(h_1\\)"}</MathJax> terms affect multiple <MathJax inline>{"\\(y_k\\)"}</MathJax> terms.
+                    </p>
+                    <p className="mt-2 text-gray-800">
+                      The multivariate chain rule allows us to account for all paths through which <MathJax inline>{"\\(h_1\\)"}</MathJax> flows into the loss.
+                    </p>
+                    </MathJax>
+                    </MathJaxContext>
+                  </div>
                 </>
               )}
             </div>
