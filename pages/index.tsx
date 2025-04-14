@@ -285,7 +285,7 @@ export default function Home() {
             <MathJax>
               {"To generate these predictions, the network computes intermediate terms using linear and non-linear functions. You can explore the "}
               <strong>Terminology</strong>
-              {" section to learn more about each intermediate term and their role in the neural network model."}
+              {" section to learn more about each intermediate term for this specific visualization example"}
             </MathJax>
           </MathJaxContext>
         </p>
