@@ -276,7 +276,7 @@ export default function Home() {
         <p className="text-gray-700 mt-1">
           <MathJaxContext>
             <MathJax>
-              {"Forward propagation is the process in which we pass inputs (eg: \\( x_1 \\), \\( x_2 \\)) through a neural network to computing prediction values (eg: \\( y_1 \\), \\( y_2 \\)). We can these compare these prediction values with the true values (eg: \\( t_1 \\), \\( t_2 \\)) to compute the loss \\( \\mathcal{L} \\). "}
+              <p>{"Forward pass is the process in which we pass inputs (eg: \\( x_1 \\), \\( x_2 \\)) through a neural network to computing prediction values (eg: \\( y_1 \\), \\( y_2 \\)). We can these compare these prediction values with the true values (eg: \\( t_1 \\), \\( t_2 \\)) to compute the loss \\( \\mathcal{L} \\). "}</p>
             </MathJax>
           </MathJaxContext>
         </p>
@@ -327,7 +327,11 @@ export default function Home() {
       </div>
 
       <div className="mx-4 mb-6 p-4 border-l-4 border-blue-500 bg-blue-50 rounded shadow-sm">
-        <p className="text-gray-800 text-lg font-bold">Diagram Instructions:</p>
+        <p className="text-gray-800 text-lg font-bold">Diagram components</p>
+        <p className="text-gray-700">The computation graph <b>nodes</b> represent all the input and computed quantities.</p>
+        <p className="text-gray-700">The computation graph <b>edges</b> represent which nodes are computed directly from which other nodes. This relationship is also known as a <b>direct dependency.</b></p>
+
+        <p className="text-gray-800 text-lg font-bold mt-5">How to use diagram:</p>
         <p className="text-gray-700">
         Now, let's explore how the computation graph is built step by step in forward pass. 
         Use the <b>"Select"</b> buttons beside each equation in section <b>"Forward Pass Equations" </b>to highlight the specific nodes and edges that are involved in computing that expression.
@@ -477,7 +481,7 @@ export default function Home() {
         <p className="text-gray-700 mt-1">
           <MathJaxContext>
             <MathJax>
-              {"During backpropagation, we working backwards through the computation graph, using error signals at each node to compute intermediate gradient calculation. You can explore the "}
+              {"During backpropagation, we work backwards through the computation graph, using error signals at each node to compute intermediate gradient calculation. You can explore the "}
               <strong>{"Terminology"}</strong>
               {" section to learn more about the notation used here."}
             </MathJax>
@@ -498,7 +502,7 @@ export default function Home() {
           </CollapsibleSection>
       </div>
       <div className="mx-4 mb-6 p-4 border-l-4 border-blue-500 bg-blue-50 rounded shadow-sm">
-        <p className="text-gray-800 text-lg font-bold">Diagram Instructions:</p>
+        <p className="text-gray-800 text-lg font-bold">How to use diagram:</p>
         <p className="text-gray-700">
         The diagram below illustrates how these gradients are computed and propagated backward through the network. 
         Click on any node in the computation graph to visualize its error signal. 
@@ -517,7 +521,7 @@ export default function Home() {
         <div className="w-full text-center mt-8 text-2xl" style={{ color: "black" }}>
           <MathJaxContext>
             <div className="grid grid-cols-[auto] gap-x-1 space-y-4 pr-4">
-              <p className="font-serif col-span-1 font-bold">Backpropagation equations:</p>
+              <p className="font-serif col-span-1 font-bold">Backpropagation Equations:</p>
 
               {/* Equation 1: L_bar */}
               {backpropActiveEquations.includes("L_bar") && (
