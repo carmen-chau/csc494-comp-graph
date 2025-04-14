@@ -595,8 +595,11 @@ export default function Home() {
                     <p className="font-semibold text-yellow-800">Explanation:</p>
                     <MathJaxContext>
                     <MathJax>
+                    <p className="mt-2 text-gray-800">
+                      We need to use the <b>multivariate chain rule</b> here because <MathJax inline>{"\\(h_1\\)"}</MathJax> affects the loss value through multiple <MathJax inline>{"\\(y_k\\)"}</MathJax> terms.
+                    </p>
                     <p className="mt-1 text-gray-800">
-                      We need to use the <strong>multivariate chain rule</strong> here because the <MathJax inline>{"\\(h_1\\)"}</MathJax> terms affect multiple <MathJax inline>{"\\(y_k\\)"}</MathJax> terms.
+                      In the diagram, this is shown by <MathJax inline>{"\\( h_1 \\)"}</MathJax> having two distinct paths: One through <MathJax inline>{"\\( y_1 \\)"}</MathJax> and another through <MathJax inline>{"\\( y_2 \\)"}</MathJax>
                     </p>
                     <p className="mt-2 text-gray-800">
                       The multivariate chain rule allows us to account for all paths through which <MathJax inline>{"\\(h_1\\)"}</MathJax> flows into the loss.
