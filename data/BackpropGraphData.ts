@@ -200,6 +200,15 @@ export const edgeObjList = [
         classes: 'backward h1-z1-backprop',
     }),
 
+    GraphEdge({
+        id: 'h2-z2-backprop',
+        source: 'h2',
+        target: 'z2',
+        label: 'h̄₂ · ∂h₂/∂z₂',
+        visible: false,
+        classes: 'backward h2-z2-backprop',
+    }),
+
 
 ];
 
@@ -323,6 +332,15 @@ export const edgeDataList = [
         label: 'h̄₁ · ∂h₁/∂z₁',
         visible: false,
         classes: 'backward h1-z1-backprop',
+    },
+
+    {
+        id: 'h2-z2-backprop',
+        source: 'h2',
+        target: 'z2',
+        label: 'h̄₂ · ∂h₂/∂z₂',
+        visible: false,
+        classes: 'backward h2-z2-backprop',
     }
 
 ];

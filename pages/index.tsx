@@ -293,6 +293,29 @@ export default function Home() {
       nodeClickFunction(dataContent);
       setBackpropEquationStyle("bg-[#Ff7f7f] px-0.5 py-0.5 h-fit rounded-full");
     }
+
+    else if (node.id() == "z2") {
+      const dataContent = {
+        label: "Equation z2_bar",
+        nodeIds: ["z2", "h2", "y1", "y2", "L"],
+        edgeIds: [],
+        highlightColour: "#C3aaf9",
+        isGraphHighlighted: isBackwardGraphHighlighted,
+        setGraphHighlighted: setBackwardGraphHighlight,
+        activeNode: backwardActiveNode,
+        setActiveNode: setBackwardActiveNode,
+        equationNames: ["L_bar", "y1_bar", "y2_bar", "h2_bar", "z2_bar"],
+        activeEquations: backpropActiveEquations,
+        setActiveEquation: setBackpropActiveEquations,
+        // equationStyle: "bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full",
+        backPropEquationNames: ["L-y1-backprop", "L-y2-backprop", "y1-h2-backprop", "y2-h2-backprop", "h2-z2-backprop"],
+        cyRef: cyRef2,
+        cyRefType: "backward-prop"
+      }
+      nodeClickFunction(dataContent);
+      setBackpropEquationStyle("bg-[#C3aaf9] px-0.5 py-0.5 h-fit rounded-full");
+    }
+
     else {
       const dataContent = {
         label: "reset",
@@ -681,6 +704,7 @@ export default function Home() {
                     className=''
                   />
                   {/* Learning Alert Box */}
+                  {!["z2_bar"].some((key) => backpropActiveEquations.includes(key)) && (
                   <div className="mt-6 mb-4 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded-md shadow-sm">
                     <p className="font-bold text-yellow-800">Explanation:</p>
                     <MathJaxContext>
@@ -697,11 +721,16 @@ export default function Home() {
                       </MathJax>
                     </MathJaxContext>
                   </div>
+                  )}
                 </>
               )}
-               {/* Equation 11: z1_bar */}
-               {backpropActiveEquations.includes("z1_bar") && (
+              {/* Equation 11: z1_bar */}
+              {backpropActiveEquations.includes("z1_bar") && (
                 <MathEquation equationName="z1_bar" content={"\\( \\overline{z}_1 = \\overline{h}_1 \\cdot \\frac{\\partial h_1}{\\partial z_1} = \\overline{h}_1 \\cdot \\sigma'(z_1) = \\overline{h}_1 \\cdot \\sigma(z_1)(1 - \\sigma(z_1)) \\)"} className=''></MathEquation>
+              )}
+              {/* Equation 12: z2_bar */}
+              {backpropActiveEquations.includes("z2_bar") && (
+                <MathEquation equationName="z2_bar" content={"\\( \\overline{z}_2 = \\overline{h}_2 \\cdot \\frac{\\partial h_2}{\\partial z_2} = \\overline{h}_2 \\cdot \\sigma'(z_2) = \\overline{h}_2 \\cdot \\sigma(z_2)(1 - \\sigma(z_2)) \\)"} className=''></MathEquation>
               )}
             </div>
           </MathJaxContext>
