@@ -321,7 +321,7 @@ export default function Home() {
         label: "Equation w12_1_bar",
         nodeIds: ["w12_1", "z1", "h1", "y1", "y2", "L"],
         edgeIds: [],
-        highlightColour: "#C3aaf9",
+        highlightColour: "#Ef97b0",
         isGraphHighlighted: isBackwardGraphHighlighted,
         setGraphHighlighted: setBackwardGraphHighlight,
         activeNode: backwardActiveNode,
@@ -335,7 +335,7 @@ export default function Home() {
         cyRefType: "backward-prop"
       }
       nodeClickFunction(dataContent);
-      setBackpropEquationStyle("bg-[#C3aaf9] px-0.5 py-0.5 h-fit rounded-full");
+      setBackpropEquationStyle("bg-[#Ef97b0] px-0.5 py-0.5 h-fit rounded-full");
     }
 
     else {
