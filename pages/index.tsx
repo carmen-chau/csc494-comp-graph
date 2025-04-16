@@ -473,7 +473,7 @@ export default function Home() {
     <div>
       <p className="pl-4 mt-10 mb-8 text-2xl font-bold underline text-gray-800">Forward pass:</p>
       <div className="mx-4 mb-6 p-4 border-l-4 border-blue-500 bg-blue-50 rounded shadow-sm">
-        <p className="text-gray-800 text-lg font-bold">Definition</p>
+        <p className="text-gray-800 text-lg font-bold">Example Setup</p>
         <p className="text-gray-700 mt-1">
           <MathJaxContext>
             <MathJax>
@@ -670,16 +670,16 @@ export default function Home() {
       </div>
       <p className="pl-4 mt-10 mb-8 text-2xl font-bold underline text-gray-800">Backward Pass:</p>
       <div className="mx-4 mb-6 p-4 border-l-4 border-blue-500 bg-blue-50 rounded shadow-sm">
-        <p className="text-gray-800 text-lg font-bold">Definition</p>
+        <p className="text-gray-800 text-lg font-bold">Example Setup</p>
         <p className="text-gray-700 mt-1">
-        <MathJaxContext>
+          <MathJaxContext>
             <MathJax>
               {"For this visualization, we will use a standard 2-layer neural network."}
             </MathJax>
           </MathJaxContext>
         </p>
         <p className="text-gray-700 mt-1 mb-5">
-        <MathJaxContext>
+          <MathJaxContext>
             <MathJax>
               {"Click the "}
               <strong>{"Terminology"}</strong>
@@ -702,7 +702,7 @@ export default function Home() {
         </CollapsibleSection>
       </div>
       <div className="mx-4 mb-6 p-4 border-l-4 border-blue-500 bg-blue-50 rounded shadow-sm">
-      <p className="text-gray-800 text-lg font-bold">Diagram components</p>
+        <p className="text-gray-800 text-lg font-bold">Diagram components</p>
         <p className="text-gray-700">The computation graph <b>nodes</b> represent all the input and computed quantities.</p>
         <p className="text-gray-700">The computation graph <b>edges</b> represent which nodes are computed directly from which other nodes. This relationship is also known as a <b>direct dependency.</b></p>
         <p className="text-gray-700">The <b>dotted blue arrows</b> that would appear when a node is pressed represents the gradient flow. The <b>error signals</b> of each node denotes the underlying numerical value computed from these flows.</p>
@@ -711,12 +711,12 @@ export default function Home() {
           The diagram below illustrates how gradients are computed and propagated backward through the network to compute error signals.
         </p>
         <p className="text-gray-700">
-        Click on any node in the computation graph to visualize its error signal.
-        The intermediate error signals and equations would appear in section <b>Backward pass Equations</b>.
-        The final error signal equation for the node being clicked would be highlighted.
+          Click on any node in the computation graph to visualize its error signal.
+          The intermediate error signals and equations would appear in section <b>Backward pass Equations</b>.
+          The final error signal equation for the node being clicked would be highlighted.
         </p>
         <p className="text-gray-700">
-         When applicable, there would also be an <b>Explanation</b> text box that would appears to give more context about the error signal result.
+          When applicable, there would also be an <b>Explanation</b> text box that would appears to give more context about the error signal result.
         </p>
       </div>
       <div className="flex">  {/* Making the background white temporarily. Old string: "min-h-screen flex justify-center items-center bg-white" */}
@@ -807,22 +807,22 @@ export default function Home() {
                   />
                   {/* Learning Alert Box */}
                   {!["z1_bar"].some((key) => backpropActiveEquations.includes(key)) && (
-                  <div className="mt-6 mb-4 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded-md shadow-sm">
-                    <p className="font-bold text-yellow-800">Explanation:</p>
-                    <MathJaxContext>
-                      <MathJax>
-                        <p className="mt-2 text-lg text-gray-800">
-                          We need to use the <b>multivariate chain rule</b> here because <MathJax inline>{"\\(h_1\\)"}</MathJax> affects the loss value through multiple <MathJax inline>{"\\(y_k\\)"}</MathJax> terms.
-                        </p>
-                        <p className="mt-1 text-lg text-gray-800">
-                          In the diagram, this is shown by <MathJax inline>{"\\( h_1 \\)"}</MathJax> having two distinct paths: One through <MathJax inline>{"\\( y_1 \\)"}</MathJax> and another through <MathJax inline>{"\\( y_2 \\)"}</MathJax>.
-                        </p>
-                        <p className="mt-2 text-lg text-gray-800">
-                          The multivariate chain rule allows us to account for all paths through which <MathJax inline>{"\\(h_1\\)"}</MathJax> flows into the loss.
-                        </p>
-                      </MathJax>
-                    </MathJaxContext>
-                  </div>
+                    <div className="mt-6 mb-4 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded-md shadow-sm">
+                      <p className="font-bold text-yellow-800">Explanation:</p>
+                      <MathJaxContext>
+                        <MathJax>
+                          <p className="mt-2 text-lg text-gray-800">
+                            We need to use the <b>multivariate chain rule</b> here because <MathJax inline>{"\\(h_1\\)"}</MathJax> affects the loss value through multiple <MathJax inline>{"\\(y_k\\)"}</MathJax> terms.
+                          </p>
+                          <p className="mt-1 text-lg text-gray-800">
+                            In the diagram, this is shown by <MathJax inline>{"\\( h_1 \\)"}</MathJax> having two distinct paths: One through <MathJax inline>{"\\( y_1 \\)"}</MathJax> and another through <MathJax inline>{"\\( y_2 \\)"}</MathJax>.
+                          </p>
+                          <p className="mt-2 text-lg text-gray-800">
+                            The multivariate chain rule allows us to account for all paths through which <MathJax inline>{"\\(h_1\\)"}</MathJax> flows into the loss.
+                          </p>
+                        </MathJax>
+                      </MathJaxContext>
+                    </div>
                   )}
                 </>
               )}
@@ -837,22 +837,22 @@ export default function Home() {
                   />
                   {/* Learning Alert Box */}
                   {!["z2_bar"].some((key) => backpropActiveEquations.includes(key)) && (
-                  <div className="mt-6 mb-4 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded-md shadow-sm">
-                    <p className="font-bold text-yellow-800">Explanation:</p>
-                    <MathJaxContext>
-                      <MathJax>
-                        <p className="mt-2 text-lg text-gray-800">
-                          We need to use the <b>multivariate chain rule</b> here because <MathJax inline>{"\\(h_2\\)"}</MathJax> affects the loss value through multiple <MathJax inline>{"\\(y_k\\)"}</MathJax> terms.
-                        </p>
-                        <p className="mt-1 text-lg text-gray-800">
-                          In the diagram, this is shown by <MathJax inline>{"\\( h_2 \\)"}</MathJax> having two distinct paths: One through <MathJax inline>{"\\( y_1 \\)"}</MathJax> and another through <MathJax inline>{"\\( y_2 \\)"}</MathJax>.
-                        </p>
-                        <p className="mt-2 text-lg text-gray-800">
-                          The multivariate chain rule allows us to account for all paths through which <MathJax inline>{"\\(h_2\\)"}</MathJax> flows into the loss.
-                        </p>
-                      </MathJax>
-                    </MathJaxContext>
-                  </div>
+                    <div className="mt-6 mb-4 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded-md shadow-sm">
+                      <p className="font-bold text-yellow-800">Explanation:</p>
+                      <MathJaxContext>
+                        <MathJax>
+                          <p className="mt-2 text-lg text-gray-800">
+                            We need to use the <b>multivariate chain rule</b> here because <MathJax inline>{"\\(h_2\\)"}</MathJax> affects the loss value through multiple <MathJax inline>{"\\(y_k\\)"}</MathJax> terms.
+                          </p>
+                          <p className="mt-1 text-lg text-gray-800">
+                            In the diagram, this is shown by <MathJax inline>{"\\( h_2 \\)"}</MathJax> having two distinct paths: One through <MathJax inline>{"\\( y_1 \\)"}</MathJax> and another through <MathJax inline>{"\\( y_2 \\)"}</MathJax>.
+                          </p>
+                          <p className="mt-2 text-lg text-gray-800">
+                            The multivariate chain rule allows us to account for all paths through which <MathJax inline>{"\\(h_2\\)"}</MathJax> flows into the loss.
+                          </p>
+                        </MathJax>
+                      </MathJaxContext>
+                    </div>
                   )}
                 </>
               )}
