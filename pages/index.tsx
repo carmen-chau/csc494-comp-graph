@@ -338,6 +338,28 @@ export default function Home() {
       setBackpropEquationStyle("bg-[#Ef97b0] px-0.5 py-0.5 h-fit rounded-full");
     }
 
+    else if (node.id() == "w11_1") {
+      const dataContent = {
+        label: "Equation w11_1_bar",
+        nodeIds: ["w11_1", "z1", "h1", "y1", "y2", "L"],
+        edgeIds: [],
+        highlightColour: "#89CFF0",
+        isGraphHighlighted: isBackwardGraphHighlighted,
+        setGraphHighlighted: setBackwardGraphHighlight,
+        activeNode: backwardActiveNode,
+        setActiveNode: setBackwardActiveNode,
+        equationNames: ["L_bar", "y1_bar", "y2_bar", "h2_bar", "z2_bar", "w11_1_bar"],
+        activeEquations: backpropActiveEquations,
+        setActiveEquation: setBackpropActiveEquations,
+        // equationStyle: "bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full",
+        backPropEquationNames: ["L-y1-backprop", "L-y2-backprop", "y1-h1-backprop", "y2-h1-backprop", "h1-z1-backprop", "z1-w11_1-backprop"],
+        cyRef: cyRef2,
+        cyRefType: "backward-prop"
+      }
+      nodeClickFunction(dataContent);
+      setBackpropEquationStyle("bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full");
+    }
+
     else {
       const dataContent = {
         label: "reset",
@@ -757,6 +779,10 @@ export default function Home() {
               {/* Equation 13: w12_1_bar */}
               {backpropActiveEquations.includes("w12_1_bar") && (
                 <MathEquation equationName="w12_1_bar" content={"\\( \\overline{w}^{(1)}_{12} = \\overline{z}_1 \\cdot \\frac{\\partial z_1}{\\partial w^{(1)}_{12}} = \\overline{z}_1 x_2 \\ \\)"} className=''></MathEquation>
+              )}
+              {/* Equation 14: w11_1_bar */}
+              {backpropActiveEquations.includes("w11_1_bar") && (
+                <MathEquation equationName="w11_1_bar" content={"\\( \\overline{w}^{(1)}_{11} = \\overline{z}_1 \\cdot \\frac{\\partial z_1}{\\partial w^{(1)}_{11}} = \\overline{z}_1 x_1 \\ \\)"} className=''></MathEquation>
               )}
             </div>
           </MathJaxContext>
