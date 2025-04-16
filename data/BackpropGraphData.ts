@@ -195,7 +195,7 @@ export const edgeObjList = [
         id: 'h1-z1-backprop',
         source: 'h1',
         target: 'z1',
-        label: 'h̄₁ · σ′(z₁)',
+        label: 'h̄₁ · ∂h₁/∂z₁',
         visible: false,
         classes: 'backward h1-z1-backprop',
     }),
@@ -320,7 +320,7 @@ export const edgeDataList = [
         id: 'h1-z1-backprop',
         source: 'h1',
         target: 'z1',
-        label: 'h̄₁ · σ′(z₁)',
+        label: 'h̄₁ · ∂h₁/∂z₁',
         visible: false,
         classes: 'backward h1-z1-backprop',
     }
