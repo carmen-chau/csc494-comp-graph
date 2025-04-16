@@ -276,14 +276,14 @@ export default function Home() {
         <p className="text-gray-700 mt-1">
           <MathJaxContext>
             <MathJax>
-              {"Forward pass is the process in which we pass inputs (eg: \\( x_1 \\), \\( x_2 \\)) through a neural network to computing prediction values (eg: \\( y_1 \\), \\( y_2 \\)). We can these compare these prediction values with the true values (eg: \\( t_1 \\), \\( t_2 \\)) to compute the loss \\( \\mathcal{L} \\). "}
+              {"For this visualization, we will use a standard 2-layer neural network."}
             </MathJax>
           </MathJaxContext>
         </p>
         <p className="text-gray-700 mt-1">
           <MathJaxContext>
             <MathJax>
-              {"To generate these predictions, the network computes intermediate terms applying linear transformations (using weights and biases) followed by non-linear activation functions. Check out the "}
+              {"Click the "}
               <strong>Terminology</strong>
               {" section to learn more about each intermediate term for this specific visualization example."}
             </MathJax>
@@ -467,30 +467,20 @@ export default function Home() {
           </MathJaxContext>
         </div>
       </div>
-      <p className="pl-4 mt-10 mb-8 text-2xl font-bold underline text-gray-800">Backpropagation:</p>
+      <p className="pl-4 mt-10 mb-8 text-2xl font-bold underline text-gray-800">Backward Pass:</p>
       <div className="mx-4 mb-6 p-4 border-l-4 border-blue-500 bg-blue-50 rounded shadow-sm">
         <p className="text-gray-800 text-lg font-bold">Definition</p>
         <p className="text-gray-700 mt-1">
-          <MathJaxContext>
+        <MathJaxContext>
             <MathJax>
-              {"Backpropagation is the process in which we compute the gradient of the loss function with respect to the model parameters (ie: Its weight and bias terms). "}
+              {"For this visualization, we will use a standard 2-layer neural network."}
             </MathJax>
           </MathJaxContext>
-        </p>
-        <p className="text-gray-700 mt-1">
           <MathJaxContext>
             <MathJax>
-              {"Unlike forward pass, which flows from input to output, backpropagation starts at the model’s output (i.e., the loss value) and works backward through the network, calculating how sensitive the loss is to each parameter."}
-            </MathJax>
-          </MathJaxContext>
-        </p>
-        <p className="text-gray-700 mt-1">
-          <MathJaxContext>
-            <MathJax>
-              {"We can use these results to iteratively update the parameters to minimize model loss. "}
-              {"You can explore the "}
+              {"Click the "}
               <strong>{"Terminology"}</strong>
-              {" section to learn more about the notation used in this process."}
+              {" section to learn more about the notation used to describe the gradient flow and error loss process in backward pass."}
             </MathJax>
           </MathJaxContext>
         </p>
@@ -519,7 +509,7 @@ export default function Home() {
         </p>
         <p className="text-gray-700">
         Click on any node in the computation graph to visualize its error signal.
-        The intermediate error signals and equations would appear in section <b>Backpropagation Equations</b>.
+        The intermediate error signals and equations would appear in section <b>Backward pass Equations</b>.
         The final error signal equation for the node being clicked would be highlighted.
         </p>
         <p className="text-gray-700">
@@ -537,7 +527,7 @@ export default function Home() {
         <div className="w-full text-center mt-8 text-2xl" style={{ color: "black" }}>
           <MathJaxContext>
             <div className="grid grid-cols-[auto] gap-x-1 space-y-6 pr-4">
-              <p className="font-serif col-span-1 font-bold">Backpropagation Equations:</p>
+              <p className="font-serif col-span-1 font-bold">Backward pass Equations:</p>
 
               {/* Equation 1: L_bar */}
               {backpropActiveEquations.includes("L_bar") && (
