@@ -326,7 +326,7 @@ export default function Home() {
         setGraphHighlighted: setBackwardGraphHighlight,
         activeNode: backwardActiveNode,
         setActiveNode: setBackwardActiveNode,
-        equationNames: ["L_bar", "y1_bar", "y2_bar", "h2_bar", "z2_bar", "w12_1_bar"],
+        equationNames: ["L_bar", "y1_bar", "y2_bar", "h1_bar", "z1_bar", "w12_1_bar"],
         activeEquations: backpropActiveEquations,
         setActiveEquation: setBackpropActiveEquations,
         // equationStyle: "bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full",
@@ -348,7 +348,7 @@ export default function Home() {
         setGraphHighlighted: setBackwardGraphHighlight,
         activeNode: backwardActiveNode,
         setActiveNode: setBackwardActiveNode,
-        equationNames: ["L_bar", "y1_bar", "y2_bar", "h2_bar", "z2_bar", "w11_1_bar"],
+        equationNames: ["L_bar", "y1_bar", "y2_bar", "h1_bar", "z1_bar", "w11_1_bar"],
         activeEquations: backpropActiveEquations,
         setActiveEquation: setBackpropActiveEquations,
         // equationStyle: "bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full",
@@ -358,6 +358,28 @@ export default function Home() {
       }
       nodeClickFunction(dataContent);
       setBackpropEquationStyle("bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full");
+    }
+
+    else if (node.id() == "b1_1") {
+      const dataContent = {
+        label: "Equation b1_1_bar",
+        nodeIds: ["b1_1", "z1", "h1", "y1", "y2", "L"],
+        edgeIds: [],
+        highlightColour: "#ffdbbb",
+        isGraphHighlighted: isBackwardGraphHighlighted,
+        setGraphHighlighted: setBackwardGraphHighlight,
+        activeNode: backwardActiveNode,
+        setActiveNode: setBackwardActiveNode,
+        equationNames: ["L_bar", "y1_bar", "y2_bar", "h1_bar", "z1_bar", "b1_1_bar"],
+        activeEquations: backpropActiveEquations,
+        setActiveEquation: setBackpropActiveEquations,
+        // equationStyle: "bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full",
+        backPropEquationNames: ["L-y1-backprop", "L-y2-backprop", "y1-h1-backprop", "y2-h1-backprop", "h1-z1-backprop", "z1-b1_1-backprop"],
+        cyRef: cyRef2,
+        cyRefType: "backward-prop"
+      }
+      nodeClickFunction(dataContent);
+      setBackpropEquationStyle("bg-[#ffdbbb] px-0.5 py-0.5 h-fit rounded-full");
     }
 
     else {
@@ -783,6 +805,10 @@ export default function Home() {
               {/* Equation 14: w11_1_bar */}
               {backpropActiveEquations.includes("w11_1_bar") && (
                 <MathEquation equationName="w11_1_bar" content={"\\( \\overline{w}^{(1)}_{11} = \\overline{z}_1 \\cdot \\frac{\\partial z_1}{\\partial w^{(1)}_{11}} = \\overline{z}_1 x_1 \\ \\)"} className=''></MathEquation>
+              )}
+              {/* Equation 15: b1_1_bar */}
+              {backpropActiveEquations.includes("b1_1_bar") && (
+                <MathEquation equationName="b1_1_bar" content={"\\( \\overline{b}_1^{(1)} = \\overline{z}_1 \\cdot \\frac{\\partial z_1}{\\partial b_1^{(1)}} = \\overline{z}_1 \\)"} className=''></MathEquation>
               )}
             </div>
           </MathJaxContext>
