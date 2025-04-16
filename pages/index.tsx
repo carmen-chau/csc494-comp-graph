@@ -283,7 +283,7 @@ export default function Home() {
         <p className="text-gray-700 mt-1">
           <MathJaxContext>
             <MathJax>
-              {"To generate these predictions, the network computes intermediate terms applying linear transformations (using weights and biases) followed by non-linear activation functions. Check out the "}
+              {"Click the "}
               <strong>Terminology</strong>
               {" section to learn more about each intermediate term for this specific visualization example."}
             </MathJax>
