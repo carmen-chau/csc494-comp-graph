@@ -404,6 +404,53 @@ export default function Home() {
       setBackpropEquationStyle("bg-[#ffdbbb] px-0.5 py-0.5 h-fit rounded-full");
     }
 
+
+    else if (node.id() == "x1") {
+
+      const dataContent = {
+        label: "Equation x1",
+        nodeIds: ["x1"],
+        edgeIds: [],
+        highlightColour: "#E7ff7f",
+        isGraphHighlighted: isBackwardGraphHighlighted,
+        setGraphHighlighted: setBackwardGraphHighlight,
+        activeNode: backwardActiveNode,
+        setActiveNode: setBackwardActiveNode,
+        equationNames: ["x1"],
+        activeEquations: backpropActiveEquations,
+        setActiveEquation: setBackpropActiveEquations,
+        // equationStyle: "bg-[#E7ff7f] px-0.5 py-0.5 rounded-full",
+        backPropEquationNames: [],
+        cyRef: cyRef2,
+        cyRefType: "backward-prop"
+      };
+      nodeClickFunction(dataContent);
+      setBackpropEquationStyle("bg-[#0000] px-0.5 py-0.5 rounded-full");
+    }
+
+    else if (node.id() == "x2") {
+
+      const dataContent = {
+        label: "Equation x2",
+        nodeIds: ["x2"],
+        edgeIds: [],
+        highlightColour: "#E7ff7f",
+        isGraphHighlighted: isBackwardGraphHighlighted,
+        setGraphHighlighted: setBackwardGraphHighlight,
+        activeNode: backwardActiveNode,
+        setActiveNode: setBackwardActiveNode,
+        equationNames: ["x2"],
+        activeEquations: backpropActiveEquations,
+        setActiveEquation: setBackpropActiveEquations,
+        // equationStyle: "bg-[#E7ff7f] px-0.5 py-0.5 rounded-full",
+        backPropEquationNames: [],
+        cyRef: cyRef2,
+        cyRefType: "backward-prop"
+      };
+      nodeClickFunction(dataContent);
+      setBackpropEquationStyle("bg-[#0000] px-0.5 py-0.5 rounded-full");
+    }
+
     else {
       const dataContent = {
         label: "reset",
@@ -836,6 +883,34 @@ export default function Home() {
               {/* Equation 15: b1_1_bar */}
               {backpropActiveEquations.includes("b1_1_bar") && (
                 <MathEquation equationName="b1_1_bar" content={"\\( \\overline{b}_1^{(1)} = \\overline{z}_1 \\cdot \\frac{\\partial z_1}{\\partial b_1^{(1)}} = \\overline{z}_1 \\)"} className=''></MathEquation>
+              )}
+              {/* Equation: x1 */}
+              {backpropActiveEquations.includes("x1") && (
+                <>
+                  <MathJax>{"None"}</MathJax>
+                  <div className="mt-6 mb-4 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded-md shadow-sm">
+                    <MathJaxContext>
+                      <MathJax>
+                        <p className="font-semibold text-yellow-800">Explanation:</p>
+                        <p className="text-lg">{"\\(x_1\\) represents one of the input values to this neural network. It is a constant, not something that is computed by the network. Thus, there is no error signal for \\(x_1\\)."}</p>
+                      </MathJax>
+                    </MathJaxContext>
+                  </div>
+                </>
+              )}
+              {/* Equation: x2 */}
+              {backpropActiveEquations.includes("x2") && (
+                <>
+                  <MathJax>{"None"}</MathJax>
+                  <div className="mt-6 mb-4 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded-md shadow-sm">
+                    <MathJaxContext>
+                      <MathJax>
+                        <p className="font-semibold text-yellow-800">Explanation:</p>
+                        <p className="text-lg">{"\\(x_2\\) represents one of the input values to this neural network. It is a constant, not something that is computed by the network. Thus, there is no error signal for \\(x_2\\)."}</p>
+                      </MathJax>
+                    </MathJaxContext>
+                  </div>
+                </>
               )}
             </div>
           </MathJaxContext>
