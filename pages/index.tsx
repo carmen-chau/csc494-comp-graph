@@ -701,7 +701,7 @@ export default function Home() {
               )}
                {/* Equation 11: z1_bar */}
                {backpropActiveEquations.includes("z1_bar") && (
-                <MathEquation equationName="z1_bar" content={"\\( \\overline{h}_1 \\cdot \\sigma'(z_1) = \\overline{h}_1 \\cdot \\sigma(z_1)(1 - \\sigma(z_1)) \\)"} className=''></MathEquation>
+                <MathEquation equationName="z1_bar" content={"\\( \\overline{z}_1 = \\overline{h}_1 \\cdot \\sigma'(z_1) = \\overline{h}_1 \\cdot \\sigma(z_1)(1 - \\sigma(z_1)) \\)"} className=''></MathEquation>
               )}
             </div>
           </MathJaxContext>
