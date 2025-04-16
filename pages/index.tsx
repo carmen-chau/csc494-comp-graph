@@ -481,7 +481,7 @@ export default function Home() {
             </MathJax>
           </MathJaxContext>
         </p>
-        <p className="text-gray-700 mt-1">
+        <p className="text-gray-700 mt-1 mb-5">
           <MathJaxContext>
             <MathJax>
               {"Click the "}
@@ -677,7 +677,9 @@ export default function Home() {
               {"For this visualization, we will use a standard 2-layer neural network."}
             </MathJax>
           </MathJaxContext>
-          <MathJaxContext>
+        </p>
+        <p className="text-gray-700 mt-1 mb-5">
+        <MathJaxContext>
             <MathJax>
               {"Click the "}
               <strong>{"Terminology"}</strong>
