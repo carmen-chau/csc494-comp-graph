@@ -171,7 +171,26 @@ export const edgeObjList = [
         label: 'ȳ₂ · ∂y₂/∂h₁',
         visible: false,
         classes: 'backward y2-h1-backprop',
-    })
+    }),
+
+    GraphEdge({
+        id: 'y1-h2-backprop',
+        source: 'y1',
+        target: 'h2',
+        label: 'ȳ₁ · ∂y₁/∂h₂',
+        visible: false,
+        classes: 'backward y1-h2-backprop',
+    }),
+
+    GraphEdge({
+        id: 'y2-h2-backprop',
+        source: 'y2',
+        target: 'h2',
+        label: 'ȳ₂ · ∂y₂/∂h₂',
+        visible: false,
+        classes: 'backward y2-h2-backprop',
+    }),
+
 
 ];
 
@@ -268,6 +287,24 @@ export const edgeDataList = [
         label: 'ȳ₂ · ∂y₂/∂h₁',
         visible: false,
         classes: 'backward y2-h1-backprop',
+    },
+
+    {
+        id: 'y1-h2-backprop',
+        source: 'y1',
+        target: 'h2',
+        label: 'ȳ₁ · ∂y₁/∂h₂',
+        visible: false,
+        classes: 'backward y1-h2-backprop',
+    },
+
+    {
+        id: 'y2-h2-backprop',
+        source: 'y2',
+        target: 'h2',
+        label: 'ȳ₂ · ∂y₂/∂h₂',
+        visible: false,
+        classes: 'backward y2-h2-backprop',
     }
 
 ];

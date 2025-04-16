@@ -112,6 +112,28 @@ const defaultGraphStyles = [
     }
   },
 
+  {
+    selector: 'edge.y1-h2-backprop',
+    style: {
+      'control-point-distances': [15],
+      'control-point-weights': [0.40],
+      'font-size': 14,
+      'text-margin-y': -20,
+      'text-margin-x': 20
+    }
+  },
+
+  {
+    selector: 'edge.y2-h2-backprop',
+    style: {
+      'control-point-distances': [15],
+      'control-point-weights': [0.40],
+      'font-size': 14,
+      'text-margin-y': -10,
+      'text-margin-x': 10
+    }
+  },
+
 
 
 ]

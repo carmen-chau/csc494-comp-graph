@@ -250,6 +250,27 @@ export default function Home() {
       nodeClickFunction(dataContent);
       setBackpropEquationStyle("bg-[#58cf35] px-0.5 py-0.5 h-fit rounded-full");
     }
+    else if (node.id() == "h2") {
+      const dataContent = {
+        label: "Equation h2_bar",
+        nodeIds: ["h2", "y1", "y2", "L"],
+        edgeIds: [],
+        highlightColour: "#E7ff7f",
+        isGraphHighlighted: isBackwardGraphHighlighted,
+        setGraphHighlighted: setBackwardGraphHighlight,
+        activeNode: backwardActiveNode,
+        setActiveNode: setBackwardActiveNode,
+        equationNames: ["L_bar", "y1_bar", "y2_bar", "h2_bar"],
+        activeEquations: backpropActiveEquations,
+        setActiveEquation: setBackpropActiveEquations,
+        // equationStyle: "bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full",
+        backPropEquationNames: ["L-y1-backprop", "L-y2-backprop", "y1-h2-backprop", "y2-h2-backprop"],
+        cyRef: cyRef2,
+        cyRefType: "backward-prop"
+      }
+      nodeClickFunction(dataContent);
+      setBackpropEquationStyle("bg-[#E7ff7f] px-0.5 py-0.5 h-fit rounded-full");
+    }
     else {
       const dataContent = {
         label: "reset",
@@ -598,6 +619,7 @@ export default function Home() {
               {backpropActiveEquations.includes("b1_2_bar") && (
                 <MathEquation equationName="b1_2_bar" content={"\\( \\overline{b}^{(2)}_1 = \\overline{y}_1 \\cdot \\frac{\\partial y_1}{\\partial b^{(2)}_1} = \\overline{y}_1 \\)"} className=''></MathEquation>
               )}
+
               {/* Equation 9: h1_bar */}
               {backpropActiveEquations.includes("h1_bar") && (
                 <>
@@ -619,6 +641,34 @@ export default function Home() {
                         </p>
                         <p className="mt-2 text-lg text-gray-800">
                           The multivariate chain rule allows us to account for all paths through which <MathJax inline>{"\\(h_1\\)"}</MathJax> flows into the loss.
+                        </p>
+                      </MathJax>
+                    </MathJaxContext>
+                  </div>
+                </>
+              )}
+
+              {/* Equation 10: h2_bar */}
+              {backpropActiveEquations.includes("h2_bar") && (
+                <>
+                  <MathEquation
+                    equationName="h2_bar"
+                    content={"\\(\\overline{h}_2 = \\sum_{i=1}^{2} \\overline{y}_i \\cdot \\frac{\\partial y_i}{\\partial h_1} = \\sum_{i=1}^{2} \\overline{y}_i w_{i2}^{(2)} = \\overline{y}_1 w_{21}^{(2)} + \\overline{y}_2 w_{22}^{(2)}\\)"}
+                    className=''
+                  />
+                  {/* Learning Alert Box */}
+                  <div className="mt-6 mb-4 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded-md shadow-sm">
+                    <p className="font-bold text-yellow-800">Explanation:</p>
+                    <MathJaxContext>
+                      <MathJax>
+                        <p className="mt-2 text-lg text-gray-800">
+                          We need to use the <b>multivariate chain rule</b> here because <MathJax inline>{"\\(h_2\\)"}</MathJax> affects the loss value through multiple <MathJax inline>{"\\(y_k\\)"}</MathJax> terms.
+                        </p>
+                        <p className="mt-1 text-lg text-gray-800">
+                          In the diagram, this is shown by <MathJax inline>{"\\( h_2 \\)"}</MathJax> having two distinct paths: One through <MathJax inline>{"\\( y_1 \\)"}</MathJax> and another through <MathJax inline>{"\\( y_2 \\)"}</MathJax>.
+                        </p>
+                        <p className="mt-2 text-lg text-gray-800">
+                          The multivariate chain rule allows us to account for all paths through which <MathJax inline>{"\\(h_2\\)"}</MathJax> flows into the loss.
                         </p>
                       </MathJax>
                     </MathJaxContext>
