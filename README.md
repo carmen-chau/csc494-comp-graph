@@ -30,25 +30,39 @@ It is recommended that students have some basic prior understanding of what forw
 3. To test if app runs, in the root directory, run `npm run dev`. Upon success, you should be able to see a graph displayed when you enter the path http://localhost:3000 on any browser window.
 
 ## Visualization walkthrough 
-Note: Pictures and descriptions are subject to change as the repository is still a work in progress. 
 
 ### Reference material 
-The webpage uses a computation graph instances taken from the CSC311 Week 6 slides. Here is a blank slide for reference (CSC311 Summer 2024):
+The computation graph example used in this visualization was taken from the CSC311 Summer 2024 slide. You can find a picture of it here:
 
 <img width="552" alt="Screenshot 2025-04-03 at 1 07 41 AM" src="https://github.com/user-attachments/assets/fa01649c-abb6-45fd-a7c0-976ce9db3f7c" />
 
 ### Visualization components 
-The webpage has 2 main computation graph instances (1 each for forward pass and backpropagation respectively). For each, the computation graph is located on the left, and the corresponding mathematical equations are on the right. 
+The webpage has 2 computation graph instances (1 each for forward pass and backward pass).
+Both graphs are bundled with several info cards:
+
+- **Example Setup:** Defining the specific mathematical notation or terminology used to demonstrate forward and backward pass for this specific example.
+- **Diagram Components:** Defining how each graph component (eg: nodes, edges) is used to represent the specific example
+- **How to use Diagram:** Instructions on how to interact with the visual
+
+Here is an example of what these info cards look like (picture taken for the *Forward Pass* section): 
+
+<img width="1458" alt="Screenshot 2025-04-18 at 12 54 15 AM" src="https://github.com/user-attachments/assets/afd66b7c-4b68-4263-a7f5-44b3bbc0877b" />
+
+*Forward Pass:*
 
 Students can click on any of the ```Select``` buttons beside the equation to see how the computation graph is highlighted and annotated. 
 
 For forward pass, when any ```Select``` button is pressed, the nodes and edges that make up that specific equation would be highlighted. 
 
-<img width="1508" alt="Screenshot 2025-04-03 at 1 15 53 AM" src="https://github.com/user-attachments/assets/28645950-d247-4f5b-b586-90881cd0f60b" />
+<img width="1473" alt="Screenshot 2025-04-18 at 12 39 20 AM" src="https://github.com/user-attachments/assets/1a757863-9c90-446b-9c00-0d185039681e" />
 
-For backpropagation, in addition to the highlighting done in the forward pass process, there would be additional backward arrows denoting the direction of the loss gradients 
+*Backward Pass:*
 
-<img width="1511" alt="Screenshot 2025-04-03 at 1 24 30 AM" src="https://github.com/user-attachments/assets/e3bce8e2-0a59-4f83-9e8e-8eea5cd1db51" />
+Students can click on any node in the rendered graph to see the corresponding error signal equations (denoted with a highlight), the intermediate gradient calculations, as well as additional explanation info cards explaining the calculation process. 
+
+Here's an example of what the visualization would look like should the user press the node h1:
+
+<img width="1473" alt="Screenshot 2025-04-18 at 1 05 14 AM" src="https://github.com/user-attachments/assets/a366f853-1e2d-4e19-85e2-55d866861acd" />
 
 ### Usage notes and limitations
 
