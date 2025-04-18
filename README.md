@@ -96,19 +96,19 @@ Please consult the code comments made in each file should you need more fine lev
 ## Design decision
 > Why did you pick this specific computation graph example?
 
-I picked this specific example from lecture (rather than making my own) because utilizing a familar example from lecture for visualization would mean students can spend less overhead time familiarizing themselves with the graph and equation setup. This hopefully allows students to spend more time understanding how forward pass and backpropagation are visualizations, which is the main goal of this project. 
+There were 2 main reasons. Firstly, this example is a standard 2-layer neural network of reasonable difficulty. This hopefully helps make this visualization appeal to users who might not be taking CSC311 specifically (ie: appeal to users who are generally interested in learning more about forward / backward pass). Another reason is that this example is sufficiently complex to illustrate cases when the multivariate chain rule is and isn't used to calculate error signals. This was a common pain point among prior CSC311 students, so it was important to tackle this. 
 
-> Why did you write out each bias and weight term seperately instead of writing them in the vectorized form
+> Why did you write out each bias and weight term separately instead of writing them in the vectorized form
 
-Although writing the bias and weight terms in vectorized form could have made the equations more compact, I wanted to make the visualization of computation structure more explicit. Specifically, since this visualization is suppose to be complementary to Lecture 6, most students would be still trying to get familar with how computation graphs are structured. 
+Although writing the bias and weight terms in vectorized form could have made the equations more compact, I wanted to make the visualization of the computation structure more explicit. Specifically, since this visualization is suppose to be complementary to users who have just recently learned forward and backward pass, the target audience would likely still be trying to get familiar with the connection between mathematical equations and the computation graph visual. 
 
-So, I believe having students being able to see how each individual bias and weight terms are being used in forward pass would help them piece together how each individual term contributes to the neural network prediction (the output). 
+For forward pass, writing out these terms separately makes it explicit how each term contributes to the neural network prediction (the output). 
 
-Similarly, by illustrating how these individual terms are being used to calculate loss gradients, the visualization can help students understand how derivatives and chain rule apply to individual terms during backpropagation. This can help them realize that at the end of backpropagation, we would need to update each individual weight and bias terms seperately. 
+Similarly, by illustrating how these individual terms are being used to calculate loss gradients, the visualization can help students understand how derivatives and chain rule apply to individual terms during backward pass.
 
 > For the backpropagation graph, why did you include the backpropagation arrow?
 
-The backpropgation arrow was included in hopes to help students differentate between the forward pass phase (solid arrows) vs backpropagation phase (dotted arrows). Also, these backpropagation arrows are a physical visualization of the error signals (loss gradients), which is essentially the amount of loss relative to the term we are looking at, that is flowing backwards in the graph. 
+The gradient flow arrow (dotted blue arrows) was included in hopes to help students differentiate between the forward pass phase (solid arrows) vs backward pass phase (dotted arrows). Also, these arrows are a physical visualization of the backward flow of gradients, which are intermediate processes that are essential to calculate the amount of loss relative to the term we are looking at.
 
 ## Next Steps 
 There are 2 main areas worth exploring when trying to extend and build on top of this existing visualization 
