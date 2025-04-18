@@ -100,13 +100,35 @@ const defaultGraphStyles = [
   },
 
   {
-    selector: 'edge.y2-w22_2-backprop',
+    selector: 'edge.y2-w22_2-backprop, edge.z2-w22_1-backprop',
     style: {
       'control-point-distances': [15],
       'control-point-weights': [0.40],
       'font-size': 14,
       'text-margin-y': 10,
       'text-margin-x': -10
+    }
+  },
+
+  {
+    selector: 'edge.y2-w21_2-backprop, edge.z2-w21_1-backprop',
+    style: {
+      'control-point-distances': [15],
+      'control-point-weights': [0.40],
+      'font-size': 14,
+      'text-margin-y': 10,
+      'text-margin-x': -24
+    }
+  },
+
+  {
+    selector: 'edge.y2-b2_2-backprop, edge.z2-b2_1-backprop',
+    style: {
+      'control-point-distances': [25],
+      'control-point-weights': [0.40],
+      'font-size': 14,
+      'text-margin-y': 3,
+      'text-margin-x': -24
     }
   },
 
