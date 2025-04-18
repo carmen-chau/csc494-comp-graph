@@ -1,6 +1,4 @@
-/*
-  Home page
-*/
+// Home Page
 
 import { useRef, useState, useEffect } from "react";
 import { MathJax } from 'better-react-mathjax';
@@ -251,6 +249,51 @@ export default function Home() {
       setBackpropEquationStyle("bg-[#Ff7f7f] px-0.5 py-0.5 h-fit rounded-full");
     }
 
+    else if (node.id() == "w21_2") {
+      const dataContent = {
+        label: "Equation w21_2_bar",
+        nodeIds: ["w21_2", "y2", "L"],
+        edgeIds: [],
+        highlightColour: "#C3aaf9",
+        isGraphHighlighted: isBackwardGraphHighlighted,
+        setGraphHighlighted: setBackwardGraphHighlight,
+        activeNode: backwardActiveNode,
+        setActiveNode: setBackwardActiveNode,
+        equationNames: ["L_bar", "y2_bar", "w21_2_bar"],
+        activeEquations: backpropActiveEquations,
+        setActiveEquation: setBackpropActiveEquations,
+        // equationStyle: "bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full",
+        backPropEquationNames: ["y2-w21_2-backprop", "L-y2-backprop"],
+        cyRef: cyRef2,
+        cyRefType: "backward-prop"
+      }
+      nodeClickFunction(dataContent);
+      setBackpropEquationStyle("bg-[#C3aaf9] px-0.5 py-0.5 h-fit rounded-full");
+    }
+
+
+    else if (node.id() == "b2_2") {
+      const dataContent = {
+        label: "Equation b2_2_bar",
+        nodeIds: ["b2_2", "y2", "L"],
+        edgeIds: [],
+        highlightColour: "#Ef97b0",
+        isGraphHighlighted: isBackwardGraphHighlighted,
+        setGraphHighlighted: setBackwardGraphHighlight,
+        activeNode: backwardActiveNode,
+        setActiveNode: setBackwardActiveNode,
+        equationNames: ["L_bar", "y2_bar", "b2_2_bar"],
+        activeEquations: backpropActiveEquations,
+        setActiveEquation: setBackpropActiveEquations,
+        // equationStyle: "bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full",
+        backPropEquationNames: ["y2-b2_2-backprop", "L-y2-backprop"],
+        cyRef: cyRef2,
+        cyRefType: "backward-prop"
+      }
+      nodeClickFunction(dataContent);
+      setBackpropEquationStyle("bg-[#Ef97b0] px-0.5 py-0.5 h-fit rounded-full");
+    }
+
     else if (node.id() == "h1") {
       const dataContent = {
         label: "Equation h1_bar",
@@ -404,6 +447,72 @@ export default function Home() {
       setBackpropEquationStyle("bg-[#ffdbbb] px-0.5 py-0.5 h-fit rounded-full");
     }
 
+    else if (node.id() == "w22_1") {
+      const dataContent = {
+        label: "Equation w22_1_bar",
+        nodeIds: ["w22_1", "z2", "h2", "y1", "y2", "L"],
+        edgeIds: [],
+        highlightColour: "#ffdbbb",
+        isGraphHighlighted: isBackwardGraphHighlighted,
+        setGraphHighlighted: setBackwardGraphHighlight,
+        activeNode: backwardActiveNode,
+        setActiveNode: setBackwardActiveNode,
+        equationNames: ["L_bar", "y1_bar", "y2_bar", "h2_bar", "z2_bar", "w22_1_bar"],
+        activeEquations: backpropActiveEquations,
+        setActiveEquation: setBackpropActiveEquations,
+        // equationStyle: "bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full",
+        backPropEquationNames: ["L-y1-backprop", "L-y2-backprop", "y1-h2-backprop", "y2-h2-backprop", "h2-z2-backprop", "z2-w22_1-backprop"],
+        cyRef: cyRef2,
+        cyRefType: "backward-prop"
+      }
+      nodeClickFunction(dataContent);
+      setBackpropEquationStyle("bg-[#ffdbbb] px-0.5 py-0.5 h-fit rounded-full");
+    }
+
+    else if (node.id() == "w21_1") {
+      const dataContent = {
+        label: "Equation w21_1_bar",
+        nodeIds: ["w21_1", "z2", "h2", "y1", "y2", "L"],
+        edgeIds: [],
+        highlightColour: "#58cf35",
+        isGraphHighlighted: isBackwardGraphHighlighted,
+        setGraphHighlighted: setBackwardGraphHighlight,
+        activeNode: backwardActiveNode,
+        setActiveNode: setBackwardActiveNode,
+        equationNames: ["L_bar", "y1_bar", "y2_bar", "h2_bar", "z2_bar", "w21_1_bar"],
+        activeEquations: backpropActiveEquations,
+        setActiveEquation: setBackpropActiveEquations,
+        // equationStyle: "bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full",
+        backPropEquationNames: ["L-y1-backprop", "L-y2-backprop", "y1-h2-backprop", "y2-h2-backprop", "h2-z2-backprop", "z2-w21_1-backprop"],
+        cyRef: cyRef2,
+        cyRefType: "backward-prop"
+      }
+      nodeClickFunction(dataContent);
+      setBackpropEquationStyle("bg-[#58cf35] px-0.5 py-0.5 h-fit rounded-full");
+    }
+
+
+    else if (node.id() == "b2_1") {
+      const dataContent = {
+        label: "Equation w21_1_bar",
+        nodeIds: ["b2_1", "z2", "h2", "y1", "y2", "L"],
+        edgeIds: [],
+        highlightColour: "#Ff7f7f",
+        isGraphHighlighted: isBackwardGraphHighlighted,
+        setGraphHighlighted: setBackwardGraphHighlight,
+        activeNode: backwardActiveNode,
+        setActiveNode: setBackwardActiveNode,
+        equationNames: ["L_bar", "y1_bar", "y2_bar", "h2_bar", "z2_bar", "b2_1_bar"],
+        activeEquations: backpropActiveEquations,
+        setActiveEquation: setBackpropActiveEquations,
+        // equationStyle: "bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full",
+        backPropEquationNames: ["L-y1-backprop", "L-y2-backprop", "y1-h2-backprop", "y2-h2-backprop", "h2-z2-backprop", "z2-b2_1-backprop"],
+        cyRef: cyRef2,
+        cyRefType: "backward-prop"
+      }
+      nodeClickFunction(dataContent);
+      setBackpropEquationStyle("bg-[#Ff7f7f] px-0.5 py-0.5 h-fit rounded-full");
+    }
 
     else if (node.id() == "x1") {
 
@@ -797,6 +906,16 @@ export default function Home() {
                 <MathEquation equationName="w22_2_bar" content={"\\( \\overline{w}^{(2)}_{22} = \\overline{y}_2 \\cdot \\frac{\\partial y_2}{\\partial w^{(2)}_{22}} = \\overline{y}_2 h_2 \\)"} className=''></MathEquation>
               )}
 
+              {/* Equation 8: w21_2_bar */}
+              {backpropActiveEquations.includes("w21_2_bar") && (
+                <MathEquation equationName="w21_2_bar" content={"\\( \\overline{w}^{(2)}_{21} = \\overline{y}_2 \\cdot \\frac{\\partial y_2}{\\partial w^{(2)}_{21}} = \\overline{y}_2 h_1 \\)"} className=''></MathEquation>
+              )}
+
+              {/* Equation 8: b2_2_bar */}
+              {backpropActiveEquations.includes("b2_2_bar") && (
+                <MathEquation equationName="b2_2_bar" content={"\\( \\overline{b}^{(2)}_2 = \\overline{y}_2 \\cdot \\frac{\\partial y_2}{\\partial b^{(2)}_2} = \\overline{y}_2 \\)"} className=''></MathEquation>
+              )}
+
               {/* Equation 9: h1_bar */}
               {backpropActiveEquations.includes("h1_bar") && (
                 <>
@@ -832,7 +951,7 @@ export default function Home() {
                 <>
                   <MathEquation
                     equationName="h2_bar"
-                    content={"\\(\\overline{h}_2 = \\sum_{i=1}^{2} \\overline{y}_i \\cdot \\frac{\\partial y_i}{\\partial h_1} = \\sum_{i=1}^{2} \\overline{y}_i w_{i2}^{(2)} = \\overline{y}_1 w_{21}^{(2)} + \\overline{y}_2 w_{22}^{(2)}\\)"}
+                    content={"\\(\\overline{h}_2 = \\sum_{i=1}^{2} \\overline{y}_i \\cdot \\frac{\\partial y_i}{\\partial h_2} = \\sum_{i=1}^{2} \\overline{y}_i w_{i2}^{(2)} = \\overline{y}_1 w_{21}^{(2)} + \\overline{y}_2 w_{22}^{(2)}\\)"}
                     className=''
                   />
                   {/* Learning Alert Box */}
@@ -875,6 +994,18 @@ export default function Home() {
               {/* Equation 15: b1_1_bar */}
               {backpropActiveEquations.includes("b1_1_bar") && (
                 <MathEquation equationName="b1_1_bar" content={"\\( \\overline{b}_1^{(1)} = \\overline{z}_1 \\cdot \\frac{\\partial z_1}{\\partial b_1^{(1)}} = \\overline{z}_1 \\)"} className=''></MathEquation>
+              )}
+              {/* Equation 15: w22_1_bar */}
+              {backpropActiveEquations.includes("w22_1_bar") && (
+                <MathEquation equationName="w22_1_bar" content={"\\( \\overline{w}^{(1)}_{22} = \\overline{z}_2 \\cdot \\frac{\\partial z_2}{\\partial w^{(1)}_{22}} = \\overline{z}_2 x_2 \\ \\)"} className=''></MathEquation>
+              )}
+              {/* Equation 15: w21_1_bar */}
+              {backpropActiveEquations.includes("w21_1_bar") && (
+                <MathEquation equationName="w21_1_bar" content={"\\( \\overline{w}^{(1)}_{21} = \\overline{z}_2 \\cdot \\frac{\\partial z_2}{\\partial w^{(1)}_{21}} = \\overline{z}_2 x_1 \\ \\)"} className=''></MathEquation>
+              )}
+              {/* Equation 15: b2_1_bar */}
+              {backpropActiveEquations.includes("b2_1_bar") && (
+                <MathEquation equationName="b2_1_bar" content={"\\( \\overline{b}_2^{(1)} = \\overline{z}_2 \\cdot \\frac{\\partial z_2}{\\partial b_2^{(1)}} = \\overline{z}_2 \\)"} className=''></MathEquation>
               )}
               {/* Equation: x1 */}
               {backpropActiveEquations.includes("x1") && (

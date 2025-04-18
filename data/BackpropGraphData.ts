@@ -1,5 +1,3 @@
-
-
 /*
     Contains raw node and edge data for Computation Graph 1
 */
@@ -165,6 +163,24 @@ export const edgeObjList = [
     }),
 
     GraphEdge({
+        id: 'y2-w21_2-backprop',
+        source: 'y2',
+        target: 'w21_2',
+        label: 'ȳ₂ · ∂y₂/∂w₂₁⁽²⁾',
+        visible: false,
+        classes: 'backward y2-w21_2-backprop',
+    }),
+
+    GraphEdge({
+        id: 'y2-b2_2-backprop',
+        source: 'y2',
+        target: 'b2_2',
+        label: 'ȳ₂ · ∂y₂/∂b₂⁽²⁾',
+        visible: false,
+        classes: 'backward y2-b2_2-backprop',
+    }),
+
+    GraphEdge({
         id: 'y1-h1-backprop',
         source: 'y1',
         target: 'h1',
@@ -243,6 +259,42 @@ export const edgeObjList = [
         label: 'z̄₁ · ∂z₁/∂b₁⁽¹⁾',
         visible: false,
         classes: 'backward z1-b1_1-backprop',
+    }),
+
+    GraphEdge({
+        id: 'z2-w22_1-backprop',
+        source: 'z2',
+        target: 'w22_1',
+        label: 'z̄₂ · ∂z₂/∂w₂₂⁽¹⁾',
+        visible: false,
+        classes: 'backward z2-w22_1-backprop',
+    }),
+
+    GraphEdge({
+        id: 'z2-w21_1-backprop',
+        source: 'z2',
+        target: 'w21_1',
+        label: 'z̄₂ · ∂z₂/∂w₂₁⁽¹⁾',
+        visible: false,
+        classes: 'backward z2-w21_1-backprop',
+    }),
+
+    GraphEdge({
+        id: 'z2-w21_1-backprop',
+        source: 'z2',
+        target: 'w21_1',
+        label: 'z̄₂ · ∂z₂/∂w₂₁⁽¹⁾',
+        visible: false,
+        classes: 'backward z2-w21_1-backprop',
+    }),
+
+    GraphEdge({
+        id: 'z2-b2_1-backprop',
+        source: 'z2',
+        target: 'b2_1',
+        label: 'z̄₂ · ∂z₂/∂b₂⁽¹⁾',
+        visible: false,
+        classes: 'backward z2-b2_1-backprop',
     }),
 
 
@@ -335,6 +387,24 @@ export const edgeDataList = [
     },
 
     {
+        id: 'y2-w21_2-backprop',
+        source: 'y2',
+        target: 'w21_2',
+        label: 'ȳ₂ · ∂y₂/∂w₂₁⁽²⁾',
+        visible: false,
+        classes: 'backward y2-w21_2-backprop',
+    },
+
+    {
+        id: 'y2-b2_2-backprop',
+        source: 'y2',
+        target: 'b2_2',
+        label: 'ȳ₂ · ∂y₂/∂b₂⁽²⁾',
+        visible: false,
+        classes: 'backward y2-b2_2-backprop',
+    },
+
+    {
         id: 'y1-h1-backprop',
         source: 'y1',
         target: 'h1',
@@ -410,7 +480,23 @@ export const edgeDataList = [
         label: 'z̄₁ · ∂z₁/∂b₁⁽¹⁾',
         visible: false,
         classes: 'backward z1-b1_1-backprop',
-    }
+    },
+    {
+        id: 'z2-w22_1-backprop',
+        source: 'z2',
+        target: 'w22_1',
+        label: 'z̄₂ · ∂z₂/∂w₂₂⁽¹⁾',
+        visible: false,
+        classes: 'backward z2-w22_1-backprop',
+    }, 
+    {
+        id: 'z2-w21_1-backprop',
+        source: 'z2',
+        target: 'w21_1',
+        label: 'z̄₂ · ∂z₂/∂w₂₁⁽¹⁾',
+        visible: false,
+        classes: 'backward z2-w21_1-backprop',
+    }, 
+    
 
 ];
-
