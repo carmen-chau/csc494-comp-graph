@@ -229,6 +229,28 @@ export default function Home() {
       setBackpropEquationStyle("bg-[#ffdbbb] px-0.5 py-0.5 h-fit rounded-full");
     }
 
+    else if (node.id() == "w22_2") {
+      const dataContent = {
+        label: "Equation w22_2_bar",
+        nodeIds: ["w22_2", "y2", "L"],
+        edgeIds: [],
+        highlightColour: "#Ff7f7f",
+        isGraphHighlighted: isBackwardGraphHighlighted,
+        setGraphHighlighted: setBackwardGraphHighlight,
+        activeNode: backwardActiveNode,
+        setActiveNode: setBackwardActiveNode,
+        equationNames: ["L_bar", "y2_bar", "w22_2_bar"],
+        activeEquations: backpropActiveEquations,
+        setActiveEquation: setBackpropActiveEquations,
+        // equationStyle: "bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full",
+        backPropEquationNames: ["y2-w22_2-backprop", "L-y2-backprop"],
+        cyRef: cyRef2,
+        cyRefType: "backward-prop"
+      }
+      nodeClickFunction(dataContent);
+      setBackpropEquationStyle("bg-[#Ff7f7f] px-0.5 py-0.5 h-fit rounded-full");
+    }
+
     else if (node.id() == "h1") {
       const dataContent = {
         label: "Equation h1_bar",
@@ -250,6 +272,185 @@ export default function Home() {
       nodeClickFunction(dataContent);
       setBackpropEquationStyle("bg-[#58cf35] px-0.5 py-0.5 h-fit rounded-full");
     }
+    else if (node.id() == "h2") {
+      const dataContent = {
+        label: "Equation h2_bar",
+        nodeIds: ["h2", "y1", "y2", "L"],
+        edgeIds: [],
+        highlightColour: "#E7ff7f",
+        isGraphHighlighted: isBackwardGraphHighlighted,
+        setGraphHighlighted: setBackwardGraphHighlight,
+        activeNode: backwardActiveNode,
+        setActiveNode: setBackwardActiveNode,
+        equationNames: ["L_bar", "y1_bar", "y2_bar", "h2_bar"],
+        activeEquations: backpropActiveEquations,
+        setActiveEquation: setBackpropActiveEquations,
+        // equationStyle: "bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full",
+        backPropEquationNames: ["L-y1-backprop", "L-y2-backprop", "y1-h2-backprop", "y2-h2-backprop"],
+        cyRef: cyRef2,
+        cyRefType: "backward-prop"
+      }
+      nodeClickFunction(dataContent);
+      setBackpropEquationStyle("bg-[#E7ff7f] px-0.5 py-0.5 h-fit rounded-full");
+    }
+
+    else if (node.id() == "z1") {
+      const dataContent = {
+        label: "Equation z1_bar",
+        nodeIds: ["z1", "h1", "y1", "y2", "L"],
+        edgeIds: [],
+        highlightColour: "#Ff7f7f",
+        isGraphHighlighted: isBackwardGraphHighlighted,
+        setGraphHighlighted: setBackwardGraphHighlight,
+        activeNode: backwardActiveNode,
+        setActiveNode: setBackwardActiveNode,
+        equationNames: ["L_bar", "y1_bar", "y2_bar", "h1_bar", "z1_bar"],
+        activeEquations: backpropActiveEquations,
+        setActiveEquation: setBackpropActiveEquations,
+        // equationStyle: "bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full",
+        backPropEquationNames: ["L-y1-backprop", "L-y2-backprop", "y1-h1-backprop", "y2-h1-backprop", "h1-z1-backprop"],
+        cyRef: cyRef2,
+        cyRefType: "backward-prop"
+      }
+      nodeClickFunction(dataContent);
+      setBackpropEquationStyle("bg-[#Ff7f7f] px-0.5 py-0.5 h-fit rounded-full");
+    }
+
+    else if (node.id() == "z2") {
+      const dataContent = {
+        label: "Equation z2_bar",
+        nodeIds: ["z2", "h2", "y1", "y2", "L"],
+        edgeIds: [],
+        highlightColour: "#C3aaf9",
+        isGraphHighlighted: isBackwardGraphHighlighted,
+        setGraphHighlighted: setBackwardGraphHighlight,
+        activeNode: backwardActiveNode,
+        setActiveNode: setBackwardActiveNode,
+        equationNames: ["L_bar", "y1_bar", "y2_bar", "h2_bar", "z2_bar"],
+        activeEquations: backpropActiveEquations,
+        setActiveEquation: setBackpropActiveEquations,
+        // equationStyle: "bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full",
+        backPropEquationNames: ["L-y1-backprop", "L-y2-backprop", "y1-h2-backprop", "y2-h2-backprop", "h2-z2-backprop"],
+        cyRef: cyRef2,
+        cyRefType: "backward-prop"
+      }
+      nodeClickFunction(dataContent);
+      setBackpropEquationStyle("bg-[#C3aaf9] px-0.5 py-0.5 h-fit rounded-full");
+    }
+
+    else if (node.id() == "w12_1") {
+      const dataContent = {
+        label: "Equation w12_1_bar",
+        nodeIds: ["w12_1", "z1", "h1", "y1", "y2", "L"],
+        edgeIds: [],
+        highlightColour: "#Ef97b0",
+        isGraphHighlighted: isBackwardGraphHighlighted,
+        setGraphHighlighted: setBackwardGraphHighlight,
+        activeNode: backwardActiveNode,
+        setActiveNode: setBackwardActiveNode,
+        equationNames: ["L_bar", "y1_bar", "y2_bar", "h1_bar", "z1_bar", "w12_1_bar"],
+        activeEquations: backpropActiveEquations,
+        setActiveEquation: setBackpropActiveEquations,
+        // equationStyle: "bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full",
+        backPropEquationNames: ["L-y1-backprop", "L-y2-backprop", "y1-h1-backprop", "y2-h1-backprop", "h1-z1-backprop", "z1-w12_1-backprop"],
+        cyRef: cyRef2,
+        cyRefType: "backward-prop"
+      }
+      nodeClickFunction(dataContent);
+      setBackpropEquationStyle("bg-[#Ef97b0] px-0.5 py-0.5 h-fit rounded-full");
+    }
+
+    else if (node.id() == "w11_1") {
+      const dataContent = {
+        label: "Equation w11_1_bar",
+        nodeIds: ["w11_1", "z1", "h1", "y1", "y2", "L"],
+        edgeIds: [],
+        highlightColour: "#89CFF0",
+        isGraphHighlighted: isBackwardGraphHighlighted,
+        setGraphHighlighted: setBackwardGraphHighlight,
+        activeNode: backwardActiveNode,
+        setActiveNode: setBackwardActiveNode,
+        equationNames: ["L_bar", "y1_bar", "y2_bar", "h1_bar", "z1_bar", "w11_1_bar"],
+        activeEquations: backpropActiveEquations,
+        setActiveEquation: setBackpropActiveEquations,
+        // equationStyle: "bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full",
+        backPropEquationNames: ["L-y1-backprop", "L-y2-backprop", "y1-h1-backprop", "y2-h1-backprop", "h1-z1-backprop", "z1-w11_1-backprop"],
+        cyRef: cyRef2,
+        cyRefType: "backward-prop"
+      }
+      nodeClickFunction(dataContent);
+      setBackpropEquationStyle("bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full");
+    }
+
+    else if (node.id() == "b1_1") {
+      const dataContent = {
+        label: "Equation b1_1_bar",
+        nodeIds: ["b1_1", "z1", "h1", "y1", "y2", "L"],
+        edgeIds: [],
+        highlightColour: "#ffdbbb",
+        isGraphHighlighted: isBackwardGraphHighlighted,
+        setGraphHighlighted: setBackwardGraphHighlight,
+        activeNode: backwardActiveNode,
+        setActiveNode: setBackwardActiveNode,
+        equationNames: ["L_bar", "y1_bar", "y2_bar", "h1_bar", "z1_bar", "b1_1_bar"],
+        activeEquations: backpropActiveEquations,
+        setActiveEquation: setBackpropActiveEquations,
+        // equationStyle: "bg-[#89CFF0] px-0.5 py-0.5 h-fit rounded-full",
+        backPropEquationNames: ["L-y1-backprop", "L-y2-backprop", "y1-h1-backprop", "y2-h1-backprop", "h1-z1-backprop", "z1-b1_1-backprop"],
+        cyRef: cyRef2,
+        cyRefType: "backward-prop"
+      }
+      nodeClickFunction(dataContent);
+      setBackpropEquationStyle("bg-[#ffdbbb] px-0.5 py-0.5 h-fit rounded-full");
+    }
+
+
+    else if (node.id() == "x1") {
+
+      const dataContent = {
+        label: "Equation x1",
+        nodeIds: ["x1"],
+        edgeIds: [],
+        highlightColour: "#E7ff7f",
+        isGraphHighlighted: isBackwardGraphHighlighted,
+        setGraphHighlighted: setBackwardGraphHighlight,
+        activeNode: backwardActiveNode,
+        setActiveNode: setBackwardActiveNode,
+        equationNames: ["x1"],
+        activeEquations: backpropActiveEquations,
+        setActiveEquation: setBackpropActiveEquations,
+        // equationStyle: "bg-[#E7ff7f] px-0.5 py-0.5 rounded-full",
+        backPropEquationNames: [],
+        cyRef: cyRef2,
+        cyRefType: "backward-prop"
+      };
+      nodeClickFunction(dataContent);
+      setBackpropEquationStyle("bg-[#0000] px-0.5 py-0.5 rounded-full");
+    }
+
+    else if (node.id() == "x2") {
+
+      const dataContent = {
+        label: "Equation x2",
+        nodeIds: ["x2"],
+        edgeIds: [],
+        highlightColour: "#E7ff7f",
+        isGraphHighlighted: isBackwardGraphHighlighted,
+        setGraphHighlighted: setBackwardGraphHighlight,
+        activeNode: backwardActiveNode,
+        setActiveNode: setBackwardActiveNode,
+        equationNames: ["x2"],
+        activeEquations: backpropActiveEquations,
+        setActiveEquation: setBackpropActiveEquations,
+        // equationStyle: "bg-[#E7ff7f] px-0.5 py-0.5 rounded-full",
+        backPropEquationNames: [],
+        cyRef: cyRef2,
+        cyRefType: "backward-prop"
+      };
+      nodeClickFunction(dataContent);
+      setBackpropEquationStyle("bg-[#0000] px-0.5 py-0.5 rounded-full");
+    }
+
     else {
       const dataContent = {
         label: "reset",
@@ -272,7 +473,7 @@ export default function Home() {
     <div>
       <p className="pl-4 mt-10 mb-8 text-2xl font-bold underline text-gray-800">Forward pass:</p>
       <div className="mx-4 mb-6 p-4 border-l-4 border-blue-500 bg-blue-50 rounded shadow-sm">
-        <p className="text-gray-800 text-lg font-bold">Definition</p>
+        <p className="text-gray-800 text-lg font-bold">Example Setup</p>
         <p className="text-gray-700 mt-1">
           <MathJaxContext>
             <MathJax>
@@ -280,7 +481,7 @@ export default function Home() {
             </MathJax>
           </MathJaxContext>
         </p>
-        <p className="text-gray-700 mt-1">
+        <p className="text-gray-700 mt-1 mb-5">
           <MathJaxContext>
             <MathJax>
               {"Click the "}
@@ -469,13 +670,15 @@ export default function Home() {
       </div>
       <p className="pl-4 mt-10 mb-8 text-2xl font-bold underline text-gray-800">Backward Pass:</p>
       <div className="mx-4 mb-6 p-4 border-l-4 border-blue-500 bg-blue-50 rounded shadow-sm">
-        <p className="text-gray-800 text-lg font-bold">Definition</p>
+        <p className="text-gray-800 text-lg font-bold">Example Setup</p>
         <p className="text-gray-700 mt-1">
-        <MathJaxContext>
+          <MathJaxContext>
             <MathJax>
               {"For this visualization, we will use a standard 2-layer neural network."}
             </MathJax>
           </MathJaxContext>
+        </p>
+        <p className="text-gray-700 mt-1 mb-5">
           <MathJaxContext>
             <MathJax>
               {"Click the "}
@@ -499,7 +702,7 @@ export default function Home() {
         </CollapsibleSection>
       </div>
       <div className="mx-4 mb-6 p-4 border-l-4 border-blue-500 bg-blue-50 rounded shadow-sm">
-      <p className="text-gray-800 text-lg font-bold">Diagram components</p>
+        <p className="text-gray-800 text-lg font-bold">Diagram components</p>
         <p className="text-gray-700">The computation graph <b>nodes</b> represent all the input and computed quantities.</p>
         <p className="text-gray-700">The computation graph <b>edges</b> represent which nodes are computed directly from which other nodes. This relationship is also known as a <b>direct dependency.</b></p>
         <p className="text-gray-700">The <b>dotted blue arrows</b> that would appear when a node is pressed represents the gradient flow. The <b>error signals</b> of each node denotes the underlying numerical value computed from these flows.</p>
@@ -508,12 +711,12 @@ export default function Home() {
           The diagram below illustrates how gradients are computed and propagated backward through the network to compute error signals.
         </p>
         <p className="text-gray-700">
-        Click on any node in the computation graph to visualize its error signal.
-        The intermediate error signals and equations would appear in section <b>Backward pass Equations</b>.
-        The final error signal equation for the node being clicked would be highlighted.
+          Click on any node in the computation graph to visualize its error signal.
+          The intermediate error signals and equations would appear in section <b>Backward pass Equations</b>.
+          The final error signal equation for the node being clicked would be highlighted.
         </p>
         <p className="text-gray-700">
-         When applicable, there would also be an <b>Explanation</b> text box that would appears to give more context about the error signal result.
+          When applicable, there would also be an <b>Explanation</b> text box that would appears to give more context about the error signal result.
         </p>
       </div>
       <div className="flex">  {/* Making the background white temporarily. Old string: "min-h-screen flex justify-center items-center bg-white" */}
@@ -588,6 +791,12 @@ export default function Home() {
               {backpropActiveEquations.includes("b1_2_bar") && (
                 <MathEquation equationName="b1_2_bar" content={"\\( \\overline{b}^{(2)}_1 = \\overline{y}_1 \\cdot \\frac{\\partial y_1}{\\partial b^{(2)}_1} = \\overline{y}_1 \\)"} className=''></MathEquation>
               )}
+
+              {/* Equation 8: w22_2_bar */}
+              {backpropActiveEquations.includes("w22_2_bar") && (
+                <MathEquation equationName="w22_2_bar" content={"\\( \\overline{w}^{(2)}_{22} = \\overline{y}_2 \\cdot \\frac{\\partial y_2}{\\partial w^{(2)}_{22}} = \\overline{y}_2 h_2 \\)"} className=''></MathEquation>
+              )}
+
               {/* Equation 9: h1_bar */}
               {backpropActiveEquations.includes("h1_bar") && (
                 <>
@@ -597,19 +806,99 @@ export default function Home() {
                     className=''
                   />
                   {/* Learning Alert Box */}
+                  {!["z1_bar"].some((key) => backpropActiveEquations.includes(key)) && (
+                    <div className="mt-6 mb-4 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded-md shadow-sm">
+                      <p className="font-bold text-yellow-800">Explanation:</p>
+                      <MathJaxContext>
+                        <MathJax>
+                          <p className="mt-2 text-lg text-gray-800">
+                            We need to use the <b>multivariate chain rule</b> here because <MathJax inline>{"\\(h_1\\)"}</MathJax> affects the loss value through multiple <MathJax inline>{"\\(y_k\\)"}</MathJax> terms.
+                          </p>
+                          <p className="mt-1 text-lg text-gray-800">
+                            In the diagram, this is shown by <MathJax inline>{"\\( h_1 \\)"}</MathJax> having two distinct paths: One through <MathJax inline>{"\\( y_1 \\)"}</MathJax> and another through <MathJax inline>{"\\( y_2 \\)"}</MathJax>.
+                          </p>
+                          <p className="mt-2 text-lg text-gray-800">
+                            The multivariate chain rule allows us to account for all paths through which <MathJax inline>{"\\(h_1\\)"}</MathJax> flows into the loss.
+                          </p>
+                        </MathJax>
+                      </MathJaxContext>
+                    </div>
+                  )}
+                </>
+              )}
+
+              {/* Equation 10: h2_bar */}
+              {backpropActiveEquations.includes("h2_bar") && (
+                <>
+                  <MathEquation
+                    equationName="h2_bar"
+                    content={"\\(\\overline{h}_2 = \\sum_{i=1}^{2} \\overline{y}_i \\cdot \\frac{\\partial y_i}{\\partial h_1} = \\sum_{i=1}^{2} \\overline{y}_i w_{i2}^{(2)} = \\overline{y}_1 w_{21}^{(2)} + \\overline{y}_2 w_{22}^{(2)}\\)"}
+                    className=''
+                  />
+                  {/* Learning Alert Box */}
+                  {!["z2_bar"].some((key) => backpropActiveEquations.includes(key)) && (
+                    <div className="mt-6 mb-4 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded-md shadow-sm">
+                      <p className="font-bold text-yellow-800">Explanation:</p>
+                      <MathJaxContext>
+                        <MathJax>
+                          <p className="mt-2 text-lg text-gray-800">
+                            We need to use the <b>multivariate chain rule</b> here because <MathJax inline>{"\\(h_2\\)"}</MathJax> affects the loss value through multiple <MathJax inline>{"\\(y_k\\)"}</MathJax> terms.
+                          </p>
+                          <p className="mt-1 text-lg text-gray-800">
+                            In the diagram, this is shown by <MathJax inline>{"\\( h_2 \\)"}</MathJax> having two distinct paths: One through <MathJax inline>{"\\( y_1 \\)"}</MathJax> and another through <MathJax inline>{"\\( y_2 \\)"}</MathJax>.
+                          </p>
+                          <p className="mt-2 text-lg text-gray-800">
+                            The multivariate chain rule allows us to account for all paths through which <MathJax inline>{"\\(h_2\\)"}</MathJax> flows into the loss.
+                          </p>
+                        </MathJax>
+                      </MathJaxContext>
+                    </div>
+                  )}
+                </>
+              )}
+              {/* Equation 11: z1_bar */}
+              {backpropActiveEquations.includes("z1_bar") && (
+                <MathEquation equationName="z1_bar" content={"\\( \\overline{z}_1 = \\overline{h}_1 \\cdot \\frac{\\partial h_1}{\\partial z_1} = \\overline{h}_1 \\cdot \\sigma'(z_1) = \\overline{h}_1 \\cdot \\sigma(z_1)(1 - \\sigma(z_1)) \\)"} className=''></MathEquation>
+              )}
+              {/* Equation 12: z2_bar */}
+              {backpropActiveEquations.includes("z2_bar") && (
+                <MathEquation equationName="z2_bar" content={"\\( \\overline{z}_2 = \\overline{h}_2 \\cdot \\frac{\\partial h_2}{\\partial z_2} = \\overline{h}_2 \\cdot \\sigma'(z_2) = \\overline{h}_2 \\cdot \\sigma(z_2)(1 - \\sigma(z_2)) \\)"} className=''></MathEquation>
+              )}
+              {/* Equation 13: w12_1_bar */}
+              {backpropActiveEquations.includes("w12_1_bar") && (
+                <MathEquation equationName="w12_1_bar" content={"\\( \\overline{w}^{(1)}_{12} = \\overline{z}_1 \\cdot \\frac{\\partial z_1}{\\partial w^{(1)}_{12}} = \\overline{z}_1 x_2 \\ \\)"} className=''></MathEquation>
+              )}
+              {/* Equation 14: w11_1_bar */}
+              {backpropActiveEquations.includes("w11_1_bar") && (
+                <MathEquation equationName="w11_1_bar" content={"\\( \\overline{w}^{(1)}_{11} = \\overline{z}_1 \\cdot \\frac{\\partial z_1}{\\partial w^{(1)}_{11}} = \\overline{z}_1 x_1 \\ \\)"} className=''></MathEquation>
+              )}
+              {/* Equation 15: b1_1_bar */}
+              {backpropActiveEquations.includes("b1_1_bar") && (
+                <MathEquation equationName="b1_1_bar" content={"\\( \\overline{b}_1^{(1)} = \\overline{z}_1 \\cdot \\frac{\\partial z_1}{\\partial b_1^{(1)}} = \\overline{z}_1 \\)"} className=''></MathEquation>
+              )}
+              {/* Equation: x1 */}
+              {backpropActiveEquations.includes("x1") && (
+                <>
+                  <MathJax>{"None"}</MathJax>
                   <div className="mt-6 mb-4 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded-md shadow-sm">
-                    <p className="font-bold text-yellow-800">Explanation:</p>
                     <MathJaxContext>
                       <MathJax>
-                        <p className="mt-2 text-lg text-gray-800">
-                          We need to use the <b>multivariate chain rule</b> here because <MathJax inline>{"\\(h_1\\)"}</MathJax> affects the loss value through multiple <MathJax inline>{"\\(y_k\\)"}</MathJax> terms.
-                        </p>
-                        <p className="mt-1 text-lg text-gray-800">
-                          In the diagram, this is shown by <MathJax inline>{"\\( h_1 \\)"}</MathJax> having two distinct paths: One through <MathJax inline>{"\\( y_1 \\)"}</MathJax> and another through <MathJax inline>{"\\( y_2 \\)"}</MathJax>.
-                        </p>
-                        <p className="mt-2 text-lg text-gray-800">
-                          The multivariate chain rule allows us to account for all paths through which <MathJax inline>{"\\(h_1\\)"}</MathJax> flows into the loss.
-                        </p>
+                        <p className="font-semibold text-yellow-800">Explanation:</p>
+                        <p className="text-lg">{"\\(x_1\\) represents one of the input values to this neural network. It is a constant, not something that is computed by the network. Thus, there is no error signal for \\(x_1\\)."}</p>
+                      </MathJax>
+                    </MathJaxContext>
+                  </div>
+                </>
+              )}
+              {/* Equation: x2 */}
+              {backpropActiveEquations.includes("x2") && (
+                <>
+                  <MathJax>{"None"}</MathJax>
+                  <div className="mt-6 mb-4 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded-md shadow-sm">
+                    <MathJaxContext>
+                      <MathJax>
+                        <p className="font-semibold text-yellow-800">Explanation:</p>
+                        <p className="text-lg">{"\\(x_2\\) represents one of the input values to this neural network. It is a constant, not something that is computed by the network. Thus, there is no error signal for \\(x_2\\)."}</p>
                       </MathJax>
                     </MathJaxContext>
                   </div>

@@ -156,6 +156,15 @@ export const edgeObjList = [
     }),
 
     GraphEdge({
+        id: 'y2-w22_2-backprop',
+        source: 'y2',
+        target: 'w22_2',
+        label: 'ȳ₂ · ∂y₂/∂w₂₂⁽²⁾',
+        visible: false,
+        classes: 'backward y2-w22_2-backprop',
+    }),
+
+    GraphEdge({
         id: 'y1-h1-backprop',
         source: 'y1',
         target: 'h1',
@@ -171,7 +180,71 @@ export const edgeObjList = [
         label: 'ȳ₂ · ∂y₂/∂h₁',
         visible: false,
         classes: 'backward y2-h1-backprop',
-    })
+    }),
+
+    GraphEdge({
+        id: 'y1-h2-backprop',
+        source: 'y1',
+        target: 'h2',
+        label: 'ȳ₁ · ∂y₁/∂h₂',
+        visible: false,
+        classes: 'backward y1-h2-backprop',
+    }),
+
+    GraphEdge({
+        id: 'y2-h2-backprop',
+        source: 'y2',
+        target: 'h2',
+        label: 'ȳ₂ · ∂y₂/∂h₂',
+        visible: false,
+        classes: 'backward y2-h2-backprop',
+    }),
+
+    GraphEdge({
+        id: 'h1-z1-backprop',
+        source: 'h1',
+        target: 'z1',
+        label: 'h̄₁ · ∂h₁/∂z₁',
+        visible: false,
+        classes: 'backward h1-z1-backprop',
+    }),
+
+    GraphEdge({
+        id: 'h2-z2-backprop',
+        source: 'h2',
+        target: 'z2',
+        label: 'h̄₂ · ∂h₂/∂z₂',
+        visible: false,
+        classes: 'backward h2-z2-backprop',
+    }),
+
+    GraphEdge({
+        id: 'z1-w12_1-backprop',
+        source: 'z1',
+        target: 'w12_1',
+        label: 'z̄₁ · ∂z₁/∂w₁₂⁽¹⁾',
+        visible: false,
+        classes: 'backward z1-w12_1-backprop',
+    }),
+
+    GraphEdge({
+        id: 'z1-w11_1-backprop',
+        source: 'z1',
+        target: 'w11_1',
+        label: 'z̄₁ · ∂z₁/∂w₁₁⁽¹⁾',
+        visible: false,
+        classes: 'backward z1-w11_1-backprop',
+    }),
+
+    GraphEdge({
+        id: 'z1-b1_1-backprop',
+        source: 'z1',
+        target: 'b1_1',
+        label: 'z̄₁ · ∂z₁/∂b₁⁽¹⁾',
+        visible: false,
+        classes: 'backward z1-b1_1-backprop',
+    }),
+
 
 ];
 
@@ -253,6 +326,15 @@ export const edgeDataList = [
     },
 
     {
+        id: 'y2-w22_2-backprop',
+        source: 'y2',
+        target: 'w22_2',
+        label: 'ȳ₂ · ∂y₂/∂w₂₂⁽²⁾',
+        visible: false,
+        classes: 'backward y2-w22_2-backprop',
+    },
+
+    {
         id: 'y1-h1-backprop',
         source: 'y1',
         target: 'h1',
@@ -268,6 +350,66 @@ export const edgeDataList = [
         label: 'ȳ₂ · ∂y₂/∂h₁',
         visible: false,
         classes: 'backward y2-h1-backprop',
+    },
+
+    {
+        id: 'y1-h2-backprop',
+        source: 'y1',
+        target: 'h2',
+        label: 'ȳ₁ · ∂y₁/∂h₂',
+        visible: false,
+        classes: 'backward y1-h2-backprop',
+    },
+
+    {
+        id: 'y2-h2-backprop',
+        source: 'y2',
+        target: 'h2',
+        label: 'ȳ₂ · ∂y₂/∂h₂',
+        visible: false,
+        classes: 'backward y2-h2-backprop',
+    },
+
+    {
+        id: 'h1-z1-backprop',
+        source: 'h1',
+        target: 'z1',
+        label: 'h̄₁ · ∂h₁/∂z₁',
+        visible: false,
+        classes: 'backward h1-z1-backprop',
+    },
+
+    {
+        id: 'h2-z2-backprop',
+        source: 'h2',
+        target: 'z2',
+        label: 'h̄₂ · ∂h₂/∂z₂',
+        visible: false,
+        classes: 'backward h2-z2-backprop',
+    },
+    {
+        id: 'z1-w12_1-backprop',
+        source: 'z1',
+        target: 'w12_1',
+        label: 'z̄₁ · ∂z₁/∂w₁₂⁽¹⁾',
+        visible: false,
+        classes: 'backward z1-w12_1-backprop',
+    },
+    {
+        id: 'z1-w11_1-backprop',
+        source: 'z1',
+        target: 'w11_1',
+        label: 'z̄₁ · ∂z₁/∂w₁₁⁽¹⁾',
+        visible: false,
+        classes: 'backward z1-w11_1-backprop',
+    },
+    {
+        id: 'z1-b1_1-backprop',
+        source: 'z1',
+        target: 'b1_1',
+        label: 'z̄₁ · ∂z₁/∂b₁⁽¹⁾',
+        visible: false,
+        classes: 'backward z1-b1_1-backprop',
     }
 
 ];

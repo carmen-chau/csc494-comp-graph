@@ -66,7 +66,7 @@ const defaultGraphStyles = [
   // Specific styling class for y1-w12_2-backprop
   // Note: Only specifying styles from the parent class edge.backprop which we want to override
   {
-    selector: 'edge.y1-w12_2-backprop',
+    selector: 'edge.y1-w12_2-backprop, edge.z1-w12_1-backprop',
     style: {
       'control-point-weights': [0.20],
       'text-margin-y': -15,
@@ -76,7 +76,7 @@ const defaultGraphStyles = [
   // Specific styling class for y1-w11_2-backprop
   // Note: Only specifying styles from the parent class edge.backprop which we want to override
   {
-    selector: 'edge.y1-w11_2-backprop',
+    selector: 'edge.y1-w11_2-backprop, edge.z1-w11_1-backprop',
     style: {
       'control-point-distances': [15],
       'control-point-weights': [0.20],
@@ -89,12 +89,23 @@ const defaultGraphStyles = [
   // Specific styling class for y1-b1_2-backprop
   // Note: Only specifying styles from the parent class edge.backprop which we want to override
   {
-    selector: 'edge.y1-b1_2-backprop',
+    selector: 'edge.y1-b1_2-backprop, edge.z1-b1_1-backprop',
     style: {
       'control-point-distances': [15],
       'control-point-weights': [0.40],
       'font-size': 14,
       'text-margin-y': -15,
+      'text-margin-x': -10
+    }
+  },
+
+  {
+    selector: 'edge.y2-w22_2-backprop',
+    style: {
+      'control-point-distances': [15],
+      'control-point-weights': [0.40],
+      'font-size': 14,
+      'text-margin-y': 10,
       'text-margin-x': -10
     }
   },
@@ -109,6 +120,28 @@ const defaultGraphStyles = [
       'font-size': 14,
       'text-margin-y': -25,
       'text-margin-x': -30
+    }
+  },
+
+  {
+    selector: 'edge.y1-h2-backprop',
+    style: {
+      'control-point-distances': [15],
+      'control-point-weights': [0.40],
+      'font-size': 14,
+      'text-margin-y': -20,
+      'text-margin-x': 20
+    }
+  },
+
+  {
+    selector: 'edge.y2-h2-backprop',
+    style: {
+      'control-point-distances': [15],
+      'control-point-weights': [0.40],
+      'font-size': 14,
+      'text-margin-y': -10,
+      'text-margin-x': 10
     }
   },
 
