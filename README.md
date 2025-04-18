@@ -1,4 +1,4 @@
-# Neural Network Visualization (Forward pass and Backward pass)
+# Forward and Backward pass visualization (for neural networks) 
 
 ## About 
 This project is an interactive web visualization designed to help users understand how computation graphs can be used to model a neural network and visualize the process of both forward + backward pass. 
