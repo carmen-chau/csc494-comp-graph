@@ -112,6 +112,10 @@ The backpropgation arrow was included in hopes to help students differentate bet
 
 ## Resources used
 1. [Cytoscape.js documentation](https://js.cytoscape.org/)
+   - Documentation for the library used the create and render the computation graph. Specifically, sections **"Notation - Position"** and **"Notation - Elements JSON"** were super critical to read over in the initial project stages. Methods in section **Core** were also useful, especially for implementing style augmentations on the graph based on user input 
 2. [Latex to SVG generator](https://viereck.ch/latex-to-svg/)
+   - This is the website used to generate the static node labels found in folder `/initial_latex_icons`
 3. [Colour picker](https://htmlcolorcodes.com/color-picker/)
-4. [README.md template](https://www.makeareadme.com/)
+   - This is the website used to pick custom colour codes for highlighting.
+5. [README.md template](https://www.makeareadme.com/)
+   -  This is the template used for this Readme.md file       
