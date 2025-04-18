@@ -10,7 +10,7 @@ For Univesity of Toronto students taking CSC311 (Introduction to Machine Learnin
 ### Pre-requisite knowledge 
 This visualization assumes that students have a basic understanding of what components make up a neural network at a high level and how this translates into a computation graph. 
 Furthermore, students should be comfortable with conducting and understanding calculations for both the univariate and multivariate chain rules.
-It is recommended that students have some basic prior understanding of what forward pass and backpropagation are, but it is not required. 
+It is recommended that students have some basic prior understanding of what forward pass and backward pass are, but it is not required. 
 
 ### Learning objectives
 *Forward Pass:*
@@ -64,11 +64,6 @@ Here's an example of what the visualization would look like should the user pres
 
 <img width="1473" alt="Screenshot 2025-04-18 at 1 05 14 AM" src="https://github.com/user-attachments/assets/a366f853-1e2d-4e19-85e2-55d866861acd" />
 
-### Usage notes and limitations
-
-- Although the computation graph instance for both forward pass and backpropagation look the same, behind the hood, they are treated as different objects. 
-- Currently, for a particular computation graph instance, you can only have at most 1 ```Select``` button toggled at a time. Button toggling in the forward pass graph should not affect the backpropagation graph
-
 ## Technical specifications 
 
 ### Tech stack
@@ -106,7 +101,7 @@ For forward pass, writing out these terms separately makes it explicit how each 
 
 Similarly, by illustrating how these individual terms are being used to calculate loss gradients, the visualization can help students understand how derivatives and chain rule apply to individual terms during backward pass.
 
-> For the backpropagation graph, why did you include the backpropagation arrow?
+> For the backward pass graph, why did you include the dotted blue arrows?
 
 The gradient flow arrow (dotted blue arrows) was included in hopes to help students differentiate between the forward pass phase (solid arrows) vs backward pass phase (dotted arrows). Also, these arrows are a physical visualization of the backward flow of gradients, which are intermediate processes that are essential to calculate the amount of loss relative to the term we are looking at.
 
