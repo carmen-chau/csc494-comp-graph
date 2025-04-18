@@ -110,6 +110,22 @@ Similarly, by illustrating how these individual terms are being used to calculat
 
 The backpropgation arrow was included in hopes to help students differentate between the forward pass phase (solid arrows) vs backpropagation phase (dotted arrows). Also, these backpropagation arrows are a physical visualization of the error signals (loss gradients), which is essentially the amount of loss relative to the term we are looking at, that is flowing backwards in the graph. 
 
+## Next Steps 
+There are 2 main areas worth exploring when trying to extend and build on top of this existing visualization 
+
+**Area 1: How to better convey concepts?**
+
+1. Consider extending this visualization to illustrate the iterative nature of backpropagation (which involves iteratively conducting BOTH forward and backward pass, and carefully updating
+the model weights + bias terms to minimize model loss).
+
+2. Creating tooltips to allow users to hover over equation terms and see definitions. This change will likely yield a much better learning / user experience, since users won't need to constantly scroll up to the "Example Setup" info card
+
+**Area 2: How to make the visualization more user-friendly?**
+
+1. Making visualization scale and display well on smaller resolutions. Currently, the computation graph does not resize when the webpage window shrinks. Ideally, the graph should resize so users on smaller screens (eg: phone, tablet) can see the graph. 
+
+2. Dynamically rendering node labels, instead of resorting to static images. Finding out a way to dynamically render node labels instead of relying on static images in `/initial_latex_icons` would lead to less overhead should this project be deployed. 
+
 ## Resources used
 1. [Cytoscape.js documentation](https://js.cytoscape.org/)
    - Documentation for the library used the create and render the computation graph. Specifically, sections **"Notation - Position"** and **"Notation - Elements JSON"** were super critical to read over in the initial project stages. Methods in section **Core** were also useful, especially for implementing style augmentations on the graph based on user input 
