@@ -1,11 +1,15 @@
-# Neural Network Visualization (Forward pass and Backpropagation)
+# Neural Network Visualization (Forward pass and Backward pass)
 
 ## About 
-This project is an interactive web visualization designed to help users understand how computation graphs can be used to model a neural network and visualize the computation of outputs and gradients.
+This project is an interactive web visualization designed to help users understand how computation graphs can be used to model a neural network and visualize the process of both forward + backward pass. 
 
-### Target audience and pre-requisite knowledge
-This project is aimed to be used by prospective CSC311 students and is intended to be complementary to the material taught in Lecture 6 (Neural Networks). It assumes that students have a basic understanding of what components make up a neural network at a high level and how this translates into a computation graph. Furthermore, students should be comfortable with calculations relating to derivatives and the multivariate chain rule (from 2nd-year calculus). 
+### Target audience
+This visualization is aimed towards users who are just starting to learn about neural networks and the process of forward + backward pass. 
+For Univesity of Toronto students taking CSC311 (Introduction to Machine Learning), this visualization is be complementary to the material taught in Lecture 6 (Neural Networks). 
 
+### Pre-requisite knowledge 
+This visualization assumes that students have a basic understanding of what components make up a neural network at a high level and how this translates into a computation graph. 
+Furthermore, students should be comfortable with conducting and understanding calculations pertianing to both univariate and multivariate differentiation. 
 It is recommended that students have some basic prior understanding of what forward pass and backpropagation are, but it is not required. 
 
 ### Learning objectives
