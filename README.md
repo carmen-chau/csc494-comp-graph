@@ -5,7 +5,7 @@ This project is an interactive web visualization designed to help users understa
 
 ### Target audience
 This visualization is aimed towards users who are just starting to learn about neural networks and the process of forward + backward pass. 
-For Univesity of Toronto students taking CSC311 (Introduction to Machine Learning), this visualization is be complementary to the material taught in Lecture 6 (Neural Networks). 
+For Univesity of Toronto students taking CSC311 (Introduction to Machine Learning), this visualization is complementary to the material taught in Lecture 6 (Neural Networks). 
 
 ### Pre-requisite knowledge 
 This visualization assumes that students have a basic understanding of what components make up a neural network at a high level and how this translates into a computation graph. 
