@@ -9,12 +9,17 @@ For Univesity of Toronto students taking CSC311 (Introduction to Machine Learnin
 
 ### Pre-requisite knowledge 
 This visualization assumes that students have a basic understanding of what components make up a neural network at a high level and how this translates into a computation graph. 
-Furthermore, students should be comfortable with conducting and understanding calculations pertianing to both univariate and multivariate differentiation. 
+Furthermore, students should be comfortable with conducting and understanding calculations for both the univariate and multivariate chain rules.
 It is recommended that students have some basic prior understanding of what forward pass and backpropagation are, but it is not required. 
 
 ### Learning objectives
-1. Students should understand what the components of a computation graph are. They should be able to explain the process of constructing a graph from input to output (visually and mathematically).
-2. Students should understand what the multivariate chain rule is. They should be able to understand and visualize how this rule is applied to a computational graph to get the loss gradients in a step-by-step manner. 
+*Forward Pass:*
+1. Students should understand how to construct a computation graph when given the forward pass equations (from a visual and mathematical perspective).
+2. They should also be able to explain the process of the forward pass by walking through each equation and illustrating how each comptued term depends on prior values based on direct dependencies. 
+
+*Backward Pass:*
+1. Students should understand what error signals are and how they are computed per node in the backward pass.
+2. Students should also be able to explain and justify cases where a node doesn't have an error signal. They should also understand the differences (visually and mathematically) between applying the univariate vs the multivariate chain rule when deriving error signals. 
 
 ### Installation instructions 
 1. Download Node.js. This comes with the package `npm` which can help you download dependencies. You can consult [this page](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm.) for installation instructions. Node version 20+ is ideal for compatibility.
