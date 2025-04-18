@@ -79,20 +79,19 @@ Here's an example of what the visualization would look like should the user pres
 
 ### Code structure
 
-The `/components` folder contains files that define core graph components. Currently it contains files for a generalized graph, edge, node, graph highlight button and equation
+The `/components` folder contains files that define core graph and info card components.
 
-The `/data` folder contains Typescript files containing the data for the hardcoded computation graph instances. There are 2 files, 1 for forward pass and 1 for backpropagation.
+The `/data` folder contains Typescript files containing the data for the hardcoded computation graph instances. There are 2 files, 1 for forward pass and 1 for backward pass. 
 
-The `/pages` folder define pages that are actually rendered on. Specifically, `pages/index` is the home page that is displayed. It includes the computation graph instance as well as the equations. All other files are boilerplate for now
+The `/pages` folder define pages that are actually being rendered on the webpage. Specifically, `pages/index` is the home page that is displayed. It includes the computation graph instance as well as the equations. All other files are boilerplate for now.
         
-The `/public` folder contains static files that can be rendered. Right now, it contains another folder called `/initial_latex_icons`. This folder contains raw latex text as pictures, I use these to insert into each node of the graph to render as a picture upload. This is a very brute-force approach since at this time right now I have yet to find a way to dynamially render this text, nor do I think it is a primary objective at this stage of this project. 
+The `/public` folder contains static files that can be rendered. The only relevant section in this folder is the folder called `/initial_latex_icons`. This folder contains raw latex text as pictures, I use these to insert into each node of the graph to render as a picture upload. This is a very brute-force approach since at this time I have yet to find a way to dynamially render this text. 
 
 The `/style` folder contains 2 files: `/style/GraphDefaultStyle.ts` and `/style/GraphCustomStyle.ts`, each containing objects with styling attributes for a default graph and extensions for a highlighted graph, respectively. 
 
 The `/utils` folder contains files that include helper functions for retrieving or manipulating data from a graph instance 
 
-### Miscellaneous
-- Please consult the code comments made in each file should you need more fine level details about implementation.
+Please consult the code comments made in each file should you need more fine level details about implementation.
 
 ## Design decision
 > Why did you pick this specific computation graph example?
